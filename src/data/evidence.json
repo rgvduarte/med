@@ -3893,5 +3893,1029 @@
    "protrusão acetabular"
   ],
   "abstract_excerpt": "From dysplasia through control and overcoverage, the lateral center-edge angle, acetabular arc, and anteroposterior/craniocaudal coverage increased. In contrast, the medial center-edge angle, extrusion/acetabular index, Sharp angle, and prevalence of the posterior wall sign decreased. The following reference values were found: lateral center-edge angle 23° to 33°, medial center-edge angle 35° to 44°, acetabular arc 61° to 65°, extrusion index 17% to 27%, acetabular index 3° to 13°, Sharp angle 38° to 42°, negative crossover sign, positive posterior wall sign, anterior femoral head coverage 15% to 26%, posterior femoral head coverage 36% to 47%, and craniocaudal coverage 70% to 83%."
+ },
+ {
+  "id": "suh2024-gpt4v-gemini-diagnosis-please",
+  "topic": "General multimodal LLMs (GPT-4V, Gemini Pro Vision) vs radiologists on image-input differential diagnosis",
+  "authors": "Suh PS, Shim WH, Suh CH, et al.",
+  "title": "Comparing Diagnostic Accuracy of Radiologists versus GPT-4V and Gemini Pro Vision Using Image Inputs from Diagnosis Please Cases",
+  "journal": "Radiology",
+  "year": 2024,
+  "doi": "10.1148/radiol.240273",
+  "pmid": "38980179",
+  "url": "https://doi.org/10.1148/radiol.240273",
+  "evidence_type": "retrospective-diagnostic-accuracy",
+  "key_points": [
+   "Retrospective study of 190 Radiology 'Diagnosis Please' cases (2008-2023), including 17 musculoskeletal cases. GPT-4V and Gemini Pro Vision received the original images plus captures of the patient history and figure legends (without imaging findings). They were asked for three differential diagnoses, repeated five times at temperatures 0, 0.5 and 1. Eight subspecialty-trained radiologists also solved the cases.",
+   "At temperature 1, overall accuracy was 49% (93/190) for GPT-4V and 39% (74/190) for Gemini Pro Vision, versus 61% (115/190) for radiologists. Radiologists outperformed Gemini Pro Vision (P < .001); the difference versus GPT-4V was not statistically significant after Bonferroni adjustment (P = .02).",
+   "Radiologists (range, 45%-88%) outperformed the LLMs at temperature 1 (range, 24%-75%) in most subspecialties.",
+   "A case was scored correct if the generated diagnoses included the final diagnosis after five repetitions. Accuracy rose with temperature (GPT-4V 41%, 45% and 49%; Gemini Pro Vision 29%, 36% and 39% at 0, 0.5 and 1), but the trend was not significant after Bonferroni adjustment."
+  ],
+  "key_points_pt": [
+   "Estudo retrospetivo de 190 casos 'Diagnosis Please' da revista Radiology (2008-2023), incluindo 17 casos musculoesqueléticos. O GPT-4V e o Gemini Pro Vision receberam as imagens originais e capturas da história clínica e das legendas das figuras (sem os achados imagiológicos). Foram-lhes pedidos três diagnósticos diferenciais, repetidos cinco vezes com temperaturas 0, 0,5 e 1. Oito radiologistas com formação subespecializada resolveram também os casos.",
+   "Com temperatura 1, a exatidão global foi de 49% (93/190) para o GPT-4V e de 39% (74/190) para o Gemini Pro Vision, face a 61% (115/190) para os radiologistas. Os radiologistas superaram o Gemini Pro Vision (P < 0,001); a diferença face ao GPT-4V não foi estatisticamente significativa após correção de Bonferroni (P = 0,02).",
+   "Os radiologistas (intervalo 45%-88%) superaram os modelos de linguagem com temperatura 1 (intervalo 24%-75%) na maioria das subespecialidades.",
+   "Um caso foi considerado correto se os diagnósticos gerados incluíssem o diagnóstico final ao fim de cinco repetições. A exatidão aumentou com a temperatura (GPT-4V 41%, 45% e 49%; Gemini Pro Vision 29%, 36% e 39% com 0, 0,5 e 1), mas a tendência não foi significativa após correção de Bonferroni."
+  ],
+  "modalities": [
+   "any"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "GPT-4V",
+   "Gemini Pro Vision",
+   "multimodal large language model",
+   "modelo de linguagem multimodal",
+   "vision-language model",
+   "modelo de visão-linguagem",
+   "differential diagnosis",
+   "diagnóstico diferencial",
+   "diagnostic accuracy",
+   "exatidão diagnóstica",
+   "radiologist comparison",
+   "comparação com radiologistas",
+   "temperature",
+   "temperatura",
+   "Diagnosis Please",
+   "musculoskeletal",
+   "musculoesquelético"
+  ],
+  "abstract_excerpt": "Overall accuracy improved with increasing temperature settings (0, 0.5, 1) for both GPT-4V (41% [78 of 190 cases], 45% [86 of 190 cases], 49% [93 of 190 cases], respectively) and Gemini Pro Vision (29% [55 of 190 cases], 36% [69 of 190 cases], 39% [74 of 190 cases], respectively), although there was no evidence of a statistically significant difference after Bonferroni adjustment (GPT-4V, P = .12; Gemini Pro Vision, P = .04). The overall accuracy of radiologists (61% [115 of 190 cases]) was higher than that of Gemini Pro Vision at temperature 1 (T1) (P < .001), while no statistically significant difference was observed between radiologists and GPT-4V at T1 after Bonferroni adjustment (P = .02). Radiologists (range, 45%-88%) outperformed the LLMs at T1 (range, 24%-75%) in most subspecialties."
+ },
+ {
+  "id": "horiuchi2025-chatgpt-msk-text-vs-image",
+  "topic": "GPT-4V image input vs GPT-4 text input vs radiologists in musculoskeletal radiology cases",
+  "authors": "Horiuchi D, Tatekawa H, Oura T, et al.",
+  "title": "ChatGPT's diagnostic performance based on textual vs. visual information compared to radiologists' diagnostic performance in musculoskeletal radiology",
+  "journal": "European Radiology",
+  "year": 2025,
+  "doi": "10.1007/s00330-024-10902-5",
+  "pmid": "38995378",
+  "url": "https://doi.org/10.1007/s00330-024-10902-5",
+  "evidence_type": "retrospective-diagnostic-accuracy",
+  "key_points": [
+   "Across 106 musculoskeletal 'Test Yourself' cases from Skeletal Radiology, GPT-4V-based ChatGPT given the medical history and images reached 8% (9/106) diagnostic accuracy. GPT-4-based ChatGPT given the medical history and textual imaging findings reached 43% (46/106) (p < 0.001).",
+   "A radiology resident scored 41% (43/106) and a board-certified radiologist 53% (56/106). GPT-4V was significantly less accurate than both (p < 0.001); text-based GPT-4 did not differ significantly from either (p = 0.78 and 0.22).",
+   "The authors conclude that ChatGPT should be given appropriate descriptions of the imaging findings rather than the images themselves."
+  ],
+  "key_points_pt": [
+   "Em 106 casos musculoesqueléticos 'Test Yourself' da revista Skeletal Radiology, o ChatGPT baseado no GPT-4V, com história clínica e imagens, atingiu 8% (9/106) de exatidão diagnóstica. O ChatGPT baseado no GPT-4, com história clínica e descrição textual dos achados imagiológicos, atingiu 43% (46/106) (p < 0,001).",
+   "Um interno de radiologia obteve 41% (43/106) e um radiologista especialista 53% (56/106). O GPT-4V foi significativamente menos exato do que ambos (p < 0,001); o GPT-4 com texto não diferiu significativamente de nenhum deles (p = 0,78 e 0,22).",
+   "Os autores concluem que se deve fornecer ao ChatGPT uma descrição adequada dos achados imagiológicos, e não as próprias imagens."
+  ],
+  "modalities": [
+   "any"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "musculoskeletal radiology",
+   "radiologia musculoesquelética",
+   "GPT-4V",
+   "ChatGPT",
+   "image input",
+   "entrada de imagem",
+   "textual imaging findings",
+   "achados imagiológicos em texto",
+   "diagnostic accuracy",
+   "exatidão diagnóstica",
+   "Skeletal Radiology",
+   "radiology resident",
+   "interno de radiologia",
+   "low accuracy",
+   "baixa exatidão"
+  ],
+  "abstract_excerpt": "GPT-4-based ChatGPT significantly outperformed GPT-4V-based ChatGPT (p < 0.001) with accuracy rates of 43% (46/106) and 8% (9/106), respectively. The radiology resident and the board-certified radiologist achieved accuracy rates of 41% (43/106) and 53% (56/106). The diagnostic accuracy of GPT-4-based ChatGPT was comparable to that of the radiology resident, but was lower than that of the board-certified radiologist although the differences were not significant (p = 0.78 and 0.22, respectively). The diagnostic accuracy of GPT-4V-based ChatGPT was significantly lower than those of both radiologists (p < 0.001 and < 0.001, respectively). ... When utilizing ChatGPT, it is crucial to input appropriate descriptions of imaging findings rather than the images."
+ },
+ {
+  "id": "kurokawa2024-claude-key-images",
+  "topic": "Claude 3 Opus / Claude 3.5 Sonnet diagnostic performance with history, textual findings or key images",
+  "authors": "Kurokawa R, Ohizumi Y, Kanzawa J, et al.",
+  "title": "Diagnostic performances of Claude 3 Opus and Claude 3.5 Sonnet from patient history and key images in Radiology's \"Diagnosis Please\" cases",
+  "journal": "Japanese Journal of Radiology",
+  "year": 2024,
+  "doi": "10.1007/s11604-024-01634-z",
+  "pmid": "39096483",
+  "url": "https://doi.org/10.1007/s11604-024-01634-z",
+  "evidence_type": "retrospective-diagnostic-accuracy",
+  "key_points": [
+   "Claude 3 Opus and Claude 3.5 Sonnet were tested on 322 Radiology 'Diagnosis Please' cases under three input conditions: (1) clinical history only; (2) history plus the submitter's textual imaging findings; (3) history plus key images (PNG).",
+   "Correct diagnosis rates (Opus / 3.5 Sonnet) were 18.0% / 21.4% with history only, 62.4% / 64.9% with history plus textual findings, and 24.8% / 30.1% with history plus key images. Differences among all conditions were significant (p < 0.01).",
+   "Key images improved accuracy over history alone, but stayed far below the accuracy reached when the submitter's textual description of the imaging findings was provided (24.8% / 30.1% vs 62.4% / 64.9%).",
+   "Claude 3.5 Sonnet was significantly better than Claude 3 Opus only with image input (30.1% vs 24.8%, p = 0.028)."
+  ],
+  "key_points_pt": [
+   "O Claude 3 Opus e o Claude 3.5 Sonnet foram testados em 322 casos 'Diagnosis Please' da revista Radiology, em três condições de entrada: (1) apenas história clínica; (2) história e achados imagiológicos descritos em texto pelo autor do caso; (3) história e imagens-chave (PNG).",
+   "As taxas de diagnóstico correto (Opus / 3.5 Sonnet) foram de 18,0% / 21,4% apenas com a história, 62,4% / 64,9% com a história e os achados em texto, e 24,8% / 30,1% com a história e as imagens-chave. Todas as diferenças entre condições foram significativas (p < 0,01).",
+   "As imagens-chave melhoraram a exatidão face à história isolada, mas ficaram muito aquém da exatidão obtida quando foi fornecida a descrição textual dos achados imagiológicos feita pelo autor do caso (24,8% / 30,1% vs. 62,4% / 64,9%).",
+   "O Claude 3.5 Sonnet foi significativamente superior ao Claude 3 Opus apenas com entrada de imagens (30,1% vs. 24,8%, p = 0,028)."
+  ],
+  "modalities": [
+   "any"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "Claude 3 Opus",
+   "Claude 3.5 Sonnet",
+   "Claude",
+   "key images",
+   "imagens-chave",
+   "image input",
+   "entrada de imagem",
+   "clinical history",
+   "história clínica",
+   "diagnostic accuracy",
+   "exatidão diagnóstica",
+   "vision-language model",
+   "modelo de visão-linguagem",
+   "Diagnosis Please"
+  ],
+  "abstract_excerpt": "The correct diagnosis rates were 58/322 (18.0%) and 69/322 (21.4%), 201/322 (62.4%) and 209/322 (64.9%), and 80/322 (24.8%) and 97/322 (30.1%) for Conditions 1, 2, and 3 for Claude 3 Opus and Claude 3.5 Sonnet, respectively. The models provided the correct answer as a differential diagnosis in up to 26/322 (8.1%) for Opus and 23/322 (7.1%) for Sonnet. Statistically significant differences were observed in the correct response rates among all combinations of Conditions 1, 2, and 3 for each model (p < 0.01). Claude 3.5 Sonnet outperformed in all conditions, but a statistically significant difference was observed only in the comparison for Condition 3 (30.1% vs. 24.8%, p = 0.028)."
+ },
+ {
+  "id": "hayden2024-gpt4v-intraining-exam",
+  "topic": "GPT-4V performance on text- vs image-based radiology examination questions",
+  "authors": "Hayden N, Gilbert S, Poisson LM, et al.",
+  "title": "Performance of GPT-4 with Vision on Text- and Image-based ACR Diagnostic Radiology In-Training Examination Questions",
+  "journal": "Radiology",
+  "year": 2024,
+  "doi": "10.1148/radiol.240153",
+  "pmid": "39225605",
+  "url": "https://doi.org/10.1148/radiol.240153",
+  "evidence_type": "other",
+  "key_points": [
+   "Prospective evaluation of the September 2023 release of GPT-4V on 377 unique retired ACR Diagnostic Radiology In-Training Examination questions: 65.3% (246/377) answered correctly.",
+   "Accuracy was significantly higher on text-only questions (81.5%, 159/195) than on image-based questions (47.8%, 87/182) (P < .001).",
+   "On text-based questions, chain-of-thought prompting outperformed the other prompts by 6.1%-8.9% (FDR 0.014-0.063). On image-based questions, prompts made no difference (P = .27 to >.99). The authors conclude that GPT-4V showed deficits interpreting radiologic images."
+  ],
+  "key_points_pt": [
+   "Avaliação prospetiva da versão de setembro de 2023 do GPT-4V em 377 perguntas únicas, já retiradas, dos exames de treino (In-Training Examination) de Radiologia de Diagnóstico do ACR: 65,3% (246/377) de respostas corretas.",
+   "A exatidão foi significativamente superior nas perguntas só de texto (81,5%, 159/195) do que nas perguntas com imagem (47,8%, 87/182) (P < 0,001).",
+   "Nas perguntas de texto, o prompting com cadeia de raciocínio (chain-of-thought) superou os outros prompts em 6,1%-8,9% (FDR 0,014-0,063). Nas perguntas com imagem, os prompts não fizeram diferença (P = 0,27 a >0,99). Os autores concluem que o GPT-4V revelou défices na interpretação de imagens radiológicas."
+  ],
+  "modalities": [
+   "any"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "GPT-4V",
+   "GPT-4 with vision",
+   "image-based questions",
+   "perguntas com imagem",
+   "text-only questions",
+   "perguntas só de texto",
+   "chain-of-thought prompting",
+   "prompt",
+   "radiology examination",
+   "exame de radiologia",
+   "image interpretation deficit",
+   "défice de interpretação de imagem"
+  ],
+  "abstract_excerpt": "GPT-4V correctly answered 246 (65.3%) of the 377 unique questions, with significantly higher accuracy on text-only questions (81.5%, 159 of 195) than on image-based questions (47.8%, 87 of 182) (χ2 test, P < .001). Subanalysis revealed differences between prompts on text-based questions, where chain-of-thought prompting outperformed long instruction by 6.1% (McNemar, P = .02; FDR = 0.063), basic prompting by 6.8% (P = .009, FDR = 0.044), and the original prompting style by 8.9% (P = .001, FDR = 0.014). No differences were observed between prompts on image-based questions with P values of .27 to >.99. Conclusion While GPT-4V demonstrated a level of competence in text-based questions, it showed deficits interpreting radiologic images."
+ },
+ {
+  "id": "huppertz2025-gpt4v-fabricated-findings",
+  "topic": "GPT-4V hallucination (fabricated findings), context dependence and instability in radiologic image interpretation",
+  "authors": "Huppertz MS, Siepmann R, Topp D, et al.",
+  "title": "Revolution or risk?-Assessing the potential and challenges of GPT-4V in radiologic image interpretation",
+  "journal": "European Radiology",
+  "year": 2025,
+  "doi": "10.1007/s00330-024-11115-6",
+  "pmid": "39422726",
+  "url": "https://doi.org/10.1007/s00330-024-11115-6",
+  "evidence_type": "retrospective-diagnostic-accuracy",
+  "key_points": [
+   "GPT-4V read 206 imaging studies with unequivocal findings (60 radiographs, 60 CT, 60 MRI, 26 angiographies) twice: with the image only, and with added clinical and demographic context.",
+   "Diagnostic accuracy was 8.3% without context, 29.1% with context (first diagnosis correct) and 63.6% with context (correct diagnosis among the differentials) (p ≤ 0.001). The authors attribute this to a pronounced tendency to favour context over image information.",
+   "GPT-4V fabricated 258 imaging findings in 412 responses and misidentified the imaging modality or anatomic region in 65 images.",
+   "When 20 images were re-read after 30 and 90 days, accuracy fell by up to 30%. Accuracy seemed unrelated to the model's self-reported confidence (Spearman's ρ = 0.117, p = 0.776)."
+  ],
+  "key_points_pt": [
+   "O GPT-4V leu 206 estudos imagiológicos com achados inequívocos (60 radiografias, 60 TC, 60 RM, 26 angiografias) duas vezes: apenas com a imagem e com contexto clínico e demográfico adicional.",
+   "A exatidão diagnóstica foi de 8,3% sem contexto, 29,1% com contexto (primeiro diagnóstico correto) e 63,6% com contexto (diagnóstico correto entre os diferenciais) (p ≤ 0,001). Os autores atribuem isto a uma tendência marcada para privilegiar o contexto em detrimento da informação da imagem.",
+   "O GPT-4V fabricou 258 achados imagiológicos em 412 respostas e identificou erradamente a modalidade de imagem ou a região anatómica em 65 imagens.",
+   "Na releitura de 20 imagens após 30 e 90 dias, a exatidão desceu até 30%. A exatidão pareceu não estar relacionada com a confiança autorreportada pelo modelo (ρ de Spearman = 0,117, p = 0,776)."
+  ],
+  "modalities": [
+   "XR",
+   "CT",
+   "MR"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "hallucination",
+   "alucinação",
+   "fabricated findings",
+   "achados fabricados",
+   "GPT-4V",
+   "context dependence",
+   "dependência do contexto",
+   "self-reported confidence",
+   "confiança autorreportada",
+   "reproducibility",
+   "reprodutibilidade",
+   "misidentified modality",
+   "modalidade identificada erradamente",
+   "radiograph",
+   "radiografia",
+   "patient safety",
+   "segurança do doente"
+  ],
+  "abstract_excerpt": "With its pronounced propensity to favor context over image information, the tool's diagnostic accuracy improved from 8.3% (uncontextualized) to 29.1% (contextualized, first diagnosis correct) and 63.6% (contextualized, correct diagnosis among differential diagnoses) (p ≤ 0.001, Cochran's Q test). Diagnostic accuracy declined by up to 30% when 20 images were re-read after 30 and 90 days and seemed unrelated to the tool's self-reported confidence (Spearman's ρ = 0.117 (p = 0.776)). While the described imaging findings matched the suggested diagnoses in 92.7%, indicating valid diagnostic reasoning, the tool fabricated 258 imaging findings in 412 responses and misidentified imaging modalities or anatomic regions in 65 images."
+ },
+ {
+  "id": "haupt2026-mllm-pediatric-wrist-fracture",
+  "topic": "Zero-shot multimodal LLMs (GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro) vs CNN for pediatric wrist fracture detection",
+  "authors": "Haupt M, Weiß D, Bellersen T, Maurer MH",
+  "title": "Zero-shot multimodal large language models underperform a domain-trained CNN baseline in pediatric wrist fracture detection",
+  "journal": "Scientific Reports",
+  "year": 2026,
+  "doi": "10.1038/s41598-026-58763-w",
+  "pmid": "42310365",
+  "url": "https://doi.org/10.1038/s41598-026-58763-w",
+  "evidence_type": "retrospective-diagnostic-accuracy",
+  "key_points": [
+   "GPT-4o, Claude 3.5 Sonnet and Gemini 1.5 Pro were tested zero-shot for pediatric wrist fracture detection on a balanced GRAZPEDWRI-DX cohort of 1,000 children (2,298 radiographs; 500 fracture, 500 non-fracture).",
+   "A domain-trained Inception v3 CNN achieved AUROC 0.905 and AUPRC 0.920. All three multimodal LLMs performed close to chance (accuracies < 0.55, Matthews correlation coefficients ≈ 0).",
+   "The bounding boxes produced by the LLMs were often inconsistent with expert annotations. The authors regard these models as exploratory research tools, not clinically dependable systems for pediatric radiograph interpretation."
+  ],
+  "key_points_pt": [
+   "O GPT-4o, o Claude 3.5 Sonnet e o Gemini 1.5 Pro foram testados em modo zero-shot na deteção de fraturas do punho em idade pediátrica, numa coorte equilibrada do GRAZPEDWRI-DX com 1000 crianças (2298 radiografias; 500 com fratura, 500 sem fratura).",
+   "Uma CNN Inception v3 treinada no domínio atingiu AUROC 0,905 e AUPRC 0,920. Os três modelos de linguagem multimodais tiveram um desempenho próximo do acaso (exatidão < 0,55, coeficiente de correlação de Matthews ≈ 0).",
+   "As caixas delimitadoras (bounding boxes) geradas pelos modelos de linguagem foram frequentemente inconsistentes com as anotações de especialistas. Os autores consideram estes modelos ferramentas de investigação exploratória, e não sistemas clinicamente fiáveis para a interpretação de radiografias pediátricas."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "wrist-hand"
+  ],
+  "keywords": [
+   "wrist fracture",
+   "fratura do punho",
+   "distal radius fracture",
+   "fratura do rádio distal",
+   "pediatric fracture",
+   "fratura pediátrica",
+   "radiograph",
+   "radiografia",
+   "GPT-4o",
+   "Claude 3.5 Sonnet",
+   "Gemini 1.5 Pro",
+   "zero-shot",
+   "convolutional neural network",
+   "rede neuronal convolucional",
+   "near chance",
+   "próximo do acaso",
+   "GRAZPEDWRI-DX"
+  ],
+  "abstract_excerpt": "We constructed a balanced patient-level test cohort of 1,000 children (2,298 radiographs; 500 fracture, 500 non-fracture). The CNN achieved high diagnostic performance (AUROC 0.905, AUPRC 0.920), whereas all LLMs performed close to chance (accuracies < 0.55, Matthews correlation coefficients ≈ 0) and produced bounding boxes often inconsistent with expert annotations. These findings indicate that, in a strict zero-shot setting, the three commercial multimodal LLMs evaluated here lack reliable diagnostic ability for pediatric wrist fracture detection and should therefore be regarded as exploratory research tools rather than clinically dependable systems for pediatric radiograph interpretation."
+ },
+ {
+  "id": "ganor2026-mllm-hip-fracture-confidence",
+  "topic": "General-purpose multimodal models on hip fracture radiographs: context sensitivity and overconfidence",
+  "authors": "Gan-Or H, Ankol S, Ben Arie G, et al.",
+  "title": "Between Accessibility and Reliability: High Confidence, Low Control in General-Purpose Multimodal Models for Hip Fracture Radiograph Interpretation",
+  "journal": "Journal of Clinical Medicine",
+  "year": 2026,
+  "doi": "10.3390/jcm15134919",
+  "pmid": "42452381",
+  "url": "https://doi.org/10.3390/jcm15134919",
+  "evidence_type": "other",
+  "key_points": [
+   "Behavioural characterization study of a fracture-positive cohort, explicitly not a diagnostic accuracy evaluation. It covered 214 surgically confirmed hip fractures on AP pelvis radiographs, read by two general-purpose multimodal models (GPT-5.4 and Gemini) under six prompting conditions. Because the cohort contained fractures only, detection rates are reported rather than full diagnostic-accuracy metrics (specificity cannot be estimated).",
+   "When the models were not told that a fracture was present, hip-fracture detection with correct laterality was 79.0% and 86.4% for GPT-5.4 and 80.4% and 93.5% for Gemini (runs E and F).",
+   "Incorrect laterality cues degraded performance from 90.7% to 66.4% (GPT-5.4) and from 97.7% to 57.0% (Gemini). AO/OTA grading and subtrochanteric identification remained limited.",
+   "Both models were often highly confident when wrong, and self-reported confidence did not reliably separate correct from incorrect outputs."
+  ],
+  "key_points_pt": [
+   "Estudo de caracterização comportamental de uma coorte só com fraturas, explicitamente não uma avaliação de exatidão diagnóstica. Incluiu 214 fraturas da anca confirmadas cirurgicamente em radiografias AP da bacia, lidas por dois modelos multimodais de uso geral (GPT-5.4 e Gemini) em seis condições de prompt. Como a coorte só incluía fraturas, são reportadas taxas de deteção e não métricas completas de exatidão diagnóstica (a especificidade não pode ser estimada).",
+   "Quando os modelos não foram informados da presença de fratura, a deteção da fratura da anca com lateralidade correta foi de 79,0% e 86,4% no GPT-5.4 e de 80,4% e 93,5% no Gemini (séries E e F).",
+   "Pistas de lateralidade incorretas degradaram o desempenho de 90,7% para 66,4% (GPT-5.4) e de 97,7% para 57,0% (Gemini). A classificação AO/OTA e a identificação de fraturas subtrocantéricas mantiveram-se limitadas.",
+   "Ambos os modelos mostraram frequentemente confiança elevada quando erravam, e a confiança autorreportada não distinguiu de forma fiável as respostas corretas das incorretas."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "hip-pelvis"
+  ],
+  "keywords": [
+   "hip fracture",
+   "fratura da anca",
+   "proximal femur fracture",
+   "fratura do fémur proximal",
+   "femoral neck fracture",
+   "fratura do colo do fémur",
+   "subtrochanteric fracture",
+   "fratura subtrocantérica",
+   "AO/OTA classification",
+   "classificação AO/OTA",
+   "laterality",
+   "lateralidade",
+   "overconfidence",
+   "excesso de confiança",
+   "GPT-5.4",
+   "Gemini",
+   "pelvic radiograph",
+   "radiografia da bacia"
+  ],
+  "abstract_excerpt": "This was a behavioral characterization study of a fracture-positive cohort, not a diagnostic accuracy evaluation. ... Using the more conservative endpoint of hip-fracture detection with correct laterality, GPT-5.4 was correct in 79.0% and 86.4% of cases in runs E and F, whereas Gemini was correct in 80.4% and 93.5%, respectively. ... Incorrect laterality cues markedly degraded performance, from 90.7% to 66.4% in GPT-5.4 and from 97.7% to 57.0% in Gemini. Performance remained limited for treatment-relevant subtyping, particularly AO/OTA grading and subtrochanteric identification. Both models frequently remained highly confident when wrong, and self-reported confidence did not reliably distinguish correct from incorrect outputs."
+ },
+ {
+  "id": "takita2026-genai-vs-physicians-radiology-meta",
+  "topic": "Meta-analysis: generative AI vs physicians in diagnostic radiology, effect of input modality",
+  "authors": "Takita H, Kabata D, Walston SL, et al.",
+  "title": "Generative AI versus physicians in diagnostic radiology: a systematic review and meta-analysis",
+  "journal": "Japanese Journal of Radiology",
+  "year": 2026,
+  "doi": "10.1007/s11604-026-02090-7",
+  "pmid": "42828690",
+  "url": "https://doi.org/10.1007/s11604-026-02090-7",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "PROSPERO-registered systematic review and meta-analysis (PRISMA-DTA) of 48 studies validating generative AI on diagnostic tasks in radiology (searches June 2018 to March 2025).",
+   "Pooled diagnostic accuracy of generative AI was 42.9% (95% CI, 35.8-50.1%) for free-text tasks and 58.1% (95% CI, 50.0-66.2%) for choice tasks.",
+   "Generative AI was significantly less accurate than expert physicians (physicians minus AI, +13.0 percentage points; 95% CI, 0.9-25.2; P = .038).",
+   "Text-only input was associated with higher accuracy than image-only input (image-only minus text-only, −25.9 percentage points; 95% CI, −39.1 to −12.8; P = .001) and than text-and-image input (−10.6 percentage points; 95% CI, −20.8 to −0.3; P = .046). The authors caution that this gap may reflect task difficulty and information content rather than input modality itself."
+  ],
+  "key_points_pt": [
+   "Revisão sistemática e meta-análise registada no PROSPERO (PRISMA-DTA) de 48 estudos que validaram IA generativa em tarefas diagnósticas de radiologia (pesquisa de junho de 2018 a março de 2025).",
+   "A exatidão diagnóstica agregada da IA generativa foi de 42,9% (IC 95%, 35,8-50,1%) em tarefas de resposta livre e de 58,1% (IC 95%, 50,0-66,2%) em tarefas de escolha.",
+   "A IA generativa foi significativamente menos exata do que médicos especialistas (médicos menos IA: +13,0 pontos percentuais; IC 95%, 0,9-25,2; P = 0,038).",
+   "A entrada só de texto associou-se a maior exatidão do que a entrada só de imagem (só imagem menos só texto: −25,9 pontos percentuais; IC 95%, −39,1 a −12,8; P = 0,001) e do que a entrada de texto e imagem (−10,6 pontos percentuais; IC 95%, −20,8 a −0,3; P = 0,046). Os autores alertam que esta diferença pode refletir a dificuldade da tarefa e o conteúdo informativo, e não a modalidade de entrada em si."
+  ],
+  "modalities": [
+   "any"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "generative AI",
+   "IA generativa",
+   "meta-analysis",
+   "meta-análise",
+   "systematic review",
+   "revisão sistemática",
+   "diagnostic accuracy",
+   "exatidão diagnóstica",
+   "image-only input",
+   "entrada só de imagem",
+   "text-only input",
+   "entrada só de texto",
+   "physicians vs AI",
+   "médicos vs IA",
+   "large language model",
+   "modelo de linguagem de grande dimensão"
+  ],
+  "abstract_excerpt": "In total, 48 studies met inclusion criteria. Pooled diagnostic accuracy of generative AI was 42.9% (95% CI, 35.8-50.1%) for free-text tasks and 58.1% (95% CI, 50.0-66.2%) for choice tasks. Generative AI overall showed significantly lower accuracy than expert physicians (difference in accuracy [physicians minus AI], +13.0 percentage points [95% CI, 0.9-25.2]; P = .038). Text-only input was associated with higher accuracy than image-only input (difference in accuracy [image-only minus text-only], -25.9 percentage points [95% CI, -39.1 to -12.8]; P = .001) and text-and-image input (- 10.6 percentage points [95% CI, -20.8 to -0.3]; P = .046). ... the observed accuracy difference may reflect task difficulty and information content rather than the input modality itself."
+ },
+ {
+  "id": "wu2025-radfm",
+  "topic": "RadFM: generalist radiology foundation model for 2D and 3D scans",
+  "authors": "Wu C, Zhang X, Zhang Y, et al.",
+  "title": "Towards generalist foundation model for radiology by leveraging web-scale 2D&3D medical data",
+  "journal": "Nature Communications",
+  "year": 2025,
+  "doi": "10.1038/s41467-025-62385-7",
+  "pmid": "40849424",
+  "url": "https://doi.org/10.1038/s41467-025-62385-7",
+  "evidence_type": "other",
+  "key_points": [
+   "RadFM is a proof-of-concept generalist radiology foundation model whose architecture integrates text input with 2D or 3D medical scans.",
+   "The authors contributed 4 multimodal datasets with 13M 2D images and 615K 3D scans. Combined with existing datasets, these form the training set MedMD.",
+   "RadFM generates responses for diagnosis, visual question answering, report generation and rationale diagnosis. On the new RadBench benchmark (automatic and human evaluation), it outperformed earlier accessible multimodal foundation models, including GPT-4V. This is a benchmark evaluation, not clinical validation."
+  ],
+  "key_points_pt": [
+   "O RadFM é um modelo de base (foundation model) generalista para radiologia, apresentado como prova de conceito, cuja arquitetura integra texto com exames médicos 2D ou 3D.",
+   "Os autores contribuíram com 4 conjuntos de dados multimodais com 13 milhões de imagens 2D e 615 mil exames 3D. Combinados com conjuntos já existentes, formam o conjunto de treino MedMD.",
+   "O RadFM gera respostas para diagnóstico, resposta a perguntas visuais, geração de relatórios e diagnóstico fundamentado. No novo benchmark RadBench (avaliação automática e humana), superou modelos de base multimodais acessíveis anteriores, incluindo o GPT-4V. Trata-se de uma avaliação em benchmark, não de validação clínica."
+  ],
+  "modalities": [
+   "any"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "RadFM",
+   "foundation model",
+   "modelo de base",
+   "medical vision-language model",
+   "modelo de visão-linguagem médico",
+   "3D scans",
+   "exames 3D",
+   "report generation",
+   "geração de relatórios",
+   "visual question answering",
+   "resposta a perguntas visuais",
+   "RadBench",
+   "MedMD"
+  ],
+  "abstract_excerpt": "In this study, as a proof-of-concept, we aim to initiate the development of Radiology Foundation Model, termed as RadFM. ... (i), we contribute 4 multimodal datasets with 13M 2D images and 615K 3D scans. When combined with a vast collection of existing datasets, this forms our training dataset, termed as Medical Multi-modal Dataset, MedMD. (ii), we propose an architecture that enables to integrate text input with 2D or 3D medical scans, and generates responses for diverse radiologic tasks, including diagnosis, visual question answering, report generation, and rationale diagnosis; ... We conduct both automatic and human evaluations on RadBench. RadFM outperforms former accessible multi-modal foundation models, including GPT-4V."
+ },
+ {
+  "id": "li2023-llava-med",
+  "topic": "LLaVA-Med: biomedical vision-language conversational assistant",
+  "authors": "Li C, Wong C, Zhang S, et al.",
+  "title": "LLaVA-Med: Training a Large Language-and-Vision Assistant for Biomedicine in One Day",
+  "journal": "Advances in Neural Information Processing Systems 36 (NeurIPS 2023)",
+  "year": 2023,
+  "doi": "10.52202/075280-1240",
+  "pmid": "",
+  "url": "https://doi.org/10.52202/075280-1240",
+  "evidence_type": "other",
+  "key_points": [
+   "Peer-reviewed conference paper (NeurIPS 2023, proceedings pp. 28541-28564), verified via Crossref; not indexed in PubMed. The abstract is taken from arXiv 2306.00890.",
+   "LLaVA-Med is a biomedical vision-language conversational assistant. It was trained in under 15 hours on eight A100s, using a large PubMed Central figure-caption dataset, GPT-4 self-instructed instruction-following data and curriculum learning.",
+   "On three standard biomedical visual question answering datasets, it outperformed the previous supervised state of the art on certain metrics. This is a benchmark evaluation, not a clinical validation."
+  ],
+  "key_points_pt": [
+   "Artigo de conferência com revisão por pares (NeurIPS 2023, atas pp. 28541-28564), verificado na Crossref; não está indexado na PubMed. O resumo foi obtido do arXiv 2306.00890.",
+   "O LLaVA-Med é um assistente conversacional biomédico de visão-linguagem. Foi treinado em menos de 15 horas com oito GPUs A100, usando um grande conjunto de pares figura-legenda da PubMed Central, dados de instruções autogerados pelo GPT-4 e aprendizagem curricular.",
+   "Em três conjuntos de dados padrão de resposta a perguntas visuais biomédicas, superou o estado da arte supervisionado anterior em algumas métricas. Trata-se de uma avaliação em benchmarks, não de uma validação clínica."
+  ],
+  "modalities": [
+   "any"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "LLaVA-Med",
+   "medical vision-language model",
+   "modelo de visão-linguagem médico",
+   "biomedical visual question answering",
+   "resposta a perguntas visuais biomédicas",
+   "instruction tuning",
+   "afinação por instruções",
+   "open-source model",
+   "modelo de código aberto",
+   "PubMed Central"
+  ],
+  "abstract_excerpt": "The key idea is to leverage a large-scale, broad-coverage biomedical figure-caption dataset extracted from PubMed Central, use GPT-4 to self-instruct open-ended instruction-following data from the captions, and then fine-tune a large general-domain vision-language model using a novel curriculum learning method. ... This enables us to train a Large Language and Vision Assistant for BioMedicine (LLaVA-Med) in less than 15 hours (with eight A100s). LLaVA-Med exhibits excellent multimodal conversational capability and can follow open-ended instruction to assist with inquiries about a biomedical image. On three standard biomedical visual question answering datasets, LLaVA-Med outperforms previous supervised state-of-the-art on certain metrics."
+ },
+ {
+  "id": "sellergren2026-medgemma-natmed",
+  "topic": "MedGemma: open medical vision-language foundation models (Gemma 3 based)",
+  "authors": "Sellergren A, Kazemzadeh S, Mahvar F, et al.",
+  "title": "An open vision-language model for diverse medical applications",
+  "journal": "Nature Medicine",
+  "year": 2026,
+  "doi": "10.1038/s41591-026-04626-w",
+  "pmid": "42839104",
+  "url": "https://doi.org/10.1038/s41591-026-04626-w",
+  "evidence_type": "other",
+  "key_points": [
+   "Peer-reviewed publication (Nature Medicine, 2026) of the work first released as the MedGemma Technical Report preprint (arXiv 2507.05201). MedGemma is a collection of open medical vision-language foundation models based on Gemma 3, developed by Google.",
+   "On out-of-distribution tasks, MedGemma improved on the base models by 2.6-10% in medical image question answering, 15.5-18.1% in chest X-ray finding classification and 10.8% in agentic evaluations.",
+   "Fine-tuning MedGemma can be more effective than fine-tuning the base Gemma 3 model for medical tasks, particularly when training data are limited.",
+   "The collection includes MedSigLIP, a medically tuned vision encoder derived from SigLIP, which performed comparably to or better than many specialized medical image encoders. Results are developer-reported benchmark evaluations (nearly all authors are current or former Google employees), not clinical validation."
+  ],
+  "key_points_pt": [
+   "Publicação com revisão por pares (Nature Medicine, 2026) do trabalho divulgado inicialmente como pré-publicação (MedGemma Technical Report, arXiv 2507.05201). O MedGemma é uma coleção de modelos de base de visão-linguagem médicos abertos, baseados no Gemma 3 e desenvolvidos pela Google.",
+   "Em tarefas fora da distribuição, o MedGemma superou os modelos base em 2,6-10% na resposta a perguntas sobre imagens médicas, 15,5-18,1% na classificação de achados em radiografia de tórax e 10,8% em avaliações agênticas.",
+   "A afinação (fine-tuning) do MedGemma pode ser mais eficaz do que a do modelo base Gemma 3 em tarefas médicas, sobretudo quando os dados de treino são limitados.",
+   "A coleção inclui o MedSigLIP, um codificador de visão adaptado à medicina e derivado do SigLIP, com desempenho comparável ou superior ao de muitos codificadores especializados de imagem médica. Os resultados são avaliações em benchmarks reportadas pelos criadores (quase todos os autores são ou foram funcionários da Google), não validação clínica."
+  ],
+  "modalities": [
+   "any"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "MedGemma",
+   "MedSigLIP",
+   "Gemma 3",
+   "open model",
+   "modelo aberto",
+   "open-weight model",
+   "modelo de pesos abertos",
+   "medical vision-language model",
+   "modelo de visão-linguagem médico",
+   "foundation model",
+   "modelo de base",
+   "fine-tuning",
+   "afinação",
+   "chest X-ray",
+   "radiografia de tórax"
+  ],
+  "abstract_excerpt": "We introduce MedGemma, a collection of medical vision-language foundation models based on Gemma 3. MedGemma demonstrates advanced medical understanding and reasoning across images and text and multiple medical imaging domains, exceeding the performance of similarly sized generative models while maintaining the general capabilities of the Gemma base models. For out-of-distribution tasks, MedGemma achieves improvements of 2.6-10% in medical image question answering, 15.5-18.1% in chest X-ray finding classification and 10.8% in agentic evaluations compared with the base models. Our results show that fine-tuning MedGemma can be more effective than fine-tuning the base Gemma 3 model for medical tasks, particularly in the setting of limited training data. We additionally introduce MedSigLIP, a medically tuned vision encoder derived from SigLIP. MedSigLIP powers the visual understanding capabilities of MedGemma and, as an encoder, achieves performance comparable to or better than that of many specialized medical image encoders."
+ },
+ {
+  "id": "tanno2025-flamingo-cxr-report-generation",
+  "topic": "Expert evaluation of VLM-generated radiology reports and clinician-AI collaboration",
+  "authors": "Tanno R, Barrett DGT, Sellergren A, et al.",
+  "title": "Collaboration between clinicians and vision-language models in radiology report generation",
+  "journal": "Nature Medicine",
+  "year": 2025,
+  "doi": "10.1038/s41591-024-03302-1",
+  "pmid": "39511432",
+  "url": "https://doi.org/10.1038/s41591-024-03302-1",
+  "evidence_type": "other",
+  "key_points": [
+   "Flamingo-CXR, a chest radiograph report generation system, was evaluated by a panel of board-certified radiologists, whose preferences varied widely across the panel and clinical settings.",
+   "Half or more of the panel rated 56.1% of the intensive care reports as preferable or equivalent to clinician reports. This rose to 77.7% for in/outpatient X-rays and 94% for cases with no pertinent abnormal findings.",
+   "Among in/outpatient cases, 24.8% had clinically significant errors in both report types, 22.8% in Flamingo-CXR reports only and 14.0% in human reports only.",
+   "For reports containing errors, the authors demonstrated an assistive setting for clinician-AI collaboration in report composition."
+  ],
+  "key_points_pt": [
+   "O Flamingo-CXR, um sistema de geração de relatórios de radiografia de tórax, foi avaliado por um painel de radiologistas certificados, cujas preferências variaram muito entre membros do painel e contextos clínicos.",
+   "Metade ou mais do painel considerou 56,1% dos relatórios de cuidados intensivos preferíveis ou equivalentes aos relatórios dos clínicos. A proporção subiu para 77,7% nas radiografias de internamento/ambulatório e para 94% nos casos sem achados anómalos relevantes.",
+   "Nos casos de internamento/ambulatório, 24,8% tinham erros clinicamente significativos em ambos os tipos de relatório, 22,8% apenas no relatório do Flamingo-CXR e 14,0% apenas no relatório humano.",
+   "Para os relatórios com erros, os autores demonstraram um modo assistivo de colaboração clínico-IA na redação do relatório."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "report generation",
+   "geração de relatórios",
+   "AI-generated report",
+   "relatório gerado por IA",
+   "Flamingo-CXR",
+   "clinically significant errors",
+   "erros clinicamente significativos",
+   "human-AI collaboration",
+   "colaboração humano-IA",
+   "expert evaluation",
+   "avaliação por especialistas",
+   "chest radiograph",
+   "radiografia de tórax",
+   "vision-language model",
+   "modelo de visão-linguagem"
+  ],
+  "abstract_excerpt": "We observe a wide distribution of preferences across the panel and across clinical settings, with 56.1% of Flamingo-CXR intensive care reports evaluated to be preferable or equivalent to clinician reports, by half or more of the panel, rising to 77.7% for in/outpatient X-rays overall and to 94% for the subset of cases with no pertinent abnormal findings. Errors were observed in human-written reports and Flamingo-CXR reports, with 24.8% of in/outpatient cases containing clinically significant errors in both report types, 22.8% in Flamingo-CXR reports only and 14.0% in human reports only. For reports that contain errors we develop an assistive setting, a demonstration of clinician-AI collaboration for radiology report composition, indicating new possibilities for potential clinical utility."
+ },
+ {
+  "id": "dratsch2023-automation-bias",
+  "topic": "Automation bias: effect of incorrect AI suggestions on radiologist performance",
+  "authors": "Dratsch T, Chen X, Rezazade Mehrizi M, et al.",
+  "title": "Automation Bias in Mammography: The Impact of Artificial Intelligence BI-RADS Suggestions on Reader Performance",
+  "journal": "Radiology",
+  "year": 2023,
+  "doi": "10.1148/radiol.222176",
+  "pmid": "37129490",
+  "url": "https://doi.org/10.1148/radiol.222176",
+  "evidence_type": "other",
+  "key_points": [
+   "Prospective experiment in which 27 radiologists read 50 mammograms assisted by a purported AI system. In the 40-mammogram test set, the AI suggested an incorrect BI-RADS category for 12 mammograms.",
+   "The mean percentage of correctly rated mammograms fell when the AI suggestion was incorrect: from 79.7% to 19.8% for inexperienced, 81.3% to 24.8% for moderately experienced and 82.3% to 45.5% for very experienced radiologists (P < .001, P < .001, P = .003).",
+   "Inexperienced readers were more likely to follow incorrect suggestions of a higher BI-RADS category (mean degree of bias 4.0, versus 2.4 for moderately experienced, P = .044, and 1.2 for very experienced readers, P = .009).",
+   "Radiologists of all experience levels were prone to automation bias, and the authors state that human-AI interaction effects must be considered for safe deployment. The evidence comes from mammography (BI-RADS); applying it to AI-drafted MSK reports is an extrapolation not tested in this study."
+  ],
+  "key_points_pt": [
+   "Experiência prospetiva em que 27 radiologistas leram 50 mamografias com o apoio de um suposto sistema de IA. No conjunto de teste de 40 mamografias, a IA sugeriu uma categoria BI-RADS incorreta em 12.",
+   "A percentagem média de mamografias corretamente classificadas desceu quando a sugestão da IA estava errada: de 79,7% para 19,8% nos inexperientes, de 81,3% para 24,8% nos moderadamente experientes e de 82,3% para 45,5% nos muito experientes (P < 0,001, P < 0,001, P = 0,003).",
+   "Os leitores inexperientes foram mais propensos a seguir sugestões incorretas de categoria BI-RADS superior (grau médio de viés 4,0, face a 2,4 nos moderadamente experientes, P = 0,044, e 1,2 nos muito experientes, P = 0,009).",
+   "Radiologistas de todos os níveis de experiência foram suscetíveis ao viés de automação, e os autores afirmam que os efeitos da interação humano-IA devem ser considerados para uma implementação segura. A evidência provém da mamografia (BI-RADS); a sua aplicação a relatórios musculoesqueléticos redigidos por IA é uma extrapolação não testada neste estudo."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "automation bias",
+   "viés de automação",
+   "human-AI interaction",
+   "interação humano-IA",
+   "reader study",
+   "estudo de leitores",
+   "incorrect AI suggestion",
+   "sugestão incorreta da IA",
+   "radiologist experience",
+   "experiência do radiologista",
+   "BI-RADS",
+   "mammography",
+   "mamografia",
+   "over-reliance",
+   "dependência excessiva"
+  ],
+  "abstract_excerpt": "The percentage of correctly rated mammograms by inexperienced (mean, 79.7% ± 11.7 [SD] vs 19.8% ± 14.0; P < .001; r = 0.93), moderately experienced (mean, 81.3% ± 10.1 vs 24.8% ± 11.6; P < .001; r = 0.96), and very experienced (mean, 82.3% ± 4.2 vs 45.5% ± 9.1; P = .003; r = 0.97) radiologists was significantly impacted by the correctness of the AI prediction of BI-RADS category. Inexperienced radiologists were significantly more likely to follow the suggestions of the purported AI when it incorrectly suggested a higher BI-RADS category than the actual ground truth compared with both moderately (mean degree of bias, 4.0 ± 1.8 vs 2.4 ± 1.5; P = .044; r = 0.46) and very (mean degree of bias, 4.0 ± 1.8 vs 1.2 ± 0.8; P = .009; r = 0.65) experienced readers. Conclusion The results show that inexperienced, moderately experienced, and very experienced radiologists reading mammograms are prone to automation bias when being supported by an AI-based system."
+ },
+ {
+  "id": "esr2018-structured-reporting",
+  "topic": "ESR position on structured reporting in radiology",
+  "authors": "European Society of Radiology (ESR)",
+  "title": "ESR paper on structured reporting in radiology",
+  "journal": "Insights into Imaging",
+  "year": 2018,
+  "doi": "10.1007/s13244-017-0588-8",
+  "pmid": "29460129",
+  "url": "https://doi.org/10.1007/s13244-017-0588-8",
+  "evidence_type": "consensus/position-paper",
+  "key_points": [
+   "The ESR endorses the move from conventional prose reports to structured reporting as a positive development, and says it must be an international effort.",
+   "Standardising the report structure ensures that reports are complete and comparable. Standardised language minimises ambiguity.",
+   "Structured reports that use key data elements and quantified parameters support automatic functions (e.g. TNM staging), integration with other clinical parameters, data sharing (registries, biobanks) and data mining.",
+   "A successful strategy requires defined content and structure, standard terminologies, tools and protocols, together with international and inter-society cooperation and integration with industry."
+  ],
+  "key_points_pt": [
+   "A ESR endossa a transição dos relatórios convencionais em prosa para o relatório estruturado como um desenvolvimento positivo, que deve ser um esforço internacional.",
+   "A padronização da estrutura do relatório assegura que os relatórios são completos e comparáveis. A linguagem padronizada minimiza a ambiguidade.",
+   "Os relatórios estruturados com elementos de dados-chave e parâmetros quantificados suportam funções automáticas (p. ex., estadiamento TNM), a integração com outros parâmetros clínicos, a partilha de dados (registos, biobancos) e a mineração de dados.",
+   "Uma estratégia bem-sucedida requer conteúdo e estrutura definidos, terminologias padronizadas, ferramentas e protocolos, com cooperação internacional e entre sociedades e integração com a indústria."
+  ],
+  "modalities": [
+   "any"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "structured reporting",
+   "relatório estruturado",
+   "report template",
+   "modelo de relatório",
+   "standardised terminology",
+   "terminologia padronizada",
+   "ambiguity",
+   "ambiguidade",
+   "completeness",
+   "completude",
+   "European Society of Radiology",
+   "Sociedade Europeia de Radiologia",
+   "data elements",
+   "elementos de dados"
+  ],
+  "abstract_excerpt": "Standardisation of report structures ensures that all relevant areas are addressed. Standardisation of terminology prevents ambiguity in reports and facilitates comparability of reports. ... Moving from conventional prose reports to structured reporting is endorsed as a positive development, and must be an international effort, with international design and adoption of structured reporting templates that can be translated and adapted in local environments as needed. ... KEY POINTS: • Standardisation of radiology report structure ensures completeness and comparability of reports. • Use of standardised language in reports minimises ambiguity. • Structured reporting facilitates automatic functions, integration with other clinical parameters and data sharing."
+ },
+ {
+  "id": "mongan2020-claim",
+  "topic": "CLAIM reporting checklist for AI in medical imaging (original)",
+  "authors": "Mongan J, Moy L, Kahn CE Jr",
+  "title": "Checklist for Artificial Intelligence in Medical Imaging (CLAIM): A Guide for Authors and Reviewers",
+  "journal": "Radiology: Artificial Intelligence",
+  "year": 2020,
+  "doi": "10.1148/ryai.2020200029",
+  "pmid": "33937821",
+  "url": "https://doi.org/10.1148/ryai.2020200029",
+  "evidence_type": "guideline",
+  "key_points": [
+   "PubMed has no abstract for this paper; these points come from the full text (PMC8017414). CLAIM is a reporting checklist (items numbered 1-42) for authors and reviewers of manuscripts on AI in medical imaging.",
+   "CLAIM is modeled after the STARD guideline and extended to AI applications in medical imaging, including classification, image reconstruction, text analysis and workflow optimization. Its elements should be viewed as a 'best practice' to guide authors.",
+   "Its goal is to promote clear, transparent and reproducible scientific communication about the application of AI to medical imaging."
+  ],
+  "key_points_pt": [
+   "A PubMed não tem resumo deste artigo; estes pontos foram retirados do texto integral (PMC8017414). O CLAIM é uma lista de verificação (itens numerados de 1 a 42) para autores e revisores de manuscritos sobre IA em imagiologia médica.",
+   "O CLAIM baseia-se na norma STARD e foi alargado às aplicações de IA em imagiologia médica, incluindo classificação, reconstrução de imagem, análise de texto e otimização do fluxo de trabalho. Os seus elementos devem ser vistos como 'boa prática' para orientar os autores.",
+   "O objetivo é promover uma comunicação científica clara, transparente e reprodutível sobre a aplicação de IA à imagiologia médica."
+  ],
+  "modalities": [
+   "any"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "CLAIM",
+   "reporting checklist",
+   "lista de verificação",
+   "reporting guideline",
+   "norma de reporte",
+   "STARD",
+   "AI research transparency",
+   "transparência da investigação em IA",
+   "reproducibility",
+   "reprodutibilidade",
+   "medical imaging AI",
+   "IA em imagiologia médica"
+  ],
+  "abstract_excerpt": "[No PubMed abstract; quoted from the full text] To aid authors and reviewers of AI manuscripts in medical imaging, we propose CLAIM, the Checklist for AI in Medical Imaging ... CLAIM is modeled after the STARD guideline and has been extended to address applications of AI in medical imaging that include classification, image reconstruction, text analysis, and workflow optimization. The elements described here should be viewed as a “best practice” to guide authors in presenting their research."
+ },
+ {
+  "id": "tejani2024-claim-update",
+  "topic": "CLAIM 2024 update: reporting checklist for AI in medical imaging",
+  "authors": "Tejani AS, Klontzas ME, Gatti AA, et al.",
+  "title": "Checklist for Artificial Intelligence in Medical Imaging (CLAIM): 2024 Update",
+  "journal": "Radiology: Artificial Intelligence",
+  "year": 2024,
+  "doi": "10.1148/ryai.240300",
+  "pmid": "38809149",
+  "url": "https://doi.org/10.1148/ryai.240300",
+  "evidence_type": "guideline",
+  "key_points": [
+   "The CLAIM 2024 Update revises the checklist to keep pace with the rapid evolution of AI in medical imaging.",
+   "From the full text: the term 'reference standard' replaces 'ground truth', and each CLAIM item now has three options (Yes, No, Not Applicable).",
+   "From the full text: authors are encouraged to use 'internal testing' and 'external testing' rather than the ambiguous term 'validation'."
+  ],
+  "key_points_pt": [
+   "A atualização CLAIM 2024 revê a lista de verificação para acompanhar a rápida evolução da IA em imagiologia médica.",
+   "Do texto integral: o termo 'padrão de referência' (reference standard) substitui 'ground truth', e cada item do CLAIM passa a ter três opções (Sim, Não, Não Aplicável).",
+   "Do texto integral: recomenda-se aos autores que usem 'teste interno' e 'teste externo' em vez do termo ambíguo 'validação'."
+  ],
+  "modalities": [
+   "any"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "CLAIM 2024",
+   "reporting checklist",
+   "lista de verificação",
+   "reference standard",
+   "padrão de referência",
+   "ground truth",
+   "external testing",
+   "teste externo",
+   "internal testing",
+   "teste interno",
+   "reporting guideline",
+   "norma de reporte"
+  ],
+  "abstract_excerpt": "To address the rapid evolution of artificial intelligence in medical imaging, the authors present the Checklist for Artificial Intelligence in Medical Imaging (CLAIM) 2024 Update. [Full text:] Each CLAIM item now has three options: Yes, No, and Not Applicable (NA). ... The term “reference standard” has been adopted in lieu of “ground truth.”"
+ },
+ {
+  "id": "panicek2016-certainty-lexicon",
+  "topic": "Standardized lexicon for the radiologist's level of diagnostic certainty",
+  "authors": "Panicek DM, Hricak H",
+  "title": "How Sure Are You, Doctor? A Standardized Lexicon to Describe the Radiologist's Level of Certainty",
+  "journal": "American Journal of Roentgenology",
+  "year": 2016,
+  "doi": "10.2214/AJR.15.15895",
+  "pmid": "27065212",
+  "url": "https://doi.org/10.2214/AJR.15.15895",
+  "evidence_type": "classification-system",
+  "key_points": [
+   "A standardized lexicon for the radiologist's level of certainty can cut down the confusingly large number of words and phrases used to express diagnostic certainty.",
+   "Such a lexicon can minimize ambiguity and support clearer communication among radiologists, referring physicians and patients.",
+   "The authors share their experience with a lexicon they developed in 2009; for ease of communication, the lexicon itself is included in each of their radiology reports. The abstract reports no quantitative outcomes."
+  ],
+  "key_points_pt": [
+   "Um léxico padronizado para o nível de certeza do radiologista pode reduzir o número confusamente elevado de palavras e expressões usadas para exprimir a certeza diagnóstica.",
+   "Esse léxico pode minimizar a ambiguidade e apoiar uma comunicação mais clara entre radiologistas, médicos requisitantes e doentes.",
+   "Os autores partilham a experiência com um léxico que desenvolveram em 2009; para facilitar a comunicação, o próprio léxico é incluído em cada um dos seus relatórios radiológicos. O resumo não apresenta resultados quantitativos."
+  ],
+  "modalities": [
+   "any"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "diagnostic certainty",
+   "certeza diagnóstica",
+   "certainty lexicon",
+   "léxico de certeza",
+   "uncertainty language",
+   "linguagem de incerteza",
+   "hedging",
+   "consistent with",
+   "compatível com",
+   "suggestive of",
+   "sugestivo de",
+   "report clarity",
+   "clareza do relatório",
+   "communication",
+   "comunicação"
+  ],
+  "abstract_excerpt": "OBJECTIVE: A standardized lexicon to specify the radiologist's level of certainty in a radiologic diagnosis can decrease the confusingly large number of words and phrases currently used for that purpose. Such a lexicon furthermore can minimize ambiguity and facilitate clearer communication among radiologists, referring physicians, and patients. CONCLUSION: We would like to share our experience with the lexicon that we developed in 2009. For ease of communication, the lexicon itself is included in each radiology report."
+ },
+ {
+  "id": "shinagare2019-certainty-phrases",
+  "topic": "Variability in phrases conveying diagnostic certainty in radiology reports",
+  "authors": "Shinagare AB, Lacson R, Boland GW, et al.",
+  "title": "Radiologist Preferences, Agreement, and Variability in Phrases Used to Convey Diagnostic Certainty in Radiology Reports",
+  "journal": "Journal of the American College of Radiology",
+  "year": 2019,
+  "doi": "10.1016/j.jacr.2018.09.052",
+  "pmid": "30584042",
+  "url": "https://doi.org/10.1016/j.jacr.2018.09.052",
+  "evidence_type": "other",
+  "key_points": [
+   "239 radiologists at a tertiary academic hospital were surveyed on their preferred phrases for six categories of diagnostic certainty; 59.4% (142/239) responded.",
+   "Most preferred phrases: 'consistent with' (45.1%) for 100% confident; 'highly suggestive of' (46.5%) for very high likelihood; 'most likely' (31.0%) for high; 'may represent' (50.7%) for intermediate; 'unlikely' (47.2%) for low; 'very unlikely' (40.1%) for very low likelihood.",
+   "Krippendorff's α was 0.217, meaning radiologists do not consistently use the same phrases for similar degrees of confidence. The authors suggest that interventions to improve consistency may reduce ambiguity."
+  ],
+  "key_points_pt": [
+   "Foram inquiridos 239 radiologistas de um hospital académico terciário sobre as expressões preferidas para seis categorias de certeza diagnóstica; responderam 59,4% (142/239).",
+   "Expressões preferidas: 'consistent with' (compatível com; 45,1%) para 100% de certeza; 'highly suggestive of' (altamente sugestivo de; 46,5%) para probabilidade muito alta; 'most likely' (muito provavelmente; 31,0%) para alta; 'may represent' (pode representar; 50,7%) para intermédia; 'unlikely' (improvável; 47,2%) para baixa; 'very unlikely' (muito improvável; 40,1%) para muito baixa.",
+   "O α de Krippendorff foi de 0,217, o que significa que os radiologistas não usam de forma consistente as mesmas expressões para graus de confiança semelhantes. Os autores sugerem que intervenções para melhorar a consistência podem reduzir a ambiguidade."
+  ],
+  "modalities": [
+   "any"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "diagnostic certainty",
+   "certeza diagnóstica",
+   "hedging phrases",
+   "expressões de incerteza",
+   "consistent with",
+   "compatível com",
+   "highly suggestive of",
+   "altamente sugestivo de",
+   "may represent",
+   "pode representar",
+   "unlikely",
+   "improvável",
+   "interobserver agreement",
+   "concordância interobservador",
+   "Krippendorff alpha"
+  ],
+  "abstract_excerpt": "In all, 59.4% (142 of 239) of radiologists completed the survey. The most commonly preferred phrases were \"consistent with\" (45.1%; 64 of 142) for 100% confident, \"highly suggestive of\" (46.5%; 66 of 142) for very high likelihood, \"most likely\" (31.0%; 44 of 142) for high likelihood, \"may represent\" (50.7%; 72 of 142) for intermediate likelihood, \"unlikely\" (47.2%; 67 of 142) for low likelihood, and \"very unlikely\" (40.1%; 57 of 142) for very low likelihood. Cluster analysis identified six groups of phrases used to indicate a similar level of diagnostic certainty; however, Krippendorff's α was 0.217, indicating radiologists do not consistently use the same phrases for similar degrees of confidence."
+ },
+ {
+  "id": "kotter2025-esr-eu-ai-act",
+  "topic": "ESR recommendations for implementing the EU AI Act in medical imaging",
+  "authors": "Kotter E, D'Antonoli TA, Cuocolo R, et al.",
+  "title": "Guiding AI in radiology: ESR's recommendations for effective implementation of the European AI Act",
+  "journal": "Insights into Imaging",
+  "year": 2025,
+  "doi": "10.1186/s13244-025-01905-x",
+  "pmid": "39948192",
+  "url": "https://doi.org/10.1186/s13244-025-01905-x",
+  "evidence_type": "consensus/position-paper",
+  "key_points": [
+   "Statement from the European Society of Radiology AI Working Group that identifies the key EU AI Act policies for medical imaging and gives recommendations to policymakers and the professional community.",
+   "Key areas: AI literacy, classification rules for high-risk AI systems, data governance, transparency, human oversight, quality management, deployer obligations, regulatory sandboxes, post-market monitoring, information sharing and market surveillance.",
+   "The AI Act will significantly affect medical imaging, shaping how AI technologies are used and regulated."
+  ],
+  "key_points_pt": [
+   "Declaração do Grupo de Trabalho de IA da Sociedade Europeia de Radiologia que identifica as principais disposições do Regulamento Europeu da Inteligência Artificial (AI Act) para a imagiologia médica e dá recomendações a decisores políticos e profissionais.",
+   "Áreas-chave: literacia em IA, regras de classificação de sistemas de IA de risco elevado, governação de dados, transparência, supervisão humana, gestão da qualidade, obrigações dos responsáveis pela implantação, ambientes de testagem da regulamentação (sandboxes), acompanhamento pós-comercialização, partilha de informação e fiscalização do mercado.",
+   "O AI Act terá um impacto significativo na imagiologia médica, moldando a forma como as tecnologias de IA são usadas e reguladas."
+  ],
+  "modalities": [
+   "any"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "EU AI Act",
+   "Regulamento Europeu da IA",
+   "high-risk AI system",
+   "sistema de IA de risco elevado",
+   "human oversight",
+   "supervisão humana",
+   "transparency",
+   "transparência",
+   "AI literacy",
+   "literacia em IA",
+   "deployer obligations",
+   "obrigações do responsável pela implantação",
+   "regulation",
+   "regulamentação",
+   "European Society of Radiology",
+   "Sociedade Europeia de Radiologia"
+  ],
+  "abstract_excerpt": "This statement has been produced within the European Society of Radiology AI Working Group and identifies the key policies of the EU AI Act as they pertain to medical imaging. It offers specific recommendations to policymakers and the professional community for the effective implementation of the legislation, addressing potential gaps and uncertainties. Key areas include AI literacy, classification rules for high-risk AI systems, data governance, transparency, human oversight, quality management, deployer obligations, regulatory sandboxes, post-market monitoring, information sharing, and market surveillance. ... The AI Act will significantly impact the field of medical imaging, shaping how AI technologies are used and regulated."
+ },
+ {
+  "id": "cuocolo2025-esr-ai-postmarket-surveillance",
+  "topic": "ESR consensus on post-market surveillance of AI medical devices under MDR and the AI Act",
+  "authors": "Cuocolo R, Bernardini D, Pinto Dos Santos D, et al.",
+  "title": "AI medical device post-market surveillance regulations: consensus recommendations by the European Society of Radiology",
+  "journal": "Insights into Imaging",
+  "year": 2025,
+  "doi": "10.1186/s13244-025-02146-8",
+  "pmid": "41385025",
+  "url": "https://doi.org/10.1186/s13244-025-02146-8",
+  "evidence_type": "consensus/position-paper",
+  "key_points": [
+   "ESR consensus from a modified Delphi procedure with 16 domain experts, 14 of whom acted as panelists. It sets practices for post-market surveillance (PMS) and post-market clinical feedback (PMCF) of AI as a medical device (AIaMD), as required by the EU MDR and partly updated by the AI Act.",
+   "According to the authors, neither the MDR nor the EU AI Act contains explicit provisions tailored to AI components, and a significant awareness gap about these regulations persists among radiologists.",
+   "Legal responsibility for AIaMD post-market surveillance rests mainly with software providers, but radiologists, as deployers, are expected to help monitor safety and performance."
+  ],
+  "key_points_pt": [
+   "Consenso da ESR obtido por procedimento Delphi modificado com 16 peritos, dos quais 14 atuaram como painelistas. Estabelece práticas de vigilância pós-comercialização (PMS) e de feedback clínico pós-comercialização (PMCF) de IA como dispositivo médico (AIaMD), exigidas pelo Regulamento de Dispositivos Médicos (MDR) e parcialmente atualizadas pelo AI Act.",
+   "Segundo os autores, nem o MDR nem o AI Act contêm disposições explícitas adaptadas a componentes de IA, e persiste entre os radiologistas uma lacuna significativa no conhecimento destes regulamentos.",
+   "A responsabilidade legal pela vigilância pós-comercialização recai sobretudo sobre os fornecedores do software, mas espera-se que os radiologistas, enquanto responsáveis pela implantação, ajudem a monitorizar a segurança e o desempenho."
+  ],
+  "modalities": [
+   "any"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "Medical Device Regulation",
+   "Regulamento de Dispositivos Médicos",
+   "MDR",
+   "EU AI Act",
+   "Regulamento Europeu da IA",
+   "post-market surveillance",
+   "vigilância pós-comercialização",
+   "AI as a medical device",
+   "IA como dispositivo médico",
+   "Delphi consensus",
+   "consenso Delphi",
+   "deployer responsibility",
+   "responsabilidade do responsável pela implantação"
+  ],
+  "abstract_excerpt": "Despite the growing commercial availability and adoption of AIaMD, a significant awareness gap persists among radiologists regarding pertinent European Union regulations, including the Medical Device Regulation (MDR) and the novel EU AI Act, both of which lack explicit provisions tailored to AI components. ... Legal responsibility for AIaMD Post-Market Surveillance (PMS) primarily rests with software providers, yet radiologists are expected to contribute to the ongoing monitoring of safety and performance. Recognizing the need to raise awareness and provide practical guidance, the European Society of Radiology (ESR) eHealth and Informatics Subcommittee, supported by the ESR AI Working Group, conducted a modified Delphi procedure involving 16 domain experts (of which 14 acted as panelists) to establish a set of shared recommendations."
+ },
+ {
+  "id": "rau2023-accgpt-context-chatbot",
+  "topic": "Context-based (retrieval-grounded) LLM chatbot using ACR Appropriateness Criteria",
+  "authors": "Rau A, Rau S, Zoeller D, et al.",
+  "title": "A Context-based Chatbot Surpasses Trained Radiologists and Generic ChatGPT in Following the ACR Appropriateness Guidelines",
+  "journal": "Radiology",
+  "year": 2023,
+  "doi": "10.1148/radiol.230970",
+  "pmid": "37489981",
+  "url": "https://doi.org/10.1148/radiol.230970",
+  "evidence_type": "other",
+  "key_points": [
+   "accGPT connected GPT-3.5-Turbo through LlamaIndex to a specialized knowledge base of 209 ACR Appropriateness Criteria documents, using semantic similarity processing. On 50 clinical case files it was compared with generic ChatGPT 3.5 and 4.0 and with general radiologists of varying experience.",
+   "All chatbots reached at least human performance. accGPT performed best at giving recommendations rated 'usually appropriate' and had the highest proportion of consistently correct answers.",
+   "For all cases, the chatbots took an average of 5 minutes and cost €0.19, versus 50 minutes and €29.99 for radiologists (both p < 0.01).",
+   "The study assessed imaging-recommendation decisions, not image interpretation. The context-based algorithm outperformed its generic counterpart."
+  ],
+  "key_points_pt": [
+   "O accGPT ligou o GPT-3.5-Turbo, através do LlamaIndex, a uma base de conhecimento especializada de 209 documentos dos Critérios de Adequação do ACR, com processamento de semelhança semântica. Em 50 casos clínicos, foi comparado com o ChatGPT 3.5 e 4.0 genéricos e com radiologistas gerais com diferentes níveis de experiência.",
+   "Todos os chatbots atingiram pelo menos o nível de desempenho humano. O accGPT foi o melhor a dar recomendações classificadas como 'usually appropriate' e teve a maior proporção de respostas consistentemente corretas.",
+   "No conjunto dos casos, os chatbots demoraram em média 5 minutos e custaram 0,19 €, face a 50 minutos e 29,99 € para os radiologistas (ambos p < 0,01).",
+   "O estudo avaliou decisões de recomendação de exames, não a interpretação de imagens. O algoritmo baseado em contexto superou o equivalente genérico."
+  ],
+  "modalities": [
+   "any"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "retrieval-augmented generation",
+   "geração aumentada por recuperação",
+   "RAG",
+   "knowledge base",
+   "base de conhecimento",
+   "ACR Appropriateness Criteria",
+   "critérios de adequação",
+   "imaging recommendation",
+   "recomendação de exames de imagem",
+   "context-based chatbot",
+   "chatbot baseado em contexto",
+   "LlamaIndex",
+   "grounding",
+   "fundamentação"
+  ],
+  "abstract_excerpt": "Methods We utilized 209 ACR appropriateness criteria documents as specialized knowledge base and employed LlamaIndex, a framework that allows to connect large language models with external data, and the ChatGPT 3.5-Turbo to create an appropriateness criteria contexted chatbot (accGPT). ... Results All chatbots reached at least human performance level. For the 50 case files, the accGPT performed best in providing correct recommendations that were \"usually appropriate\" according to the ACR criteria and also did provide the highest proportion of consistently correct answers in comparison with generic chatbots and radiologists. Further, the chatbots provided substantial time and cost savings, with an average decision time of 5 minutes and a cost of 0.19 € for all cases, compared to 50 minutes and 29.99 € for radiologists (both p < 0.01)."
+ },
+ {
+  "id": "tayebiarasteh2025-radiorag",
+  "topic": "Online retrieval-augmented generation (RadioRAG) for radiology question answering",
+  "authors": "Tayebi Arasteh S, Lotfinia M, Bressem K, et al.",
+  "title": "RadioRAG: Online Retrieval-Augmented Generation for Radiology Question Answering",
+  "journal": "Radiology: Artificial Intelligence",
+  "year": 2025,
+  "doi": "10.1148/ryai.240476",
+  "pmid": "40530957",
+  "url": "https://doi.org/10.1148/ryai.240476",
+  "evidence_type": "other",
+  "key_points": [
+   "RadioRAG retrieves context-specific information in real time from authoritative online radiology sources (www.radiopaedia.org) to ground LLM answers. It was tested on 80 RSNA Case Collection questions and 24 expert-curated questions.",
+   "Accuracy improved for some LLMs, e.g. GPT-3.5-turbo 74% (59/80) vs 66% (53/80), FDR = 0.03, and Mixtral 8×7B 76% (61/80) vs 65% (52/80), FDR = 0.02. Not every model benefited.",
+   "RadioRAG reduced hallucinations for all LLMs (rate, 6%-25%) but made the estimated response time four times longer."
+  ],
+  "key_points_pt": [
+   "O RadioRAG obtém em tempo real informação contextual de fontes radiológicas online de referência (www.radiopaedia.org) para fundamentar as respostas dos modelos de linguagem. Foi testado em 80 perguntas da RSNA Case Collection e em 24 perguntas selecionadas por especialistas.",
+   "A exatidão melhorou em alguns modelos, p. ex. GPT-3.5-turbo 74% (59/80) vs. 66% (53/80), FDR = 0,03, e Mixtral 8×7B 76% (61/80) vs. 65% (52/80), FDR = 0,02. Nem todos os modelos beneficiaram.",
+   "O RadioRAG reduziu as alucinações em todos os modelos (taxa, 6%-25%), mas tornou o tempo de resposta estimado quatro vezes mais longo."
+  ],
+  "modalities": [
+   "any"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "retrieval-augmented generation",
+   "geração aumentada por recuperação",
+   "RAG",
+   "RadioRAG",
+   "hallucination",
+   "alucinação",
+   "grounding",
+   "fundamentação",
+   "literature grounding",
+   "fundamentação na literatura",
+   "Radiopaedia",
+   "question answering",
+   "resposta a perguntas",
+   "large language model",
+   "modelo de linguagem de grande dimensão"
+  ],
+  "abstract_excerpt": "Results RadioRAG improved accuracy for some LLMs, including GPT-3.5-turbo (74% [59 of 80] vs 66% [53 of 80], false discovery rate [FDR] = 0.03) and Mixtral 8×7B (76% [61 of 80] vs 65% [52 of 80], FDR = 0.02) on the RSNA radiology question answering (RSNA-RadioQA) dataset, with similar trends in the ExtendedQA dataset. ... RadioRAG reduced hallucinations for all LLMs (rate, 6%-25%). RadioRAG increased estimated response time fourfold. Conclusion RadioRAG shows potential to improve LLM accuracy and factuality in radiology QA by integrating real-time, domain-specific data."
  }
 ]

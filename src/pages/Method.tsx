@@ -1,5 +1,7 @@
 import { BookOpen, Brain, CircleCheckBig, CircleX, ExternalLink, Film, Gauge, Library, LockKeyhole, ScanLine, ShieldAlert, Stethoscope, Target } from 'lucide-react'
 import { RESPONSIBLE } from '../data/responsible'
+import { KB } from '../lib/evidence/kb'
+import { EvidenceIndex } from '../components/EvidenceIndex'
 import '../styles/report.css'
 
 const TOC = [
@@ -14,20 +16,19 @@ const TOC = [
 ]
 
 /** Peer-reviewed references on AI-assisted fracture detection and automation bias (DOI links). */
-const PERFORMANCE_REFS = [
-  {
-    text: 'Kuo RYL, Harrison C, Curran TA, et al. Artificial intelligence in fracture detection: a systematic review and meta-analysis. Radiology. 2022;304(1):50–62.',
-    doi: '10.1148/radiol.211785',
-  },
-  {
-    text: 'Guermazi A, Tannoury C, Kompel AJ, et al. Improving radiographic fracture recognition performance and efficiency using artificial intelligence. Radiology. 2022;302(3):627–636.',
-    doi: '10.1148/radiol.210937',
-  },
-  {
-    text: 'Dratsch T, Chen X, Rezazade Mehrizi M, et al. Automation bias in mammography: the impact of artificial intelligence BI-RADS suggestions on reader performance. Radiology. 2023;307(4):e222176.',
-    doi: '10.1148/radiol.222176',
-  },
+// Drawn from the verified evidence base: dedicated fracture detectors, general VLM evaluations, automation bias.
+const PERFORMANCE_REF_IDS = [
+  'kuo2022-ai-fracture-meta',
+  'guermazi2022-ai-fracture-mrmc',
+  'suh2024-gpt4v-gemini-diagnosis-please',
+  'huppertz2025-gpt4v-fabricated-findings',
+  'haupt2026-mllm-pediatric-wrist-fracture',
+  'takita2026-genai-vs-physicians-radiology-meta',
+  'dratsch2023-automation-bias',
 ]
+const PERFORMANCE_REFS = PERFORMANCE_REF_IDS.map((id) => KB.find((e) => e.id === id))
+  .filter((e): e is NonNullable<typeof e> => !!e)
+  .map((e) => ({ text: `${e.authors} ${e.title} ${e.journal}. ${e.year}.`, doi: e.doi, point: e.key_points_pt[0] }))
 
 function Toc() {
   return (
@@ -160,7 +161,13 @@ export function Method() {
             validada contra um esquema estruturado.
           </li>
           <li>
-            <strong>Modelo local</strong> compatível com a API OpenAI (ex.: MedGemma em Ollama ou LM Studio). As imagens não saem do seu computador.
+            <strong>MedGemma 1.5 4B</strong> (Google, modelo médico aberto) num servidor compatível com a API OpenAI — no seu computador (pasta{' '}
+            <code>local-ai/</code> do repositório) ou no <strong>GitHub Codespaces</strong> (botão no README), sem API paga. Em CPU é lento, por isso o
+            modo local envia no máximo 4 imagens e omite o segundo leitor.
+          </li>
+          <li>
+            <strong>No navegador (experimental)</strong>: Qwen3.5 0,8B com WebGPU, sem instalar nada. Apenas triagem (modalidade, região, incidência,
+            qualidade) — um modelo deste tamanho não é fiável para achados.
           </li>
         </ul>
 
@@ -177,6 +184,7 @@ export function Method() {
           O <strong>NotebookLM</strong> permite usar o seu próprio caderno de fontes. A ligação faz-se por um servidor MCP no seu computador (ver
           Definições). As respostas do caderno aparecem como evidência <code>NLM-n</code>, separadas da base curada.
         </p>
+        <EvidenceIndex />
 
         <h2 id="m-privacidade" className="row" style={{ gap: 8 }}>
           <LockKeyhole size={20} /> Privacidade
@@ -240,6 +248,7 @@ export function Method() {
               <a href={`https://doi.org/${r.doi}`} target="_blank" rel="noreferrer" className="rp-inline-link">
                 doi:{r.doi} <ExternalLink size={12} aria-hidden />
               </a>
+              {r.point && <div className="subtle" style={{ fontSize: 'var(--fs-sm)' }}>{r.point}</div>}
             </li>
           ))}
         </ol>
