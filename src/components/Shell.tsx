@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import { BookOpen, ClipboardList, Settings2, ShieldAlert } from 'lucide-react'
 import type { Route } from '../lib/router'
 import { href } from '../lib/router'
-import { isVlmConfigured, useSettings } from '../store/settings'
+import { isNotebookConfigured, isVlmConfigured, useSettings } from '../store/settings'
 import { RESPONSIBLE } from '../data/responsible'
 
 function BrandMark() {
@@ -18,6 +18,15 @@ function BrandMark() {
 export function Shell({ route, children }: { route: Route; children: ReactNode }) {
   const s = useSettings()
   const vlmOk = isVlmConfigured(s)
+  const nlm = !s.mcpEnabled
+    ? { dot: '', label: 'NotebookLM inativo' }
+    : !isNotebookConfigured(s)
+      ? { dot: 'warn', label: 'NotebookLM por configurar' }
+      : s.mcpLastCheck && !s.mcpLastCheck.ok
+        ? { dot: 'err', label: 'NotebookLM: erro' }
+        : s.mcpLastCheck?.ok
+          ? { dot: 'ok', label: 'NotebookLM ligado' }
+          : { dot: 'warn', label: 'NotebookLM por testar' }
   const nav: { r: Route; label: string; short: string; icon: ReactNode; match: Route['name'][] }[] = [
     { r: { name: 'worklist' }, label: 'Lista de trabalho', short: 'Estudos', icon: <ClipboardList size={18} />, match: ['worklist', 'case'] },
     { r: { name: 'method' }, label: 'Método e evidência', short: 'Método', icon: <BookOpen size={18} />, match: ['method'] },
@@ -56,9 +65,9 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
             <span className={`dot ${vlmOk ? 'ok' : 'warn'}`} />
             <span className="label">{vlmOk ? (s.provider === 'anthropic' ? 'Claude' : 'Modelo local') : 'VLM não configurado'}</span>
           </a>
-          <a className="conn-pill" href={href({ name: 'settings' })} title="Ligação ao NotebookLM via MCP">
-            <span className={`dot ${s.mcpEnabled ? 'ok' : ''}`} />
-            <span className="label">NotebookLM {s.mcpEnabled ? 'ativo' : 'inativo'}</span>
+          <a className="conn-pill" href={href({ name: 'settings' })} title={s.mcpLastCheck ? `NotebookLM: ${s.mcpLastCheck.summary}` : 'Ligação ao NotebookLM via MCP'} aria-label={nlm.label}>
+            <span className={`dot ${nlm.dot}`} />
+            <span className="label">{nlm.label}</span>
           </a>
         </div>
       </header>
