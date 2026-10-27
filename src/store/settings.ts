@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import type { ReportLanguage } from '../types'
 
-export type Provider = 'anthropic' | 'openai-compatible'
+export type Provider = 'anthropic' | 'openai-compatible' | 'browser'
 export type Effort = 'low' | 'medium' | 'high' | 'xhigh' | 'max'
 
 /**
@@ -25,6 +25,8 @@ export interface Settings {
   /** OpenAI-compatible local endpoint (e.g. Ollama / LM Studio serving MedGemma). */
   localBaseUrl: string
   localModel: string
+  /** In-browser model (WebGPU, Transformers.js) — experimental, triage only. */
+  browserModel: string
   /** NotebookLM via a local MCP server bridged to Streamable HTTP by supergateway. */
   mcpEnabled: boolean
   mcpServerKind: McpServerKind
@@ -59,6 +61,7 @@ export const DEFAULT_SETTINGS: Settings = {
   effort: 'high',
   localBaseUrl: env.VITE_LOCAL_BASE_URL || 'http://localhost:11434/v1',
   localModel: env.VITE_LOCAL_MODEL || 'medgemma',
+  browserModel: 'qwen3.5-0.8b',
   mcpEnabled: false,
   mcpServerKind: 'nlm-cli',
   mcpBaseUrl: DEFAULT_MCP_BASE_URL,
@@ -203,8 +206,14 @@ function persistKey(key: string, remember: boolean) {
   }
 }
 
+export function hasWebGpu(): boolean {
+  return typeof navigator !== 'undefined' && 'gpu' in navigator
+}
+
 export function isVlmConfigured(s: Pick<SettingsState, 'provider' | 'apiKey' | 'localBaseUrl'>): boolean {
-  return s.provider === 'anthropic' ? s.apiKey.trim().length > 0 : s.localBaseUrl.trim().length > 0
+  if (s.provider === 'anthropic') return s.apiKey.trim().length > 0
+  if (s.provider === 'browser') return hasWebGpu()
+  return s.localBaseUrl.trim().length > 0
 }
 
 /** True when NotebookLM is switched on and has what it needs to be queried. */

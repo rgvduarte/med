@@ -28,6 +28,8 @@ export interface VlmProvider {
   model: string
   /** Local models are slower and weaker: the pipeline sends fewer, smaller images and skips the second reader. */
   local: boolean
+  /** 'triage' providers (tiny in-browser models) only run the triage stage; findings would be unreliable. */
+  scope: 'full' | 'triage'
   generate<T>(req: GenerateRequest<T>): Promise<GenerateResult<T>>
 }
 
@@ -48,6 +50,7 @@ function friendlyAnthropicError(e: unknown): Error {
 export class AnthropicProvider implements VlmProvider {
   label = 'Claude (API Anthropic)'
   local = false
+  scope = 'full' as const
   model: string
   private client: Anthropic
   private defaultEffort: Effort
@@ -105,6 +108,7 @@ export class AnthropicProvider implements VlmProvider {
 export class OpenAICompatibleProvider implements VlmProvider {
   label = 'Modelo local (compatível OpenAI)'
   local = true
+  scope = 'full' as const
   model: string
   private baseUrl: string
   constructor(baseUrl: string, model: string) {
@@ -233,10 +237,35 @@ async function readCompletion(
   return { text, model, promptTokens, completionTokens }
 }
 
-export function providerFromSettings(s: Settings & { apiKey: string }): VlmProvider {
+let browserProvider: { key: string; provider: VlmProvider } | null = null
+
+/**
+ * Builds the provider chosen in Settings. The in-browser provider is imported lazily (it pulls in
+ * Transformers.js + ONNX Runtime) and kept alive so the model is downloaded and compiled only once.
+ */
+export async function createProvider(
+  s: Settings & { apiKey: string },
+  onLoadProgress?: (fraction: number, loaded: number, total: number) => void,
+): Promise<VlmProvider> {
   if (s.provider === 'anthropic') {
     if (!s.apiKey) throw new Error('Configure a chave da API Anthropic em Definições.')
     return new AnthropicProvider(s.apiKey, s.anthropicModel, s.effort)
   }
+  if (s.provider === 'browser') {
+    if (typeof navigator === 'undefined' || !('gpu' in navigator)) {
+      throw new Error('Este navegador não suporta WebGPU. Use Chrome ou Edge num computador (ou Safari 26+ no Mac).')
+    }
+    const { BrowserVlmProvider, BROWSER_MODELS } = await import('./browser/BrowserVlmProvider')
+    const spec = BROWSER_MODELS[s.browserModel as keyof typeof BROWSER_MODELS] ?? BROWSER_MODELS['qwen3.5-0.8b']
+    if (browserProvider?.key !== spec.id) {
+      ;(browserProvider?.provider as { dispose?: () => void } | undefined)?.dispose?.()
+      browserProvider = { key: spec.id, provider: new BrowserVlmProvider(spec, (f, l, t) => browserLoadListener?.(f, l, t)) }
+    }
+    browserLoadListener = onLoadProgress
+    await (browserProvider.provider as InstanceType<typeof BrowserVlmProvider>).whenReady()
+    return browserProvider.provider
+  }
   return new OpenAICompatibleProvider(s.localBaseUrl, s.localModel)
 }
+
+let browserLoadListener: ((fraction: number, loaded: number, total: number) => void) | undefined

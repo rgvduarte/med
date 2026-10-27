@@ -3,6 +3,7 @@ import { Cpu, FileText, KeyRound, LockKeyhole, Notebook, RotateCcw, ShieldAlert,
 import { useSettings, type Effort, type Provider } from '../store/settings'
 import { NotebookLmCard } from '../components/settings/NotebookLmCard'
 import { UserCard } from '../components/settings/UserCard'
+import { BrowserModelInfo } from '../components/settings/BrowserModelInfo'
 import '../styles/report.css'
 
 const SECTIONS = [
@@ -63,7 +64,8 @@ export function Settings() {
           {(
             [
               ['anthropic', 'Claude (API Anthropic)'],
-              ['openai-compatible', 'Servidor local compatível OpenAI (ex.: MedGemma)'],
+              ['openai-compatible', 'MedGemma local / Codespaces'],
+              ['browser', 'No navegador (experimental)'],
             ] as [Provider, string][]
           ).map(([id, label]) => (
             <button key={id} role="radio" aria-checked={s.provider === id} className={`btn ${s.provider === id ? 'btn-primary' : ''}`} onClick={() => s.update({ provider: id })}>
@@ -132,6 +134,8 @@ export function Settings() {
               </div>
             </div>
           </>
+        ) : s.provider === 'browser' ? (
+          <BrowserModelInfo />
         ) : (
           <>
             <div className="grid-2">

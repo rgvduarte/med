@@ -19,7 +19,7 @@ import { retrieveEvidence } from '../evidence/kb'
 import { queryNotebook } from '../evidence/notebook'
 import { MODALITY_LABEL, REGION_LABEL } from '../labels'
 import { formatTime, nowIso } from '../util'
-import { providerFromSettings, type ContentPart, type VlmProvider } from './providers'
+import { createProvider, type ContentPart, type VlmProvider } from './providers'
 import { FindingsSchema, ReportSchema, TriageSchema, VerifySchema, type FindingsOut, type TriageOut } from './schemas'
 import { PROMPT_VERSION, findingsSystem, reportSystem, triageSystem, verifySystem } from './prompts'
 
@@ -94,16 +94,17 @@ function pickFrames(c: Case, max: number): { seriesId: string; frameIndex: numbe
   return out
 }
 
-async function prepareImages(c: Case, signal: AbortSignal, local: boolean): Promise<ImageRef[]> {
+async function prepareImages(c: Case, signal: AbortSignal, provider: VlmProvider): Promise<ImageRef[]> {
   const refs: ImageRef[] = []
-  const picks = pickFrames(c, local ? MAX_IMAGES_LOCAL : MAX_IMAGES)
+  const local = provider.local
+  const picks = pickFrames(c, provider.scope === 'triage' ? 1 : local ? MAX_IMAGES_LOCAL : MAX_IMAGES)
   for (let i = 0; i < picks.length; i++) {
     if (signal.aborted) throw new Cancelled()
     const p = picks[i]
     const s = c.series.find((x) => x.id === p.seriesId)!
     const f = s.frames[p.frameIndex]
     // MedGemma's vision encoder works at 896 px; larger uploads only cost time on a local model.
-    const enc = await encodeFrame(f, local ? 896 : 1568)
+    const enc = await encodeFrame(f, provider.scope === 'triage' ? 768 : local ? 896 : 1568)
     const where =
       s.frames.length > 1
         ? `, ${s.kind === 'video' ? 'keyframe' : 'frame'} ${p.frameIndex + 1}/${s.frames.length}${f.timeSec !== undefined ? ` at t=${formatTime(f.timeSec)}` : ''}`
@@ -280,14 +281,31 @@ export function citationIssues(report: Report, evidence: EvidenceItem[], lang: R
 async function run(caseId: string, ctrl: AbortController) {
   const settings = useSettings.getState()
   const lang = settings.reportLanguage
+  const c0 = getCase(caseId)
   let provider: VlmProvider
-  try {
-    provider = providerFromSettings(settings)
-  } catch (e) {
-    throw e instanceof Error ? e : new Error(String(e))
+  if (settings.provider === 'browser') {
+    // Show model download/compile progress while the in-browser model loads (first use only).
+    store().updateCase(caseId, {
+      status: 'analysing',
+      analysis: { provider: 'No navegador', model: settings.browserModel, language: lang, startedAt: nowIso(), stages: initialStages(), findings: [], evidence: [], notebookLm: [] },
+    })
+    setStage(caseId, 'preprocess', { status: 'running', startedAt: nowIso(), message: 'A preparar o modelo no navegador…' })
+    try {
+      provider = await createProvider(settings, (f, loaded, total) =>
+        setStage(caseId, 'preprocess', {
+          message: `A descarregar o modelo: ${Math.round(f * 100)}% (${(loaded / 1e6).toFixed(0)} de ${(total / 1e6).toFixed(0)} MB) — só na primeira vez`,
+        }),
+      )
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e)
+      setStage(caseId, 'preprocess', { status: 'error', finishedAt: nowIso(), message: msg })
+      store().updateCase(caseId, { status: 'error' })
+      throw e instanceof Error ? e : new Error(msg)
+    }
+  } else {
+    provider = await createProvider(settings)
   }
   const signal = ctrl.signal
-  const c0 = getCase(caseId)
   const analysis: AnalysisResult = {
     provider: provider.label,
     model: provider.model,
@@ -317,7 +335,7 @@ async function run(caseId: string, ctrl: AbortController) {
   try {
     // 1. Pre-processing (local)
     begin('preprocess', 'A preparar imagens…')
-    const images = await prepareImages(c0, signal, provider.local)
+    const images = await prepareImages(c0, signal, provider)
     if (!images.length) throw new Error('O caso não tem imagens.')
     const totalFrames = c0.series.reduce((n, s) => n + s.frames.length, 0)
     finish(
@@ -338,6 +356,15 @@ async function run(caseId: string, ctrl: AbortController) {
     const triage = toTriage(tri.data)
     patchAnalysis(caseId, () => ({ triage }))
     finish('triage', `${MODALITY_LABEL[triage.modality]} · ${REGION_LABEL[triage.region]} · ${triage.view}`, tri.usage)
+
+    if (provider.scope === 'triage') {
+      const why = 'Modelo no navegador (experimental): apenas triagem — achados e relatório exigem Claude ou MedGemma (local/Codespaces).'
+      for (const id of ['findings', 'evidence', 'report', 'verify'] as StageId[]) setStage(caseId, id, { status: 'skipped', message: why })
+      patchAnalysis(caseId, () => ({ finishedAt: nowIso() }))
+      store().updateCase(caseId, { status: 'analysed' })
+      store().audit(caseId, { actor: 'ai', action: 'Triagem concluída (modelo no navegador)', detail: why })
+      return
+    }
 
     if (!tri.data.in_scope || triage.imageQuality === 'non-diagnostic') {
       const why = !tri.data.in_scope ? tri.data.out_of_scope_reason || 'Fora do âmbito musculoesquelético.' : 'Qualidade de imagem não diagnóstica.'

@@ -63,7 +63,7 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
         <div className="topbar-right">
           <a className="conn-pill" href={href({ name: 'settings' })} title="Estado do modelo de visão-linguagem">
             <span className={`dot ${vlmOk ? 'ok' : 'warn'}`} />
-            <span className="label">{vlmOk ? (s.provider === 'anthropic' ? 'Claude' : 'Modelo local') : 'VLM não configurado'}</span>
+            <span className="label">{vlmOk ? (s.provider === 'anthropic' ? 'Claude' : s.provider === 'browser' ? 'IA no navegador' : 'MedGemma local') : 'VLM não configurado'}</span>
           </a>
           <a className="conn-pill" href={href({ name: 'settings' })} title={s.mcpLastCheck ? `NotebookLM: ${s.mcpLastCheck.summary}` : 'Ligação ao NotebookLM via MCP'} aria-label={nlm.label}>
             <span className={`dot ${nlm.dot}`} />

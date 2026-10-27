@@ -43,6 +43,8 @@ const allowedHosts = forwardDomain ? [`.${forwardDomain}`] : []
 export default defineConfig({
   base: './',
   plugins: [react()],
+  // The in-browser VLM runs in a module worker (Transformers.js + ONNX Runtime WebGPU).
+  worker: { format: 'es' },
   server: { proxy: ollamaProxy, allowedHosts },
   preview: { proxy: ollamaProxy, allowedHosts },
   test: {
