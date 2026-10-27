@@ -1,0 +1,766 @@
+{
+ "analysis": {
+  "provider": "Claude (API Anthropic)",
+  "model": "claude-opus-5-5",
+  "language": "pt-PT",
+  "startedAt": "2026-10-27T23:00:00.000Z",
+  "finishedAt": "2026-10-27T23:00:00.000Z",
+  "precomputed": true,
+  "stages": [
+   {
+    "id": "preprocess",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "1 imagem(ns) preparada(s)"
+   },
+   {
+    "id": "triage",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "XR · Perfil (lateral) da coluna lombar — incidência única"
+   },
+   {
+    "id": "findings",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "3 achado(s) · 14 item(ns) da lista de verificação"
+   },
+   {
+    "id": "evidence",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "9 referência(s) da base curada"
+   },
+   {
+    "id": "report",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "5 ponto(s) na conclusão · protocolo msk-v1"
+   },
+   {
+    "id": "verify",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "17 observação(ões)"
+   }
+  ],
+  "triage": {
+   "modality": "XR",
+   "region": "spine",
+   "view": "Perfil (lateral) da coluna lombar — incidência única",
+   "laterality": "none",
+   "imageQuality": "limited",
+   "qualityNotes": "Incidência única de perfil, com campo recortado/colimado: faixa superior sem informação diagnóstica e corpos vertebrais superior e inferior apenas parcialmente incluídos. Costelas e sacro fora do campo, pelo que não é possível identificar com segurança os níveis vertebrais. Elementos posteriores e apófises espinhosas parcialmente fora do campo e sobre-expostos. O duplo contorno dos pratos vertebrais sugere ligeira obliquidade ou inclinação do feixe. Há uma linha fina vertical escura sobre o 3.º corpo vertebral visível, compatível com artefacto, e sobreposição de gás intestinal na porção inferior.",
+   "skeletalMaturity": "adult",
+   "hardwarePresent": false,
+   "summary": "Radiografia simples da coluna lombar em incidência de perfil única e recortada, numa doente adulta idosa. A qualidade é limitada para uma avaliação completa (sem incidência AP nem referências de nível), mas permite avaliar a morfologia dos corpos vertebrais centrais."
+  },
+  "findings": [
+   {
+    "id": "F1",
+    "origin": "ai",
+    "cls": "positive",
+    "group": "priority",
+    "label": "Deformidade em cunha anterior de corpo vertebral lombar, compatível com fratura por compressão",
+    "description": "O 2.º corpo vertebral visível (a contar de cima) tem a altura anterior claramente reduzida em relação à sua altura posterior e à do corpo vertebral subjacente (redução estimada visualmente de ~35–45%), com configuração em cunha anterior. Há também uma irregularidade ou degrau da cortical anterior e uma banda transversal mais densa sob o prato superior, que pode traduzir impactação trabecular. Esta incidência não permite datar a fratura (aguda vs. antiga) nem avaliar com segurança o muro posterior; uma RM com STIR/T2 FS (edema medular) ou a comparação com exames prévios confirmariam a idade, e a TC avaliaria o muro posterior e os elementos posteriores.",
+    "anatomicSite": "Corpo vertebral lombar — 2.º corpo vertebral visível a partir do topo (nível exato não determinável nesta imagem)",
+    "laterality": "none",
+    "certainty": "consistent-with",
+    "severity": "significant",
+    "confidence": "high",
+    "classification": {
+     "system": "Genant (semiquantitativo)",
+     "grade": "Grau 2 (moderada), limítrofe com grau 3",
+     "rationale": "A redução da altura anterior, estimada visualmente em ~35–45% face à altura posterior e ao corpo vertebral adjacente, fica na fronteira entre o grau 2 (25–40%) e o grau 3 (>40%). Trata-se de uma estimativa numa incidência única com ligeira obliquidade e sem morfometria formal; o grau deve ser confirmado por morfometria em radiografia de perfil bem centrada ou por TC."
+    },
+    "locations": [
+     {
+      "seriesId": "demo-coluna-s1",
+      "frameIndex": 0,
+      "bbox": [
+       0.28,
+       0.3028485757121439,
+       0.508,
+       0.24587706146926536
+      ]
+     }
+    ],
+    "evidenceQuery": [
+     "osteoporotic vertebral compression fracture",
+     "Genant semiquantitative vertebral fracture grading",
+     "lumbar spine radiograph diagnostic accuracy",
+     "MRI STIR acute vertebral fracture age",
+     "vertebral fracture assessment"
+    ],
+    "evidenceIds": [
+     "genant1993-semiquantitative-vertebral",
+     "williams2009-vertebral-fracture-underreporting-ct",
+     "kuo2022-ai-fracture-meta"
+    ],
+    "status": "pending"
+   },
+   {
+    "id": "F2",
+    "origin": "ai",
+    "cls": "doubtful",
+    "group": "priority",
+    "label": "Diminuição difusa da densidade óssea (osteopenia radiográfica)",
+    "description": "Os corpos vertebrais mostram radiotransparência aumentada, corticais e pratos vertebrais finos (aspeto em moldura) e acentuação relativa das trabéculas verticais, o que sugere diminuição da densidade mineral óssea. A avaliação radiográfica da densidade é subjetiva e depende da exposição; a quantificação exige DXA.",
+    "anatomicSite": "Corpos vertebrais lombares visíveis (difuso)",
+    "laterality": "none",
+    "certainty": "suspicious-for",
+    "severity": "significant",
+    "confidence": "moderate",
+    "locations": [
+     {
+      "seriesId": "demo-coluna-s1",
+      "frameIndex": 0
+     }
+    ],
+    "evidenceQuery": [
+     "radiographic osteopenia",
+     "osteoporosis DXA diagnosis",
+     "vertebral fracture risk osteoporosis",
+     "radiograph bone density assessment accuracy"
+    ],
+    "evidenceIds": [
+     "genant1993-semiquantitative-vertebral",
+     "caracciolo2023-bone-rads",
+     "modic1988-endplate-marrow-changes"
+    ],
+    "status": "pending"
+   },
+   {
+    "id": "F3",
+    "origin": "ai",
+    "cls": "doubtful",
+    "group": "other",
+    "label": "Possível redução do espaço discal e pequenos osteófitos anteriores no espaço discal inferior visível",
+    "description": "O espaço discal entre o 3.º e o 4.º corpos vertebrais visíveis parece mais estreito anteriormente do que o espaço discal acima, com discreto lábio ou esporão nos cantos anteriores adjacentes. A obliquidade da incidência e a impossibilidade de identificar o nível limitam esta avaliação. É provavelmente degenerativo e de pouca relevância para a queixa aguda.",
+    "anatomicSite": "Espaço discal entre o 3.º e o 4.º corpos vertebrais lombares visíveis (nível exato não determinável)",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "minor",
+    "confidence": "low",
+    "locations": [
+     {
+      "seriesId": "demo-coluna-s1",
+      "frameIndex": 0,
+      "bbox": [
+       0.08,
+       0.7421289355322339,
+       0.49,
+       0.13193403298350825
+      ]
+     }
+    ],
+    "evidenceQuery": [
+     "lumbar disc space narrowing radiograph",
+     "lumbar spondylosis osteophytes",
+     "degenerative disc disease radiographic grading"
+    ],
+    "evidenceIds": [
+     "modic1988-endplate-marrow-changes",
+     "pfirrmann2001-disc-degeneration-grading",
+     "fardon2014-lumbar-disc-nomenclature-v2"
+    ],
+    "status": "pending"
+   },
+   {
+    "id": "C1",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Alinhamento sagital / linha vertebral posterior (desalinhamento)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C2",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Envolvimento do muro posterior / retropulsão de fragmentos",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C3",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Fratura dos elementos posteriores",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C4",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Espondilolistese (Meyerding)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C5",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Defeito da pars interarticularis (espondilólise)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C6",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Redução do espaço discal",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C7",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Osteófitos marginais",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C8",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Artropatia facetária",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C9",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Lesões ósseas focais (líticas/escleróticas)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C10",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Perda de altura do 3.º corpo vertebral visível (integralmente incluído)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C11",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Perda de altura dos corpos vertebrais parcialmente incluídos (1.º e 4.º visíveis)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C12",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Calcificações de partes moles ou vasculares no campo visível",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C13",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Gás anómalo ou corpos estranhos",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C14",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Material de osteossíntese / complicações",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   }
+  ],
+  "evidence": [
+   {
+    "id": "genant1993-semiquantitative-vertebral",
+    "source": "kb",
+    "title": "Vertebral fracture assessment using a semiquantitative technique",
+    "citation": "Genant HK, Wu CY, van Kuijk C, Nevitt MC. Vertebral fracture assessment using a semiquantitative technique Journal of Bone and Mineral Research. 1993.",
+    "url": "https://doi.org/10.1002/jbmr.5650080915",
+    "doi": "10.1002/jbmr.5650080915",
+    "pmid": "8237484",
+    "year": 1993,
+    "evidenceType": "classification-system",
+    "points": [
+     "Descrição e avaliação da fiabilidade do método visual semiquantitativo para fraturas vertebrais prevalentes e incidentes em radiografia convencional, comparado com a morfometria quantitativa.",
+     "Aplicado por três observadores independentes a 57 mulheres pós-menopáusicas com 65–75 anos.",
+     "Mostrou concordância intraobservador excelente e interobservador boa; pode ser aplicado de forma fiável quando usado com critérios bem definidos."
+    ],
+    "findingIds": [
+     "F1",
+     "F2"
+    ],
+    "score": 51.800000000000004
+   },
+   {
+    "id": "williams2009-vertebral-fracture-underreporting-ct",
+    "source": "kb",
+    "title": "Under-reporting of osteoporotic vertebral fractures on computed tomography",
+    "citation": "Williams AL, Al-Busaidi A, Sparrow PJ, Adams JE, Whitehouse RW. Under-reporting of osteoporotic vertebral fractures on computed tomography European Journal of Radiology. 2009.",
+    "url": "https://doi.org/10.1016/j.ejrad.2007.08.028",
+    "doi": "10.1016/j.ejrad.2007.08.028",
+    "pmid": "17913429",
+    "year": 2009,
+    "evidenceType": "retrospective-diagnostic-accuracy",
+    "points": [
+     "Foram revistas TC torácicas de 100 homens e 100 mulheres consecutivos com mais de 55 anos (192 analisados; idade média 70,1 anos) para fraturas vertebrais moderadas (perda de altura de 25–40%) ou graves (perda de altura >40%) de T1 a L1, com um método semiquantitativo estabelecido.",
+     "38 doentes (19,8%) tinham uma ou mais fraturas vertebrais moderadas a graves, mas apenas 5 (13%) foram corretamente descritos no relatório oficial.",
+     "A sensibilidade das imagens axiais de TC para fratura vertebral foi de 0,35; recomendam-se fortemente reformatações sagitais para melhorar a deteção."
+    ],
+    "findingIds": [
+     "F1"
+    ],
+    "score": 35.1
+   },
+   {
+    "id": "kuo2022-ai-fracture-meta",
+    "source": "kb",
+    "title": "Artificial Intelligence in Fracture Detection: A Systematic Review and Meta-Analysis",
+    "citation": "Kuo RYL, Harrison C, Curran TA, et al.. Artificial Intelligence in Fracture Detection: A Systematic Review and Meta-Analysis Radiology. 2022.",
+    "url": "https://doi.org/10.1148/radiol.211785",
+    "doi": "10.1148/radiol.211785",
+    "pmid": "35348381",
+    "year": 2022,
+    "evidenceType": "systematic-review/meta-analysis",
+    "points": [
+     "Revisão sistemática que incluiu 42 estudos (37 com radiografias, 5 com TC); foram meta-analisadas 115 tabelas de contingência de 32 desses estudos (55 061 imagens).",
+     "Validação interna: sensibilidade agregada de 92% (IC 95%: 88–93) para a IA vs 91% (IC 95%: 85–95) para os clínicos; especificidade agregada de 91% (IC 95%: 88–93) para a IA vs 92% (IC 95%: 89–92) para os clínicos.",
+     "Validação externa: sensibilidade agregada de 91% (IC 95%: 84–95) para a IA vs 94% (IC 95%: 90–96) para os clínicos; especificidade de 91% (IC 95%: 81–95) vs 94% (IC 95%: 91–95); sem diferenças estatisticamente significativas entre a IA e os clínicos.",
+     "22 de 42 estudos (52%) apresentavam risco de viés elevado; a meta-regressão identificou fontes de heterogeneidade, incluindo o risco de viés e o tipo de fratura. Os autores concluíram que a IA e os clínicos tiveram desempenho relatado comparável e que a IA é promissora como adjuvante diagnóstico."
+    ],
+    "findingIds": [
+     "F1"
+    ],
+    "score": 26.9
+   },
+   {
+    "id": "suh2024-gpt4v-gemini-diagnosis-please",
+    "source": "kb",
+    "title": "Comparing Diagnostic Accuracy of Radiologists versus GPT-4V and Gemini Pro Vision Using Image Inputs from Diagnosis Please Cases",
+    "citation": "Suh PS, Shim WH, Suh CH, et al.. Comparing Diagnostic Accuracy of Radiologists versus GPT-4V and Gemini Pro Vision Using Image Inputs from Diagnosis Please Cases Radiology. 2024.",
+    "url": "https://doi.org/10.1148/radiol.240273",
+    "doi": "10.1148/radiol.240273",
+    "pmid": "38980179",
+    "year": 2024,
+    "evidenceType": "retrospective-diagnostic-accuracy",
+    "points": [
+     "Estudo retrospetivo de 190 casos 'Diagnosis Please' da revista Radiology (2008-2023), incluindo 17 casos musculoesqueléticos. O GPT-4V e o Gemini Pro Vision receberam as imagens originais e capturas da história clínica e das legendas das figuras (sem os achados imagiológicos). Foram-lhes pedidos três diagnósticos diferenciais, repetidos cinco vezes com temperaturas 0, 0,5 e 1. Oito radiologistas com formação subespecializada resolveram também os casos.",
+     "Com temperatura 1, a exatidão global foi de 49% (93/190) para o GPT-4V e de 39% (74/190) para o Gemini Pro Vision, face a 61% (115/190) para os radiologistas. Os radiologistas superaram o Gemini Pro Vision (P < 0,001); a diferença face ao GPT-4V não foi estatisticamente significativa após correção de Bonferroni (P = 0,02).",
+     "Os radiologistas (intervalo 45%-88%) superaram os modelos de linguagem com temperatura 1 (intervalo 24%-75%) na maioria das subespecialidades.",
+     "Um caso foi considerado correto se os diagnósticos gerados incluíssem o diagnóstico final ao fim de cinco repetições. A exatidão aumentou com a temperatura (GPT-4V 41%, 45% e 49%; Gemini Pro Vision 29%, 36% e 39% com 0, 0,5 e 1), mas a tendência não foi significativa após correção de Bonferroni."
+    ],
+    "findingIds": [],
+    "score": 26.8
+   },
+   {
+    "id": "caracciolo2023-bone-rads",
+    "source": "kb",
+    "title": "Bone Tumor Risk Stratification and Management System: A Consensus Guideline from the ACR Bone Reporting and Data System Committee.",
+    "citation": "Caracciolo JT, et al.. Bone Tumor Risk Stratification and Management System: A Consensus Guideline from the ACR Bone Reporting and Data System Committee. J Am Coll Radiol. 2023.",
+    "url": "https://doi.org/10.1016/j.jacr.2023.07.017",
+    "doi": "10.1016/j.jacr.2023.07.017",
+    "pmid": "37855758",
+    "year": 2023,
+    "evidenceType": "consensus/position-paper",
+    "points": [
+     "Sistema de pontuação de consenso do comité ACR Bone-RADS para estratificar uma lesão óssea potencialmente neoplásica recém-identificada na radiografia, analisada no contexto clínico adequado, em risco de malignidade muito baixo, baixo, intermédio ou elevado (Bone-RADS 1-4).",
+     "Cada achado radiográfico de risco recebe uma pontuação: margens, padrão de reação periosteal, profundidade da erosão endosteal, fratura patológica e massa de tecidos moles extraóssea; a soma dos pontos traduz-se na categoria Bone-RADS.",
+     "São propostas recomendações de orientação baseadas na evidência e no consenso para cada categoria, com um modelo padronizado de relatório radiográfico."
+    ],
+    "findingIds": [
+     "F2"
+    ],
+    "score": 24.7
+   },
+   {
+    "id": "esr2018-structured-reporting",
+    "source": "kb",
+    "title": "ESR paper on structured reporting in radiology",
+    "citation": "European Society of Radiology (ESR). ESR paper on structured reporting in radiology Insights into Imaging. 2018.",
+    "url": "https://doi.org/10.1007/s13244-017-0588-8",
+    "doi": "10.1007/s13244-017-0588-8",
+    "pmid": "29460129",
+    "year": 2018,
+    "evidenceType": "consensus/position-paper",
+    "points": [
+     "A ESR endossa a transição dos relatórios convencionais em prosa para o relatório estruturado como um desenvolvimento positivo, que deve ser um esforço internacional.",
+     "A padronização da estrutura do relatório assegura que os relatórios são completos e comparáveis. A linguagem padronizada minimiza a ambiguidade.",
+     "Os relatórios estruturados com elementos de dados-chave e parâmetros quantificados suportam funções automáticas (p. ex., estadiamento TNM), a integração com outros parâmetros clínicos, a partilha de dados (registos, biobancos) e a mineração de dados.",
+     "Uma estratégia bem-sucedida requer conteúdo e estrutura definidos, terminologias padronizadas, ferramentas e protocolos, com cooperação internacional e entre sociedades e integração com a indústria."
+    ],
+    "findingIds": [],
+    "score": 22.5
+   },
+   {
+    "id": "modic1988-endplate-marrow-changes",
+    "source": "kb",
+    "title": "Degenerative disk disease: assessment of changes in vertebral body marrow with MR imaging.",
+    "citation": "Modic MT, et al.. Degenerative disk disease: assessment of changes in vertebral body marrow with MR imaging. Radiology. 1988.",
+    "url": "https://doi.org/10.1148/radiology.166.1.3336678",
+    "doi": "10.1148/radiology.166.1.3336678",
+    "pmid": "3336678",
+    "year": 1988,
+    "evidenceType": "classification-system",
+    "points": [
+     "Em 474 doentes consecutivos submetidos a ressonância magnética lombar, observaram-se alterações tipo 1 (hipossinal em T1, hipersinal em T2) em 20 doentes (4%) e alterações tipo 2 (hipersinal em T1, isossinal ou ligeiro hipersinal em T2) em 77 doentes (16%), sempre associadas a discopatia degenerativa no nível envolvido.",
+     "Histologia (três casos de cada tipo): o tipo 1 mostrou rotura e fissuração dos planaltos vertebrais com tecido fibroso vascularizado; o tipo 2 mostrou substituição por medula amarela (gordurosa).",
+     "Longitudinalmente, as alterações tipo 1 converteram-se em tipo 2 em cinco de seis doentes em 14 meses a 3 anos; as alterações tipo 2 mantiveram-se estáveis em dez doentes durante 2-3 anos."
+    ],
+    "findingIds": [
+     "F2",
+     "F3"
+    ],
+    "score": 22.3
+   },
+   {
+    "id": "pfirrmann2001-disc-degeneration-grading",
+    "source": "kb",
+    "title": "Magnetic resonance classification of lumbar intervertebral disc degeneration.",
+    "citation": "Pfirrmann CW, et al.. Magnetic resonance classification of lumbar intervertebral disc degeneration. Spine (Phila Pa 1976). 2001.",
+    "url": "https://doi.org/10.1097/00007632-200109010-00011",
+    "doi": "10.1097/00007632-200109010-00011",
+    "pmid": "11568697",
+    "year": 2001,
+    "evidenceType": "classification-system",
+    "points": [
+     "Classificação por ressonância magnética em cinco graus (I-V) da degenerescência discal lombar, com algoritmo simples aplicado a imagens ponderadas em T2 de rotina, testada em 300 discos de 60 doentes por três observadores.",
+     "Kappa intraobservador 0,84-0,90 e interobservador 0,69-0,81; concordância completa em 83,8% dos discos, diferença de um grau em 15,9% e de dois ou mais graus em 1,3%.",
+     "A degenerescência discal pode ser graduada de forma fiável em imagens de ressonância magnética ponderadas em T2 de rotina."
+    ],
+    "findingIds": [
+     "F3"
+    ],
+    "score": 22
+   },
+   {
+    "id": "fardon2014-lumbar-disc-nomenclature-v2",
+    "source": "kb",
+    "title": "Lumbar disc nomenclature: version 2.0: Recommendations of the combined task forces of the North American Spine Society, the American Society of Spine Radiology and the American Society of Neuroradiology.",
+    "citation": "Fardon DF, et al.. Lumbar disc nomenclature: version 2.0: Recommendations of the combined task forces of the North American Spine Society, the American Society of Spine Radiology and the American Society of Neuroradiology. Spine J. 2014.",
+    "url": "https://doi.org/10.1016/j.spinee.2014.04.022",
+    "doi": "10.1016/j.spinee.2014.04.022",
+    "pmid": "24768732",
+    "year": 2014,
+    "evidenceType": "consensus/position-paper",
+    "points": [
+     "Nomenclatura revista (versão 2.0) do disco lombar que representa as recomendações de consenso dos grupos de trabalho conjuntos da ASSR, ASNR e NASS, atualizando o documento de 2001 (também publicada na Spine 2014, PMID 23970106).",
+     "Categorias diagnósticas recomendadas: normal; variante congénita/do desenvolvimento; degenerescência; trauma; infeção/inflamação; neoplasia; e/ou variante morfológica de significado incerto.",
+     "Inclui um glossário de termos do disco lombar com a respetiva utilização recomendada, classificando os termos como preferidos, não preferidos, não padronizados e coloquiais; a nomenclatura destina-se a servir como sistema de classificação e de relatório."
+    ],
+    "findingIds": [
+     "F3"
+    ],
+    "score": 20.5
+   }
+  ],
+  "notebookLm": [],
+  "verification": {
+   "passed": false,
+   "issues": [
+    {
+     "severity": "error",
+     "section": "Referências",
+     "message": "A citação [esr2018] não corresponde a nenhuma evidência recuperada — remover ou substituir."
+    },
+    {
+     "severity": "error",
+     "section": "Referências",
+     "message": "A citação [genant1993] não corresponde a nenhuma evidência recuperada — remover ou substituir."
+    },
+    {
+     "severity": "error",
+     "section": "Referências",
+     "message": "A citação [fardon2014] não corresponde a nenhuma evidência recuperada — remover ou substituir."
+    },
+    {
+     "severity": "error",
+     "section": "Referências",
+     "message": "A citação [williams2009] não corresponde a nenhuma evidência recuperada — remover ou substituir."
+    },
+    {
+     "severity": "error",
+     "section": "Referências",
+     "message": "A citação [kuo2022] não corresponde a nenhuma evidência recuperada — remover ou substituir."
+    },
+    {
+     "severity": "error",
+     "section": "Referências",
+     "message": "A citação [suh2024] não corresponde a nenhuma evidência recuperada — remover ou substituir."
+    },
+    {
+     "severity": "error",
+     "section": "Conclusão (ponto 1)",
+     "message": "«A suspeita clínica de fratura vertebral fica assim confirmada» afirma mais do que F1 permite: a certeza de F1 é apenas «compatível com» (consistent-with). A frase contradiz também o ponto 2, que diz que não é possível datar a fratura nem confirmar que seja a causa da lombalgia aguda. Remover a frase ou reformular, p. ex.: «Os achados são compatíveis com fratura vertebral por compressão; a idade da fratura e a sua relação com a queixa aguda não são determináveis nesta radiografia.»"
+    },
+    {
+     "severity": "error",
+     "section": "Achados — Osso; Conclusão (ponto 3)",
+     "message": "As frases «Não há deslocamento evidente de fragmentos para o canal vertebral» e «Não há retropulsão evidente de fragmentos» não têm suporte nos achados estruturados. C2 (muro posterior/retropulsão) está classificado como não avaliável. Uma afirmação negativa sobre um item não avaliável é falsamente tranquilizadora. Substituir por: «O muro posterior e uma eventual retropulsão de fragmentos não são avaliáveis nesta incidência.»"
+    },
+    {
+     "severity": "warning",
+     "section": "Achados — Alinhamento",
+     "message": "«A linha vertebral posterior é contínua» é mais assertivo do que C1, que apenas considera o desalinhamento improvável. É também difícil de conciliar com C2, porque o muro posterior do corpo fraturado não é avaliável. Preferir: «Sem desalinhamento sagital evidente nos segmentos incluídos.» Não afirmar a continuidade da linha posterior ao nível da fratura."
+    },
+    {
+     "severity": "warning",
+     "section": "Conclusão (ponto 4)",
+     "message": "A frase começa com uma afirmação categórica («Diminuição difusa da densidade óssea»), mas F2 é apenas «suspeito de» (suspicious-for) e da classe duvidosa. Reformular: «Aspeto suspeito de diminuição difusa da densidade óssea (osteopenia radiográfica), concordante com a osteoporose conhecida; a quantificação exige DXA.»"
+    },
+    {
+     "severity": "info",
+     "section": "Achados — Articulações",
+     "message": "A frase «Os restantes espaços discais e os osteófitos marginais não podem ser avaliados de forma fiável» é ambígua, porque surge logo depois de se descreverem osteófitos no espaço entre o 3.º e o 4.º corpos. Clarificar que se refere aos restantes níveis. Nota: nos achados estruturados, C6 e C7 (não avaliáveis) não batem certo com F3 (achado possível neste espaço)."
+    },
+    {
+     "severity": "info",
+     "section": "Técnica; Limitações",
+     "message": "O relatório apresenta como certo o que a triagem dá como provável. Na triagem, o duplo contorno dos pratos «sugere» obliquidade e a linha vertical é «compatível com artefacto». No relatório, «por ligeira obliquidade» e «A ligeira obliquidade produz duplo contorno» atribuem a causa sem reservas, e a linha é chamada simplesmente «artefacto». Ajustar a formulação à da triagem."
+    },
+    {
+     "severity": "info",
+     "section": "Técnica",
+     "message": "Em «O relatório segue o formato estruturado recomendado pela ESR [esr2018]», a fonte apoia apenas a recomendação geral de usar relatórios estruturados, não um formato específico. Preferir: «segue um formato estruturado, em linha com a recomendação da ESR».."
+    },
+    {
+     "severity": "info",
+     "section": "Recomendações (pontos 3 e 5)",
+     "message": "O estudo williams2009 analisou a subnotificação de fraturas em TC torácica (T1–L1, deteção oportunista). A frase «As fraturas vertebrais osteoporóticas moderadas a graves são frequentemente omitidas nos relatórios» generaliza para lá desse contexto e deve indicá-lo (p. ex., «em relatórios de TC»)."
+    },
+    {
+     "severity": "info",
+     "section": "Recomendações (ponto 1)",
+     "message": "Proporcionalidade: a RM é recomendada sem condições num pedido de prioridade de rotina. Considerar condicioná-la ao impacto na conduta: dor persistente, ponderação de vertebroplastia ou cifoplastia, sinais de alarme ou suspeita de lesão subjacente. Nenhum achado justifica «caracterizar melhor uma eventual fratura patológica», porque C9 é negativo. Formular como exclusão, não como suspeita."
+    },
+    {
+     "severity": "info",
+     "section": "Comparação",
+     "message": "Os dados fornecidos não dizem que não existam exames prévios. Preferir: «Não foram fornecidos exames prévios para comparação.»"
+    },
+    {
+     "severity": "info",
+     "section": "Citações",
+     "message": "As citações no texto estão abreviadas ([genant1993], [esr2018], [fardon2014], [williams2009], [kuo2022], [suh2024]) e não correspondem literalmente aos ids da lista de evidência. Cada uma corresponde sem ambiguidade a um id existente, e a lista de citações usa os ids completos. Confirmar que o renderizador as resolve."
+    }
+   ]
+  }
+ },
+ "report": {
+  "language": "pt-PT",
+  "clinicalIndication": "Doente do sexo feminino, 76 anos, com osteoporose conhecida, com lombalgia aguda após esforço mínimo. Questão clínica: fratura vertebral lombar por fragilidade? Prioridade: rotina.",
+  "technique": "Radiografia simples da coluna lombar, apenas em incidência de perfil, sem incidência AP. Foi avaliada 1 imagem. O campo está recortado/colimado. A qualidade técnica é limitada: as costelas e o sacro estão fora do campo, pelo que não é possível identificar os níveis vertebrais. Os corpos vertebrais superior e inferior estão apenas parcialmente incluídos. Os elementos posteriores estão parcialmente fora do campo e sobre-expostos. Há duplo contorno dos pratos vertebrais por ligeira obliquidade, um artefacto linear vertical sobre o 3.º corpo vertebral visível e sobreposição de gás intestinal na porção inferior. A análise foi assistida por um modelo de visão-linguagem (1 imagem avaliada). Todos os achados são sugestões automáticas que aguardam validação por radiologista. O relatório segue o formato estruturado recomendado pela ESR [esr2018].",
+  "comparison": "Sem exames prévios disponíveis para comparação.",
+  "findingsByRegion": [
+   {
+    "heading": "Alinhamento",
+    "text": "Nos segmentos incluídos, o alinhamento sagital parece mantido e a linha vertebral posterior é contínua. Desalinhamento sagital e espondilolistese são improváveis nos níveis visíveis. Sem incidência AP, não é possível avaliar o alinhamento coronal."
+   },
+   {
+    "heading": "Osso",
+    "text": "O 2.º corpo vertebral visível (a contar de cima) tem uma deformidade em cunha anterior. O nível exato não é determinável nesta imagem. A altura anterior está reduzida em cerca de 35–45% face à altura posterior e ao corpo vertebral subjacente, numa estimativa visual. Há também irregularidade ou degrau da cortical anterior e uma banda transversal mais densa sob o prato superior, que pode traduzir impactação trabecular. O conjunto é compatível com fratura vertebral por compressão. No método semiquantitativo de Genant corresponde a grau 2 (moderada), limítrofe com grau 3 [genant1993]. Este grau é uma estimativa visual, sem morfometria formal, numa incidência com ligeira obliquidade. Esta radiografia não permite datar a fratura (aguda vs. antiga). O muro posterior e os elementos posteriores não são avaliáveis com segurança. Não há deslocamento evidente de fragmentos para o canal vertebral nesta incidência. O 3.º corpo vertebral visível, o único outro corpo incluído por inteiro, não tem perda de altura evidente. A altura do 1.º e do 4.º corpos visíveis não é avaliável, porque estão apenas parcialmente incluídos. Os corpos vertebrais mostram radiotransparência difusamente aumentada, corticais e pratos vertebrais finos (aspeto em moldura) e acentuação relativa das trabéculas verticais. Este aspeto é suspeito de diminuição da densidade mineral óssea (osteopenia radiográfica) e é concordante com a osteoporose conhecida. Esta avaliação é subjetiva e depende da exposição. Nos corpos vertebrais visíveis não há lesão lítica ou esclerótica focal evidente, o que não exclui uma fratura patológica. A pars interarticularis não é avaliável. Sem material de osteossíntese."
+   },
+   {
+    "heading": "Articulações",
+    "text": "O espaço discal entre o 3.º e o 4.º corpos vertebrais visíveis está possivelmente reduzido, sobretudo anteriormente, com discreto lábio ou esporão osteofítico nos cantos anteriores adjacentes. Trata-se de possível discopatia degenerativa [fardon2014], de pouca relevância provável para a queixa aguda. A avaliação está limitada pela obliquidade e porque o nível não é identificável. Os restantes espaços discais e os osteófitos marginais não podem ser avaliados de forma fiável. As articulações interapofisárias não são avaliáveis, porque os elementos posteriores estão parcialmente fora do campo e sobre-expostos."
+   },
+   {
+    "heading": "Partes moles",
+    "text": "No campo visível não há calcificações evidentes de partes moles ou vasculares, nem gás anómalo ou corpos estranhos. A sobreposição de gás intestinal na porção inferior da imagem limita parcialmente a avaliação."
+   }
+  ],
+  "impression": [
+   "Deformidade em cunha anterior do 2.º corpo vertebral lombar visível (nível exato não determinável), compatível com fratura vertebral por compressão, no contexto de osteoporose conhecida e esforço mínimo. Grau 2 de Genant (moderada), limítrofe com grau 3, por estimativa visual [genant1993]. A suspeita clínica de fratura vertebral fica assim confirmada.",
+   "A radiografia não permite datar a fratura (aguda vs. antiga). Por isso não é possível confirmar que seja a causa da lombalgia aguda. A RM com STIR/T2 FS ou a comparação com radiografias prévias permitiriam datá-la.",
+   "Achados negativos pertinentes: espondilolistese e desalinhamento sagital improváveis; o outro corpo vertebral incluído por inteiro não tem perda de altura evidente; não há lesão lítica ou esclerótica focal evidente, o que não exclui uma fratura patológica. Não há retropulsão evidente de fragmentos, mas o muro posterior e os elementos posteriores não são avaliáveis.",
+   "Diminuição difusa da densidade óssea, suspeita de osteopenia radiográfica e concordante com a osteoporose conhecida. A quantificação exige DXA.",
+   "Possível discopatia degenerativa no espaço discal inferior visível, provavelmente sem relação com a queixa aguda. O estudo é limitado (incidência única de perfil, recortada, sem AP) e não exclui fraturas noutros níveis não incluídos ou parcialmente incluídos."
+  ],
+  "recommendations": [
+   "RM da coluna lombar com sequências STIR ou T2 com supressão de gordura, para datar a fratura (edema medular), confirmar o nível e caracterizar melhor uma eventual fratura patológica. Se houver radiografias prévias, compará-las com este exame.",
+   "Completar o estudo radiográfico com incidência AP e perfil bem centrado da coluna lombar, incluindo o sacro e as últimas costelas, para identificar o nível. O perfil bem centrado permite também confirmar o grau de Genant por morfometria. O método semiquantitativo é fiável quando aplicado com critérios bem definidos [genant1993].",
+   "TC com reformatações sagitais se houver suspeita de instabilidade, de envolvimento do muro posterior ou de défice neurológico. As imagens axiais isoladas têm baixa sensibilidade para fratura vertebral [williams2009].",
+   "Correlacionar com o exame neurológico. Se houver défice neurológico ou outros sinais de alarme, orientar com urgência para avaliação por especialidade de coluna (Ortopedia/Neurocirurgia).",
+   "Comunicar explicitamente o achado ao médico assistente, para reavaliar a osteoporose e o risco de fratura (incluindo DXA se não houver avaliação recente). As fraturas vertebrais osteoporóticas moderadas a graves são frequentemente omitidas nos relatórios [williams2009]."
+  ],
+  "limitations": "O exame tem uma única incidência de perfil, recortada e sem AP. Os níveis vertebrais não são identificáveis, porque as costelas e o sacro estão fora do campo. Os corpos vertebrais superior e inferior estão incompletos, pelo que não é possível excluir fraturas noutros níveis. Os elementos posteriores estão parcialmente fora do campo e sobre-expostos. A ligeira obliquidade produz duplo contorno dos pratos vertebrais. Há também um artefacto linear vertical e sobreposição de gás intestinal. A radiografia não permite datar a fratura nem avaliar com segurança o muro posterior e os elementos posteriores. O grau de Genant é uma estimativa visual, sem morfometria formal. A avaliação radiográfica da densidade óssea é subjetiva e depende da exposição. Esta análise foi feita por um modelo de visão-linguagem, que pode falhar achados subtis. Todos os achados aguardam revisão e validação por radiologista. Numa meta-análise, a IA teve um desempenho na deteção de fraturas comparável ao dos clínicos. No entanto, 52% dos estudos tinham risco de viés elevado e houve heterogeneidade relevante [kuo2022]. Estes resultados não são diretamente extrapoláveis a este modelo nem a esta incidência. Em casos 'Diagnosis Please' da Radiology, os modelos de visão-linguagem generalistas tiveram exatidão global inferior à de radiologistas subespecializados (49% e 39% vs. 61%). A diferença face ao GPT-4V não foi estatisticamente significativa após correção de Bonferroni [suh2024].",
+  "citations": [
+   {
+    "evidenceId": "esr2018-structured-reporting",
+    "statement": "O relatório segue o formato estruturado recomendado pela ESR."
+   },
+   {
+    "evidenceId": "genant1993-semiquantitative-vertebral",
+    "statement": "No método semiquantitativo de Genant, a deformidade em cunha corresponde a grau 2 (moderada), limítrofe com grau 3."
+   },
+   {
+    "evidenceId": "genant1993-semiquantitative-vertebral",
+    "statement": "O método semiquantitativo é fiável quando aplicado com critérios bem definidos; o grau deve ser confirmado num perfil bem centrado."
+   },
+   {
+    "evidenceId": "fardon2014-lumbar-disc-nomenclature-v2",
+    "statement": "A possível redução do espaço discal com pequenos osteófitos anteriores enquadra-se na categoria de degenerescência (possível discopatia degenerativa)."
+   },
+   {
+    "evidenceId": "williams2009-vertebral-fracture-underreporting-ct",
+    "statement": "As imagens axiais isoladas de TC têm baixa sensibilidade para fratura vertebral (0,35), pelo que são recomendadas reformatações sagitais."
+   },
+   {
+    "evidenceId": "williams2009-vertebral-fracture-underreporting-ct",
+    "statement": "As fraturas vertebrais osteoporóticas moderadas a graves são frequentemente omitidas nos relatórios (apenas 5 de 38 doentes, 13%, corretamente descritos), o que justifica comunicá-las explicitamente."
+   },
+   {
+    "evidenceId": "kuo2022-ai-fracture-meta",
+    "statement": "Numa meta-análise, a IA teve um desempenho na deteção de fraturas comparável ao dos clínicos, mas 52% dos estudos tinham risco de viés elevado e houve heterogeneidade relevante."
+   },
+   {
+    "evidenceId": "suh2024-gpt4v-gemini-diagnosis-please",
+    "statement": "Em casos 'Diagnosis Please', os modelos de visão-linguagem generalistas tiveram exatidão global inferior à de radiologistas subespecializados (49% e 39% vs. 61%), sem diferença estatisticamente significativa para o GPT-4V após correção de Bonferroni."
+   }
+  ],
+  "status": "draft",
+  "generatedBy": "Claude (API Anthropic) · claude-opus-5-5 · pré-calculado",
+  "generatedAt": "2026-10-27T23:00:00.000Z",
+  "editedByClinician": false
+ }
+}

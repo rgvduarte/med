@@ -293,18 +293,27 @@ export function ReportPanel({ c }: { c: Case }) {
         </div>
       ) : null}
       {issues.length > 0 && !locked && (
-        <div className="callout callout-warn">
+        <div className={`callout ${issues.some((i) => i.severity === 'error') ? 'callout-warn' : 'callout-info'}`}>
           <ShieldCheck size={16} />
-          <div>
-            <strong>Verificações automáticas de segurança</strong>
+          <details style={{ flex: 1, minWidth: 0 }}>
+            <summary style={{ cursor: 'pointer' }}>
+              <strong>Segundo leitor (IA): {issues.length} observação(ões)</strong>
+              {c.analysis?.verification?.revisedIssues ? (
+                <span> · {c.analysis.verification.revisedIssues} problema(s) já corrigido(s) automaticamente</span>
+              ) : null}
+              <span className="subtle"> — ver</span>
+            </summary>
             <ul className="rp-issues">
               {issues.map((i, n) => (
                 <li key={n}>
+                  <span className={`badge ${i.severity === 'error' ? 'badge-critical' : i.severity === 'warning' ? 'badge-significant' : 'badge-neutral'}`}>
+                    {i.severity === 'error' ? 'erro' : i.severity === 'warning' ? 'aviso' : 'nota'}
+                  </span>{' '}
                   <span className="rp-issue-sec">{i.section}:</span> {i.message}
                 </li>
               ))}
             </ul>
-          </div>
+          </details>
         </div>
       )}
 

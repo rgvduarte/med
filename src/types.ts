@@ -230,7 +230,8 @@ export interface AnalysisResult {
   findings: Finding[]
   evidence: EvidenceItem[]
   notebookLm: NotebookLmAnswer[]
-  verification?: { passed: boolean; issues: VerificationIssue[] }
+  /** Final second-reader result; revisedIssues = problems fixed by the automatic revision round. */
+  verification?: { passed: boolean; issues: VerificationIssue[]; revisedIssues?: number }
   /** True when this result was pre-computed and shipped with a demo case. */
   precomputed?: boolean
   totalUsage?: TokenUsage
@@ -252,6 +253,8 @@ export interface Report {
   aiDeclaration?: string
   /** SHA-256 of the canonical report JSON at validation time. */
   contentHash?: string
+  /** True when the draft was rewritten once to address the second reader's issues. */
+  revisedAfterVerification?: boolean
   clinicalIndication: string
   technique: string
   comparison: string

@@ -1,0 +1,784 @@
+{
+ "analysis": {
+  "provider": "Claude (API Anthropic)",
+  "model": "claude-opus-5-5",
+  "language": "pt-PT",
+  "startedAt": "2026-10-27T23:00:00.000Z",
+  "finishedAt": "2026-10-27T23:00:00.000Z",
+  "precomputed": true,
+  "stages": [
+   {
+    "id": "preprocess",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "1 imagem(ns) preparada(s)"
+   },
+   {
+    "id": "triage",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "XR · AP da anca direita (incidência única)"
+   },
+   {
+    "id": "findings",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "3 achado(s) · 20 item(ns) da lista de verificação"
+   },
+   {
+    "id": "evidence",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "6 referência(s) da base curada"
+   },
+   {
+    "id": "report",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "5 ponto(s) na conclusão · protocolo msk-v1"
+   },
+   {
+    "id": "verify",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "11 observação(ões)"
+   }
+  ],
+  "triage": {
+   "modality": "XR",
+   "region": "hip-pelvis",
+   "view": "AP da anca direita (incidência única)",
+   "laterality": "right",
+   "imageQuality": "limited",
+   "qualityNotes": "Fotografia de película radiográfica (não imagem DICOM original), com régua graduada no bordo esquerdo e marcador de lado 'DROIT' (direito), concordante com a anatomia. Incidência AP única, sem incidência axial/perfil (cross-table lateral). Cobertura limitada à hemibacia direita e ao fémur proximal: sacro, articulações sacroilíacas, sínfise púbica e anca contralateral não incluídos. Membro em rotação externa, com encurtamento do colo em projeção e sobreposição das estruturas trocantéricas. Densidade óssea não avaliável de forma fiável numa fotografia de película.",
+   "skeletalMaturity": "adult",
+   "hardwarePresent": false,
+   "summary": "Radiografia simples da anca direita de doente adulta, em incidência AP única (fotografia da película), que abrange o fémur proximal e parte da hemibacia direita. Não há material de osteossíntese."
+  },
+  "findings": [
+   {
+    "id": "F1",
+    "origin": "ai",
+    "cls": "positive",
+    "group": "priority",
+    "label": "Fratura deslocada do colo do fémur direito (subcapital/transcervical)",
+    "description": "O colo femoral não se individualiza: a região trocantérica e a diáfise estão ascendidas e sobrepostas à base da cabeça femoral. Entre ambas há uma zona de transição irregular e mosqueada, com degrau cortical no bordo súpero-externo e espícula cortical ínfero-medial junto ao rebordo acetabular inferior. A cabeça femoral mantém-se no acetábulo, com contorno articular regular.",
+    "anatomicSite": "Colo do fémur direito (junção cabeça-colo, subcapital/transcervical)",
+    "laterality": "right",
+    "certainty": "consistent-with",
+    "severity": "critical",
+    "confidence": "high",
+    "classification": {
+     "system": "Garden",
+     "grade": "III–IV (deslocada)",
+     "rationale": "O encurtamento e a ascensão do fragmento distal indicam uma fratura deslocada (Garden III ou IV; 'deslocada' na classificação simplificada). Para distinguir III de IV é preciso avaliar o alinhamento trabecular da cabeça com o acetábulo, o que não é fiável nesta fotografia de incidência única. A incidência axial/perfil e, se necessário, TC permitiriam caracterizar melhor o deslocamento e a cominução posterior."
+    },
+    "locations": [
+     {
+      "seriesId": "demo-anca-s1",
+      "frameIndex": 0,
+      "bbox": [
+       0.3046875,
+       0.3125,
+       0.265625,
+       0.2375
+      ]
+     }
+    ],
+    "evidenceQuery": [
+     "femoral neck fracture",
+     "Garden classification reliability",
+     "displaced intracapsular hip fracture elderly",
+     "hip fracture radiography diagnostic accuracy",
+     "occult hip fracture MRI CT"
+    ],
+    "evidenceIds": [
+     "masionis2019-garden-reliability",
+     "hajmirzaian2020-occult-hip-meta",
+     "ganor2026-mllm-hip-fracture-confidence"
+    ],
+    "status": "pending"
+   },
+   {
+    "id": "F2",
+    "origin": "ai",
+    "cls": "doubtful",
+    "group": "priority",
+    "label": "Ascensão e rotação externa do fragmento femoral distal (pequeno trocânter proeminente)",
+    "description": "O pequeno trocânter projeta-se de forma proeminente no bordo medial do fémur proximal e a crista intertrocantérica vê-se sobre o maciço trocantérico. A linha de Shenton está interrompida, com o fémur ascendido. Estes achados são compatíveis com encurtamento e rotação externa do fragmento distal e concordam com o membro encurtado e em rotação externa descrito na informação clínica, embora parte da rotação possa ser posicional.",
+    "anatomicSite": "Fémur proximal direito — pequeno trocânter / região trocantérica",
+    "laterality": "right",
+    "certainty": "consistent-with",
+    "severity": "significant",
+    "confidence": "moderate",
+    "locations": [
+     {
+      "seriesId": "demo-anca-s1",
+      "frameIndex": 0,
+      "bbox": [
+       0.44375,
+       0.7041666666666667,
+       0.059375,
+       0.125
+      ]
+     }
+    ],
+    "evidenceQuery": [
+     "hip fracture external rotation radiograph",
+     "Shenton line hip fracture",
+     "lesser trochanter profile femoral rotation",
+     "femoral neck fracture displacement"
+    ],
+    "evidenceIds": [
+     "masionis2019-garden-reliability",
+     "hajmirzaian2020-occult-hip-meta",
+     "ganor2026-mllm-hip-fracture-confidence"
+    ],
+    "status": "pending"
+   },
+   {
+    "id": "F3",
+    "origin": "ai",
+    "cls": "doubtful",
+    "group": "other",
+    "label": "Pequena densidade linear junto ao bordo lateral do buraco obturador (significado indeterminado)",
+    "description": "Há uma pequena densidade linear paralela e adjacente à cortical do bordo lateral do buraco obturador direito, com a cortical subjacente aparentemente contínua. Pode corresponder a calcificação, a artefacto da película ou, menos provavelmente, a um pequeno fragmento ósseo; no contexto, o significado clínico provável é reduzido.",
+    "anatomicSite": "Bordo lateral do buraco obturador direito (ísquio / lâmina quadrilátera)",
+    "laterality": "right",
+    "certainty": "possible",
+    "severity": "minor",
+    "confidence": "low",
+    "locations": [
+     {
+      "seriesId": "demo-anca-s1",
+      "frameIndex": 0,
+      "bbox": [
+       0.6734375,
+       0.6197916666666666,
+       0.015625,
+       0.05
+      ]
+     }
+    ],
+    "evidenceQuery": [
+     "acetabular fracture radiography",
+     "occult pelvic fracture CT elderly",
+     "pelvic soft tissue calcification radiograph"
+    ],
+    "evidenceIds": [
+     "hajmirzaian2020-occult-hip-meta",
+     "ganor2026-mllm-hip-fracture-confidence",
+     "tannast2015-acetabular-coverage-reference"
+    ],
+    "status": "pending"
+   },
+   {
+    "id": "C1",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Desalinhamento trabecular cefálico (ângulo trabecular / índice de Garden)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C2",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Fratura intertrocantérica",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C3",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Fratura subtrocantérica",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C4",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Fratura do grande trocânter",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C5",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Fratura do pequeno trocânter",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C6",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Fratura dos ramos púbicos (porção incluída)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C7",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Fratura do acetábulo",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C8",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Sacro e articulações sacroilíacas",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C9",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Luxação coxofemoral",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C10",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Redução da interlinha articular coxofemoral",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C11",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Osteófitos marginais / coxartrose",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C12",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Morfologia de conflito femoroacetabular (cam/pincer)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C13",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Sinais de necrose avascular da cabeça femoral (colapso subcondral, sinal do crescente)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C14",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Lesão óssea focal (lítica/esclerótica) sugestiva de fratura patológica",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C15",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Reação periosteal",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C16",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Osteopenia / densidade óssea",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C17",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Tumefação dos tecidos moles",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C18",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Gás ou corpos estranhos nos tecidos moles",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C19",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Calcificações dos tecidos moles",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C20",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Material de osteossíntese / complicações",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   }
+  ],
+  "evidence": [
+   {
+    "id": "masionis2019-garden-reliability",
+    "source": "kb",
+    "title": "The reliability of a Garden, AO and simple II stage classifications for intracapsular hip fractures",
+    "citation": "Masionis P, Uvarovas V, Mazarevičius G, et al.. The reliability of a Garden, AO and simple II stage classifications for intracapsular hip fractures Orthopaedics & Traumatology: Surgery & Research. 2019.",
+    "url": "https://doi.org/10.1016/j.otsr.2018.11.007",
+    "doi": "10.1016/j.otsr.2018.11.007",
+    "pmid": "30639032",
+    "year": 2019,
+    "evidenceType": "classification-system",
+    "points": [
+     "Seis observadores classificaram duas vezes, com um mês de intervalo, 136 radiografias (incidências AP e perfil) de fraturas do colo do fémur, avaliadas em ocultação, usando as classificações de Garden (4 estádios), AO e uma classificação simples em 2 estádios.",
+     "A concordância global foi razoável para a AO (0,22) e para Garden (0,33); a classificação simples em 2 estádios teve o melhor desempenho (0,35 a 0,83; concordância entre múltiplos avaliadores 0,50, moderada).",
+     "Os autores concluíram que as classificações de Garden em 4 estádios e AO devem ser evitadas na prática clínica pela fraca reprodutibilidade, e que apenas a classificação simples em 2 estádios mostrou fiabilidade suficiente; a experiência dos observadores não alterou a concordância."
+    ],
+    "findingIds": [
+     "F1",
+     "F2"
+    ],
+    "score": 68.10000000000001
+   },
+   {
+    "id": "hajmirzaian2020-occult-hip-meta",
+    "source": "kb",
+    "title": "Use of Advanced Imaging for Radiographically Occult Hip Fracture in Elderly Patients: A Systematic Review and Meta-Analysis",
+    "citation": "Haj-Mirzaian A, Eng J, Khorasani R, et al.. Use of Advanced Imaging for Radiographically Occult Hip Fracture in Elderly Patients: A Systematic Review and Meta-Analysis Radiology. 2020.",
+    "url": "https://doi.org/10.1148/radiol.2020192167",
+    "doi": "10.1148/radiol.2020192167",
+    "pmid": "32633673",
+    "year": 2020,
+    "evidenceType": "systematic-review/meta-analysis",
+    "points": [
+     "35 estudos (2992 doentes; idade média 76,8 anos) de idosos com suspeita clínica de fratura da anca sem evidência radiográfica de fratura cirúrgica, com a RM como padrão de referência.",
+     "A frequência de fratura cirúrgica da anca radiograficamente oculta foi de 39% (IC 95%: 35–43%) sem fratura radiográfica definida e de 92% (IC 95%: 83–98%) quando a radiografia mostrava fratura isolada do grande trocânter.",
+     "A fratura oculta foi mais frequente em doentes com idade igual ou superior a 80 anos (44%), com relatório radiográfico duvidoso (58%) e com antecedentes de traumatismo (41%).",
+     "A TC e a cintigrafia óssea tiveram desempenho comparável (P = 0,67), com sensibilidades de 79% e 87%, respetivamente (baixa força de evidência); a imagiologia avançada, preferencialmente RM, pode ser clinicamente apropriada em todos estes doentes."
+    ],
+    "findingIds": [
+     "F1",
+     "F2",
+     "F3"
+    ],
+    "score": 55.1
+   },
+   {
+    "id": "ganor2026-mllm-hip-fracture-confidence",
+    "source": "kb",
+    "title": "Between Accessibility and Reliability: High Confidence, Low Control in General-Purpose Multimodal Models for Hip Fracture Radiograph Interpretation",
+    "citation": "Gan-Or H, Ankol S, Ben Arie G, et al.. Between Accessibility and Reliability: High Confidence, Low Control in General-Purpose Multimodal Models for Hip Fracture Radiograph Interpretation Journal of Clinical Medicine. 2026.",
+    "url": "https://doi.org/10.3390/jcm15134919",
+    "doi": "10.3390/jcm15134919",
+    "pmid": "42452381",
+    "year": 2026,
+    "evidenceType": "other",
+    "points": [
+     "Estudo de caracterização comportamental de uma coorte só com fraturas, explicitamente não uma avaliação de exatidão diagnóstica. Incluiu 214 fraturas da anca confirmadas cirurgicamente em radiografias AP da bacia, lidas por dois modelos multimodais de uso geral (GPT-5.4 e Gemini) em seis condições de prompt. Como a coorte só incluía fraturas, são reportadas taxas de deteção e não métricas completas de exatidão diagnóstica (a especificidade não pode ser estimada).",
+     "Quando os modelos não foram informados da presença de fratura, a deteção da fratura da anca com lateralidade correta foi de 79,0% e 86,4% no GPT-5.4 e de 80,4% e 93,5% no Gemini (séries E e F).",
+     "Pistas de lateralidade incorretas degradaram o desempenho de 90,7% para 66,4% (GPT-5.4) e de 97,7% para 57,0% (Gemini). A classificação AO/OTA e a identificação de fraturas subtrocantéricas mantiveram-se limitadas.",
+     "Ambos os modelos mostraram frequentemente confiança elevada quando erravam, e a confiança autorreportada não distinguiu de forma fiável as respostas corretas das incorretas."
+    ],
+    "findingIds": [
+     "F1",
+     "F2",
+     "F3"
+    ],
+    "score": 40.5
+   },
+   {
+    "id": "suh2024-gpt4v-gemini-diagnosis-please",
+    "source": "kb",
+    "title": "Comparing Diagnostic Accuracy of Radiologists versus GPT-4V and Gemini Pro Vision Using Image Inputs from Diagnosis Please Cases",
+    "citation": "Suh PS, Shim WH, Suh CH, et al.. Comparing Diagnostic Accuracy of Radiologists versus GPT-4V and Gemini Pro Vision Using Image Inputs from Diagnosis Please Cases Radiology. 2024.",
+    "url": "https://doi.org/10.1148/radiol.240273",
+    "doi": "10.1148/radiol.240273",
+    "pmid": "38980179",
+    "year": 2024,
+    "evidenceType": "retrospective-diagnostic-accuracy",
+    "points": [
+     "Estudo retrospetivo de 190 casos 'Diagnosis Please' da revista Radiology (2008-2023), incluindo 17 casos musculoesqueléticos. O GPT-4V e o Gemini Pro Vision receberam as imagens originais e capturas da história clínica e das legendas das figuras (sem os achados imagiológicos). Foram-lhes pedidos três diagnósticos diferenciais, repetidos cinco vezes com temperaturas 0, 0,5 e 1. Oito radiologistas com formação subespecializada resolveram também os casos.",
+     "Com temperatura 1, a exatidão global foi de 49% (93/190) para o GPT-4V e de 39% (74/190) para o Gemini Pro Vision, face a 61% (115/190) para os radiologistas. Os radiologistas superaram o Gemini Pro Vision (P < 0,001); a diferença face ao GPT-4V não foi estatisticamente significativa após correção de Bonferroni (P = 0,02).",
+     "Os radiologistas (intervalo 45%-88%) superaram os modelos de linguagem com temperatura 1 (intervalo 24%-75%) na maioria das subespecialidades.",
+     "Um caso foi considerado correto se os diagnósticos gerados incluíssem o diagnóstico final ao fim de cinco repetições. A exatidão aumentou com a temperatura (GPT-4V 41%, 45% e 49%; Gemini Pro Vision 29%, 36% e 39% com 0, 0,5 e 1), mas a tendência não foi significativa após correção de Bonferroni."
+    ],
+    "findingIds": [],
+    "score": 26.8
+   },
+   {
+    "id": "esr2018-structured-reporting",
+    "source": "kb",
+    "title": "ESR paper on structured reporting in radiology",
+    "citation": "European Society of Radiology (ESR). ESR paper on structured reporting in radiology Insights into Imaging. 2018.",
+    "url": "https://doi.org/10.1007/s13244-017-0588-8",
+    "doi": "10.1007/s13244-017-0588-8",
+    "pmid": "29460129",
+    "year": 2018,
+    "evidenceType": "consensus/position-paper",
+    "points": [
+     "A ESR endossa a transição dos relatórios convencionais em prosa para o relatório estruturado como um desenvolvimento positivo, que deve ser um esforço internacional.",
+     "A padronização da estrutura do relatório assegura que os relatórios são completos e comparáveis. A linguagem padronizada minimiza a ambiguidade.",
+     "Os relatórios estruturados com elementos de dados-chave e parâmetros quantificados suportam funções automáticas (p. ex., estadiamento TNM), a integração com outros parâmetros clínicos, a partilha de dados (registos, biobancos) e a mineração de dados.",
+     "Uma estratégia bem-sucedida requer conteúdo e estrutura definidos, terminologias padronizadas, ferramentas e protocolos, com cooperação internacional e entre sociedades e integração com a indústria."
+    ],
+    "findingIds": [],
+    "score": 22.5
+   },
+   {
+    "id": "tannast2015-acetabular-coverage-reference",
+    "source": "kb",
+    "title": "What are the radiographic reference values for acetabular under- and overcoverage?",
+    "citation": "Tannast M, et al.. What are the radiographic reference values for acetabular under- and overcoverage? Clin Orthop Relat Res. 2015.",
+    "url": "https://doi.org/10.1007/s11999-014-4038-3",
+    "doi": "10.1007/s11999-014-4038-3",
+    "pmid": "25384429",
+    "year": 2015,
+    "evidenceType": "other",
+    "points": [
+     "Comparação retrospetiva de 11 parâmetros em radiografias AP da bacia entre ancas displásicas (26), controlos (21), com sobrecobertura (14) e com sobrecobertura grave/protrusão acetabular (25), corrigidos para orientação pélvica neutra com recurso a uma radiografia de perfil verdadeiro.",
+     "Valores de referência: ângulo centro-bordo lateral 23° a 33°, ângulo centro-bordo medial 35° a 44°, índice acetabular 3° a 13°, índice de extrusão 17% a 27%, ângulo de Sharp 38° a 42°, arco acetabular 61° a 65°, sinal do cruzamento negativo, sinal da parede posterior positivo.",
+     "Da displasia para os controlos e para a sobrecobertura, o ângulo centro-bordo lateral aumentou, enquanto o ângulo centro-bordo medial, o índice de extrusão, o índice acetabular e o ângulo de Sharp diminuíram."
+    ],
+    "findingIds": [
+     "F3"
+    ],
+    "score": 20
+   }
+  ],
+  "notebookLm": [],
+  "verification": {
+   "passed": false,
+   "issues": [
+    {
+     "severity": "error",
+     "section": "Achados — Articulações",
+     "message": "«sem osteófitos marginais exuberantes» afirma um negativo que os achados estruturados não suportam: C11 (Osteófitos marginais / coxartrose) está classificado como não avaliável. A frase também contradiz a seguinte, que diz que o grau de coxartrose não é avaliável. Substituir por «osteófitos marginais/coxartrose não avaliáveis de forma fiável nesta incidência»."
+    },
+    {
+     "severity": "warning",
+     "section": "Conclusão (ponto 2)",
+     "message": "«Há ascensão e rotação externa do fragmento femoral distal» é uma afirmação perentória, mas F2 tem certeza «consistent-with» (classe «doubtful»). Na secção Alinhamento a redação está correta («compatível com»). Alinhar a conclusão: «Aspeto compatível com ascensão e rotação externa do fragmento femoral distal…»."
+    },
+    {
+     "severity": "warning",
+     "section": "Recomendações (ponto 4)",
+     "message": "A evidência [hajmirzaian2020-occult-hip-meta] refere-se a idosos sem fratura radiográfica definida. Neste caso, o relatório descreve uma fratura deslocada e o quadro clínico é concordante (membro encurtado e em rotação externa). A condição «se o quadro clínico não concordar com a imagem» é vaga, e a citação das percentagens de fratura oculta não se aplica a esta população. Reformular, por exemplo: considerar RM apenas se a revisão médica não confirmar a fratura. Em alternativa, remover a recomendação."
+    },
+    {
+     "severity": "warning",
+     "section": "Achados — Osso (Bacia) / Conclusão (ponto 3)",
+     "message": "A referência às linhas iliopectínea e ilioisquiática e ao teto acetabular «sem descontinuidade evidente» não consta dos achados estruturados. C7 indica apenas que a fratura acetabular é improvável. Evitar este detalhe observacional, que não se rastreia até aos achados, e usar a certeza de C7 («improvável»)."
+    },
+    {
+     "severity": "warning",
+     "section": "Achados — Osso (Bacia) / Conclusão (pontos 3–4) / Recomendações",
+     "message": "Em F3, a localização é o bordo lateral do buraco obturador «(ísquio / lâmina quadrilátera)», mas o relatório omite a lâmina quadrilátera. F3 admite, embora como menos provável, um pequeno fragmento ósseo nessa região. Por isso, o negativo pertinente «não há fratura acetabular evidente» deve ter essa ressalva, e as recomendações de AP da bacia/TC devem referir explicitamente o esclarecimento de F3."
+    },
+    {
+     "severity": "info",
+     "section": "Achados — Osso",
+     "message": "A ressalva sobre uma «eventual extensão basicervical» (também repetida nas Limitações) não consta de F1, cuja localização é subcapital/transcervical. É uma ressalva prudente, mas não se rastreia até aos achados estruturados. O revisor deve confirmar se a mantém."
+    },
+    {
+     "severity": "info",
+     "section": "Conclusão (ponto 3)",
+     "message": "Os negativos trocantéricos e subtrocantéricos (C3–C5) ficariam mais rigorosos com a ressalva da sobreposição das estruturas trocantéricas registada na triagem. Acrescentar também a limitação conhecida na identificação de fraturas subtrocantéricas, que já é citada nas Limitações."
+    },
+    {
+     "severity": "info",
+     "section": "Indicação clínica",
+     "message": "«membro inferior direito encurtado»: a informação clínica não diz de que lado é o membro encurtado, apenas que há «dor inguinal direita». A inferência é razoável, mas convém manter a formulação original. A questão clínica («fratura do fémur proximal direito?») também é inferida e não foi fornecida."
+    },
+    {
+     "severity": "info",
+     "section": "Técnica",
+     "message": "[esr2018-structured-reporting] suporta o facto de a ESR endossar o relatório estruturado, não que este relatório siga um modelo da ESR. Reformular a frase ou retirar a citação da secção Técnica."
+    },
+    {
+     "severity": "info",
+     "section": "Recomendações (ponto 5) / Limitações",
+     "message": "[ganor2026-mllm-hip-fracture-confidence] avaliou apenas dois modelos (GPT-5.4 e Gemini), numa coorte só com fraturas. Generalizar para «os modelos multimodais de uso geral» é ligeiramente excessivo. O mesmo vale para [suh2024-gpt4v-gemini-diagnosis-please]: os valores de 49%, 39% e 61% referem-se ao GPT-4V e ao Gemini Pro Vision, com temperatura 1 e três diagnósticos diferenciais em cinco repetições."
+    },
+    {
+     "severity": "info",
+     "section": "Estilo",
+     "message": "«Pertinentes negativos» é decalque do inglês; preferir «Negativos pertinentes». «Em casos de diagnóstico complexos» deve passar a «Em casos diagnósticos complexos». «Não há material de osteossíntese» aparece duas vezes (Osso e Partes moles). A Técnica também repete que foi avaliada 1 imagem."
+    }
+   ]
+  }
+ },
+ "report": {
+  "language": "pt-PT",
+  "clinicalIndication": "Doente do sexo feminino, 81 anos, com queda da própria altura. Apresenta dor inguinal direita, incapacidade de carga e membro inferior direito encurtado e em rotação externa. Questão clínica: fratura do fémur proximal direito? Prioridade: urgente.",
+  "technique": "Radiografia simples da anca direita em incidência anteroposterior (AP) única. Foi avaliada 1 imagem, que é uma fotografia de película radiográfica e não a imagem DICOM original. Tem régua graduada no bordo esquerdo e marcador de lado \"DROIT\", concordante com a anatomia. Não há incidência axial/perfil (cross-table lateral). A cobertura limita-se ao fémur proximal e a parte da hemibacia direita. A qualidade da imagem é limitada. A análise foi assistida por um modelo de visão-linguagem, que avaliou 1 imagem (1 incidência). Os achados descritos são sugestões automáticas, pendentes de revisão e validação por médico. O relatório segue um formato estruturado [esr2018-structured-reporting].",
+  "comparison": "Sem exames prévios disponíveis para comparação.",
+  "findingsByRegion": [
+   {
+    "heading": "Alinhamento",
+    "text": "O fémur proximal direito está ascendido e a linha de Shenton está interrompida. O pequeno trocânter projeta-se de forma proeminente no bordo medial do fémur proximal e a crista intertrocantérica vê-se sobre o maciço trocantérico. Este aspeto é compatível com encurtamento e rotação externa do fragmento femoral distal e concorda com o membro encurtado e em rotação externa descrito clinicamente. Parte da rotação é possivelmente posicional. A cabeça femoral mantém-se contida no acetábulo, sem luxação coxofemoral."
+   },
+   {
+    "heading": "Osso",
+    "text": "Colo do fémur direito: o colo femoral não se individualiza. A região trocantérica e a diáfise estão ascendidas e sobrepostas à base da cabeça femoral. Entre ambas há uma zona de transição irregular e mosqueada, com degrau cortical no bordo superior e externo e espícula cortical na vertente inferior e medial, junto ao rebordo acetabular inferior. O aspeto é compatível com fratura deslocada do colo do fémur direito, de localização subcapital/transcervical. A localização exata do traço, incluindo a eventual extensão basicervical, não é determinável com segurança nesta incidência. Classificação: deslocada (Garden III–IV). A distinção entre Garden III e IV exige avaliar o alinhamento trabecular cefálico com o acetábulo, o que não é fiável nesta fotografia de incidência única. A classificação simplificada em 2 estádios (não deslocada/deslocada) mostrou melhor reprodutibilidade interobservador do que a classificação de Garden em 4 estádios [masionis2019-garden-reliability].\nRestante fémur proximal: não há fratura visível do grande ou do pequeno trocânter nem da região subtrocantérica/diáfise proximal. Fratura intertrocantérica improvável.\nCabeça femoral: contorno regular, sem colapso subcondral nem sinal do crescente. Sinais de necrose avascular improváveis.\nBacia (porção incluída): as linhas iliopectínea e ilioisquiática e o teto acetabular não mostram descontinuidade evidente. Não há fratura visível dos ramos púbicos. Há uma pequena densidade linear paralela e adjacente à cortical do bordo lateral do buraco obturador direito, com a cortical subjacente aparentemente contínua. Pode corresponder a calcificação ou a artefacto da película; um pequeno fragmento ósseo é menos provável. O significado clínico provável é reduzido. O sacro não está incluído no campo.\nNão há lesões ósseas líticas ou escleróticas focais evidentes que sugiram fratura patológica, embora a avaliação seja limitada pela sobreposição dos fragmentos. Não há reação periosteal. A densidade óssea não é avaliável de forma fiável nesta fotografia de película. Não há material de osteossíntese."
+   },
+   {
+    "heading": "Articulações",
+    "text": "Coxofemoral direita: a cabeça femoral está contida no acetábulo, sem luxação. A interlinha articular superior está globalmente preservada, sem osteófitos marginais exuberantes. O grau de coxartrose e uma eventual morfologia de conflito femoroacetabular (cam/pincer) não são avaliáveis de forma fiável nesta incidência. As articulações sacroilíacas e a sínfise púbica não estão incluídas e não são avaliáveis."
+   },
+   {
+    "heading": "Partes moles",
+    "text": "Não há gás nem corpos estranhos nos tecidos moles. A tumefação e as calcificações dos tecidos moles não são avaliáveis de forma fiável na fotografia de película. Não há material de osteossíntese nem complicações associadas."
+   }
+  ],
+  "impression": [
+   "Achados compatíveis com fratura deslocada do colo do fémur direito (subcapital/transcervical), Garden III–IV, ou seja, \"deslocada\" na classificação simplificada. Isto responde afirmativamente à questão clínica. É um achado crítico, a comunicar com urgência ao médico assistente.",
+   "Há ascensão e rotação externa do fragmento femoral distal, com pequeno trocânter proeminente e linha de Shenton interrompida, o que concorda com o membro encurtado e em rotação externa. Parte da rotação é possivelmente posicional.",
+   "Pertinentes negativos: não há luxação coxofemoral nem fratura trocantérica ou subtrocantérica visível. Na porção incluída, não há fratura acetabular nem dos ramos púbicos evidente. Não há sinais de fratura patológica (avaliação limitada pela sobreposição).",
+   "Pequena densidade linear junto ao bordo lateral do buraco obturador direito, de significado indeterminado: possível calcificação ou artefacto da película; pequeno fragmento ósseo menos provável.",
+   "O estudo é limitado: AP única, fotografia de película, sem perfil e sem AP da bacia. Não é possível determinar a distinção entre Garden III e IV, a localização exata do traço nem uma eventual cominução posterior. Não se excluem fraturas pélvicas ou acetabulares ocultas."
+  ],
+  "recommendations": [
+   "Comunicar de imediato o achado crítico ao médico assistente/equipa de urgência e referenciar com urgência a Ortopedia.",
+   "Completar o estudo radiográfico com incidência axial/perfil (cross-table lateral) da anca direita e AP da bacia, incluindo a anca contralateral para comparação. Estas incidências permitem caracterizar o deslocamento, a localização do traço e uma eventual cominução posterior, e avaliar o anel pélvico.",
+   "Ponderar TC da anca/bacia se for necessária caracterização adicional do deslocamento ou da cominução, ou se houver suspeita clínica de fratura pélvica ou acetabular associada que a radiografia não esclareça.",
+   "Se o quadro clínico não concordar com a imagem, considerar imagiologia avançada, preferencialmente RM. Em idosos com suspeita clínica de fratura da anca sem fratura radiográfica definida, a fratura cirúrgica oculta foi frequente: 39% no global e 44% a partir dos 80 anos [hajmirzaian2020-occult-hip-meta].",
+   "Um radiologista deve validar os achados sugeridos antes de qualquer uso clínico, porque os modelos multimodais de uso geral mostram frequentemente confiança elevada quando erram [ganor2026-mllm-hip-fracture-confidence]."
+  ],
+  "limitations": "A incidência AP é única e foi obtida a partir de fotografia de película (não DICOM), com o membro em rotação externa e sobreposição dos fragmentos. Faltam a incidência axial/perfil e uma AP da bacia com a anca contralateral para comparação. O sacro, as articulações sacroilíacas e a sínfise púbica não estão incluídos.\n\nNão é possível distinguir com segurança Garden III de IV, determinar a localização exata do traço (subcapital, transcervical ou basicervical) nem avaliar uma eventual cominução posterior. A densidade óssea, o grau de coxartrose e as partes moles também não são avaliáveis de forma fiável. Não se podem excluir fraturas pélvicas ou acetabulares ocultas. A classificação de Garden em 4 estádios tem fraca reprodutibilidade interobservador, mesmo com incidências AP e perfil [masionis2019-garden-reliability].\n\nA análise foi assistida por um modelo de visão-linguagem, que pode omitir achados subtis. Nestes modelos, a confiança autorreportada não distingue de forma fiável as respostas corretas das incorretas, e a classificação AO/OTA e a identificação de fraturas subtrocantéricas mantêm-se limitadas [ganor2026-mllm-hip-fracture-confidence]. Em casos de diagnóstico complexos, a exatidão de modelos multimodais de uso geral foi numericamente inferior à de radiologistas: 49% e 39%, face a 61% [suh2024-gpt4v-gemini-diagnosis-please]. Todos os achados são sugestões automáticas pendentes de revisão e têm de ser validados por um médico.",
+  "citations": [
+   {
+    "evidenceId": "esr2018-structured-reporting",
+    "statement": "O relatório segue um formato estruturado, que a ESR endossa por assegurar relatórios completos e comparáveis."
+   },
+   {
+    "evidenceId": "masionis2019-garden-reliability",
+    "statement": "A classificação simplificada em 2 estádios (não deslocada/deslocada) mostrou melhor reprodutibilidade interobservador do que a classificação de Garden em 4 estádios."
+   },
+   {
+    "evidenceId": "masionis2019-garden-reliability",
+    "statement": "A classificação de Garden em 4 estádios tem fraca reprodutibilidade interobservador, mesmo com incidências AP e perfil."
+   },
+   {
+    "evidenceId": "hajmirzaian2020-occult-hip-meta",
+    "statement": "Em idosos com suspeita clínica de fratura da anca sem fratura radiográfica definida, a fratura cirúrgica oculta foi frequente (39% no global, 44% a partir dos 80 anos), e a imagiologia avançada, preferencialmente RM, pode ser apropriada."
+   },
+   {
+    "evidenceId": "ganor2026-mllm-hip-fracture-confidence",
+    "statement": "Os modelos multimodais de uso geral mostram frequentemente confiança elevada quando erram, e a confiança autorreportada não distingue de forma fiável as respostas corretas das incorretas. Isto justifica a validação por radiologista."
+   },
+   {
+    "evidenceId": "ganor2026-mllm-hip-fracture-confidence",
+    "statement": "Nestes modelos, a classificação AO/OTA e a identificação de fraturas subtrocantéricas mantêm-se limitadas."
+   },
+   {
+    "evidenceId": "suh2024-gpt4v-gemini-diagnosis-please",
+    "statement": "Em casos de diagnóstico complexos, a exatidão de modelos multimodais de uso geral foi numericamente inferior à de radiologistas (49% e 39%, face a 61%)."
+   }
+  ],
+  "status": "draft",
+  "generatedBy": "Claude (API Anthropic) · claude-opus-5-5 · pré-calculado",
+  "generatedAt": "2026-10-27T23:00:00.000Z",
+  "editedByClinician": false
+ }
+}

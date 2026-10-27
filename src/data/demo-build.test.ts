@@ -97,7 +97,9 @@ describe.skipIf(!MODE)('demo analyses', () => {
   })
 
   it.runIf(MODE === 'assemble')('assembles public/demo/analyses/*.json', () => {
-    const b = load<{ id: string; result: { report: unknown; verify: unknown } }[]>(`${DIR}/stageB-output.json`)
+    // Prefer the revision round (stage C) when it exists: revised report + independent re-verification.
+    const stageC = existsSync(`${DIR}/stageC-output.json`)
+    const b = load<{ id: string; result: { report: unknown; verify: unknown; revisedIssues?: number } }[]>(`${DIR}/${stageC ? 'stageC' : 'stageB'}-output.json`)
     mkdirSync('public/demo/analyses', { recursive: true })
     for (const c of inputs) {
       const rb = b.find((x) => x.id === c.id)?.result
@@ -119,6 +121,7 @@ describe.skipIf(!MODE)('demo analyses', () => {
         generatedBy: `Claude (API Anthropic) · ${MODEL} · pré-calculado`,
         generatedAt: FINISHED,
         editedByClinician: false,
+        revisedAfterVerification: (rb.revisedIssues ?? 0) > 0 || undefined,
       }
       const issues = [...citationIssues(report, evidence, 'pt-PT'), ...vo.issues]
       const nMain = findings.filter((f) => f.group !== 'checklist').length
@@ -136,13 +139,18 @@ describe.skipIf(!MODE)('demo analyses', () => {
           stage('findings', `${nMain} achado(s) · ${findings.length - nMain} item(ns) da lista de verificação`),
           stage('evidence', `${evidence.length} referência(s) da base curada`),
           stage('report', `${report.impression.length} ponto(s) na conclusão · protocolo ${PROMPT_VERSION}`),
-          stage('verify', issues.length ? `${issues.length} observação(ões)` : 'Sem problemas detetados'),
+          stage(
+            'verify',
+            `${rb.revisedIssues ? `${rb.revisedIssues} problema(s) corrigido(s) automaticamente; ` : ''}${
+              issues.filter((i) => i.severity !== 'info').length ? `${issues.filter((i) => i.severity !== 'info').length} observação(ões) por rever` : 'sem problemas relevantes'
+            }`,
+          ),
         ],
         triage,
         findings,
         evidence,
         notebookLm: [],
-        verification: { passed: vo.passed && issues.every((i) => i.severity !== 'error'), issues },
+        verification: { passed: vo.passed && issues.every((i) => i.severity !== 'error'), issues, revisedIssues: rb.revisedIssues || undefined },
       }
       void a
       writeFileSync(`public/demo/analyses/${c.id}.json`, JSON.stringify({ analysis, report }, null, 1))

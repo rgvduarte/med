@@ -20,8 +20,8 @@ import { queryNotebook } from '../evidence/notebook'
 import { MODALITY_LABEL, REGION_LABEL } from '../labels'
 import { formatTime, nowIso } from '../util'
 import { createProvider, type ContentPart, type VlmProvider } from './providers'
-import { FindingsSchema, ReportSchema, TriageSchema, VerifySchema, type FindingsOut, type TriageOut } from './schemas'
-import { PROMPT_VERSION, findingsSystem, reportSystem, triageSystem, verifySystem } from './prompts'
+import { FindingsSchema, ReportSchema, TriageSchema, VerifySchema, type FindingsOut, type ReportOut, type TriageOut } from './schemas'
+import { PROMPT_VERSION, findingsSystem, reportRevisionSystem, reportSystem, triageSystem, verifySystem } from './prompts'
 
 export const STAGES: StageId[] = ['preprocess', 'triage', 'findings', 'evidence', 'report', 'verify']
 const MAX_IMAGES = 20
@@ -270,6 +270,25 @@ function findingsForPrompt(findings: Finding[]) {
     }))
 }
 
+function toReport(o: ReportOut, model: string, indication: string, providerLabel: string, lang: ReportLanguage): Report {
+  return {
+    language: lang,
+    clinicalIndication: o.clinical_indication || indication,
+    technique: o.technique,
+    comparison: o.comparison,
+    findingsByRegion: o.findings_sections,
+    impression: o.conclusion,
+    recommendations: o.recommendations,
+    limitations: o.limitations,
+    citations: o.citations.map((x) => ({ evidenceId: x.evidence_id, statement: x.statement })),
+    status: 'draft',
+    generatedBy: `${providerLabel} · ${model}`,
+    generatedAt: nowIso(),
+    editedByClinician: false,
+    aiDeclaration: AI_DECLARATION[lang](model),
+  }
+}
+
 const AI_DECLARATION: Record<ReportLanguage, (model: string) => string> = {
   'pt-PT': (m) =>
     `Este relatório foi pré-redigido por um modelo de visão-linguagem (${m}; protocolo ${PROMPT_VERSION}) numa plataforma de investigação que não é um dispositivo médico. Os achados e o texto exigem revisão e validação por um médico.`,
@@ -463,48 +482,30 @@ async function run(caseId: string, ctrl: AbortController) {
     // 5. Report synthesis
     begin('report', 'Redação do relatório estruturado…')
     const c1 = getCase(caseId)
+    const reportInput = [
+      caseContext(c1),
+      `Triage: ${JSON.stringify(triage)}`,
+      `Images assessed: ${images.length}${totalFrames > images.length ? ` of ${totalFrames}` : ''}`,
+      `Structured findings: ${JSON.stringify(findingsForPrompt(findings))}`,
+      `Pertinent negatives: ${JSON.stringify(fo.data.pertinent_negatives)}`,
+      `Assessment limitations: ${fo.data.limitations}`,
+      `Evidence (cite only these ids):\n${evidenceBlock(evidence, lang)}`,
+    ].join('\n\n')
+    const reportEffort = settings.effort === 'low' ? 'low' : 'medium'
     const ro = await provider.generate({
       system: reportSystem(lang),
-      parts: [
-        {
-          type: 'text',
-          text: [
-            caseContext(c1),
-            `Triage: ${JSON.stringify(triage)}`,
-            `Images assessed: ${images.length}${totalFrames > images.length ? ` of ${totalFrames}` : ''}`,
-            `Structured findings: ${JSON.stringify(findingsForPrompt(findings))}`,
-            `Pertinent negatives: ${JSON.stringify(fo.data.pertinent_negatives)}`,
-            `Assessment limitations: ${fo.data.limitations}`,
-            `Evidence (cite only these ids):\n${evidenceBlock(evidence, lang)}`,
-          ].join('\n\n'),
-        },
-      ],
+      parts: [{ type: 'text', text: reportInput }],
       schema: ReportSchema,
-      effort: settings.effort === 'low' ? 'low' : 'medium',
+      effort: reportEffort,
       signal,
       onProgress: progress('report', 'A redigir'),
     })
-    const report: Report = {
-      language: lang,
-      clinicalIndication: ro.data.clinical_indication || c1.indication,
-      technique: ro.data.technique,
-      comparison: ro.data.comparison,
-      findingsByRegion: ro.data.findings_sections,
-      impression: ro.data.conclusion,
-      recommendations: ro.data.recommendations,
-      limitations: ro.data.limitations,
-      citations: ro.data.citations.map((x) => ({ evidenceId: x.evidence_id, statement: x.statement })),
-      status: 'draft',
-      generatedBy: `${provider.label} · ${ro.model}`,
-      generatedAt: nowIso(),
-      editedByClinician: false,
-      aiDeclaration: AI_DECLARATION[lang](ro.model),
-    }
+    let report = toReport(ro.data, ro.model, c1.indication, provider.label, lang)
     store().updateCase(caseId, { report })
     finish('report', `${report.impression.length} ponto(s) na conclusão`, ro.usage)
 
-    // 6. Verification (second reader)
-    const issues = citationIssues(report, evidence, lang)
+    // 6. Verification (second reader), with one automatic revision round when it finds problems
+    let issues = citationIssues(report, evidence, lang)
     if (provider.local) {
       setStage(caseId, 'verify', {
         status: 'skipped',
@@ -516,37 +517,72 @@ async function run(caseId: string, ctrl: AbortController) {
       return
     }
     begin('verify', 'Verificação de consistência e citações…')
-    const vo = await provider.generate({
-      system: verifySystem(lang),
-      parts: [
-        {
-          type: 'text',
-          text: [
-            `Clinical information: ${c1.indication || 'not provided'}`,
-            `Triage: ${JSON.stringify(triage)}`,
-            `Structured findings: ${JSON.stringify(findingsForPrompt(findings))}`,
-            `Evidence ids available: ${evidence.map((e) => e.id).join(', ') || 'none'}`,
-            `Evidence:\n${evidenceBlock(evidence, lang)}`,
-            `Report to audit: ${JSON.stringify(report)}`,
-          ].join('\n\n'),
-        },
-      ],
-      schema: VerifySchema,
-      effort: settings.effort === 'low' ? 'low' : 'medium',
-      signal,
-    })
-    const allIssues = [...issues, ...vo.data.issues]
+    const verifyEffort = settings.effort === 'low' ? 'low' : 'medium'
+    const audit = (r: Report) =>
+      provider.generate({
+        system: verifySystem(lang),
+        parts: [
+          {
+            type: 'text',
+            text: [
+              `Clinical information: ${c1.indication || 'not provided'}`,
+              `Triage: ${JSON.stringify(triage)}`,
+              `Structured findings: ${JSON.stringify(findingsForPrompt(findings))}`,
+              `Evidence ids available: ${evidence.map((e) => e.id).join(', ') || 'none'}`,
+              `Evidence:\n${evidenceBlock(evidence, lang)}`,
+              `Report to audit: ${JSON.stringify(r)}`,
+            ].join('\n\n'),
+          },
+        ],
+        schema: VerifySchema,
+        effort: verifyEffort,
+        signal,
+      })
+    let vo = await audit(report)
+    let usage = vo.usage
+    let allIssues = [...issues, ...vo.data.issues]
+    const toFix = allIssues.filter((i) => i.severity !== 'info')
+    let revisedCount = 0
+    if (toFix.length) {
+      setStage(caseId, 'verify', { message: `A corrigir ${toFix.length} problema(s) apontado(s) pelo segundo leitor…` })
+      const rv = await provider.generate({
+        system: reportRevisionSystem(lang),
+        parts: [
+          {
+            type: 'text',
+            text: [reportInput, `Previous draft: ${JSON.stringify(ro.data)}`, `Second-reader issues to fix: ${JSON.stringify(toFix)}`].join('\n\n'),
+          },
+        ],
+        schema: ReportSchema,
+        effort: reportEffort,
+        signal,
+        onProgress: progress('verify', 'A rever o relatório'),
+      })
+      report = { ...toReport(rv.data, rv.model, c1.indication, provider.label, lang), revisedAfterVerification: true }
+      store().updateCase(caseId, { report })
+      revisedCount = toFix.length
+      setStage(caseId, 'verify', { message: 'Nova verificação do relatório corrigido…' })
+      issues = citationIssues(report, evidence, lang)
+      vo = await audit(report)
+      usage = addUsage(addUsage(usage, rv.usage), vo.usage)
+      allIssues = [...issues, ...vo.data.issues]
+    }
     patchAnalysis(caseId, () => ({
-      verification: { passed: vo.data.passed && issues.length === 0, issues: allIssues },
+      verification: { passed: vo.data.passed && issues.length === 0, issues: allIssues, revisedIssues: revisedCount || undefined },
       finishedAt: nowIso(),
     }))
-    finish('verify', allIssues.length ? `${allIssues.length} observação(ões)` : 'Sem problemas detetados', vo.usage)
+    const residual = allIssues.filter((i) => i.severity !== 'info').length
+    finish(
+      'verify',
+      `${revisedCount ? `${revisedCount} problema(s) corrigido(s) automaticamente; ` : ''}${residual ? `${residual} observação(ões) por rever` : 'sem problemas relevantes'}`,
+      usage,
+    )
 
     store().updateCase(caseId, { status: 'analysed' })
     store().audit(caseId, {
       actor: 'ai',
       action: 'Análise concluída',
-      detail: `${nMain} achado(s), ${evidence.length} evidência(s), relatório em rascunho`,
+      detail: `${nMain} achado(s), ${evidence.length} evidência(s), relatório em rascunho${revisedCount ? ' (revisto após verificação)' : ''}`,
     })
   } catch (e) {
     const cancelled = e instanceof Cancelled || (e instanceof DOMException && e.name === 'AbortError') || signal.aborted
