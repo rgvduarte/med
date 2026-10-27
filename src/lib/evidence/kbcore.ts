@@ -113,13 +113,14 @@ export function retrieveFrom(KB: KbEntry[], findings: Finding[], triage: Triage 
     } else byId.set(e.id, toItem(e, lang, fid ? [fid] : [], score))
   }
   for (const f of findings) {
-    if (f.cls === 'negative' || f.status === 'rejected') continue
+    if (f.group === 'checklist' || f.cls === 'negative' || f.status === 'rejected') continue
     const q = findingQuery(f)
     const ranked = KB.map((e) => [e, scoreEntry(e, q, triage?.region, triage?.modality)] as const)
       .filter(([, s]) => s >= 6)
       .sort((a, b) => b[1] - a[1])
-      .slice(0, perFinding)
-    for (const [e, s] of ranked) add(e, f.id, s)
+    // Keep the strongest matches only: a long tail of weak keyword overlaps reads as noise to clinicians.
+    const top = ranked[0]?.[1] ?? 0
+    for (const [e, s] of ranked.filter(([, s]) => s >= top * 0.4).slice(0, perFinding)) add(e, f.id, s)
   }
   const methodQ = tokens('vision language model multimodal large language model radiology accuracy hallucination automation bias structured reporting')
   KB.filter((e) => e.regions.includes('any'))
