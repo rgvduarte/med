@@ -57,7 +57,7 @@ export const FindingsSchema = z.object({
               bbox: z
                 .object({ x: z.number(), y: z.number(), w: z.number(), h: z.number() })
                 .nullable()
-                .describe('approximate box, normalised 0–1 relative to that image (x,y = top-left). null if diffuse or not localisable'),
+                .describe('approximate box in PIXELS of that image as sent (its width×height is given in its caption); x,y = top-left corner. null if diffuse or not localisable'),
             }),
           )
           .describe('images where the finding is visible'),

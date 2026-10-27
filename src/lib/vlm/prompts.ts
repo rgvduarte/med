@@ -54,7 +54,8 @@ ${REGION_CHECKLIST[region]}${peds}
 
 Output rules:
 - "checklist": include EVERY checklist item above that applies to this region/modality with result present / absent / indeterminate. Absent items are important (pertinent negatives).
-- "findings": only positive or uncertain findings. For each, explain the visual evidence, give calibrated certainty, clinical severity, confidence, and the image numbers where it is visible with an approximate bounding box (normalised 0–1, x/y = top-left corner). Use null when a box would be misleading (diffuse findings).
+- "findings": only positive or uncertain findings. For each, explain the visual evidence, give calibrated certainty, clinical severity, confidence, and the image numbers where it is visible with an approximate bounding box in pixel coordinates of that image (x/y = top-left corner; each image's width×height is in its caption). Use null when a box would be misleading (diffuse findings).
+- Let the clinical question focus your attention, but never let it create a finding that the pixels do not show.
 - Only use a classification system when the images actually support grading it.
 - "evidence_query": English terms a librarian would use to find guidelines and diagnostic-accuracy studies for this finding.
 - Write every human-readable string in ${LANGUAGE_NAME[lang]}; evidence_query stays in English.

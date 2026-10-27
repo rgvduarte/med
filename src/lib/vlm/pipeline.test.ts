@@ -8,9 +8,9 @@ import type { FindingsOut } from './schemas'
 import type { EvidenceItem, Report } from '../../types'
 
 const images: ImageRef[] = [
-  { number: 1, seriesId: 's1', frameIndex: 0, caption: '', part: { type: 'text', text: '' } },
-  { number: 2, seriesId: 's2', frameIndex: 0, caption: '', part: { type: 'text', text: '' } },
-  { number: 3, seriesId: 's2', frameIndex: 3, caption: '', part: { type: 'text', text: '' } },
+  { number: 1, seriesId: 's1', frameIndex: 0, width: 1000, height: 500, caption: '', part: { type: 'text', text: '' } },
+  { number: 2, seriesId: 's2', frameIndex: 0, width: 800, height: 600, caption: '', part: { type: 'text', text: '' } },
+  { number: 3, seriesId: 's2', frameIndex: 3, width: 800, height: 600, caption: '', part: { type: 'text', text: '' } },
 ]
 
 const base = {
@@ -33,7 +33,7 @@ describe('toFindings', () => {
         { item: 'Arcos de Gilula', result: 'indeterminate' },
       ],
       findings: [
-        { ...base, label: 'Fratura do escafoide', certainty: 'consistent-with', confidence: 'high', locations: [{ image_number: 1, bbox: { x: 0.9, y: -0.1, w: 0.5, h: 0.3 } }] },
+        { ...base, label: 'Fratura do escafoide', certainty: 'consistent-with', confidence: 'high', locations: [{ image_number: 1, bbox: { x: 900, y: -50, w: 500, h: 150 } }] },
         { ...base, label: 'Possível fratura', certainty: 'possible', confidence: 'moderate', locations: [{ image_number: 99, bbox: null }] },
         { ...base, label: 'Quisto', certainty: 'unlikely', confidence: 'low', severity: 'minor', relevant_to_question: false, locations: [] },
       ],

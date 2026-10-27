@@ -1,5 +1,5 @@
 import Anthropic from '@anthropic-ai/sdk'
-import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod'
+import { betaZodOutputFormat } from '@anthropic-ai/sdk/helpers/beta/zod'
 import * as z from 'zod'
 import type { TokenUsage } from '../../types'
 import type { Effort, Settings } from '../../store/settings'
@@ -65,16 +65,23 @@ export class AnthropicProvider implements VlmProvider {
     const content: Anthropic.Beta.BetaContentBlockParam[] = req.parts.map((p) =>
       p.type === 'text'
         ? { type: 'text', text: p.text }
-        : { type: 'image', source: { type: 'base64', media_type: p.mediaType, data: p.base64 } },
+        : {
+            type: 'image',
+            source: { type: 'base64', media_type: p.mediaType, data: p.base64 },
+            // Images are resized locally; never let the server rescale them, so boxes map 1:1.
+            transformations: { oversized_image: 'error' },
+          },
     )
     const useFallback = FALLBACK_MODELS.has(this.model)
+    // Strip the helper's auto-parse: it throws on refusals/truncation before stop_reason can be read.
+    const { type, schema } = betaZodOutputFormat(req.schema)
     try {
       const stream = this.client.beta.messages.stream(
         {
           model: this.model,
           max_tokens: req.maxTokens ?? 32000,
           thinking: { type: 'adaptive' },
-          output_config: { effort: req.effort ?? this.defaultEffort, format: zodOutputFormat(req.schema) },
+          output_config: { effort: req.effort ?? this.defaultEffort, format: { type, schema } },
           system: req.system,
           messages: [{ role: 'user', content }],
           ...(useFallback ? { betas: ['server-side-fallback-2026-07-01'], fallbacks: 'default' as const } : {}),
@@ -84,12 +91,34 @@ export class AnthropicProvider implements VlmProvider {
       if (req.onProgress) stream.on('text', (_delta, snapshot) => req.onProgress?.(snapshot.length))
       const msg = await stream.finalMessage()
       if (msg.stop_reason === 'refusal') {
-        throw new Error('O modelo recusou este pedido (filtro de segurança). Reveja as imagens ou tente outro modelo.')
+        const cat = msg.stop_details?.category
+        throw new Error(`O modelo recusou este pedido${cat ? ` (categoria: ${cat})` : ''}. Reveja as imagens ou tente outro modelo.`)
       }
-      if (msg.stop_reason === 'max_tokens') throw new Error('A resposta do modelo foi truncada (limite de tokens). Tente um esforço menor.')
-      if (msg.parsed_output == null) throw new Error('O modelo não devolveu dados estruturados válidos.')
+      if (msg.stop_reason === 'max_tokens') throw new Error('A resposta do modelo foi truncada (limite de tokens). Tente um esforço menor ou menos imagens.')
+      if (msg.stop_reason === 'model_context_window_exceeded') throw new Error('Demasiadas imagens para o contexto do modelo. Reduza o número de imagens.')
+      // After a server-side fallback, only the text after the last fallback block belongs to the answer.
+      const lastFallback = msg.content.map((b) => b.type).lastIndexOf('fallback')
+      const text = msg.content
+        .slice(lastFallback + 1)
+        .map((b) => (b.type === 'text' ? b.text : ''))
+        .join('')
+      let json: unknown
+      try {
+        json = JSON.parse(text)
+      } catch {
+        throw new Error('O modelo não devolveu JSON válido.')
+      }
+      const parsed = req.schema.safeParse(json)
+      if (!parsed.success) {
+        throw new Error(
+          `Resposta do modelo fora do esquema: ${parsed.error.issues
+            .slice(0, 3)
+            .map((i) => `${i.path.join('.')}: ${i.message}`)
+            .join('; ')}`,
+        )
+      }
       return {
-        data: msg.parsed_output as T,
+        data: parsed.data,
         model: msg.model,
         usage: {
           inputTokens: msg.usage.input_tokens + (msg.usage.cache_read_input_tokens ?? 0) + (msg.usage.cache_creation_input_tokens ?? 0),
