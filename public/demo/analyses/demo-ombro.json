@@ -47,7 +47,7 @@
     "status": "done",
     "startedAt": "2026-10-27T23:00:00.000Z",
     "finishedAt": "2026-10-27T23:00:00.000Z",
-    "message": "11 observação(ões)"
+    "message": "6 problema(s) corrigido(s) automaticamente; sem problemas relevantes"
    }
   ],
   "triage": {
@@ -486,71 +486,52 @@
   ],
   "notebookLm": [],
   "verification": {
-   "passed": false,
+   "passed": true,
    "issues": [
-    {
-     "severity": "error",
-     "section": "Conclusão (3) / Achados – Osso [rutgers2022-hillsachs-bankart-prevalence]",
-     "message": "A conclusão diz que as lesões de Bankart óssea são frequentes e cita Rutgers 2022, mas esta fonte não sustenta essa afirmação. Os 59% referem-se a lesões de Bankart em geral, na maioria labrais. Na evidência, o Bankart ósseo aparece à parte e sem valor de prevalência. Em Osso, os 59% surgem logo a seguir à frase sobre o Bankart ósseo e parecem aplicar-se a ele. Sugestão: escrever 'lesão de Bankart (labral ou óssea)' ou não usar esta citação para a componente óssea."
-    },
-    {
-     "severity": "warning",
-     "section": "Conclusão (1)",
-     "message": "A conclusão afirma 'Luxação glenoumeral anterior esquerda' sem qualquer reserva, mas a certeza de F1 é 'consistent-with'. A secção Alinhamento usa corretamente 'compatível com'. Sugestão: 'Aspeto compatível com luxação glenoumeral anterior esquerda, de tipo subcoracoide'."
-    },
-    {
-     "severity": "warning",
-     "section": "Conclusão (2)",
-     "message": "A frase 'Não há fratura deslocada associada do úmero proximal [...] nem da grande tuberosidade' é categórica, mas C4 e C5 têm certeza 'unlikely' e os Achados dizem 'improvável'. Deve usar-se 'improvável', para ser coerente com os Achados. Isto importa porque a decisão sobre a redução depende deste ponto."
-    },
-    {
-     "severity": "warning",
-     "section": "Conclusão (4)",
-     "message": "A frase 'Não há fratura da clavícula, do acrómio nem da coracoide' exagera a certeza de C6 e C8, que é 'unlikely'. Também alarga o local: os Achados falam só da 'clavícula distal', e a triagem diz que a articulação acromioclavicular fica no limite superior do campo, pelo que a clavícula pode não estar toda visível. Sugestão: usar 'improvável' e limitar à parte visível da clavícula."
-    },
-    {
-     "severity": "warning",
-     "section": "Achados – Articulações",
-     "message": "O relatório considera a osteoartrose improvável por não haver 'redução da entrelinha'. Porém, com a cabeça umeral luxada, a entrelinha glenoumeral não pode ser avaliada, como o próprio relatório admite para o intervalo acromio-umeral. Sugestão: retirar a referência à entrelinha ou acrescentar esta ressalva."
-    },
-    {
-     "severity": "warning",
-     "section": "Limitações / Citações [suh2024-gpt4v-gemini-diagnosis-please]",
-     "message": "O relatório diz que os dois modelos tiveram exatidão inferior à dos radiologistas, mas só a diferença face ao Gemini Pro Vision foi significativa. A diferença face ao GPT-4V (P = 0,02) deixou de ser significativa após correção de Bonferroni. Faltam também ressalvas: os valores são com temperatura 1, contava como acerto incluir o diagnóstico em três diferenciais, e só 17 casos eram musculoesqueléticos. 'Modelos deste tipo' estende o resultado ao modelo desta aplicação sem fundamento. Sugestão: reformular com estas ressalvas."
-    },
-    {
-     "severity": "info",
-     "section": "Técnica [esr2018-structured-reporting]",
-     "message": "A frase 'segue a estrutura de relatório estruturado recomendada pela ESR' vai além da fonte. O documento da ESR apoia o relatório estruturado em geral, mas não define um modelo para a radiografia do ombro. Sugestão: 'segue os princípios de relatório estruturado endossados pela ESR'."
-    },
-    {
-     "severity": "info",
-     "section": "Recomendações (4) [vopat2021-hillsachs-imaging-sr]",
-     "message": "A recomendação propõe TC também para lesão óssea da glenoide, mas a evidência de Vopat 2021 trata apenas das lesões de Hill-Sachs. O texto da citação está bem delimitado, mas não deve ser usado para justificar a TC na avaliação da perda óssea glenoideia."
-    },
-    {
-     "severity": "info",
-     "section": "Achados – Osso",
-     "message": "C4 e C5 não distinguem fratura deslocada de fratura não deslocada. O relatório acrescenta essa distinção e a ressalva de que uma fratura não deslocada não pode ser excluída. É uma ressalva prudente e coerente com as limitações, mas não consta dos achados estruturados, pelo que o médico deve confirmá-la na revisão."
-    },
-    {
-     "severity": "info",
-     "section": "Achados – Osso / Partes moles",
-     "message": "Vários achados negativos com certeza 'unlikely' estão escritos de forma categórica, por exemplo 'A densidade óssea não está alterada', 'Não há lesão óssea focal', 'Não há gás, corpo estranho...'. É prática corrente, mas 'sem evidência de' seria mais coerente com C10–C15."
-    },
     {
      "severity": "info",
      "section": "Indicação clínica",
-     "message": "'Ao exame, perdeu o contorno deltoideu' é uma redação ambígua; é preferível 'perda do contorno deltoideu (sinal da dragona)'. As 'questões clínicas' foram deduzidas pela aplicação e não constam do pedido. São razoáveis, mas convém apresentá-las como presumidas. Não há dados identificativos nem história clínica inventada."
+     "message": "A informação clínica não formula as questões clínicas («há luxação glenoumeral? Há fratura associada?»); o relatório infere-as. O mesmo se aplica a «Ao exame», porque a informação não diz de onde vem o sinal da dragona. As duas inferências são plausíveis, mas convém identificá-las como presumidas, por exemplo «Questões clínicas presumidas», para não as atribuir ao requisitante."
+    },
+    {
+     "severity": "info",
+     "section": "Achados — Osso",
+     "message": "Os dados de prevalência de [rutgers2022-hillsachs-bankart-prevalence] vêm da literatura e não são achados imagiológicos. Seria preferível deixá-los só na conclusão e nas citações, para que a secção de achados se limite a descrever as imagens. Os valores citados estão corretos (71% nas primeiras luxações, 82% nas luxações completas, 59% de Bankart). A ressalva de que os 59% não são específicos do Bankart ósseo está adequada."
+    },
+    {
+     "severity": "info",
+     "section": "Recomendações — TC",
+     "message": "A evidência [vopat2021-hillsachs-imaging-sr] refere-se apenas a lesões de Hill-Sachs. Por isso, não apoia o pedido de TC para «lesão óssea glenoideia». Essa indicação é prática corrente, mas não deve parecer sustentada por esta citação."
+    },
+    {
+     "severity": "info",
+     "section": "Recomendações — TC / Citações",
+     "message": "Segundo a evidência, a TC 3D teve a maior fiabilidade intraobservador na quantificação. A frase «maior fiabilidade», sem mais, generaliza um pouco, porque na fiabilidade interobservador os intervalos da TC 3D (ICC 0,772–0,996) e da TC 2D (ICC 0,721–0,879) sobrepõem-se. Sugere-se escrever «maior fiabilidade intraobservador»."
+    },
+    {
+     "severity": "info",
+     "section": "Recomendações — pré-redução",
+     "message": "A expressão «excluir fratura não deslocada» é forte: uma incidência axilar reduz o risco de não detetar uma fratura, mas não o elimina. Sugere-se escrever «procurar/afastar fratura não deslocada». Se o doente não tolerar a abdução, pode indicar-se a axilar de Velpeau. Convém ainda dizer que isto não deve atrasar a redução sem necessidade."
+    },
+    {
+     "severity": "info",
+     "section": "Limitações — citação suh2024-gpt4v-gemini-diagnosis-please",
+     "message": "A frase sugere que os radiologistas também foram avaliados com três diferenciais em cinco repetições. A evidência descreve esse critério de acerto apenas para os modelos. Sugere-se dizer que o critério se aplicou aos modelos. Os números citados (49%, 39%, 61%; apenas 17 casos musculoesqueléticos) e a interpretação da significância após correção de Bonferroni estão corretos."
+    },
+    {
+     "severity": "info",
+     "section": "Ortografia",
+     "message": "O relatório escreve «glenoumeral» e «acromioclavicular» numa só palavra. Por coerência, considerar «acromioumeral» em vez de «acromio-umeral»."
     }
-   ]
+   ],
+   "revisedIssues": 6
   }
  },
  "report": {
   "language": "pt-PT",
-  "clinicalIndication": "Homem de 27 anos com dor intensa e impotência funcional do ombro esquerdo após movimento brusco. Ao exame, perdeu o contorno deltoideu (sinal da dragona). Pedido urgente. Questões clínicas: há luxação glenoumeral? Há fratura associada?",
-  "technique": "Radiografia do ombro esquerdo em duas incidências: anteroposterior (AP) e Y da omoplata (lateral escapular, derivada de ficheiro DICOM). Avaliaram-se 2 imagens no total, 1 por incidência. Não foram feitas incidência axilar nem AP em rotação interna. A análise foi assistida por um modelo de visão-linguagem, que avaliou as 2 imagens. Os achados estruturados são sugestões que aguardam revisão médica. O relatório segue a estrutura de relatório estruturado recomendada pela ESR [esr2018-structured-reporting].",
-  "comparison": "Sem exames prévios disponíveis para comparação.",
+  "clinicalIndication": "Homem de 27 anos com dor intensa e impotência funcional do ombro esquerdo após movimento brusco. Ao exame, perda do contorno deltoideu (sinal da dragona). Pedido urgente. Questões clínicas: há luxação glenoumeral? Há fratura associada?",
+  "technique": "Radiografia do ombro esquerdo em duas incidências: anteroposterior (AP) e Y da omoplata (lateral escapular, derivada de ficheiro DICOM). Avaliaram-se 2 imagens no total, 1 por incidência. Não estão incluídas incidência axilar nem AP em rotação interna. A análise foi assistida por um modelo de visão-linguagem, que avaliou as 2 imagens. Os achados estruturados são sugestões que aguardam revisão médica.",
+  "comparison": "Não foram fornecidos exames prévios para comparação.",
   "findingsByRegion": [
    {
     "heading": "Alinhamento",
@@ -558,22 +539,22 @@
    },
    {
     "heading": "Osso",
-    "text": "Nas duas incidências, uma fratura deslocada do úmero proximal (colo cirúrgico ou anatómico) ou da grande tuberosidade é improvável. Uma fratura não deslocada não pode ser excluída nestas imagens. Não se vê traço de fratura na clavícula distal, no acrómio nem na coracoide, nem fratura evidente dos arcos costais visíveis. Com a cabeça luxada sobreposta à omoplata, não é possível avaliar com segurança o contorno posterolateral da cabeça umeral (lesão de Hill-Sachs) nem o rebordo glenoideu anteroinferior (lesão de Bankart óssea). Ambas as lesões são possíveis. Numa meta-análise de ombros com luxação anterior traumática, avaliados por artroscopia, RM/artro-RM ou TC, havia lesão de Hill-Sachs em 71% das primeiras luxações e em 82% das luxações completas, e lesão de Bankart em 59% das primeiras luxações [rutgers2022-hillsachs-bankart-prevalence]. A densidade óssea não está alterada. Não há lesão óssea focal nem reação periosteal. As cartilagens de crescimento estão encerradas (esqueleto maduro)."
+    "text": "Nas duas incidências, uma fratura deslocada do úmero proximal (colo cirúrgico ou anatómico) ou da grande tuberosidade é improvável. Uma fratura não deslocada não pode ser excluída nestas imagens. Não se vê traço de fratura na porção visível da clavícula distal, no acrómio nem na coracoide (fratura improvável); fratura dos arcos costais visíveis é improvável. Com a cabeça luxada sobreposta à omoplata, não é possível avaliar com segurança o contorno posterolateral da cabeça umeral (lesão de Hill-Sachs) nem o rebordo glenoideu anteroinferior (lesão de Bankart óssea); ambas as lesões são possíveis. Numa meta-análise de ombros com luxação anterior traumática, avaliados por artroscopia, RM/artro-RM ou TC, havia lesão de Hill-Sachs em 71% das primeiras luxações e em 82% das luxações completas [rutgers2022-hillsachs-bankart-prevalence]. Na mesma meta-análise, havia lesão de Bankart em 59% das primeiras luxações; este valor não é específico da lesão de Bankart óssea [rutgers2022-hillsachs-bankart-prevalence]. Alteração da densidade óssea é improvável. Não se vê lesão óssea focal nem reação periosteal (improváveis). As cartilagens de crescimento estão encerradas (esqueleto maduro)."
    },
    {
     "heading": "Articulações",
-    "text": "A articulação glenoumeral esquerda está luxada (ver Alinhamento). Osteoartrose glenoumeral é improvável: não se veem redução da entrelinha, osteófitos nem esclerose subcondral. O intervalo acromio-umeral não é avaliável enquanto a cabeça umeral estiver luxada e deve ser reavaliado após a redução. A articulação acromioclavicular não está alargada nem luxada de forma evidente (luxação acromioclavicular improvável). Esta avaliação é limitada, porque no AP a articulação fica no limite superior do campo."
+    "text": "A articulação glenoumeral esquerda tem aspeto compatível com luxação anterior (ver Alinhamento). Não se veem osteófitos nem esclerose subcondral, pelo que osteoartrose glenoumeral é improvável; a entrelinha glenoumeral não é avaliável enquanto a cabeça umeral estiver luxada. O intervalo acromio-umeral também não é avaliável enquanto a cabeça umeral estiver luxada e deve ser reavaliado após a redução. A articulação acromioclavicular não parece alargada (alargamento ou luxação acromioclavicular improvável). Esta avaliação é limitada, porque no AP a articulação fica no limite superior do campo."
    },
    {
     "heading": "Partes moles",
-    "text": "Não há calcificações periarticulares (tendinopatia calcificante improvável) nem nível líquido-gordura que sugira lipo-hemartrose. Não há gás, corpo estranho nem calcificações nas partes moles, nem material ortopédico. A radiografia não avalia a coifa dos rotadores, o labrum nem as estruturas neurovasculares (por exemplo, o nervo axilar)."
+    "text": "Não se veem calcificações periarticulares (tendinopatia calcificante improvável) nem nível líquido-gordura (lipo-hemartrose improvável). Não se identificam gás, corpo estranho nem calcificações nas partes moles (improváveis). Não se identifica material ortopédico. A radiografia não avalia a coifa dos rotadores, o labrum nem as estruturas neurovasculares (por exemplo, o nervo axilar)."
    }
   ],
   "impression": [
-   "Luxação glenoumeral anterior esquerda, compatível com o tipo subcoracoide. Não se exclui de todo uma componente subglenoide. Este achado responde à questão clínica e concorda com o sinal da dragona. É um achado urgente, a comunicar de imediato ao médico assistente.",
-   "Não há fratura deslocada associada do úmero proximal (colo cirúrgico ou anatómico) nem da grande tuberosidade. Luxação posterior é improvável. Uma fratura não deslocada não pode ser excluída nestas incidências.",
-   "As lesões de Hill-Sachs e de Bankart óssea não são avaliáveis com a cabeça luxada. São possíveis, porque são frequentes após luxação anterior traumática [rutgers2022-hillsachs-bankart-prevalence], e devem ser reavaliadas após a redução.",
-   "Não há fratura da clavícula, do acrómio nem da coracoide. A articulação acromioclavicular não parece alargada (avaliação limitada)."
+   "Aspeto compatível com luxação glenoumeral anterior esquerda, de tipo subcoracoide; não se exclui de todo uma componente subglenoide. Este achado responde à questão clínica e concorda com o sinal da dragona. É um achado urgente, a comunicar de imediato ao médico assistente.",
+   "Fratura deslocada associada do úmero proximal (colo cirúrgico ou anatómico) ou da grande tuberosidade é improvável; uma fratura não deslocada não pode ser excluída nestas incidências. Luxação posterior é improvável.",
+   "As lesões de Hill-Sachs e de Bankart óssea não são avaliáveis com a cabeça luxada; são possíveis e devem ser reavaliadas após a redução. As lesões de Hill-Sachs e de Bankart (sem valor específico para a variante óssea) são frequentes após luxação anterior traumática [rutgers2022-hillsachs-bankart-prevalence].",
+   "Fratura da porção visível da clavícula distal, do acrómio ou da coracoide é improvável. Alargamento ou luxação acromioclavicular é improvável (avaliação limitada, por a articulação estar no limite superior do campo)."
   ],
   "recommendations": [
    "Avaliação ortopédica urgente da luxação glenoumeral.",
@@ -583,11 +564,11 @@
    "Fazer avaliação neurovascular do membro antes e depois da redução, incluindo a função do nervo axilar, que a radiografia não avalia.",
    "Conforme a indicação clínica (por exemplo, instabilidade persistente ou défice funcional após a redução), considerar RM ou artro-RM eletiva para avaliar o labrum e a coifa dos rotadores."
   ],
-  "limitations": "Há apenas duas incidências (AP e Y da omoplata), sem axilar nem AP em rotação interna. Com a cabeça umeral luxada e sobreposta à omoplata, não é possível avaliar com segurança o rebordo glenoideu anteroinferior (Bankart ósseo) nem o contorno posterolateral da cabeça (Hill-Sachs). Uma fratura não deslocada da grande tuberosidade ou do colo umeral pode passar despercebida. A incidência em Y, derivada de DICOM, tem sobreposição marcada da omoplata, da diáfise umeral e dos arcos costais, o que dificulta identificar a glenoide. No AP, a articulação acromioclavicular fica no limite superior do campo. O marcador de lateralidade ('Sin') aparece rodado/invertido nas duas imagens, mas concorda com a anatomia e com a informação clínica. A radiografia não avalia a coifa dos rotadores, o labrum nem a função neurovascular. A análise foi assistida por um modelo de visão-linguagem e os achados aguardam revisão. Em casos 'Diagnosis Please', modelos deste tipo tiveram exatidão diagnóstica inferior à dos radiologistas (49% e 39% contra 61%) [suh2024-gpt4v-gemini-diagnosis-please]. Achados subtis podem não ser detetados, por isso o relatório tem de ser validado pelo médico.",
+  "limitations": "Há apenas duas incidências (AP e Y da omoplata), sem axilar nem AP em rotação interna. Com a cabeça umeral luxada e sobreposta à omoplata, não é possível avaliar com segurança o rebordo glenoideu anteroinferior (Bankart ósseo) nem o contorno posterolateral da cabeça (Hill-Sachs). Uma fratura não deslocada da grande tuberosidade ou do colo umeral pode passar despercebida. A incidência em Y, derivada de DICOM, tem sobreposição marcada da omoplata, da diáfise umeral e dos arcos costais, o que dificulta identificar a glenoide. No AP, a articulação acromioclavicular fica no limite superior do campo, pelo que a clavícula pode não estar totalmente visível. O marcador de lateralidade ('Sin') aparece rodado/invertido nas duas imagens, mas concorda com a anatomia e com a informação clínica. A radiografia não avalia a coifa dos rotadores, o labrum nem a função neurovascular. A análise foi assistida por um modelo de visão-linguagem e os achados aguardam revisão. Num estudo retrospetivo com 190 casos 'Diagnosis Please' da revista Radiology (apenas 17 musculoesqueléticos), em que se pediram três diagnósticos diferenciais em cinco repetições e se contou como acerto a inclusão do diagnóstico final, o GPT-4V e o Gemini Pro Vision (temperatura 1) tiveram exatidão de 49% e 39%, contra 61% dos radiologistas; após correção de Bonferroni, só a diferença face ao Gemini Pro Vision foi estatisticamente significativa [suh2024-gpt4v-gemini-diagnosis-please]. Estes resultados referem-se a outros modelos e a outro contexto e não podem ser extrapolados diretamente para o modelo usado nesta análise. Achados subtis podem não ser detetados, por isso o relatório tem de ser validado pelo médico.",
   "citations": [
    {
     "evidenceId": "rutgers2022-hillsachs-bankart-prevalence",
-    "statement": "Após luxação anterior traumática, havia lesão de Hill-Sachs em 71% das primeiras luxações e em 82% das luxações completas, e lesão de Bankart em 59% das primeiras luxações. Por isso, estas lesões são possíveis, embora não avaliáveis com a cabeça luxada."
+    "statement": "Após luxação anterior traumática, havia lesão de Hill-Sachs em 71% das primeiras luxações e em 82% das luxações completas, e lesão de Bankart em 59% das primeiras luxações (valor não específico da lesão de Bankart óssea). Estas lesões são frequentes e, por isso, possíveis neste caso, embora não avaliáveis com a cabeça luxada."
    },
    {
     "evidenceId": "vopat2021-hillsachs-imaging-sr",
@@ -595,16 +576,13 @@
    },
    {
     "evidenceId": "suh2024-gpt4v-gemini-diagnosis-please",
-    "statement": "Os modelos de visão-linguagem tiveram exatidão diagnóstica inferior à dos radiologistas (49% e 39% contra 61%). Isto justifica a validação médica desta análise assistida por IA."
-   },
-   {
-    "evidenceId": "esr2018-structured-reporting",
-    "statement": "A ESR recomenda o relatório estruturado, que assegura relatórios completos e comparáveis e minimiza a ambiguidade."
+    "statement": "Em 190 casos 'Diagnosis Please' (17 musculoesqueléticos), com temperatura 1 e contando como acerto a inclusão do diagnóstico final entre três diferenciais, o GPT-4V e o Gemini Pro Vision tiveram exatidão de 49% e 39%, contra 61% dos radiologistas; após correção de Bonferroni, só a diferença face ao Gemini Pro Vision foi significativa. Isto apoia a validação médica desta análise assistida por IA, sem extrapolação direta para o modelo usado."
    }
   ],
   "status": "draft",
   "generatedBy": "Claude (API Anthropic) · claude-opus-5-5 · pré-calculado",
   "generatedAt": "2026-10-27T23:00:00.000Z",
-  "editedByClinician": false
+  "editedByClinician": false,
+  "revisedAfterVerification": true
  }
 }

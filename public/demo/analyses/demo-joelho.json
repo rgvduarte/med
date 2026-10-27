@@ -47,7 +47,7 @@
     "status": "done",
     "startedAt": "2026-10-27T23:00:00.000Z",
     "finishedAt": "2026-10-27T23:00:00.000Z",
-    "message": "13 observação(ões)"
+    "message": "6 problema(s) corrigido(s) automaticamente; 2 observação(ões) por rever"
    }
   ],
   "triage": {
@@ -766,117 +766,101 @@
    "issues": [
     {
      "severity": "error",
-     "section": "Conclusão / Achados — Articulações (classificação de Kellgren-Lawrence)",
-     "message": "A frase \"pode ser grau 2 se o osteófito não se confirmar\" contradiz a fonte citada [kohn2016-kl-classification-in-brief]. Segundo essa fonte, o grau 2 exige osteófitos definidos. Sem um osteófito definido, os descritores citados apontam no máximo para o grau 1. Corrigir a lógica de reclassificação ou indicar explicitamente que se usa outra definição de KL, com a respetiva fonte."
+     "section": "findings_sections/Articulações; conclusion[0] (graduação Kellgren-Lawrence)",
+     "message": "Contradição interna na graduação. O relatório afirma que, sem osteófito definido, não é atribuível grau 2 ou superior [kohn2016-kl-classification-in-brief]. Contudo, o único osteófito é 'apenas suspeito' (F2, suspicious-for) e, segundo o próprio texto, está 'aquém dos osteófitos moderados descritos para o grau 3'. A redução da entrelinha só é avaliável em termos relativos e a esclerose é só possível (F3). Com estas premissas, os descritores citados não sustentam o grau 3 proposto, mesmo com o rótulo 'provisório'. Rever a formulação: o grau não é atribuível com segurança nesta projeção. Será ≥2 apenas se o osteófito se confirmar como definido, e o grau 3 exige redução definida da interlinha em carga e osteófitos moderados. Em alternativa, devolver a classificação de F1 para revisão."
     },
     {
-     "severity": "warning",
-     "section": "Achados — Articulações (KL grau 3)",
-     "message": "O texto enumera os descritores do grau 3 (osteófitos moderados, alguma esclerose) como se estivessem presentes. No entanto, o único osteófito é pequeno e apenas suspeito (F2, suspicious-for), e a esclerose é só possível (F3). Na prática, o grau 3 assenta apenas na redução relativa da entrelinha, numa imagem sem carga. Deve dizer-se que os critérios só estão parcialmente cumpridos."
-    },
-    {
-     "severity": "warning",
-     "section": "Conclusão (ponto 1)",
-     "message": "A expressão \"redução definida da entrelinha lateral\" é mais forte do que a certeza de F1 (consistent-with, classe doubtful). A redução só é descrita em termos relativos, sem calibração e sem carga confirmada. Sugere-se \"redução relativa da entrelinha lateral, compatível com alteração degenerativa\"."
-    },
-    {
-     "severity": "warning",
-     "section": "Conclusão (ponto 2)",
-     "message": "\"Nesta projeção não há [...] fratura nem avulsão\" é categórico, mas a integridade da rótula não é avaliável (C3) e os negativos têm certeza \"unlikely\" numa imagem de baixa resolução. Restringir a \"sem fratura visível do fémur distal, do prato tibial nem da cabeça do perónio\"."
-    },
-    {
-     "severity": "warning",
-     "section": "Limitações (citação suh2024-gpt4v-gemini-diagnosis-please)",
-     "message": "Afirma-se que ambos os modelos tiveram exatidão inferior à dos radiologistas. Contudo, segundo a fonte, a diferença face ao GPT-4V não foi significativa após correção de Bonferroni (P = 0,02). Falta também a ressalva de que o estudo usou casos 'Diagnosis Please' (só 17 musculoesqueléticos) e não avaliou a graduação da osteoartrose do joelho."
-    },
-    {
-     "severity": "warning",
-     "section": "Achados estruturados (evidence_ids de F1–F4)",
-     "message": "F1–F4 citam cecava2018 (derrame pós-traumático, 18–40 anos) e phelan2016 (RM para roturas do LCA e dos meniscos). Nenhuma destas fontes suporta a redução da entrelinha, o osteófito, a esclerose ou o valgo. O texto do relatório não as usa para estes achados, mas as ligações devem ser removidas antes da revisão médica."
+     "severity": "error",
+     "section": "findings_sections/Articulações; conclusion[0]; citations[1]",
+     "message": "A via de despromoção contradiz o achado estruturado F1. A fundamentação de F1 diz que, se o osteófito não se confirmar, 'o grau pode ser inferior (2)'. O relatório afirma que, nesse caso, não é atribuível grau 2 ou superior (ou seja, grau 0–1). A versão do relatório está de acordo com os descritores de Kohn et al., mas diverge de F1 sem o assinalar. É preciso explicitar a discrepância para o médico revisor e corrigir a fundamentação de F1, em vez de a alterar em silêncio."
     },
     {
      "severity": "info",
-     "section": "Achados — Articulações / Conclusão (compartimento medial)",
-     "message": "\"Compartimento femorotibial medial preservado\": convém ressalvar que a margem medial fica junto ao limite da imagem, o que pode limitar a deteção de osteófitos marginais mediais. Também convém lembrar que, sem carga, a redução da entrelinha pode ser subestimada."
+     "section": "citations[2]; recommendations[0]",
+     "message": "A afirmação de que os descritores KL 'assentam na redução da interlinha articular e nos osteófitos' simplifica Kohn et al. Os descritores incluem também a esclerose e a deformidade das extremidades ósseas. Sugere-se escrever 'assentam sobretudo em…' ou enumerar os quatro elementos."
     },
     {
      "severity": "info",
-     "section": "Técnica (citação esr2018-structured-reporting)",
-     "message": "\"Segue a estrutura recomendada pela ESR\": a fonte defende o relatório estruturado em geral, mas não define um modelo específico para a radiografia do joelho. Sugere-se \"estruturado de acordo com os princípios da ESR\"."
+     "section": "findings_sections/Osso; checklist C10",
+     "message": "F3 regista a esclerose subcondral como 'possível', mas o item C10 do checklist classifica-a como 'não avaliável'. O relatório segue F3, o que é coerente com a descrição, mas não assinala a discrepância. Harmonizar C10 com F3 antes da revisão médica."
     },
     {
      "severity": "info",
-     "section": "Partes moles / Recomendações (citação cecava2018-knee-effusion-radiograph)",
-     "message": "A citação serve para afirmar que o derrame suprarrotuliano se avalia no perfil, e para isso é aceitável. Note-se, porém, que a população do estudo (18–40 anos, traumatismo agudo) não corresponde a este doente."
+     "section": "clinical_indication",
+     "message": "'Pesquisa de osteoartrose do joelho' não consta do pedido: é uma inferência a partir do quadro clínico (mais de 50 anos, rigidez inferior a 30 min, crepitação). A inferência é razoável e não acrescenta história, mas convém apresentá-la como pergunta clínica presumida."
     },
     {
      "severity": "info",
-     "section": "Achados estruturados (coerência da checklist)",
-     "message": "Há duas incoerências entre a checklist e os achados prioritários. C10 (esclerose subcondral) está como não avaliável e F3 descreve esclerose possível; C17 (alinhamento coronal) está como não avaliável e F4 descreve possível valgo. O relatório segue F3 e F4, mas a checklist deve ser harmonizada."
+     "section": "conclusion[0]",
+     "message": "'Com predomínio no compartimento femorotibial lateral' sugere que outros compartimentos estão envolvidos em menor grau. No entanto, a osteoartrose medial é improvável (C8) e o compartimento femoropatelar não é avaliável (C9). Preferir 'localizadas no compartimento femorotibial lateral (femoropatelar não avaliável)'."
     },
     {
      "severity": "info",
-     "section": "Achados — Osso / Articulações",
-     "message": "O osteófito suspeito (F2) fica na margem lateral do prato tibial lateral, que é o local da fratura de Segond. Seria útil dizer explicitamente que o rebordo é contínuo com o prato e não um fragmento destacado (a relevância é baixa, porque não há história de traumatismo)."
+     "section": "limitations",
+     "message": "Inclui duas afirmações que não vêm dos achados estruturados nem da evidência: a subestimação da redução da entrelinha numa radiografia sem carga e a utilidade de uma incidência em túnel para lesões osteocondrais. São conhecimento radiológico corrente e não alteram as conclusões, mas a incidência em túnel não aparece nas recomendações."
     },
     {
      "severity": "info",
-     "section": "Limitações",
-     "message": "A sugestão de uma \"incidência em túnel\" não consta dos achados estruturados nem das recomendações. Deve passar para as recomendações ou ser retirada."
-    },
-    {
-     "severity": "info",
-     "section": "Estilo (terminologia)",
-     "message": "O texto usa \"entrelinha\" e \"interlinha\" como sinónimos. Convém escolher um só termo. A grafia está em pt-PT (AO90), sem brasileirismos."
+     "section": "Terminologia (findings_sections, conclusion, citations)",
+     "message": "O relatório alterna 'entrelinha' e 'interlinha' para o mesmo conceito; a alternância já vem dos achados estruturados. Uniformizar o termo em todo o relatório."
     }
-   ]
+   ],
+   "revisedIssues": 6
   }
  },
  "report": {
   "language": "pt-PT",
   "clinicalIndication": "Doente do sexo masculino, 63 anos. Gonalgia mecânica crónica, rigidez matinal inferior a 30 minutos e crepitação. Pesquisa de osteoartrose do joelho. Lateralidade não indicada no pedido. Prioridade: rotina.",
-  "technique": "Radiografia simples do joelho: uma única incidência anteroposterior (AP), ou seja, 1 imagem avaliada. A imagem não tem marcador de lateralidade e não há confirmação de carga. Não foram obtidos perfil nem axial da rótula. A imagem tem resolução reduzida (500×700 píxeis), compressão JPEG e ruído granular. A análise foi assistida por um modelo de visão-linguagem, que avaliou 1 imagem. Os achados descritos são sugestões automáticas que aguardam revisão médica. O relatório segue a estrutura recomendada pela ESR para relatórios estruturados [esr2018-structured-reporting].",
+  "technique": "Radiografia simples do joelho: uma única incidência anteroposterior (AP), ou seja, 1 imagem avaliada. A imagem não tem marcador de lateralidade e não há confirmação de carga. Não foram fornecidos perfil nem axial da rótula. A imagem tem resolução reduzida (500×700 píxeis), compressão JPEG e ruído granular. A análise foi assistida por um modelo de visão-linguagem, que avaliou 1 imagem. Os achados descritos são sugestões automáticas que aguardam revisão médica.",
   "comparison": "Sem exames prévios disponíveis para comparação.",
   "findingsByRegion": [
    {
     "heading": "Alinhamento",
-    "text": "A entrelinha femorotibial tem forma de cunha: é estreita do lado lateral (lado do perónio, à esquerda da imagem) e aberta do lado medial. A tíbia parece ligeiramente deslocada para o lado lateral em relação ao fémur, e o côndilo femoral medial ultrapassa a margem do prato tibial medial. Isto pode corresponder a um desvio em valgo associado ao colapso do compartimento lateral. No entanto, a rotação ou a posição do membro podem simular o mesmo aspeto, pelo que o achado se considera apenas possível. O eixo mecânico não se pode avaliar nesta projeção. Não há luxação femorotibial. A posição da rótula não é avaliável sem perfil nem axial."
+    "text": "A entrelinha femorotibial tem forma de cunha: é estreita do lado lateral (lado do perónio, à esquerda da imagem) e aberta do lado medial. A tíbia parece ligeiramente deslocada para o lado lateral em relação ao fémur, e o côndilo femoral medial ultrapassa a margem do prato tibial medial. Isto pode corresponder a um desvio em valgo associado ao colapso do compartimento lateral. No entanto, a rotação ou a posição do membro podem simular o mesmo aspeto, pelo que o achado se considera apenas possível. O alinhamento coronal não é avaliável com fiabilidade nesta projeção, e o eixo mecânico só se avalia numa telerradiografia dos membros inferiores em carga. Luxação femorotibial improvável. A posição da rótula não é avaliável sem perfil nem axial."
    },
    {
     "heading": "Osso",
-    "text": "Não se vê fratura do fémur distal, do prato tibial nem da cabeça do perónio nesta projeção. Também não há fragmentos de avulsão, incluindo fratura de Segond ou avulsão das espinhas tibiais e das inserções ligamentares. A rótula sobrepõe-se ao fémur e não há perfil nem axial, pelo que a sua integridade não é avaliável. Logo abaixo da superfície articular do prato tibial lateral há uma faixa de densidade ligeiramente aumentada, mais marcada do que no prato medial. Pode tratar-se de esclerose subcondral, mas o achado é ténue e pode dever-se em parte à sobreposição dos rebordos anterior e posterior do prato, pelo que se considera apenas possível. Não há quistos subcondrais (geodes), erosões, lesões ósseas focais líticas ou escleróticas, nem reação periosteal. Não se vê lesão osteocondral, embora a sua deteção esteja limitada pela qualidade da imagem. A densidade óssea (osteopenia) não é avaliável com fiabilidade. Sem material ortopédico."
+    "text": "Não se identifica fratura do fémur distal, do prato tibial nem da cabeça do perónio nesta projeção (improvável). Também não se identificam fragmentos de avulsão, incluindo fratura de Segond ou avulsão das espinhas tibiais e das inserções ligamentares (improváveis). A rótula sobrepõe-se ao fémur e não há perfil nem axial, pelo que a sua integridade não é avaliável. Logo abaixo da superfície articular do prato tibial lateral há uma faixa de densidade ligeiramente aumentada, mais marcada do que no prato medial. Pode tratar-se de esclerose subcondral, mas o achado é ténue e pode dever-se em parte à sobreposição dos rebordos anterior e posterior do prato, pelo que se considera apenas possível. Quistos subcondrais (geodes), erosões, lesões ósseas focais líticas ou escleróticas e reação periosteal não se identificam nesta projeção e consideram-se improváveis. Lesão osteocondral improvável, embora a sua deteção esteja limitada pela qualidade da imagem. A densidade óssea (osteopenia) não é avaliável com fiabilidade. Sem material ortopédico."
    },
    {
     "heading": "Articulações",
-    "text": "Compartimento femorotibial lateral: a entrelinha é fina mas regular e claramente mais estreita do que a do compartimento medial. Esta redução da entrelinha é compatível com alteração degenerativa. Só pode ser descrita em termos relativos, porque a imagem não tem calibração e a carga não está confirmada. Na margem lateral do prato tibial lateral há um rebordo ósseo em bico, de contorno arredondado, que ultrapassa lateralmente o contorno do côndilo femoral lateral. É suspeito de osteófito marginal pequeno. Compartimento femorotibial medial: a entrelinha está preservada e não há osteófitos marginais inequívocos. Não se vê condrocalcinose meniscal nem hialina, nem corpos livres intra-articulares evidentes. O compartimento femoropatelar não é avaliável sem perfil e axial da rótula. Classificação de Kellgren-Lawrence (escala de 0 a 4 por gravidade crescente [kellgren1957-oa-grading]): grau 3, provisório. O grau 3 corresponde a osteófitos moderados, redução definida da interlinha, alguma esclerose e possível deformidade das extremidades ósseas. Neste exame não se veem osteófitos volumosos, redução marcada da interlinha, esclerose grave nem deformidade definida das extremidades ósseas, que caracterizariam o grau 4 [kohn2016-kl-classification-in-brief]. O grau é provisório porque há uma só projeção, a carga não está confirmada e o osteófito é pequeno. Se o osteófito não se confirmar, o grau pode ser inferior (2)."
+    "text": "Compartimento femorotibial lateral: a entrelinha é fina mas regular e claramente mais estreita do que a do compartimento medial. Esta redução relativa da entrelinha é compatível com alteração degenerativa. Só pode ser descrita em termos relativos, porque a imagem não tem calibração e a carga não está confirmada. Na margem lateral do prato tibial lateral há um rebordo ósseo em bico, de contorno arredondado, que ultrapassa lateralmente o contorno do côndilo femoral lateral. É suspeito de osteófito marginal pequeno. Compartimento femorotibial medial: a entrelinha está preservada e não há osteófitos marginais inequívocos (osteoartrose medial improvável). Condrocalcinose meniscal ou hialina e corpos livres intra-articulares não se identificam e consideram-se improváveis, com deteção limitada pela resolução da imagem. O compartimento femoropatelar não é avaliável sem perfil e axial da rótula. Classificação de Kellgren-Lawrence (escala de 0 a 4 por gravidade crescente [kellgren1957-oa-grading]): grau 3 proposto, provisório. Nos descritores citados, o grau 3 corresponde a osteófitos moderados, redução definida da interlinha, alguma esclerose e possível deformidade das extremidades ósseas [kohn2016-kl-classification-in-brief]. Neste exame, estes critérios estão apenas parcialmente cumpridos. A redução da entrelinha lateral é o achado mais consistente, mas só é avaliável em termos relativos e sem carga confirmada. O osteófito é pequeno e apenas suspeito, aquém dos osteófitos moderados descritos para o grau 3. A esclerose subcondral é só possível. Não se identificam osteófitos volumosos, esclerose marcada nem deformidade franca das extremidades ósseas, que apontariam para grau 4 [kohn2016-kl-classification-in-brief]. O grau é provisório porque há uma só projeção, a carga não está confirmada e o osteófito é pequeno e não confirmado. Se o osteófito não se confirmar, o grau será inferior: nos mesmos descritores, todos os graus a partir do 2 incluem osteófitos (definidos no grau 2, moderados no grau 3, volumosos no grau 4), pelo que, sem osteófito definido, não é atribuível grau 2 ou superior [kohn2016-kl-classification-in-brief]."
    },
    {
     "heading": "Partes moles",
-    "text": "Não se veem calcificações, gás nem corpos estranhos nos tecidos moles. A tumefação dos tecidos moles não é avaliável. Os tecidos moles mediais estão pouco representados, porque a margem medial do joelho fica junto ao limite da imagem. O derrame articular e a lipo-hemartrose não são avaliáveis: o derrame suprarrotuliano avalia-se na incidência de perfil [cecava2018-knee-effusion-radiograph], que não foi obtida."
+    "text": "Não se identificam calcificações, gás nem corpos estranhos nos tecidos moles (improváveis). A tumefação dos tecidos moles não é avaliável. Os tecidos moles mediais estão pouco representados, porque a margem medial do joelho fica junto ao limite da imagem. O derrame articular e a lipo-hemartrose não são avaliáveis: o derrame suprarrotuliano avalia-se na incidência de perfil [cecava2018-knee-effusion-radiograph], que não foi fornecida."
    }
   ],
   "impression": [
-   "As alterações são compatíveis com osteoartrose do joelho com predomínio no compartimento femorotibial lateral, o que é concordante com a suspeita clínica. Os achados são uma redução definida da entrelinha lateral, um osteófito marginal suspeito no prato tibial lateral e uma possível esclerose subcondral. Grau 3 de Kellgren-Lawrence, provisório; pode ser grau 2 se o osteófito não se confirmar [kohn2016-kl-classification-in-brief] [kellgren1957-oa-grading].",
-   "O compartimento femorotibial medial está preservado, sem osteófitos inequívocos. Nesta projeção não há erosões, quistos subcondrais, condrocalcinose visível, lesões ósseas focais, fratura nem avulsão.",
+   "Alterações compatíveis com osteoartrose do joelho com predomínio no compartimento femorotibial lateral, concordantes com a suspeita clínica. Os achados são uma redução relativa da entrelinha lateral, compatível com alteração degenerativa, um aspeto suspeito de osteófito marginal pequeno no prato tibial lateral e uma possível esclerose subcondral. Propõe-se grau 3 de Kellgren-Lawrence (escala de 0 a 4 [kellgren1957-oa-grading]), provisório e com critérios apenas parcialmente cumpridos: o osteófito é pequeno e apenas suspeito, a esclerose é só possível e a redução da entrelinha só é avaliável em termos relativos, sem carga confirmada. Se o osteófito não se confirmar, não é atribuível grau 2 ou superior, porque nos descritores citados todos os graus a partir do 2 incluem osteófitos definidos [kohn2016-kl-classification-in-brief].",
+   "Compartimento femorotibial medial com entrelinha preservada e sem osteófitos marginais inequívocos (osteoartrose medial improvável). Sem fratura visível do fémur distal, do prato tibial nem da cabeça do perónio nesta projeção; a integridade da rótula não é avaliável. Erosões, quistos subcondrais, condrocalcinose e lesões ósseas focais são improváveis, com deteção limitada pela resolução da imagem.",
    "Há um possível alinhamento em valgo com discreta translação lateral da tíbia, eventualmente relacionado com o colapso do compartimento lateral. Não se pode confirmar numa AP isolada, porque a rotação ou a posição do membro podem simular este aspeto.",
    "O compartimento femoropatelar, a rótula e o derrame articular não são avaliáveis, porque não há perfil nem axial da rótula.",
    "O estudo é limitado: há uma única AP, a carga e a lateralidade não estão confirmadas e a resolução é reduzida. Os achados foram sugeridos por um modelo de visão-linguagem e aguardam validação médica. Recomenda-se completar o estudo radiográfico."
   ],
   "recommendations": [
-   "Radiografia AP bilateral em carga ou PA em flexão de 45° (Rosenberg), para confirmar e graduar a redução da entrelinha femorotibial lateral. Isto permite consolidar o grau de Kellgren-Lawrence, que depende da redução da interlinha e dos osteófitos [kohn2016-kl-classification-in-brief].",
+   "Radiografia AP bilateral em carga ou PA em flexão de 45° (Rosenberg), para confirmar e graduar a redução da entrelinha femorotibial lateral e confirmar ou excluir o osteófito marginal. Isto permite consolidar o grau de Kellgren-Lawrence, que depende da redução da interlinha e dos osteófitos [kohn2016-kl-classification-in-brief].",
    "Incidências de perfil e axial da rótula, para avaliar o compartimento femoropatelar e a posição e integridade da rótula. O perfil permite também avaliar o derrame no recesso suprarrotuliano [cecava2018-knee-effusion-radiograph].",
    "Telerradiografia dos membros inferiores em carga, apenas se o alinhamento coronal tiver relevância para a decisão terapêutica.",
    "Confirmar a lateralidade (repetir com marcador ou confirmar no registo do exame) e fazer validar os achados por médico radiologista, em correlação com o quadro clínico."
   ],
-  "limitations": "Há apenas uma incidência AP, sem marcador de lateralidade e sem confirmação de carga. Numa radiografia sem carga, a redução da entrelinha pode ser subestimada, pelo que o grau de Kellgren-Lawrence é apenas provisório. A própria classificação tem reprodutibilidade variável conforme a descrição dos graus utilizada (kappa ponderado de 0,41 com a descrição original). Foi também criticada por assumir uma progressão radiográfica linear [kohn2016-kl-classification-in-brief]. Sem perfil nem axial da rótula, não se avaliam o compartimento femoropatelar, a posição e a integridade da rótula nem o derrame articular. A imagem não tem calibração, pelo que não há medições em milímetros. O alinhamento coronal exige uma telerradiografia dos membros inferiores em carga. A resolução reduzida (500×700 píxeis), a compressão JPEG e o ruído limitam a deteção de osteófitos pequenos, de condrocalcinose ténue e de lesões osteocondrais (para estas seria útil uma incidência em túnel). Os tecidos moles mediais estão pouco representados. Quanto à lateralidade, o perónio projeta-se à esquerda da imagem; na convenção habitual de visualização seria um joelho direito, mas sem marcador isto não se pode confirmar. A análise foi assistida por um modelo de visão-linguagem, que pode falhar achados subtis ou interpretar mal sobreposições. Num estudo com casos 'Diagnosis Please', modelos de visão-linguagem tiveram exatidão diagnóstica inferior à de radiologistas com formação subespecializada: com temperatura 1, 49% para o GPT-4V e 39% para o Gemini Pro Vision, face a 61% para os radiologistas [suh2024-gpt4v-gemini-diagnosis-please]. Todos os achados são sugestões pendentes de revisão e devem ser confirmados por um médico.",
+  "limitations": "Há apenas uma incidência AP, sem marcador de lateralidade e sem confirmação de carga. Numa radiografia sem carga, a redução da entrelinha pode ser subestimada, pelo que o grau de Kellgren-Lawrence é apenas provisório. A própria classificação tem reprodutibilidade variável conforme a descrição dos graus utilizada (kappa ponderado de 0,41 com a descrição original). Os autores originais nunca especificaram explicitamente que achados radiográficos correspondem a cada grau, e a classificação foi criticada por assumir uma progressão radiográfica linear [kohn2016-kl-classification-in-brief]. Sem perfil nem axial da rótula, não se avaliam o compartimento femoropatelar, a posição e a integridade da rótula nem o derrame articular. A imagem não tem calibração, pelo que não há medições em milímetros. O alinhamento coronal exige uma telerradiografia dos membros inferiores em carga. A resolução reduzida (500×700 píxeis), a compressão JPEG e o ruído limitam a deteção de osteófitos pequenos, de condrocalcinose ténue e de lesões osteocondrais (para estas seria útil uma incidência em túnel). Os tecidos moles mediais estão pouco representados. Quanto à lateralidade, o perónio projeta-se à esquerda da imagem; na convenção habitual de visualização seria um joelho direito, mas sem marcador isto não se pode confirmar. A análise foi assistida por um modelo de visão-linguagem, que pode falhar achados subtis ou interpretar mal sobreposições. Num estudo retrospetivo com 190 casos 'Diagnosis Please' da revista Radiology, dos quais apenas 17 musculoesqueléticos, foi pedido aos modelos que propusessem diagnósticos diferenciais a partir das imagens e da história clínica. Com temperatura 1, a exatidão foi de 49% para o GPT-4V e de 39% para o Gemini Pro Vision, face a 61% para radiologistas com formação subespecializada. A diferença foi significativa para o Gemini Pro Vision (P < 0,001), mas não para o GPT-4V após correção de Bonferroni (P = 0,02) [suh2024-gpt4v-gemini-diagnosis-please]. Como a tarefa avaliada foi o diagnóstico diferencial em casos selecionados, e não a graduação da osteoartrose do joelho, estes resultados não se aplicam diretamente a este exame. Todos os achados são sugestões pendentes de revisão e devem ser confirmados por um médico.",
   "citations": [
    {
     "evidenceId": "kohn2016-kl-classification-in-brief",
-    "statement": "O grau 3 de Kellgren-Lawrence corresponde a osteófitos moderados, redução definida da interlinha, alguma esclerose e possível deformidade das extremidades ósseas. O grau 4 corresponde a osteófitos volumosos, redução marcada da interlinha, esclerose grave e deformidade definida, achados que não se observam neste exame."
+    "statement": "Nos descritores de Kohn et al., o grau 3 de Kellgren-Lawrence corresponde a osteófitos moderados, redução definida da interlinha, alguma esclerose e possível deformidade das extremidades ósseas. O grau 4 corresponde a osteófitos volumosos, redução marcada da interlinha, esclerose grave e deformidade definida das extremidades ósseas."
    },
    {
     "evidenceId": "kohn2016-kl-classification-in-brief",
-    "statement": "A reprodutibilidade da classificação de Kellgren-Lawrence varia conforme a descrição dos graus utilizada (kappa ponderado de 0,41 com a descrição original), e a classificação foi criticada por assumir uma progressão linear."
+    "statement": "Nos mesmos descritores, o grau 2 exige osteófitos definidos, e os graus 3 e 4 osteófitos moderados e volumosos; sem osteófito definido, não é atribuível grau 2 ou superior."
+   },
+   {
+    "evidenceId": "kohn2016-kl-classification-in-brief",
+    "statement": "Os descritores dos graus de Kellgren-Lawrence assentam na redução da interlinha articular e nos osteófitos."
+   },
+   {
+    "evidenceId": "kohn2016-kl-classification-in-brief",
+    "statement": "A reprodutibilidade da classificação de Kellgren-Lawrence varia conforme a descrição dos graus utilizada (kappa ponderado de 0,41 com a descrição original). Os autores originais nunca especificaram explicitamente que achados correspondem a cada grau, e a classificação foi criticada por assumir uma progressão radiográfica linear."
    },
    {
     "evidenceId": "kellgren1957-oa-grading",
@@ -884,20 +868,17 @@
    },
    {
     "evidenceId": "cecava2018-knee-effusion-radiograph",
-    "statement": "O derrame suprarrotuliano avalia-se e mede-se na radiografia de perfil do joelho, que não foi obtida neste estudo."
-   },
-   {
-    "evidenceId": "esr2018-structured-reporting",
-    "statement": "O relatório estruturado com estrutura e linguagem padronizadas assegura relatórios completos e comparáveis e minimiza a ambiguidade."
+    "statement": "O derrame suprarrotuliano foi avaliado e medido na radiografia de perfil do joelho; esta incidência não foi fornecida neste estudo."
    },
    {
     "evidenceId": "suh2024-gpt4v-gemini-diagnosis-please",
-    "statement": "Modelos de visão-linguagem (GPT-4V e Gemini Pro Vision) tiveram exatidão diagnóstica inferior à de radiologistas com formação subespecializada em casos 'Diagnosis Please': com temperatura 1, 49% e 39% face a 61%."
+    "statement": "Em 190 casos 'Diagnosis Please' (17 musculoesqueléticos), com temperatura 1, a exatidão diagnóstica foi de 49% para o GPT-4V e de 39% para o Gemini Pro Vision, face a 61% para radiologistas com formação subespecializada. A diferença foi significativa para o Gemini Pro Vision (P < 0,001), mas não para o GPT-4V após correção de Bonferroni (P = 0,02)."
    }
   ],
   "status": "draft",
   "generatedBy": "Claude (API Anthropic) · claude-opus-5-5 · pré-calculado",
   "generatedAt": "2026-10-27T23:00:00.000Z",
-  "editedByClinician": false
+  "editedByClinician": false,
+  "revisedAfterVerification": true
  }
 }

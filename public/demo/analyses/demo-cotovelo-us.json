@@ -47,7 +47,7 @@
     "status": "done",
     "startedAt": "2026-10-27T23:00:00.000Z",
     "finishedAt": "2026-10-27T23:00:00.000Z",
-    "message": "12 observação(ões)"
+    "message": "8 problema(s) corrigido(s) automaticamente; 5 observação(ões) por rever"
    }
   ],
   "triage": {
@@ -496,92 +496,83 @@
    "issues": [
     {
      "severity": "error",
-     "section": "Achados › Osso / entese",
-     "message": "Os achados estruturados e a triagem não referem uma «fina orla hipoecogénica regular compatível com cartilagem articular». O C7 regista apenas a ausência de irregularidade ou descontinuidade cortical. A afirmação não é suportada: remover."
-    },
-    {
-     "severity": "error",
-     "section": "Achados › Músculo",
-     "message": "O «padrão peniforme regular (melhor visível nas imagens 4–9)» não consta dos achados estruturados nem da triagem. O C11 suporta apenas a ausência de sinais de lesão muscular na musculatura visível. Remover o pormenor descritivo."
-    },
-    {
-     "severity": "error",
-     "section": "Achados › Estudo dinâmico",
-     "message": "Há pormenores não suportados: a direção do deslocamento («para a direita»), o «regresso parcial na imagem 10», o tecido subcutâneo «quase fixo» e a afirmação de que a relação entre os contornos ósseos e a largura da interlinha «se mantêm constantes». A triagem refere apenas um deslocamento em bloco de cerca de 60–65 px em relação à pele, entre as imagens 2 e 6–7. Os itens C12 e C14 suportam apenas a ausência (improvável) de ressalto, subluxação, conflito dinâmico e luxação/subluxação radiocapitelar."
+     "section": "Achados — Osso / entese",
+     "message": "A «fina orla hipoecogénica regular compatível com cartilagem articular» não consta dos achados estruturados nem da triagem. C7 refere apenas ausência de irregularidade ou descontinuidade cortical. Trata-se de uma observação nova e interpretativa, e é relevante: uma orla hipoecogénica na interlinha radiocapitelar tem diagnóstico diferencial com derrame ou sinovite (C10). Deve ser retirada ou registada como achado estruturado para revisão. A afirmação categórica «são lisos» também excede a certeza de C7 («improvável»)."
     },
     {
      "severity": "warning",
-     "section": "Conclusão (3.º ponto) / Estudo dinâmico",
-     "message": "«Nem instabilidade radiocapitelar» vai além do C14, que avalia apenas luxação/subluxação radiocapitelar (improvável). A instabilidade não é avaliável sem manobras de provocação e com uma manobra desconhecida, que pode ter sido apenas um varrimento da sonda. Substituir por «sem luxação nem subluxação radiocapitelar». A ressalva sobre a manobra desconhecida deve aplicar-se também à ausência de ressalto e de conflito dinâmico, e não apenas ao deslizamento tendinoso."
+     "section": "Achados — Tendão extensor comum / Conclusão",
+     "message": "A negativa para rotura de espessura total (C1) não está restrita ao segmento visualizado. No entanto, o próprio relatório afirma que a entese epicondiliana, local habitual destas roturas, não está inequivocamente representada. Deve acrescentar-se «no segmento tendinoso visualizado» nos achados e na conclusão, porque «no plano em eixo longo avaliado» não cobre a entese não representada. A afirmação «contínua sobre os contornos ósseos visíveis nas 10 imagens» também não consta de C1."
     },
     {
      "severity": "warning",
-     "section": "Achados › Articulação radiocapitelar e bursas / Limitações",
-     "message": "A frase «O recesso posterior não está representado» não consta dos achados estruturados nem da triagem. A limitação é plausível num plano lateral em eixo longo, mas não está documentada: apresentá-la como inferência ou remover."
+     "section": "Achados — Tendão extensor comum / Limitações",
+     "message": "A triagem descreve sombra acústica no terço direito profundo da imagem, na mesma porção direita do ecrã onde se localiza F1. O relatório não indica a origem desta sombra (contorno ósseo?) e afirma ao mesmo tempo que «não se identificam focos hiperecogénicos com sombra acústica». Deve esclarecer-se a origem da sombra ou referir que esta limita a avaliação da face profunda junto à entese (C2) e de calcificações nessa região."
     },
     {
      "severity": "warning",
-     "section": "Conclusão (2.º ponto)",
-     "message": "O F1 situa a alteração na «camada tendinosa presumida da origem comum dos extensores», e a triagem considera que a identidade dos relevos ósseos não é inequívoca. A conclusão escreve «tendão extensor comum» sem «presumido» e usa «desaparece» onde o F1 diz «deixa de se distinguir». Ambas as formulações sobrevalorizam a certeza: acrescentar «presumido» e manter a formulação do F1."
+     "section": "Achados — Estudo dinâmico",
+     "message": "Há pormenores sem suporte na triagem nem nos achados: a direção do deslocamento («para a direita»), o «regresso parcial na imagem 10» e a afirmação de que «a relação entre os dois contornos ósseos e a largura da interlinha mantêm-se constantes». A triagem refere apenas um deslocamento em bloco de cerca de 60–65 px entre as imagens 2 e 6–7, em relação à pele. Como a constância da interlinha sustenta a negativa de C14, deve ser confirmada ou retirada."
     },
     {
      "severity": "warning",
-     "section": "Limitações (citação suh2024-gpt4v-gemini-diagnosis-please)",
-     "message": "A afirmação de que a exatidão do GPT-4V foi «inferior à dos radiologistas» omite que essa diferença não foi estatisticamente significativa após correção de Bonferroni (P = 0,02). Só a diferença face ao Gemini Pro Vision foi significativa. Convém indicar também que os valores se referem à temperatura 1 e a casos «Diagnosis Please» de várias subespecialidades, dos quais apenas 17 de 190 eram musculoesqueléticos. A frase anterior («podem falhar achados subtis e produzir achados espúrios») não tem suporte nesta evidência."
-    },
-    {
-     "severity": "warning",
-     "section": "Achados › Osso / entese (citação dones2014-lateral-epicondylalgia-us)",
-     "message": "«Estas alterações ósseas são muito específicas, mas pouco sensíveis»: a evidência dá a especificidade (0,96) apenas para as irregularidades corticais, não para os entesófitos. Chamar «pouco sensível» a 0,56 é uma interpretação editorial, e o valor é próximo de 0,64, apresentado no mesmo relatório como a melhor combinação. Reformular com os valores e sem o qualificativo."
+     "section": "Achados — Músculo",
+     "message": "O «padrão peniforme regular (melhor visível nas imagens 4–9)» não consta de C11 nem da triagem. É uma descrição específica de fotogramas sem suporte. Deve reduzir-se à negativa de C11: lesão muscular improvável na musculatura visível."
     },
     {
      "severity": "info",
-     "section": "Técnica (citação esr2018-structured-reporting)",
-     "message": "A evidência da ESR apoia a transição para o relatório estruturado, mas não define este modelo. «De acordo com as recomendações da ESR» sobrevaloriza a conformidade. Preferir «em formato estruturado, como preconizado pela ESR»."
+     "section": "Achados — Articulação radiocapitelar e bursas / Limitações",
+     "message": "«O recesso posterior não está representado» não consta da triagem nem dos achados estruturados. É uma inferência plausível a partir do plano único lateral, mas deve ser apresentada como tal."
     },
     {
      "severity": "info",
-     "section": "Achados › Tendão extensor comum",
-     "message": "Os itens não avaliáveis passam a «áreas hipoecogénicas focais persistentes ou perda do padrão fibrilhar ao nível da entese», uma formulação mais restritiva do que o C3, que é não avaliável para todo o tendão. A conclusão usa a formulação geral. Uniformizar, para não sugerir que o padrão fibrilhar do resto do tendão foi avaliado."
+     "section": "Achados — Estruturas não representadas",
+     "message": "C15–C18 estão classificados como «não avaliáveis». O relatório afirma que «não estão representados», o que é mais forte do que os achados estruturados. É preferível escrever «não avaliáveis neste estudo (fora do plano adquirido)»."
     },
     {
      "severity": "info",
-     "section": "Limitações / Achados › Tendão extensor comum",
-     "message": "A sombra acústica no terço profundo direito pode coincidir com a região do F1 (extremidade do contorno ósseo à direita) e com a face profunda junto à entese (C2). Explicitar esta relação reforçaria a ressalva. Convém também indicar a origem presumida da sombra, para não a confundir com a frase «não há focos hiperecogénicos com sombra acústica»."
+     "section": "Achados — citações dones2014-lateral-epicondylalgia-us",
+     "message": "A citação é suportada pela evidência. No entanto, os valores de sensibilidade e especificidade referem-se à epicondilalgia lateral crónica, e a informação clínica não indica a duração dos sintomas. Convém explicitar este limite de aplicabilidade. Além disso, «o sinal ecográfico com melhor combinação» deve limitar-se aos sinais avaliados na revisão."
     },
     {
      "severity": "info",
-     "section": "Recomendações (2.º ponto)",
-     "message": "A mesma frase usa «Doppler de potência» e «power Doppler». Uniformizar para «Doppler de potência»."
+     "section": "Limitações — suh2024-gpt4v-gemini-diagnosis-please",
+     "message": "Os números e a significância estatística estão corretamente citados. Contudo, o estudo avaliou o GPT-4V e o Gemini Pro Vision na geração de diagnósticos diferenciais em casos «Diagnosis Please», não a análise de clips ecográficos nem o modelo usado nesta aplicação. Deve indicar-se que é evidência indireta. A frase «Estes modelos podem falhar achados subtis e produzir achados espúrios» não é sustentada por esta referência."
+    },
+    {
+     "severity": "info",
+     "section": "Recomendações",
+     "message": "A terminologia é inconsistente: «Doppler de potência» e «power Doppler» aparecem no mesmo parágrafo. Deve uniformizar-se para «Doppler de potência». As recomendações são proporcionadas e a questão clínica (avaliação dinâmica do tendão extensor comum) é respondida, com as ressalvas adequadas."
     }
-   ]
+   ],
+   "revisedIssues": 8
   }
  },
  "report": {
   "language": "pt-PT",
   "clinicalIndication": "Homem de 45 anos, trabalhador manual, com epicondilalgia lateral. Pedido de avaliação dinâmica do tendão extensor comum. Prioridade: rotina.",
-  "technique": "Ecografia do cotovelo em modo B: clip dinâmico num plano único em eixo longo, presumivelmente da face lateral e da origem comum dos extensores ao nível da interlinha radiocapitelar. Foram avaliados 10 fotogramas-chave do clip (imagens JPEG comprimidas, 800×242 px). Sem Doppler, sem cortes em eixo curto e sem comparação contralateral. Sem marcador de lado nem anotações anatómicas; lateralidade não identificada. Sem material de osteossíntese. Qualidade técnica limitada. A análise foi assistida por um modelo de visão-linguagem. Todos os achados descritos são sugestões automáticas que ainda não foram revistas por um médico. O relatório segue um formato estruturado de acordo com as recomendações da ESR [esr2018-structured-reporting].",
-  "comparison": "Sem exames prévios disponíveis para comparação.",
+  "technique": "Ecografia do cotovelo em modo B: clip dinâmico num plano único em eixo longo, presumivelmente da face lateral e da origem comum dos extensores ao nível da interlinha radiocapitelar. Foram avaliados 10 fotogramas-chave do clip (imagens JPEG comprimidas, 800×242 px). Sem Doppler, sem cortes em eixo curto e sem comparação contralateral. Sem marcador de lado nem anotações anatómicas; lateralidade não identificada. Sem material de osteossíntese. Qualidade técnica limitada. A análise foi assistida por um modelo de visão-linguagem. Todos os achados descritos são sugestões automáticas que ainda não foram revistas por um médico.",
+  "comparison": "Não foram fornecidos exames prévios para comparação.",
   "findingsByRegion": [
    {
     "heading": "Tendão extensor comum",
-    "text": "A camada tendinosa mantém-se contínua sobre os contornos ósseos visíveis nas 10 imagens. Rotura de espessura total improvável. Nas imagens 1–3 há uma área mal definida na porção intermédia da camada tendinosa, cerca de 25–30% menos ecogénica do que o tecido adjacente à mesma profundidade. Situa-se sobre a extremidade do contorno ósseo à direita do ecrã, junto à interlinha radiocapitelar presumida. Não há fenda anecogénica nem calcificação. A área deixa de se distinguir nas imagens 4–10, quando o ângulo de insonação muda, pelo que é compatível com artefacto de anisotropia; tendinopatia focal menos provável, mas não excluída. Esta distinção é relevante: a hipoecogenicidade da origem comum dos extensores é o sinal ecográfico com melhor combinação de sensibilidade (0,64) e especificidade (0,82) na epicondilalgia lateral crónica [dones2014-lateral-epicondylalgia-us]. Não há focos hiperecogénicos com sombra acústica sugestivos de calcificação intratendinosa. Os seguintes aspetos não são avaliáveis neste estudo: rotura parcial ou fenda intrassubstância (incluindo a face profunda junto à entese), áreas hipoecogénicas focais persistentes ou perda do padrão fibrilhar ao nível da entese, e espessamento tendinoso. A entese epicondiliana não está inequivocamente representada e não há escala de profundidade utilizável."
+    "text": "A camada tendinosa presumida da origem comum dos extensores mantém-se contínua sobre os contornos ósseos visíveis nas 10 imagens; rotura de espessura total improvável. Nas imagens 1–3 há uma área mal definida na porção intermédia da camada tendinosa presumida, cerca de 25–30% menos ecogénica do que o tecido adjacente à mesma profundidade. Situa-se sobre a extremidade do contorno ósseo à direita do ecrã, junto à interlinha radiocapitelar presumida. Não há fenda anecogénica nem calcificação. A área deixa de se distinguir nas imagens 4–10, quando as estruturas profundas se deslocam e o ângulo de insonação muda, pelo que é compatível com artefacto de anisotropia; tendinopatia focal menos provável, mas não excluída. Esta distinção é relevante: a hipoecogenicidade da origem comum dos extensores é o sinal ecográfico com melhor combinação de sensibilidade (0,64) e especificidade (0,82) na epicondilalgia lateral crónica [dones2014-lateral-epicondylalgia-us]. Calcificações intratendinosas improváveis: não se identificam focos hiperecogénicos com sombra acústica. Os seguintes aspetos não são avaliáveis neste estudo: rotura parcial ou fenda intrassubstância (incluindo a face profunda junto à entese), áreas hipoecogénicas focais persistentes ou perda do padrão fibrilhar ao nível da entese, e espessamento tendinoso. A entese epicondiliana não está inequivocamente representada e não há escala de profundidade utilizável."
    },
    {
     "heading": "Osso / entese",
-    "text": "Os contornos ósseos visíveis (capítulo e cabeça radial presumidos) são lisos, com uma fina orla hipoecogénica regular compatível com cartilagem articular. Não há irregularidade nem descontinuidade cortical. A entese no epicôndilo lateral não está inequivocamente representada, pelo que não é possível avaliar entesófitos ou irregularidade cortical epicondiliana. Mesmo quando avaliáveis, estas alterações ósseas são muito específicas, mas pouco sensíveis (sensibilidade 0,56) para a epicondilalgia lateral crónica [dones2014-lateral-epicondylalgia-us]."
+    "text": "Os contornos ósseos visíveis (capítulo e cabeça radial presumidos) são lisos, com uma fina orla hipoecogénica regular compatível com cartilagem articular. Irregularidade ou descontinuidade cortical improvável. A entese no epicôndilo lateral não está inequivocamente representada, pelo que não é possível avaliar entesófitos ou irregularidade cortical epicondiliana. Numa revisão sistemática, as irregularidades corticais tiveram especificidade de 0,96 para a epicondilalgia lateral crónica, e as alterações ósseas do epicôndilo lateral tiveram sensibilidade de 0,56 [dones2014-lateral-epicondylalgia-us]."
    },
    {
     "heading": "Articulação radiocapitelar e bursas",
-    "text": "Na interlinha radiocapitelar visível não há distensão articular nem sinais de derrame ou sinovite. Sem distensão bursal. O recesso posterior não está representado."
+    "text": "Sem distensão da interlinha radiocapitelar visível; derrame articular ou sinovite improváveis. Distensão bursal improvável. O recesso posterior não está representado."
    },
    {
     "heading": "Músculo",
-    "text": "A musculatura visível tem arquitetura preservada, com padrão peniforme regular (melhor visível nas imagens 4–9). Sem sinais de lesão muscular."
+    "text": "A musculatura visível tem arquitetura preservada, com padrão peniforme regular (melhor visível nas imagens 4–9); lesão muscular improvável."
    },
    {
     "heading": "Doppler",
-    "text": "Não foi realizado. A hiperemia ou neovascularização não é avaliável."
+    "text": "Sem imagens Doppler (estudo apenas em modo B). A hiperemia ou neovascularização não é avaliável."
    },
    {
     "heading": "Estruturas não representadas",
@@ -589,34 +580,30 @@
    },
    {
     "heading": "Estudo dinâmico",
-    "text": "Nas imagens 1–10, o tendão, os contornos ósseos e o músculo deslocam-se em bloco cerca de 60–65 px para a direita entre a imagem 2 e as imagens 6–7, com regresso parcial na imagem 10. A pele e o tecido subcutâneo permanecem quase fixos. A relação entre os dois contornos ósseos e a largura da interlinha mantêm-se constantes. Não há ressalto, subluxação nem conflito dinâmico, nem luxação ou subluxação radiocapitelar. Desconhece-se a manobra realizada (varrimento da sonda ou movimento do membro), pelo que o deslizamento tendinoso ativo não é avaliável."
+    "text": "Nas imagens 1–10, o tendão, os contornos ósseos e o músculo deslocam-se em bloco cerca de 60–65 px para a direita entre a imagem 2 e as imagens 6–7, com regresso parcial na imagem 10. A pele e o tecido subcutâneo permanecem quase fixos. A relação entre os dois contornos ósseos e a largura da interlinha mantêm-se constantes. Ressalto, subluxação ou conflito dinâmico improváveis; luxação ou subluxação radiocapitelar improvável. Como se desconhece a manobra realizada (varrimento da sonda ou movimento do membro), estas negativas têm valor limitado e o deslizamento tendinoso ativo não é avaliável."
    }
   ],
   "impression": [
-   "Este estudo, limitado, não confirma nem exclui epicondilopatia lateral. No plano em eixo longo avaliado não há sinais de rotura de espessura total do tendão extensor comum (improvável). A entese epicondiliana não está inequivocamente representada. Também não é possível avaliar rotura parcial ou fenda intrassubstância, perda do padrão fibrilhar nem espessamento tendinoso.",
-   "Há uma área hipoecogénica transitória na porção intermédia do tendão extensor comum (imagens 1–3) que desaparece quando muda o ângulo de insonação. É compatível com anisotropia; tendinopatia focal menos provável, mas não excluída.",
-   "Estudo dinâmico sem ressalto, subluxação, conflito dinâmico nem instabilidade radiocapitelar. O deslizamento tendinoso ativo não é avaliável porque se desconhece a manobra realizada.",
-   "Na área avaliada não há calcificações intratendinosas, irregularidade cortical dos contornos ósseos visíveis, derrame articular, distensão bursal nem lesão muscular."
+   "Este estudo, limitado, não confirma nem exclui epicondilopatia lateral. No plano em eixo longo avaliado, a rotura de espessura total do tendão extensor comum presumido é improvável. A entese epicondiliana não está inequivocamente representada. Também não é possível avaliar rotura parcial ou fenda intrassubstância, perda do padrão fibrilhar nem espessamento tendinoso.",
+   "Há uma área hipoecogénica transitória na porção intermédia do tendão extensor comum presumido (imagens 1–3), que deixa de se distinguir nas imagens 4–10, quando muda o ângulo de insonação. É compatível com anisotropia; tendinopatia focal menos provável, mas não excluída.",
+   "Estudo dinâmico: ressalto, subluxação, conflito dinâmico e luxação ou subluxação radiocapitelar improváveis nos fotogramas avaliados. Como se desconhece a manobra realizada, estas negativas têm valor limitado e o deslizamento tendinoso ativo não é avaliável.",
+   "Na área avaliada são improváveis calcificações intratendinosas, irregularidade ou descontinuidade cortical dos contornos ósseos visíveis, derrame articular ou sinovite, distensão bursal e lesão muscular."
   ],
   "recommendations": [
    "Recomenda-se uma ecografia em tempo real realizada por médico. Deve incluir cortes em eixo longo e em eixo curto da origem comum dos extensores, com a entese no epicôndilo lateral, e variação do ângulo da sonda (heel-toe) para distinguir anisotropia de hipoecogenicidade verdadeira. Deve também incluir a medição da espessura tendinosa e a comparação com o lado contralateral. A ecografia em escala de cinzentos é a técnica recomendada para a epicondilalgia lateral [dones2014-lateral-epicondylalgia-us].",
    "O Doppler de potência pode complementar a avaliação na pesquisa de neovascularização, sinal muito específico (especificidade 1,00) quando presente. Note-se, no entanto, que a evidência sobre o power Doppler foi considerada insuficiente [dones2014-lateral-epicondylalgia-us].",
-   "Para avaliar o deslizamento tendinoso, deve registar-se a lateralidade, as anotações anatómicas e a manobra dinâmica executada, com a sonda estacionária durante o movimento do membro.",
+   "Para avaliar o deslizamento tendinoso e o comportamento dinâmico, devem registar-se a lateralidade, as anotações anatómicas e a manobra dinâmica executada, com a sonda estacionária durante o movimento do membro.",
    "Os achados devem ser correlacionados com o quadro clínico e o exame objetivo pelo médico assistente."
   ],
-  "limitations": "A avaliação está limitada a um plano único em eixo longo, apenas em modo B, sem Doppler, sem cortes em eixo curto e sem comparação contralateral. Faltam o marcador de lado e as anotações anatómicas. Por isso, a identidade dos relevos ósseos (epicôndilo lateral, capítulo ou cabeça radial) e a orientação proximal-distal são presumidas. A entese epicondiliana, local típico da tendinopatia, não está inequivocamente representada. Não há escala de profundidade utilizável: a espessura do tendão não foi medida e o espessamento não pode ser avaliado. Os fotogramas-chave são comprimidos e de baixa resolução, pelo que pequenas fendas intrassubstância ou alterações subtis da face profunda podem passar despercebidas. Há sombra acústica no terço direito profundo da imagem. Além disso, o deslocamento em bloco das estruturas profundas altera o ângulo de insonação e favorece artefactos de anisotropia. Desconhece-se a manobra dinâmica, pelo que o deslizamento tendinoso ativo não é avaliável. O recesso posterior, a origem dos flexores, o nervo cubital, o tendão distal do bicípite e o nervo radial/interósseo posterior não estão representados. A análise foi assistida por um modelo de visão-linguagem e todos os achados estão pendentes de revisão médica. Estes modelos podem falhar achados subtis e produzir achados espúrios. Num estudo com casos de diagnóstico por imagem, a exatidão dos modelos de visão-linguagem (49% no GPT-4V e 39% no Gemini Pro Vision) foi inferior à dos radiologistas (61%) [suh2024-gpt4v-gemini-diagnosis-please]. Esta análise não substitui a avaliação ecográfica em tempo real por um médico.",
+  "limitations": "A avaliação está limitada a um plano único em eixo longo, apenas em modo B, sem Doppler, sem cortes em eixo curto e sem comparação contralateral. Faltam o marcador de lado e as anotações anatómicas. Por isso, a identidade dos relevos ósseos (epicôndilo lateral, capítulo ou cabeça radial) e a orientação proximal-distal são presumidas. A entese epicondiliana, local típico da tendinopatia, não está inequivocamente representada. Não há escala de profundidade utilizável: a espessura do tendão não foi medida e o espessamento não pode ser avaliado. Os fotogramas-chave são comprimidos e de baixa resolução, pelo que pequenas fendas intrassubstância ou alterações subtis da face profunda podem passar despercebidas. Há sombra acústica no terço direito profundo da imagem. Além disso, o deslocamento em bloco das estruturas profundas altera o ângulo de insonação e favorece artefactos de anisotropia. Desconhece-se a manobra dinâmica, pelo que o deslizamento tendinoso ativo não é avaliável e a ausência de ressalto, subluxação ou conflito tem valor limitado. O recesso posterior, a origem dos flexores, o nervo cubital, o tendão distal do bicípite e o nervo radial/interósseo posterior não estão representados. A análise foi assistida por um modelo de visão-linguagem e todos os achados estão pendentes de revisão médica. Estes modelos podem falhar achados subtis e produzir achados espúrios. Num estudo retrospetivo com 190 casos «Diagnosis Please» de várias subespecialidades (apenas 17 musculoesqueléticos), com temperatura 1, a exatidão global foi de 49% no GPT-4V e de 39% no Gemini Pro Vision, face a 61% nos radiologistas; apenas a diferença face ao Gemini Pro Vision foi estatisticamente significativa após correção de Bonferroni [suh2024-gpt4v-gemini-diagnosis-please]. Esta análise não substitui a avaliação ecográfica em tempo real por um médico.",
   "citations": [
-   {
-    "evidenceId": "esr2018-structured-reporting",
-    "statement": "O relatório segue um formato estruturado de acordo com as recomendações da ESR."
-   },
    {
     "evidenceId": "dones2014-lateral-epicondylalgia-us",
     "statement": "A hipoecogenicidade da origem comum dos extensores é o sinal ecográfico com melhor combinação de sensibilidade (0,64) e especificidade (0,82) na epicondilalgia lateral crónica."
    },
    {
     "evidenceId": "dones2014-lateral-epicondylalgia-us",
-    "statement": "As alterações ósseas do epicôndilo lateral são muito específicas, mas pouco sensíveis (sensibilidade 0,56), para a epicondilalgia lateral crónica."
+    "statement": "Numa revisão sistemática, as irregularidades corticais tiveram especificidade de 0,96 para a epicondilalgia lateral crónica, e as alterações ósseas do epicôndilo lateral tiveram sensibilidade de 0,56."
    },
    {
     "evidenceId": "dones2014-lateral-epicondylalgia-us",
@@ -628,12 +615,13 @@
    },
    {
     "evidenceId": "suh2024-gpt4v-gemini-diagnosis-please",
-    "statement": "Num estudo com casos de diagnóstico por imagem, a exatidão dos modelos de visão-linguagem (49% no GPT-4V e 39% no Gemini Pro Vision) foi inferior à dos radiologistas (61%)."
+    "statement": "Num estudo retrospetivo com 190 casos «Diagnosis Please» de várias subespecialidades (apenas 17 musculoesqueléticos), com temperatura 1, a exatidão global foi de 49% no GPT-4V e de 39% no Gemini Pro Vision, face a 61% nos radiologistas; apenas a diferença face ao Gemini Pro Vision foi estatisticamente significativa após correção de Bonferroni."
    }
   ],
   "status": "draft",
   "generatedBy": "Claude (API Anthropic) · claude-opus-5-5 · pré-calculado",
   "generatedAt": "2026-10-27T23:00:00.000Z",
-  "editedByClinician": false
+  "editedByClinician": false,
+  "revisedAfterVerification": true
  }
 }

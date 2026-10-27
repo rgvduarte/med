@@ -47,7 +47,7 @@
     "status": "done",
     "startedAt": "2026-10-27T23:00:00.000Z",
     "finishedAt": "2026-10-27T23:00:00.000Z",
-    "message": "9 observação(ões)"
+    "message": "5 problema(s) corrigido(s) automaticamente; sem problemas relevantes"
    }
   ],
   "triage": {
@@ -774,73 +774,74 @@
   ],
   "notebookLm": [],
   "verification": {
-   "passed": false,
+   "passed": true,
    "issues": [
     {
-     "severity": "error",
-     "section": "findings_sections › Alinhamento",
-     "message": "A frase «com o semilunar assente na fossa radial» não tem suporte nos achados estruturados. C10 indica apenas que a luxação do semilunar/perilunar é improvável, sem descrição morfológica nem incidência («no perfil»). Além disso, esta justificação não exclui a luxação perilunar, porque nela o semilunar mantém-se articulado com o rádio; o critério relevante seria o alinhamento capitato-semilunar. Retirar a justificação e manter apenas o achado C10 («luxação do semilunar/perilunar improvável»)."
-    },
-    {
-     "severity": "warning",
-     "section": "findings_sections › Alinhamento",
-     "message": "«A superfície articular do rádio está orientada para dorsal, com perda da inclinação volar normal» está escrito de forma categórica. F2 tem certeza «suspicious-for» e a descrição diz «parece virada para dorsal». Usar linguagem de suspeita (p. ex., «parece orientada para dorsal, sugerindo perda da inclinação volar»)."
-    },
-    {
-     "severity": "warning",
-     "section": "conclusion #2",
-     "message": "Em «Possível encurtamento radial, com diminuição da inclinação radial e variância cubital positiva por impactação», o «possível» parece aplicar-se só ao encurtamento. A diminuição da inclinação radial e a variância cubital positiva ficam sem qualificador, mas F3 é «possible» e a variância cubital positiva é apenas sugerida. Qualificar cada componente (p. ex., «possível diminuição da inclinação radial e possível variância cubital positiva»)."
-    },
-    {
-     "severity": "warning",
-     "section": "findings_sections › Alinhamento; conclusion #2",
-     "message": "[lichtman2010-aaos-distal-radius] é citada para afirmar que a inclinação radial, a altura radial e a variância cubital têm relevância na decisão terapêutica. A evidência só refere o encurtamento radial >3 mm, a inclinação dorsal >10 graus e o desvio/degrau intra-articular >2 mm, e apenas após redução. A fonte não apoia a inclinação radial. Limitar a afirmação citada aos parâmetros da norma ou separar a citação dos restantes parâmetros."
-    },
-    {
-     "severity": "warning",
-     "section": "limitations; citations (suh2024-gpt4v-gemini-diagnosis-please)",
-     "message": "Diz-se que a exatidão do GPT-4V e do Gemini Pro Vision (49% e 39%) foi «inferior» à dos radiologistas (61%), mas falta referir que a diferença face ao GPT-4V não foi estatisticamente significativa após correção de Bonferroni (P = 0,02). Os valores correspondem à temperatura 1 e a casos de várias subespecialidades (só 17 musculoesqueléticos). A expressão «destes modelos» sugere que são os modelos do estudo anterior (GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro), mas são outros. Acrescentar a ressalva e nomear os modelos."
+     "severity": "info",
+     "section": "Limitações",
+     "message": "A frase «Sem calibração de escala, não se reportam medidas em mm nem ângulos» liga a impossibilidade de medir ângulos à falta de calibração. Os ângulos (inclinação volar/dorsal e inclinação radial) não dependem da escala. Como em F2/F3, o motivo é a falta de eixos fiáveis e de um perfil verdadeiro. Reformular."
     },
     {
      "severity": "info",
-     "section": "technique",
-     "message": "A fonte [esr2018-structured-reporting] apoia a adoção do relatório estruturado em geral, não um modelo concreto. Por isso, «estruturado segundo as recomendações da ESR» diz mais do que a fonte. Sugere-se «em formato estruturado, em linha com a posição da ESR»."
+     "section": "Achados — Alinhamento",
+     "message": "«Os arcos de Gilula estão globalmente preservados» é mais categórico do que C8 (rotura improvável). Sugere-se «sem rotura evidente dos arcos de Gilula na PA», para alinhar com a certeza do achado."
     },
     {
      "severity": "info",
-     "section": "conclusion #1",
-     "message": "O pequeno fragmento cortical linear destacado na face volar (parte de F1, «consistent-with») está descrito na secção Osso, mas a conclusão não o menciona, embora refira a possível cominução dorsal. Considerar incluí-lo."
+     "section": "Achados — Alinhamento",
+     "message": "«A cabeça do cúbito projeta-se ligeiramente além do bordo cubital do rádio» vem de F3 e é anatomicamente ambíguo. A variância cubital refere-se à projeção distal do cúbito em relação à superfície articular do rádio (fossa semilunar). Clarificar."
     },
     {
      "severity": "info",
-     "section": "comparison",
-     "message": "Os dados de entrada não dizem se existem exames prévios. É preferível escrever «Não foram fornecidos exames prévios para comparação» em vez de afirmar que não estão disponíveis."
+     "section": "Achados — Articulações",
+     "message": "«Não há alterações degenerativas marcadas na articulação trapeziometacárpica» sugere que pode haver alterações ligeiras, o que C16 não diz (artrose improvável). Preferir «artrose trapeziometacárpica improvável»."
     },
     {
      "severity": "info",
-     "section": "clinical_indication",
-     "message": "O pedido não formula a «Questão clínica»: o sistema inferiu-a a partir do mecanismo e da clínica. É razoável e o relatório responde-lhe (fratura e desvio, cúbito distal, carpo), mas convém identificá-la como inferida."
+     "section": "Achados — Articulações",
+     "message": "C9 usa o limiar >3 mm, que não se pode aplicar sem calibração. A redação «sem alargamento aparente» é adequada, mas convém dizer que a avaliação do intervalo escafolunar é apenas qualitativa."
+    },
+    {
+     "severity": "info",
+     "section": "Conclusão",
+     "message": "O pequeno fragmento cortical volar destacado (F1, «consistent-with») está descrito nos achados, mas não na conclusão. Ponderar mencioná-lo, porque pode ser relevante para a estabilidade e o planeamento."
+    },
+    {
+     "severity": "info",
+     "section": "Achados — Alinhamento / Conclusão / Recomendações",
+     "message": "Os critérios da AAOS [lichtman2010-aaos-distal-radius] são citados três vezes, uma delas na secção de achados, que deve descrever apenas a imagem. Deixá-los só nas recomendações. Segundo a evidência citada, acrescentar que é uma recomendação de força moderada, numa norma sem nenhuma recomendação forte."
+    },
+    {
+     "severity": "info",
+     "section": "Limitações",
+     "message": "Em [suh2024-gpt4v-gemini-diagnosis-please], «a partir de imagens» não diz que os modelos receberam também a história clínica e as legendas das figuras. Também não diz que um caso contava como correto se o diagnóstico final surgisse entre três diferenciais ao fim de cinco repetições. Acrescentar estas ressalvas ou simplificar a referência."
+    },
+    {
+     "severity": "info",
+     "section": "Indicação clínica",
+     "message": "A «Questão clínica» não foi dada de forma explícita: foi deduzida da informação clínica. A dedução é razoável e o relatório responde-lhe, mas convém indicar que foi deduzida."
     }
-   ]
+   ],
+   "revisedIssues": 5
   }
  },
  "report": {
   "language": "pt-PT",
   "clinicalIndication": "Doente do sexo feminino, 72 anos, com queda sobre a mão em extensão; dor, edema e deformidade em «dorso de garfo» do punho esquerdo. Prioridade: urgente. Questão clínica: fratura do rádio distal e respetivo desvio; lesões associadas do cúbito distal e do carpo.",
-  "technique": "Radiografia do punho esquerdo em incidências PA e perfil, apresentadas numa única imagem composta. Foi avaliada 1 imagem com 2 incidências. A qualidade global é adequada e o posicionamento aceitável em ambas as incidências. A imagem tem processamento com forte realce de contornos e ruído granular, e não tem calibração de escala. Não há incidências dedicadas de escafoide, e os metacarpos distais e as falanges ficam fora do campo. A análise foi assistida por um modelo de visão-linguagem (IA), com revisão sistemática por checklist. Todos os achados são sugestões pendentes de validação por médico. O relatório está estruturado segundo as recomendações da ESR [esr2018-structured-reporting].",
-  "comparison": "Sem exames prévios disponíveis para comparação.",
+  "technique": "Radiografia do punho esquerdo em incidências PA e perfil, apresentadas numa única imagem composta. Foi avaliada 1 imagem com 2 incidências. A qualidade global é adequada e o posicionamento aceitável em ambas as incidências. A imagem tem processamento com forte realce de contornos e ruído granular, e não tem calibração de escala. Não há incidências dedicadas de escafoide, e os metacarpos distais e as falanges ficam fora do campo. A análise foi assistida por um modelo de visão-linguagem (IA), com revisão sistemática por checklist. Todos os achados são sugestões pendentes de validação por médico.",
+  "comparison": "Não foram fornecidos exames prévios para comparação.",
   "findingsByRegion": [
    {
     "heading": "Alinhamento",
-    "text": "No perfil, há suspeita de desvio dorsal do fragmento distal do rádio e do carpo em relação à diáfise. A superfície articular do rádio está orientada para dorsal, com perda da inclinação volar normal, o que é concordante com a deformidade clínica em «dorso de garfo». O grau de angulação não é mensurável com fiabilidade nesta imagem. Na PA, há possível diminuição da inclinação radial e encurtamento radial: a cabeça do cúbito projeta-se ligeiramente além do bordo cubital do rádio, o que sugere variância cubital positiva por impactação. Sem calibração nem eixos fiáveis, não é possível medir a inclinação volar ou dorsal, a inclinação radial, a altura radial nem a variância cubital. Estes parâmetros têm relevância na decisão terapêutica e devem ser medidos formalmente [lichtman2010-aaos-distal-radius]. Não há luxação ou subluxação radiocárpica evidente. A luxação do semilunar ou perilunar é improvável no perfil, com o semilunar assente na fossa radial. Os arcos de Gilula estão globalmente preservados na PA."
+    "text": "No perfil, há suspeita de desvio dorsal do fragmento distal do rádio e do carpo em relação à diáfise. A superfície articular do rádio parece orientada para dorsal, o que sugere perda da inclinação volar normal e é concordante com a deformidade clínica em «dorso de garfo». O grau de angulação não é mensurável com fiabilidade nesta imagem. Na PA, há possível diminuição da inclinação radial e possível encurtamento radial: a cabeça do cúbito projeta-se ligeiramente além do bordo cubital do rádio, o que sugere variância cubital positiva por impactação. Sem calibração nem eixos fiáveis, não é possível medir a inclinação volar ou dorsal, a inclinação radial, a altura radial nem a variância cubital; estes parâmetros devem ser medidos formalmente. A norma de orientação da AAOS inclui o encurtamento radial e a inclinação dorsal após redução entre os critérios na escolha do tratamento [lichtman2010-aaos-distal-radius]. A luxação ou subluxação radiocárpica é improvável, sem sinais evidentes no perfil. A luxação do semilunar ou perilunar é improvável. Os arcos de Gilula estão globalmente preservados na PA."
    },
    {
     "heading": "Osso",
-    "text": "Achados compatíveis com fratura da metáfise distal do rádio esquerdo. Na PA, há um traço de fratura transversal a ligeiramente oblíquo, com banda esclerótica de impactação e degrau nas corticais radial e cubital. No perfil, há interrupção cortical com degrau na cortical dorsal e um pequeno fragmento cortical linear destacado na face volar. Possível fragmento cortical dorsal (cominução dorsal): fina densidade linear paralela à margem dorsal do fragmento distal, separada dela por uma estreita faixa radiotransparente. Os diagnósticos diferenciais são a sobreposição de tecidos moles e uma pequena avulsão do carpo. Possível fratura da apófise estiloide cubital: na PA, o contorno é irregular, com uma pequena densidade arredondada adjacente separada por uma fina linha radiotransparente. Os diagnósticos diferenciais são um ossículo acessório e a sobreposição; não é avaliável de forma independente no perfil. Não há traço de fratura visível no escafoide na PA, pelo que a fratura é improvável nesta incidência. Sem incidências dedicadas, uma fratura oculta do escafoide não fica excluída. Não há fratura evidente nos restantes ossos do carpo nem nas porções incluídas dos metacarpos; as falanges estão fora do campo. Não há lesão óssea focal lítica ou esclerótica que sugira fratura patológica, nem reação periosteal. A densidade óssea não é avaliável com fiabilidade nesta imagem processada. Não há material de osteossíntese."
+    "text": "Achados compatíveis com fratura da metáfise distal do rádio esquerdo. Na PA, há um traço de fratura transversal a ligeiramente oblíquo, com banda esclerótica de impactação e degrau nas corticais radial e cubital. No perfil, há interrupção cortical com degrau na cortical dorsal e um pequeno fragmento cortical linear destacado na face volar. Possível fragmento cortical dorsal (cominução dorsal): fina densidade linear paralela à margem dorsal do fragmento distal, separada dela por uma estreita faixa radiotransparente. Os diagnósticos diferenciais são a sobreposição de tecidos moles e uma pequena avulsão do carpo. Possível fratura da apófise estiloide cubital: na PA, o contorno é irregular, com uma pequena densidade arredondada adjacente separada por uma fina linha radiotransparente. Os diagnósticos diferenciais são um ossículo acessório e a sobreposição; não é avaliável de forma independente no perfil. Não há traço de fratura visível no escafoide na PA, pelo que a fratura é improvável nesta incidência. Sem incidências dedicadas, uma fratura oculta do escafoide não fica excluída. Não há fratura evidente nos restantes ossos do carpo nem nas porções incluídas dos metacarpos; as falanges estão fora do campo. Não há lesão óssea focal lítica ou esclerótica que sugira fratura patológica, e a reação periosteal é improvável. A densidade óssea não é avaliável com fiabilidade nesta imagem processada. Não há material de osteossíntese."
    },
    {
     "heading": "Articulações",
-    "text": "A extensão intra-articular da fratura do rádio distal não é avaliável: não pode ser confirmada nem excluída nesta imagem. Na articulação radiocubital distal, a incongruência ou diástase não é avaliável (ver a possível variância cubital positiva, acima). O intervalo escafolunar não tem alargamento aparente. Não há alterações degenerativas marcadas na articulação trapeziometacárpica. A articulação escafotrapeziotrapezoide não é avaliável. Não há condrocalcinose evidente na topografia do complexo da fibrocartilagem triangular."
+    "text": "A extensão intra-articular da fratura do rádio distal não é avaliável: não pode ser confirmada nem excluída nesta imagem. Na articulação radiocubital distal, a incongruência ou diástase não é avaliável (ver a possível variância cubital positiva, acima). O intervalo escafolunar não tem alargamento aparente. Não há alterações degenerativas marcadas na articulação trapeziometacárpica. A articulação escafotrapeziotrapezoide não é avaliável. A condrocalcinose na topografia do complexo da fibrocartilagem triangular é improvável."
    },
    {
     "heading": "Partes moles",
@@ -849,7 +850,7 @@
   ],
   "impression": [
    "Achados compatíveis com fratura da metáfise distal do rádio esquerdo, com impactação. Há suspeita de desvio e angulação dorsal do fragmento distal, com perda da inclinação volar, concordante com a deformidade clínica em «dorso de garfo». O grau de angulação não é mensurável nesta imagem.",
-   "Possível encurtamento radial, com diminuição da inclinação radial e variância cubital positiva por impactação. A inclinação volar ou dorsal, a inclinação radial, a altura radial e a variância cubital requerem medição formal, por serem parâmetros com relevância na decisão terapêutica [lichtman2010-aaos-distal-radius].",
+   "Possível encurtamento radial, possível diminuição da inclinação radial e possível variância cubital positiva por impactação. A inclinação volar ou dorsal, a inclinação radial, a altura radial e a variância cubital requerem medição formal; o encurtamento radial e a inclinação dorsal após redução estão entre os critérios de escolha do tratamento na norma da AAOS [lichtman2010-aaos-distal-radius].",
    "Possível cominução cortical dorsal e possível fratura associada da apófise estiloide cubital. A extensão intra-articular não pode ser confirmada nem excluída.",
    "Sem luxação radiocárpica evidente; a luxação do semilunar ou perilunar é improvável. Não há fratura evidente do escafoide nem dos restantes ossos do carpo, embora uma fratura oculta do escafoide não fique excluída sem incidências dedicadas.",
    "Sem lesão óssea focal que sugira fratura patológica. Os achados foram sugeridos com assistência de IA e estão pendentes de validação por médico."
@@ -862,15 +863,15 @@
    "Correlação clínica para lesão do escafoide (p. ex., dor na tabaqueira anatómica). Se houver suspeita, completar com incidências dedicadas de escafoide.",
    "Numa doente de 72 anos com fratura do rádio distal após queda (possível fratura de fragilidade), ponderar avaliação da saúde óssea, a critério do médico assistente."
   ],
-  "limitations": "Imagem única composta (PA e perfil), com forte processamento de realce de contornos e ruído, que pode simular ou ocultar traços finos. Sem calibração de escala, não se reportam medidas em mm nem ângulos (inclinação volar ou dorsal, inclinação radial, altura radial, variância cubital); estes parâmetros devem ser medidos formalmente. A extensão intra-articular e o grau de cominução não podem ser confirmados nem excluídos. Faltam incidências dedicadas de escafoide, pelo que uma fratura oculta do escafoide não fica excluída. A avaliação da articulação radiocubital distal, da almofada gorda do pronador quadrado, da tumefação dos tecidos moles e da densidade óssea é limitada, e as falanges não estão incluídas. A análise foi assistida por um modelo de visão-linguagem, sujeito a falhar achados subtis. Num estudo em radiografias pediátricas do punho, modelos de linguagem multimodais testados em modo zero-shot tiveram um desempenho próximo do acaso na deteção de fraturas, face a uma CNN treinada no domínio; a população desse estudo difere da deste caso, que é adulto [haupt2026-mllm-pediatric-wrist-fracture]. Noutro estudo, a exatidão diagnóstica destes modelos a partir de imagens foi inferior à de radiologistas: 49% e 39%, face a 61% [suh2024-gpt4v-gemini-diagnosis-please]. Todos os achados estão pendentes de revisão, e o relatório requer validação por médico.",
+  "limitations": "Imagem única composta (PA e perfil), com forte processamento de realce de contornos e ruído, que pode simular ou ocultar traços finos. Sem calibração de escala, não se reportam medidas em mm nem ângulos (inclinação volar ou dorsal, inclinação radial, altura radial, variância cubital); estes parâmetros devem ser medidos formalmente. A extensão intra-articular e o grau de cominução não podem ser confirmados nem excluídos. Faltam incidências dedicadas de escafoide, pelo que uma fratura oculta do escafoide não fica excluída. A avaliação da articulação radiocubital distal, da almofada gorda do pronador quadrado, da tumefação dos tecidos moles e da densidade óssea é limitada, e as falanges não estão incluídas. A análise foi assistida por um modelo de visão-linguagem, sujeito a falhar achados subtis. Num estudo em radiografias pediátricas do punho, três modelos de linguagem multimodais (GPT-4o, Claude 3.5 Sonnet e Gemini 1.5 Pro), testados em modo zero-shot, tiveram um desempenho próximo do acaso na deteção de fraturas, face a uma CNN treinada no domínio; a população desse estudo difere da deste caso, que é adulto [haupt2026-mllm-pediatric-wrist-fracture]. Noutro estudo, com 190 casos «Diagnosis Please» de várias subespecialidades (dos quais apenas 17 musculoesqueléticos), a exatidão diagnóstica do GPT-4V e do Gemini Pro Vision a partir de imagens, com temperatura 1, foi de 49% e 39%, respetivamente, face a 61% para os radiologistas. A diferença foi estatisticamente significativa para o Gemini Pro Vision (P < 0,001), mas não para o GPT-4V após correção de Bonferroni (P = 0,02) [suh2024-gpt4v-gemini-diagnosis-please]. Todos os achados estão pendentes de revisão, e o relatório requer validação por médico.",
   "citations": [
    {
-    "evidenceId": "esr2018-structured-reporting",
-    "statement": "O relatório está estruturado segundo as recomendações da ESR sobre relatório estruturado."
+    "evidenceId": "lichtman2010-aaos-distal-radius",
+    "statement": "O encurtamento radial e a inclinação dorsal após redução estão entre os critérios de escolha do tratamento na norma de orientação da AAOS."
    },
    {
     "evidenceId": "lichtman2010-aaos-distal-radius",
-    "statement": "A inclinação dorsal, o encurtamento radial e o desvio ou degrau intra-articular têm relevância na decisão terapêutica: a AAOS usa os limiares >10 graus, >3 mm e >2 mm após redução como critérios na escolha do tratamento."
+    "statement": "A norma da AAOS usa, após redução, o encurtamento radial >3 mm, a inclinação dorsal >10 graus e o desvio ou degrau intra-articular >2 mm como critérios na escolha do tratamento (recomendação de força moderada)."
    },
    {
     "evidenceId": "lichtman2010-aaos-distal-radius",
@@ -882,16 +883,17 @@
    },
    {
     "evidenceId": "haupt2026-mllm-pediatric-wrist-fracture",
-    "statement": "Modelos de linguagem multimodais testados em modo zero-shot tiveram um desempenho próximo do acaso na deteção de fraturas do punho em idade pediátrica, face a uma CNN treinada no domínio."
+    "statement": "O GPT-4o, o Claude 3.5 Sonnet e o Gemini 1.5 Pro, testados em modo zero-shot, tiveram um desempenho próximo do acaso na deteção de fraturas do punho em idade pediátrica, face a uma CNN treinada no domínio."
    },
    {
     "evidenceId": "suh2024-gpt4v-gemini-diagnosis-please",
-    "statement": "A exatidão diagnóstica do GPT-4V (49%) e do Gemini Pro Vision (39%) a partir de imagens foi inferior à dos radiologistas (61%)."
+    "statement": "Em 190 casos «Diagnosis Please» de várias subespecialidades (17 musculoesqueléticos), com temperatura 1, a exatidão do GPT-4V foi de 49% e a do Gemini Pro Vision de 39%, face a 61% dos radiologistas; a diferença foi significativa para o Gemini Pro Vision (P < 0,001), mas não para o GPT-4V após correção de Bonferroni (P = 0,02)."
    }
   ],
   "status": "draft",
   "generatedBy": "Claude (API Anthropic) · claude-opus-5-5 · pré-calculado",
   "generatedAt": "2026-10-27T23:00:00.000Z",
-  "editedByClinician": false
+  "editedByClinician": false,
+  "revisedAfterVerification": true
  }
 }
