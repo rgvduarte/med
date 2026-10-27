@@ -13,6 +13,8 @@ export interface GenerateRequest<T> {
   effort?: Effort
   signal?: AbortSignal
   maxTokens?: number
+  /** Called with the number of characters generated so far (streaming providers only). */
+  onProgress?: (chars: number) => void
 }
 
 export interface GenerateResult<T> {
@@ -24,6 +26,8 @@ export interface GenerateResult<T> {
 export interface VlmProvider {
   label: string
   model: string
+  /** Local models are slower and weaker: the pipeline sends fewer, smaller images and skips the second reader. */
+  local: boolean
   generate<T>(req: GenerateRequest<T>): Promise<GenerateResult<T>>
 }
 
@@ -43,6 +47,7 @@ function friendlyAnthropicError(e: unknown): Error {
 
 export class AnthropicProvider implements VlmProvider {
   label = 'Claude (API Anthropic)'
+  local = false
   model: string
   private client: Anthropic
   private defaultEffort: Effort
@@ -73,6 +78,7 @@ export class AnthropicProvider implements VlmProvider {
         },
         { signal: req.signal },
       )
+      if (req.onProgress) stream.on('text', (_delta, snapshot) => req.onProgress?.(snapshot.length))
       const msg = await stream.finalMessage()
       if (msg.stop_reason === 'refusal') {
         throw new Error('O modelo recusou este pedido (filtro de segurança). Reveja as imagens ou tente outro modelo.')
@@ -98,6 +104,7 @@ export class AnthropicProvider implements VlmProvider {
 /** Local OpenAI-compatible server (Ollama, LM Studio, vLLM) — e.g. MedGemma; images never leave the machine. */
 export class OpenAICompatibleProvider implements VlmProvider {
   label = 'Modelo local (compatível OpenAI)'
+  local = true
   model: string
   private baseUrl: string
   constructor(baseUrl: string, model: string) {
@@ -120,7 +127,6 @@ export class OpenAICompatibleProvider implements VlmProvider {
     let lastError = ''
     let usage: TokenUsage = { inputTokens: 0, outputTokens: 0 }
     for (let attempt = 0; attempt < 2; attempt++) {
-      if (attempt > 0) messages.push({ role: 'user', content: `The previous output was invalid: ${lastError}. Return only the corrected JSON object.` })
       let res: Response
       try {
         res = await fetch(`${this.baseUrl.replace(/\/$/, '')}/chat/completions`, {
@@ -131,7 +137,11 @@ export class OpenAICompatibleProvider implements VlmProvider {
             messages,
             response_format: { type: 'json_schema', json_schema: { name: 'output', schema: jsonSchema, strict: true } },
             max_tokens: req.maxTokens ?? 8000,
-            stream: false,
+            // Ollama's /v1 shim defaults to temperature 1.0; MedGemma's card recommends greedy decoding.
+            temperature: 0,
+            // Streaming keeps slow CPU generations (e.g. in Codespaces) from idling out proxies and gives progress.
+            stream: true,
+            stream_options: { include_usage: true },
           }),
           signal: req.signal,
         })
@@ -142,19 +152,12 @@ export class OpenAICompatibleProvider implements VlmProvider {
         )
       }
       if (!res.ok) throw new Error(`Servidor local respondeu ${res.status}: ${(await res.text()).slice(0, 300)}`)
-      const body = (await res.json()) as {
-        choices?: { message?: { content?: string }; finish_reason?: string }[]
-        usage?: { prompt_tokens?: number; completion_tokens?: number }
-        model?: string
-      }
-      usage = {
-        inputTokens: usage.inputTokens + (body.usage?.prompt_tokens ?? 0),
-        outputTokens: usage.outputTokens + (body.usage?.completion_tokens ?? 0),
-      }
-      const raw = (body.choices?.[0]?.message?.content ?? '').trim().replace(/^```(?:json)?\s*|\s*```$/g, '')
+      const { text, model, promptTokens, completionTokens } = await readCompletion(res, req)
+      usage = { inputTokens: usage.inputTokens + promptTokens, outputTokens: usage.outputTokens + completionTokens }
+      const raw = text.trim().replace(/^```(?:json)?\s*|\s*```$/g, '')
       try {
         const parsed = req.schema.safeParse(JSON.parse(raw))
-        if (parsed.success) return { data: parsed.data, usage, model: body.model ?? this.model }
+        if (parsed.success) return { data: parsed.data, usage, model: model ?? this.model }
         lastError = parsed.error.issues
           .slice(0, 5)
           .map((i) => `${i.path.join('.')}: ${i.message}`)
@@ -162,9 +165,72 @@ export class OpenAICompatibleProvider implements VlmProvider {
       } catch (e) {
         lastError = `not valid JSON (${e instanceof Error ? e.message : String(e)})`
       }
+      messages.push({ role: 'assistant', content: raw.slice(0, 20000) })
+      messages.push({ role: 'user', content: `The previous output was invalid: ${lastError}. Return only the corrected JSON object.` })
     }
     throw new Error(`O modelo local não devolveu JSON válido: ${lastError}`)
   }
+}
+
+/** Reads a streamed (SSE) or plain JSON chat-completion response from an OpenAI-compatible server. */
+async function readCompletion(
+  res: Response,
+  req: GenerateRequest<unknown>,
+): Promise<{ text: string; model?: string; promptTokens: number; completionTokens: number }> {
+  type Chunk = {
+    model?: string
+    choices?: { delta?: { content?: string }; message?: { content?: string } }[]
+    usage?: { prompt_tokens?: number; completion_tokens?: number }
+  }
+  const ctype = res.headers.get('content-type') ?? ''
+  if (!ctype.includes('text/event-stream') || !res.body) {
+    const body = (await res.json()) as Chunk
+    return {
+      text: body.choices?.[0]?.message?.content ?? '',
+      model: body.model,
+      promptTokens: body.usage?.prompt_tokens ?? 0,
+      completionTokens: body.usage?.completion_tokens ?? 0,
+    }
+  }
+  const reader = res.body.getReader()
+  const decoder = new TextDecoder()
+  let buf = ''
+  let text = ''
+  let model: string | undefined
+  let promptTokens = 0
+  let completionTokens = 0
+  for (;;) {
+    let chunk: ReadableStreamReadResult<Uint8Array>
+    try {
+      chunk = await reader.read()
+    } catch (e) {
+      if (req.signal?.aborted) throw new DOMException('Análise cancelada', 'AbortError')
+      throw e
+    }
+    if (chunk.done) break
+    buf += decoder.decode(chunk.value, { stream: true })
+    let nl: number
+    while ((nl = buf.indexOf('\n')) >= 0) {
+      const line = buf.slice(0, nl).trim()
+      buf = buf.slice(nl + 1)
+      if (!line.startsWith('data:')) continue
+      const data = line.slice(5).trim()
+      if (data === '[DONE]') continue
+      try {
+        const c = JSON.parse(data) as Chunk
+        model ??= c.model
+        text += c.choices?.[0]?.delta?.content ?? ''
+        if (c.usage) {
+          promptTokens = c.usage.prompt_tokens ?? promptTokens
+          completionTokens = c.usage.completion_tokens ?? completionTokens
+        }
+      } catch {
+        /* ignore keep-alive or partial lines */
+      }
+    }
+    req.onProgress?.(text.length)
+  }
+  return { text, model, promptTokens, completionTokens }
 }
 
 export function providerFromSettings(s: Settings & { apiKey: string }): VlmProvider {

@@ -1,0 +1,51 @@
+// MSK·VLM in GitHub Codespaces: the app (vite preview) + Ollama serving MedGemma 4B on CPU.
+// The browser only talks to the app's own forwarded URL; /ollama/* is proxied to 127.0.0.1:11434
+// inside the codespace (see vite.config.ts), so port 11434 is never exposed.
+{
+  "name": "MSK·VLM + Ollama (MedGemma 4B, CPU)",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": { "OLLAMA_VERSION": "0.40.12" }
+  },
+
+  // 4-core (16 GB RAM) is the smallest machine that is usable for a 4B vision model on CPU.
+  // "cpus" is what actually selects the machine; memory is kept low on purpose so the 4-core
+  // type is never filtered out by rounding. Pick the 8-core type by hand for ~2x speed.
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "8gb",
+    "storage": "32gb"
+  },
+
+  "containerEnv": {
+    "OLLAMA_HOST": "127.0.0.1:11434",
+    "OLLAMA_MODELS": "/workspaces/.ollama/models",
+    "OLLAMA_CONTEXT_LENGTH": "32768",
+    "OLLAMA_KEEP_ALIVE": "1h",
+    "OLLAMA_NUM_PARALLEL": "1",
+    "OLLAMA_MODEL": "medgemma:4b",
+    "OLLAMA_MODEL_ALIAS": "medgemma",
+    "VITE_DEFAULT_PROVIDER": "openai-compatible",
+    "VITE_LOCAL_BASE_URL": "/ollama/v1",
+    "VITE_LOCAL_MODEL": "medgemma"
+  },
+
+  "onCreateCommand": "npm ci",
+  "postCreateCommand": "bash .devcontainer/ollama-up.sh --pull",
+  "postStartCommand": "bash .devcontainer/ollama-up.sh",
+  "postAttachCommand": {
+    "app": "bash .devcontainer/serve-app.sh",
+    "ollama-log": "tail -n 0 -F /tmp/ollama.log"
+  },
+
+  "forwardPorts": [4173],
+  "portsAttributes": {
+    "4173": { "label": "MSK·VLM (app)", "onAutoForward": "openBrowserOnce" },
+    "5173": { "label": "MSK·VLM (npm run dev)", "onAutoForward": "notify" },
+    "11434": { "label": "Ollama (internal, keep private)", "onAutoForward": "ignore" }
+  },
+
+  "customizations": {
+    "codespaces": { "openFiles": ["README.md"] }
+  }
+}

@@ -25,6 +25,8 @@ import { PROMPT_VERSION, findingsSystem, reportSystem, triageSystem, verifySyste
 
 export const STAGES: StageId[] = ['preprocess', 'triage', 'findings', 'evidence', 'report', 'verify']
 const MAX_IMAGES = 20
+/** Local CPU models (Ollama in Codespaces, laptops) need far smaller requests to finish in minutes. */
+const MAX_IMAGES_LOCAL = 4
 const NOTEBOOK_BUDGET_MS = 180_000
 
 export function initialStages(): StageState[] {
@@ -83,23 +85,25 @@ function clamp01(v: number) {
 }
 
 /** Evenly subsamples frames so the request stays within the image budget. */
-function pickFrames(c: Case): { seriesId: string; frameIndex: number }[] {
+function pickFrames(c: Case, max: number): { seriesId: string; frameIndex: number }[] {
   const all = c.series.flatMap((s) => s.frames.map((_, i) => ({ seriesId: s.id, frameIndex: i })))
-  if (all.length <= MAX_IMAGES) return all
+  if (all.length <= max) return all
+  if (max === 1) return [all[0]]
   const out: { seriesId: string; frameIndex: number }[] = []
-  for (let k = 0; k < MAX_IMAGES; k++) out.push(all[Math.round((k * (all.length - 1)) / (MAX_IMAGES - 1))])
+  for (let k = 0; k < max; k++) out.push(all[Math.round((k * (all.length - 1)) / (max - 1))])
   return out
 }
 
-async function prepareImages(c: Case, signal: AbortSignal): Promise<ImageRef[]> {
+async function prepareImages(c: Case, signal: AbortSignal, local: boolean): Promise<ImageRef[]> {
   const refs: ImageRef[] = []
-  const picks = pickFrames(c)
+  const picks = pickFrames(c, local ? MAX_IMAGES_LOCAL : MAX_IMAGES)
   for (let i = 0; i < picks.length; i++) {
     if (signal.aborted) throw new Cancelled()
     const p = picks[i]
     const s = c.series.find((x) => x.id === p.seriesId)!
     const f = s.frames[p.frameIndex]
-    const enc = await encodeFrame(f)
+    // MedGemma's vision encoder works at 896 px; larger uploads only cost time on a local model.
+    const enc = await encodeFrame(f, local ? 896 : 1568)
     const where =
       s.frames.length > 1
         ? `, ${s.kind === 'video' ? 'keyframe' : 'frame'} ${p.frameIndex + 1}/${s.frames.length}${f.timeSec !== undefined ? ` at t=${formatTime(f.timeSec)}` : ''}`
@@ -303,6 +307,8 @@ async function run(caseId: string, ctrl: AbortController) {
     if (signal.aborted) throw new Cancelled()
     setStage(caseId, id, { status: 'running', startedAt: nowIso(), message })
   }
+  const progress = (id: StageId, label: string) => (chars: number) =>
+    setStage(caseId, id, { message: `${label} · ${chars.toLocaleString('pt-PT')} caracteres gerados` })
   const finish = (id: StageId, message?: string, usage?: TokenUsage) => {
     setStage(caseId, id, { status: 'done', finishedAt: nowIso(), message, usage })
     if (usage) patchAnalysis(caseId, (a) => ({ totalUsage: addUsage(a.totalUsage, usage) }))
@@ -311,7 +317,7 @@ async function run(caseId: string, ctrl: AbortController) {
   try {
     // 1. Pre-processing (local)
     begin('preprocess', 'A preparar imagens…')
-    const images = await prepareImages(c0, signal)
+    const images = await prepareImages(c0, signal, provider.local)
     if (!images.length) throw new Error('O caso não tem imagens.')
     const totalFrames = c0.series.reduce((n, s) => n + s.frames.length, 0)
     finish(
@@ -327,6 +333,7 @@ async function run(caseId: string, ctrl: AbortController) {
       schema: TriageSchema,
       effort: 'low',
       signal,
+      onProgress: provider.local ? progress('triage', 'A gerar triagem') : undefined,
     })
     const triage = toTriage(tri.data)
     patchAnalysis(caseId, () => ({ triage }))
@@ -373,6 +380,7 @@ async function run(caseId: string, ctrl: AbortController) {
       ],
       schema: FindingsSchema,
       signal,
+      onProgress: progress('findings', 'A descrever achados'),
     })
     let findings = toFindings(fo.data, images)
     patchAnalysis(caseId, () => ({ findings }))
@@ -435,6 +443,7 @@ async function run(caseId: string, ctrl: AbortController) {
       ],
       schema: ReportSchema,
       signal,
+      onProgress: progress('report', 'A redigir'),
     })
     const report: Report = {
       language: lang,
@@ -456,8 +465,18 @@ async function run(caseId: string, ctrl: AbortController) {
     finish('report', `${report.impression.length} ponto(s) na conclusão`, ro.usage)
 
     // 6. Verification (second reader)
-    begin('verify', 'Verificação de consistência e citações…')
     const issues = citationIssues(report, evidence, lang)
+    if (provider.local) {
+      setStage(caseId, 'verify', {
+        status: 'skipped',
+        message: 'Modo local rápido: segundo leitor omitido; verificação determinística das citações aplicada',
+      })
+      patchAnalysis(caseId, () => ({ verification: { passed: issues.length === 0, issues }, finishedAt: nowIso() }))
+      store().updateCase(caseId, { status: 'analysed' })
+      store().audit(caseId, { actor: 'ai', action: 'Análise concluída', detail: `${nMain} achado(s), modelo local, relatório em rascunho` })
+      return
+    }
+    begin('verify', 'Verificação de consistência e citações…')
     const vo = await provider.generate({
       system: verifySystem(lang),
       parts: [
