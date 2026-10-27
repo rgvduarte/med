@@ -27,12 +27,23 @@ export class BrowserVlmProvider implements VlmProvider {
   private worker: Worker
   private ready: Promise<void>
   private nextId = 1
+  private rejectReady?: (e: Error) => void
+  private pending = new Map<number, (e: Error) => void>()
+
+  private failAll(e: Error) {
+    this.rejectReady?.(e)
+    for (const reject of this.pending.values()) reject(e)
+    this.pending.clear()
+  }
 
   constructor(spec: BrowserModelSpec, onProgress?: (fraction: number, loaded: number, total: number) => void) {
     this.model = spec.id
     // Vite: new URL(...) must be written inline inside new Worker(...) for detection.
     this.worker = new Worker(new URL('./localVlm.worker.ts', import.meta.url), { type: 'module', name: 'local-vlm' })
+    // A worker that fails to load or crashes must not leave analyses waiting forever.
+    this.worker.addEventListener('error', (e) => this.failAll(new Error(e.message || 'Falha no motor do modelo no navegador.')))
     this.ready = new Promise<void>((resolve, reject) => {
+      this.rejectReady = reject
       const onMsg = (e: MessageEvent<FromWorker>) => {
         const m = e.data
         if (m.type === 'progress') onProgress?.(m.progress / 100, m.loaded, m.total)
@@ -62,7 +73,20 @@ export class BrowserVlmProvider implements VlmProvider {
     const id = this.nextId++
     let chars = 0
     return new Promise<Extract<FromWorker, { type: 'result' }>>((resolve, reject) => {
-      const onAbort = () => this.send({ type: 'interrupt' })
+      const onAbort = () => {
+        this.send({ type: 'interrupt', id })
+        cleanup()
+        reject(new DOMException('Análise cancelada', 'AbortError'))
+      }
+      const cleanup = () => {
+        this.worker.removeEventListener('message', onMsg)
+        signal?.removeEventListener('abort', onAbort)
+        this.pending.delete(id)
+      }
+      this.pending.set(id, (e) => {
+        cleanup()
+        reject(e)
+      })
       const onMsg = (e: MessageEvent<FromWorker>) => {
         const m = e.data
         if (!('id' in m) || m.id !== id) return
@@ -72,8 +96,7 @@ export class BrowserVlmProvider implements VlmProvider {
           return
         }
         if (m.type === 'result' || m.type === 'error') {
-          this.worker.removeEventListener('message', onMsg)
-          signal?.removeEventListener('abort', onAbort)
+          cleanup()
           if (signal?.aborted) reject(new DOMException('Análise cancelada', 'AbortError'))
           else if (m.type === 'result') resolve(m)
           else reject(new Error(m.message))

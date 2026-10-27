@@ -27,7 +27,10 @@ const post = (m: FromWorker) => self.postMessage(m)
 let processor: Processor | null = null
 let model: PreTrainedModel | null = null
 let spec: BrowserModelSpec | null = null
-const stopper = new InterruptableStoppingCriteria()
+// One stopper per request, created synchronously when the request arrives, so a cancel that comes
+// before generation starts is not lost and cannot hit a different request. Generations run one at a time.
+const stoppers = new Map<number, InterruptableStoppingCriteria>()
+let queue: Promise<void> = Promise.resolve()
 
 async function load(s: BrowserModelSpec) {
   if (!('gpu' in navigator)) throw new Error('WebGPU indisponível neste navegador.')
@@ -73,7 +76,7 @@ async function generate(req: Extract<ToWorker, { type: 'generate' }>) {
   const inputs = await processor(prompt, images.length ? images : null, { add_special_tokens: false })
   const promptLen = (inputs.input_ids as Tensor).dims.at(-1)!
 
-  stopper.reset()
+  const stopper = stoppers.get(req.id) ?? new InterruptableStoppingCriteria()
   const t0 = performance.now()
   const streamer = new TextStreamer(processor.tokenizer!, {
     skip_prompt: true,
@@ -101,8 +104,12 @@ self.addEventListener('message', async (e: MessageEvent<ToWorker>) => {
   const msg = e.data
   try {
     if (msg.type === 'load') await load(msg.spec)
-    else if (msg.type === 'generate') await generate(msg)
-    else if (msg.type === 'interrupt') stopper.interrupt()
+    else if (msg.type === 'generate') {
+      stoppers.set(msg.id, new InterruptableStoppingCriteria())
+      const job = queue.then(() => generate(msg)).finally(() => stoppers.delete(msg.id))
+      queue = job.catch(() => undefined)
+      await job
+    } else if (msg.type === 'interrupt') stoppers.get(msg.id)?.interrupt()
   } catch (err) {
     post({ type: 'error', id: msg.type === 'generate' ? msg.id : undefined, message: err instanceof Error ? err.message : String(err) })
   }

@@ -46,7 +46,7 @@ describe('toFindings', () => {
     expect(x).toBe(0.9)
     expect(y).toBe(0)
     expect(x + w).toBeLessThanOrEqual(1)
-    expect(h).toBeCloseTo(0.3)
+    expect(h).toBeCloseTo(0.2) // clipped at the top edge: y -50..100 px → 0..0.2
     expect(f[1]).toMatchObject({ cls: 'doubtful', locations: [] })
     expect(f[2]).toMatchObject({ group: 'other' })
     const checklist = f.filter((x) => x.group === 'checklist')

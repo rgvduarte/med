@@ -20,15 +20,21 @@ export function findingCode(c: Case, findingId: string): string {
 /** Study-level result: highest class among non-rejected, non-checklist findings. */
 export function caseResult(c: Case): CaseResult {
   if (c.status === 'analysing') return 'analysing'
-  if (c.status === 'error' && !c.analysis) return 'error'
+  if (c.status === 'error') return 'error'
   const a = c.analysis
-  if (!a) return 'new'
+  if (!a || c.status === 'new') return 'new'
   if (a.triage?.imageQuality === 'non-diagnostic') return 'not-assessable'
   const active = a.findings.filter((f) => f.status !== 'rejected' && f.group !== 'checklist')
   if (active.some((f) => f.cls === 'positive')) return 'positive'
   if (active.some((f) => f.cls === 'doubtful')) return 'doubtful'
+  // «Negativo» only when the systematic search actually ran (not triage-only, failed or cancelled runs).
+  if (!findingsStageDone(a)) return 'not-assessable'
   if (active.length > 0 && active.every((f) => f.cls === 'not-assessable')) return 'not-assessable'
   return 'negative'
+}
+
+export function findingsStageDone(a: { stages: { id: string; status: string }[] }): boolean {
+  return a.stages.some((s) => s.id === 'findings' && s.status === 'done')
 }
 
 export function reportState(r: Report | undefined): ReportState {

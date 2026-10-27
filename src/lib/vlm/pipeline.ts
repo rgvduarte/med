@@ -171,11 +171,12 @@ export function toFindings(out: FindingsOut, images: ImageRef[]): Finding[] {
         if (l.bbox) {
           // Pixels of the sent image → normalised 0..1 of the original frame (undoing any letterbox).
           const [cx, cy, cw, ch] = im.content ?? [0, 0, im.width, im.height]
-          const x = clamp01((l.bbox.x - cx) / cw)
-          const y = clamp01((l.bbox.y - cy) / ch)
-          const w = Math.min(1 - x, clamp01(l.bbox.w / cw))
-          const h = Math.min(1 - y, clamp01(l.bbox.h / ch))
-          if (w > 0.005 && h > 0.005) bbox = [x, y, w, h]
+          // Clip both corners to the picture so boxes reaching into padding never grow.
+          const x0 = clamp01((l.bbox.x - cx) / cw)
+          const y0 = clamp01((l.bbox.y - cy) / ch)
+          const x1 = clamp01((l.bbox.x + l.bbox.w - cx) / cw)
+          const y1 = clamp01((l.bbox.y + l.bbox.h - cy) / ch)
+          if (x1 - x0 > 0.005 && y1 - y0 > 0.005) bbox = [x0, y0, x1 - x0, y1 - y0]
         }
         return { seriesId: im.seriesId, frameIndex: im.frameIndex, bbox }
       })
@@ -300,7 +301,16 @@ export function citationIssues(report: Report, evidence: EvidenceItem[], lang: R
   const ids = new Set(evidence.map((e) => e.id))
   const text = [report.technique, ...report.findingsByRegion.map((f) => f.text), ...report.impression, ...report.recommendations, report.limitations].join(' ')
   const unknown = new Set<string>()
-  for (const m of text.matchAll(/\[([A-Za-z0-9._-]+)\]/g)) if (!ids.has(m[1]) && !/^F\d+$|^C\d+$/.test(m[1])) unknown.add(m[1])
+  const check = (id: string) => {
+    if (id && !ids.has(id) && !/^F\d+$|^C\d+$/.test(id)) unknown.add(id)
+  }
+  // Also catches grouped markers like [a, b] / [a; b].
+  for (const m of text.matchAll(/\[([^\]]+)\]/g)) {
+    const inner = m[1].trim()
+    if (!/^[A-Za-z0-9._-]+(\s*[,;]\s*[A-Za-z0-9._-]+)*$/.test(inner)) continue
+    inner.split(/\s*[,;]\s*/).forEach(check)
+  }
+  for (const c of report.citations) check(c.evidenceId)
   return [...unknown].map((id) => ({
     severity: 'error' as const,
     section: lang === 'pt-PT' ? 'Referências' : 'References',
@@ -454,10 +464,21 @@ async function run(caseId: string, ctrl: AbortController) {
       const q = notebookQuestion(triage, findings)
       if (q) {
         try {
+          let timer: ReturnType<typeof setTimeout> | undefined
+          let onAbort: (() => void) | undefined
           const ans = await Promise.race([
             queryNotebook(q),
-            new Promise<never>((_, rej) => setTimeout(() => rej(new Error('tempo limite')), NOTEBOOK_BUDGET_MS)),
-          ])
+            new Promise<never>((_, rej) => {
+              timer = setTimeout(() => rej(new Error('tempo limite')), NOTEBOOK_BUDGET_MS)
+            }),
+            new Promise<never>((_, rej) => {
+              onAbort = () => rej(new Cancelled())
+              signal.addEventListener('abort', onAbort, { once: true })
+            }),
+          ]).finally(() => {
+            clearTimeout(timer)
+            if (onAbort) signal.removeEventListener('abort', onAbort)
+          })
           const ids = findings.filter((f) => f.group !== 'checklist').map((f) => f.id)
           notebookLm.push({ question: q, answer: ans.answer, sources: ans.sources, findingIds: ids })
           evidence.push({
@@ -476,7 +497,14 @@ async function run(caseId: string, ctrl: AbortController) {
         }
       }
     }
-    patchAnalysis(caseId, () => ({ findings, evidence, notebookLm }))
+    // Merge evidence links into the stored findings: the clinician may already be reviewing them.
+    const linked = new Map(findings.map((f) => [f.id, f.evidenceIds]))
+    patchAnalysis(caseId, (a) => ({
+      findings: a.findings.map((f) => ({ ...f, evidenceIds: linked.get(f.id) ?? f.evidenceIds })),
+      evidence,
+      notebookLm,
+    }))
+    findings = getCase(caseId).analysis?.findings ?? findings
     finish('evidence', `${evidence.filter((e) => e.source === 'kb').length} referência(s) da base curada${nlmMsg}`)
 
     // 5. Report synthesis
@@ -538,37 +566,54 @@ async function run(caseId: string, ctrl: AbortController) {
         effort: verifyEffort,
         signal,
       })
-    let vo = await audit(report)
-    let usage = vo.usage
-    let allIssues = [...issues, ...vo.data.issues]
-    const toFix = allIssues.filter((i) => i.severity !== 'info')
+    let usage: TokenUsage | undefined
+    let allIssues: VerificationIssue[] = issues
     let revisedCount = 0
-    if (toFix.length) {
-      setStage(caseId, 'verify', { message: `A corrigir ${toFix.length} problema(s) apontado(s) pelo segundo leitor…` })
-      const rv = await provider.generate({
-        system: reportRevisionSystem(lang),
-        parts: [
-          {
-            type: 'text',
-            text: [reportInput, `Previous draft: ${JSON.stringify(ro.data)}`, `Second-reader issues to fix: ${JSON.stringify(toFix)}`].join('\n\n'),
-          },
-        ],
-        schema: ReportSchema,
-        effort: reportEffort,
-        signal,
-        onProgress: progress('verify', 'A rever o relatório'),
-      })
-      report = { ...toReport(rv.data, rv.model, c1.indication, provider.label, lang), revisedAfterVerification: true }
-      store().updateCase(caseId, { report })
-      revisedCount = toFix.length
-      setStage(caseId, 'verify', { message: 'Nova verificação do relatório corrigido…' })
-      issues = citationIssues(report, evidence, lang)
-      vo = await audit(report)
-      usage = addUsage(addUsage(usage, rv.usage), vo.usage)
+    try {
+      let vo = await audit(report)
+      usage = vo.usage
       allIssues = [...issues, ...vo.data.issues]
+      const toFix = allIssues.filter((i) => i.severity !== 'info')
+      if (toFix.length) {
+        setStage(caseId, 'verify', { message: `A corrigir ${toFix.length} problema(s) apontado(s) pelo segundo leitor…` })
+        const rv = await provider.generate({
+          system: reportRevisionSystem(lang),
+          parts: [
+            {
+              type: 'text',
+              text: [reportInput, `Previous draft: ${JSON.stringify(ro.data)}`, `Second-reader issues to fix: ${JSON.stringify(toFix)}`].join('\n\n'),
+            },
+          ],
+          schema: ReportSchema,
+          effort: reportEffort,
+          signal,
+          onProgress: progress('verify', 'A rever o relatório'),
+        })
+        report = { ...toReport(rv.data, rv.model, c1.indication, provider.label, lang), revisedAfterVerification: true }
+        store().updateCase(caseId, { report })
+        revisedCount = toFix.length
+        setStage(caseId, 'verify', { message: 'Nova verificação do relatório corrigido…' })
+        issues = citationIssues(report, evidence, lang)
+        vo = await audit(report)
+        usage = addUsage(addUsage(usage, rv.usage), vo.usage)
+        allIssues = [...issues, ...vo.data.issues]
+      }
+    } catch (e) {
+      if (signal.aborted || e instanceof Cancelled || (e instanceof DOMException && e.name === 'AbortError')) throw e
+      // The report already exists: keep it, flag that the second reader could not run.
+      const msg = e instanceof Error ? e.message : String(e)
+      allIssues = [
+        ...citationIssues(report, evidence, lang),
+        { severity: 'warning', section: lang === 'pt-PT' ? 'Verificação' : 'Verification', message: (lang === 'pt-PT' ? 'Segundo leitor indisponível: ' : 'Second reader unavailable: ') + msg },
+      ]
+      setStage(caseId, 'verify', { status: 'error', finishedAt: nowIso(), message: `Segundo leitor indisponível (${msg}); relatório mantido em rascunho` })
+      patchAnalysis(caseId, () => ({ verification: { passed: false, issues: allIssues }, finishedAt: nowIso() }))
+      store().updateCase(caseId, { status: 'analysed' })
+      store().audit(caseId, { actor: 'system', action: 'Verificação não concluída', detail: msg })
+      return
     }
     patchAnalysis(caseId, () => ({
-      verification: { passed: vo.data.passed && issues.length === 0, issues: allIssues, revisedIssues: revisedCount || undefined },
+      verification: { passed: !allIssues.some((i) => i.severity === 'error'), issues: allIssues, revisedIssues: revisedCount || undefined },
       finishedAt: nowIso(),
     }))
     const residual = allIssues.filter((i) => i.severity !== 'info').length
@@ -587,7 +632,7 @@ async function run(caseId: string, ctrl: AbortController) {
   } catch (e) {
     const cancelled = e instanceof Cancelled || (e instanceof DOMException && e.name === 'AbortError') || signal.aborted
     const msg = cancelled ? 'Análise cancelada pelo utilizador' : e instanceof Error ? e.message : String(e)
-    setStage(caseId, current, { status: 'error', finishedAt: nowIso(), message: msg })
+    setStage(caseId, current, { status: cancelled ? 'skipped' : 'error', finishedAt: nowIso(), message: msg })
     patchAnalysis(caseId, (a) => ({
       finishedAt: nowIso(),
       stages: a.stages.map((s) => (s.status === 'pending' ? { ...s, status: 'skipped' } : s)),

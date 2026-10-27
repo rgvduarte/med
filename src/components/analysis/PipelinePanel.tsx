@@ -189,7 +189,7 @@ export function PipelinePanel({ c }: { c: Case }) {
     if (changes.length) setAnnounce(changes.join('. '))
   }, [stages])
 
-  const finished = !running && a?.finishedAt && c.status !== 'error'
+  const finished = !running && !!a?.finishedAt && c.status === 'analysed'
   const totalMs = a?.finishedAt ? new Date(a.finishedAt).getTime() - new Date(a.startedAt).getTime() : undefined
   const reviewable = a?.findings.filter((f) => f.group !== 'checklist') ?? []
   const nPos = reviewable.filter((f) => f.cls === 'positive').length

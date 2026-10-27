@@ -79,7 +79,8 @@ export class AnthropicProvider implements VlmProvider {
       const stream = this.client.beta.messages.stream(
         {
           model: this.model,
-          max_tokens: req.maxTokens ?? 32000,
+          // Streamed, so a high ceiling is safe; adaptive thinking shares this budget at high effort.
+          max_tokens: req.maxTokens ?? 64000,
           thinking: { type: 'adaptive' },
           output_config: { effort: req.effort ?? this.defaultEffort, format: { type, schema } },
           system: req.system,
@@ -185,7 +186,10 @@ export class OpenAICompatibleProvider implements VlmProvider {
         )
       }
       if (!res.ok) throw new Error(`Servidor local respondeu ${res.status}: ${(await res.text()).slice(0, 300)}`)
-      const { text, model, promptTokens, completionTokens } = await readCompletion(res, req)
+      const { text, model, promptTokens, completionTokens, finishReason } = await readCompletion(res, req)
+      if (finishReason === 'length') {
+        throw new Error('A resposta do modelo local foi truncada (limite de tokens). Reduza o número de imagens ou aumente o contexto do servidor.')
+      }
       usage = { inputTokens: usage.inputTokens + promptTokens, outputTokens: usage.outputTokens + completionTokens }
       const raw = text.trim().replace(/^```(?:json)?\s*|\s*```$/g, '')
       try {
@@ -209,10 +213,10 @@ export class OpenAICompatibleProvider implements VlmProvider {
 async function readCompletion(
   res: Response,
   req: GenerateRequest<unknown>,
-): Promise<{ text: string; model?: string; promptTokens: number; completionTokens: number }> {
+): Promise<{ text: string; model?: string; promptTokens: number; completionTokens: number; finishReason?: string }> {
   type Chunk = {
     model?: string
-    choices?: { delta?: { content?: string }; message?: { content?: string } }[]
+    choices?: { delta?: { content?: string }; message?: { content?: string }; finish_reason?: string | null }[]
     usage?: { prompt_tokens?: number; completion_tokens?: number }
   }
   const ctype = res.headers.get('content-type') ?? ''
@@ -223,6 +227,7 @@ async function readCompletion(
       model: body.model,
       promptTokens: body.usage?.prompt_tokens ?? 0,
       completionTokens: body.usage?.completion_tokens ?? 0,
+      finishReason: body.choices?.[0]?.finish_reason ?? undefined,
     }
   }
   const reader = res.body.getReader()
@@ -232,6 +237,25 @@ async function readCompletion(
   let model: string | undefined
   let promptTokens = 0
   let completionTokens = 0
+  let finishReason: string | undefined
+  const handleLine = (raw: string) => {
+    const line = raw.trim()
+    if (!line.startsWith('data:')) return
+    const data = line.slice(5).trim()
+    if (!data || data === '[DONE]') return
+    try {
+      const c = JSON.parse(data) as Chunk
+      model ??= c.model
+      text += c.choices?.[0]?.delta?.content ?? ''
+      finishReason = c.choices?.[0]?.finish_reason ?? finishReason
+      if (c.usage) {
+        promptTokens = c.usage.prompt_tokens ?? promptTokens
+        completionTokens = c.usage.completion_tokens ?? completionTokens
+      }
+    } catch {
+      /* ignore keep-alive or partial lines */
+    }
+  }
   for (;;) {
     let chunk: ReadableStreamReadResult<Uint8Array>
     try {
@@ -244,26 +268,13 @@ async function readCompletion(
     buf += decoder.decode(chunk.value, { stream: true })
     let nl: number
     while ((nl = buf.indexOf('\n')) >= 0) {
-      const line = buf.slice(0, nl).trim()
+      handleLine(buf.slice(0, nl))
       buf = buf.slice(nl + 1)
-      if (!line.startsWith('data:')) continue
-      const data = line.slice(5).trim()
-      if (data === '[DONE]') continue
-      try {
-        const c = JSON.parse(data) as Chunk
-        model ??= c.model
-        text += c.choices?.[0]?.delta?.content ?? ''
-        if (c.usage) {
-          promptTokens = c.usage.prompt_tokens ?? promptTokens
-          completionTokens = c.usage.completion_tokens ?? completionTokens
-        }
-      } catch {
-        /* ignore keep-alive or partial lines */
-      }
     }
     req.onProgress?.(text.length)
   }
-  return { text, model, promptTokens, completionTokens }
+  if (buf) handleLine(buf) // last event without a trailing newline
+  return { text, model, promptTokens, completionTokens, finishReason }
 }
 
 let browserProvider: { key: string; provider: VlmProvider } | null = null
@@ -291,8 +302,16 @@ export async function createProvider(
       browserProvider = { key: spec.id, provider: new BrowserVlmProvider(spec, (f, l, t) => browserLoadListener?.(f, l, t)) }
     }
     browserLoadListener = onLoadProgress
-    await (browserProvider.provider as InstanceType<typeof BrowserVlmProvider>).whenReady()
-    return browserProvider.provider
+    const current = browserProvider.provider as InstanceType<typeof BrowserVlmProvider>
+    try {
+      await current.whenReady()
+    } catch (e) {
+      // Never cache a failed load: the next attempt starts a fresh worker.
+      current.dispose()
+      if (browserProvider?.provider === current) browserProvider = null
+      throw e
+    }
+    return current
   }
   return new OpenAICompatibleProvider(s.localBaseUrl, s.localModel)
 }

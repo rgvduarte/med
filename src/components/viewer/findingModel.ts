@@ -37,6 +37,8 @@ export function studyClass(a: AnalysisResult | undefined): FindingClass | undefi
   if (ai.some((f) => f.cls === 'doubtful')) return 'doubtful'
   if (a.triage?.imageQuality === 'non-diagnostic' || ai.some((f) => f.cls === 'not-assessable')) return 'not-assessable'
   if (!a.finishedAt && a.findings.length === 0) return undefined
+  // Never call a study negative unless the systematic search stage completed.
+  if (!a.stages.some((s) => s.id === 'findings' && s.status === 'done')) return a.finishedAt ? 'not-assessable' : undefined
   return 'negative'
 }
 

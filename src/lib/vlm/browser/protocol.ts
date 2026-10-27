@@ -25,7 +25,7 @@ export type ToWorker =
       jsonSchema: Record<string, unknown> | null
       maxNewTokens: number
     }
-  | { type: 'interrupt' }
+  | { type: 'interrupt'; id: number }
 
 export type FromWorker =
   | { type: 'progress'; progress: number; loaded: number; total: number }
