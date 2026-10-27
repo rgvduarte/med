@@ -1831,5 +1831,2067 @@
    "fisiatria de intervenção"
   ],
   "abstract_excerpt": "OBJECTIVE: Critically review the literature related to the accuracy, efficacy and cost-effectiveness of ultrasound-guided injections (USGIs) in major, intermediate and small joints; and soft tissues. DESIGN: Systematic review of the literature. RESULTS: USGIs are more accurate than landmark-guided injections (LMGIs; strength of recommendation taxonomy (SORT) Evidence Rating=A). USGIs are more efficacious than LMGIs (SORT Evidence Rating=B). USGIs are more cost-effective than LMGIs (SORT Evidence Rating=B). Ultrasound guidance is required to perform many new procedures (SORT Evidence Rating=C). CONCLUSIONS: The findings of this position statement indicate there is strong evidence that USGIs are more accurate than LMGI, moderate evidence that they are more efficacious and preliminary evidence that they are more cost-effective."
+ },
+ {
+  "id": "kuo2022-ai-fracture-meta",
+  "topic": "AI-assisted fracture detection: diagnostic accuracy meta-analysis",
+  "authors": "Kuo RYL, Harrison C, Curran TA, et al.",
+  "title": "Artificial Intelligence in Fracture Detection: A Systematic Review and Meta-Analysis",
+  "journal": "Radiology",
+  "year": 2022,
+  "doi": "10.1148/radiol.211785",
+  "pmid": "35348381",
+  "url": "https://doi.org/10.1148/radiol.211785",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "Systematic review including 42 studies (37 on radiographs, 5 on CT); 115 contingency tables from 32 of these studies (55 061 images) were meta-analysed.",
+   "Internal validation: pooled sensitivity 92% (95% CI: 88, 93) for AI vs 91% (95% CI: 85, 95) for clinicians; pooled specificity 91% (95% CI: 88, 93) for AI vs 92% (95% CI: 89, 92) for clinicians.",
+   "External validation: pooled sensitivity 91% (95% CI: 84, 95) for AI vs 94% (95% CI: 90, 96) for clinicians; specificity 91% (95% CI: 81, 95) vs 94% (95% CI: 91, 95); no statistically significant differences between AI and clinicians.",
+   "22 of 42 (52%) studies were judged at high risk of bias; meta-regression identified sources of heterogeneity including risk of bias and fracture type. The authors concluded that AI and clinicians had comparable reported performance and that AI holds promise as a diagnostic adjunct."
+  ],
+  "key_points_pt": [
+   "Revisão sistemática que incluiu 42 estudos (37 com radiografias, 5 com TC); foram meta-analisadas 115 tabelas de contingência de 32 desses estudos (55 061 imagens).",
+   "Validação interna: sensibilidade agregada de 92% (IC 95%: 88–93) para a IA vs 91% (IC 95%: 85–95) para os clínicos; especificidade agregada de 91% (IC 95%: 88–93) para a IA vs 92% (IC 95%: 89–92) para os clínicos.",
+   "Validação externa: sensibilidade agregada de 91% (IC 95%: 84–95) para a IA vs 94% (IC 95%: 90–96) para os clínicos; especificidade de 91% (IC 95%: 81–95) vs 94% (IC 95%: 91–95); sem diferenças estatisticamente significativas entre a IA e os clínicos.",
+   "22 de 42 estudos (52%) apresentavam risco de viés elevado; a meta-regressão identificou fontes de heterogeneidade, incluindo o risco de viés e o tipo de fratura. Os autores concluíram que a IA e os clínicos tiveram desempenho relatado comparável e que a IA é promissora como adjuvante diagnóstico."
+  ],
+  "modalities": [
+   "XR",
+   "CT"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "artificial intelligence",
+   "deep learning",
+   "fracture detection",
+   "AI-assisted",
+   "diagnostic accuracy",
+   "radiograph",
+   "computer-aided detection",
+   "inteligência artificial",
+   "deteção de fraturas",
+   "fratura",
+   "radiografia",
+   "precisão diagnóstica",
+   "IA"
+  ],
+  "abstract_excerpt": "Results Included for analysis were 42 studies, with 115 contingency tables extracted from 32 studies (55 061 images). Thirty-seven studies identified fractures on radiographs and five studies identified fractures on CT images. For internal validation test sets, the pooled sensitivity was 92% (95% CI: 88, 93) for AI and 91% (95% CI: 85, 95) for clinicians, and the pooled specificity was 91% (95% CI: 88, 93) for AI and 92% (95% CI: 89, 92) for clinicians. For external validation test sets, the pooled sensitivity was 91% (95% CI: 84, 95) for AI and 94% (95% CI: 90, 96) for clinicians, and the pooled specificity was 91% (95% CI: 81, 95) for AI and 94% (95% CI: 91, 95) for clinicians. There were no statistically significant differences between clinician and AI performance. There were 22 of 42 (52%) studies that were judged to have high risk of bias. Meta-regression identified multiple sources of heterogeneity in the data, including risk of bias and fracture type. Conclusion Artificial intelligence (AI) and clinicians had comparable reported diagnostic performance in fracture detection, suggesting that AI technology holds promise as a diagnostic adjunct in future clinical practice."
+ },
+ {
+  "id": "guermazi2022-ai-fracture-mrmc",
+  "topic": "AI assistance for radiographic fracture detection: multi-reader multi-case study",
+  "authors": "Guermazi A, Tannoury C, Kompel AJ, et al.",
+  "title": "Improving Radiographic Fracture Recognition Performance and Efficiency Using Artificial Intelligence",
+  "journal": "Radiology",
+  "year": 2022,
+  "doi": "10.1148/radiol.210937",
+  "pmid": "34931859",
+  "url": "https://doi.org/10.1148/radiol.210937",
+  "evidence_type": "retrospective-diagnostic-accuracy",
+  "key_points": [
+   "Retrospective multi-reader multi-case study on an external multicentre data set: 480 examinations (fracture prevalence set at 50%) across 8 body regions, read by 24 readers of different specialties with and without AI assistance.",
+   "Per-patient sensitivity was 10.4% higher with AI aid (95% CI: 6.9, 13.9; 75.2% vs 64.8%; P < .001).",
+   "Per-patient specificity with AI aid was 95.6% vs 90.6% without (difference +5.0%, 95% CI: +2.0, +8.0; noninferior), and AI shortened average reading time by 6.3 seconds per examination.",
+   "The sensitivity gain was significant in all regions (+8.0% to +16.2%) except shoulder/clavicle (+4.2%) and spine (+2.6%). Several co-authors were affiliated with Gleamer, the developer of the AI software evaluated (vendor-affiliated study)."
+  ],
+  "key_points_pt": [
+   "Estudo retrospetivo multileitor e multicaso num conjunto de dados multicêntrico externo: 480 exames (prevalência de fratura fixada em 50%) em 8 regiões anatómicas, lidos por 24 leitores de diferentes especialidades com e sem apoio de IA.",
+   "A sensibilidade por doente foi 10,4% superior com apoio de IA (IC 95%: 6,9–13,9; 75,2% vs 64,8%; P < 0,001).",
+   "A especificidade por doente com apoio de IA foi de 95,6% vs 90,6% sem IA (diferença +5,0%, IC 95%: +2,0 a +8,0; não inferior), e a IA reduziu o tempo médio de leitura em 6,3 segundos por exame.",
+   "O ganho de sensibilidade foi significativo em todas as regiões (+8,0% a +16,2%), exceto ombro/clavícula (+4,2%) e coluna (+2,6%). Vários coautores estavam afiliados à Gleamer, a empresa que desenvolveu o software de IA avaliado (estudo com ligação ao fabricante)."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "ankle-foot",
+   "knee",
+   "hip-pelvis",
+   "wrist-hand",
+   "elbow",
+   "shoulder",
+   "spine",
+   "long-bones"
+  ],
+  "keywords": [
+   "artificial intelligence",
+   "AI-assisted reading",
+   "fracture detection",
+   "missed fracture",
+   "multi-reader multi-case",
+   "sensitivity",
+   "reading time",
+   "inteligência artificial",
+   "leitura assistida por IA",
+   "fratura não detetada",
+   "fratura",
+   "radiografia",
+   "sensibilidade",
+   "especificidade"
+  ],
+  "abstract_excerpt": "This retrospective diagnostic study used the multi-reader, multi-case methodology based on an external multicenter data set of 480 examinations with at least 60 examinations per body region (foot and ankle, knee and leg, hip and pelvis, hand and wrist, elbow and arm, shoulder and clavicle, rib cage, and thoracolumbar spine) between July 2020 and January 2021. Fracture prevalence was set at 50%. [...] Twenty-four readers (radiologists, orthopedists, emergency physicians, physician assistants, rheumatologists, family physicians) were presented the whole validation data set (n = 480), with and without AI assistance, with a 1-month minimum washout period. [...] The sensitivity per patient was 10.4% higher (95% CI: 6.9, 13.9; P < .001 for superiority) with AI aid (4331 of 5760 readings, 75.2%) than without AI (3732 of 5760 readings, 64.8%). The specificity per patient with AI aid (5504 of 5760 readings, 95.6%) was noninferior to that without AI aid (5217 of 5760 readings, 90.6%), with a difference of +5.0% (95% CI: +2.0, +8.0; P = .001 for noninferiority). AI shortened the average reading time by 6.3 seconds per examination (95% CI: -12.5, -0.1; P = .046). The sensitivity by patient gain was significant in all regions (+8.0% to +16.2%; P < .05) but shoulder and clavicle and spine (+4.2% and +2.6%; P = .12 and .52)."
+ },
+ {
+  "id": "duron2021-ai-appendicular-fractures",
+  "topic": "AI aid for appendicular skeletal fracture detection by emergency physicians and radiologists",
+  "authors": "Duron L, Ducarouge A, Gillibert A, et al.",
+  "title": "Assessment of an AI Aid in Detection of Adult Appendicular Skeletal Fractures by Emergency Physicians and Radiologists: A Multicenter Cross-sectional Diagnostic Study",
+  "journal": "Radiology",
+  "year": 2021,
+  "doi": "10.1148/radiol.2021203886",
+  "pmid": "33944629",
+  "url": "https://doi.org/10.1148/radiol.2021203886",
+  "evidence_type": "retrospective-diagnostic-accuracy",
+  "key_points": [
+   "600 adult trauma patients from 17 French centres were retrospectively included; 6 radiologists and 6 emergency physicians read radiographs with and without AI bounding-box aid. Several co-authors were affiliated with Gleamer, the developer of the AI software evaluated (vendor-affiliated study).",
+   "The AI aid improved reader sensitivity by 8.7% (95% CI: 3.1, 14.2) and specificity by 4.1% (95% CI: 0.5, 7.7).",
+   "False-positive fractures per patient fell by 41.9% (95% CI: 12.8, 61.3) in patients without fractures; mean reading time fell by 15.0% (not statistically significant, P = .12).",
+   "Stand-alone AI (newer release) had an AUC of 0.94 (95% CI: 0.92, 0.96), greater than all unaided readers."
+  ],
+  "key_points_pt": [
+   "Foram incluídos retrospetivamente 600 doentes adultos com traumatismo de 17 centros franceses; 6 radiologistas e 6 médicos de urgência leram as radiografias com e sem marcação das fraturas por IA (caixas delimitadoras). Vários coautores estavam afiliados à Gleamer, a empresa que desenvolveu o software de IA avaliado (estudo com ligação ao fabricante).",
+   "O apoio de IA aumentou a sensibilidade dos leitores em 8,7% (IC 95%: 3,1–14,2) e a especificidade em 4,1% (IC 95%: 0,5–7,7).",
+   "O número de fraturas falso-positivas por doente diminuiu 41,9% (IC 95%: 12,8–61,3) nos doentes sem fratura; o tempo médio de leitura diminuiu 15,0% (sem significado estatístico, P = 0,12).",
+   "A IA isolada (versão mais recente) obteve uma AUC de 0,94 (IC 95%: 0,92–0,96), superior à de todos os leitores sem apoio."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "shoulder",
+   "long-bones",
+   "wrist-hand",
+   "hip-pelvis",
+   "ankle-foot"
+  ],
+  "keywords": [
+   "artificial intelligence",
+   "appendicular skeleton",
+   "fracture detection",
+   "emergency department",
+   "false positive",
+   "AUC",
+   "inteligência artificial",
+   "esqueleto apendicular",
+   "deteção de fraturas",
+   "serviço de urgência",
+   "falso positivo",
+   "fratura",
+   "radiografia"
+  ],
+  "abstract_excerpt": "Between 2016 and 2018, 600 adult patients in whom multiview radiographs had been obtained after a recent trauma, with or without one or more fractures of shoulder, arm, hand, pelvis, leg, and foot, were retrospectively included from 17 French medical centers. [...] Six radiologists and six emergency physicians were asked to detect and localize fractures with (n = 300) and fractures without (n = 300) the aid of software highlighting boxes around AI-detected fractures. [...] The AI aid improved the sensitivity of physicians by 8.7% (95% CI: 3.1, 14.2; P = .003 for superiority) and the specificity by 4.1% (95% CI: 0.5, 7.7; P < .001 for noninferiority) and reduced the average number of false-positive fractures per patient by 41.9% (95% CI: 12.8, 61.3; P = .02) in patients without fractures and the mean reading time by 15.0% (95% CI: -30.4, 3.8; P = .12). Finally, stand-alone performance of a newer release of the AI system was greater than that of all unaided readers, including skeletal expert radiologists, with an area under the receiver operating characteristic curve of 0.94 (95% CI: 0.92, 0.96)."
+ },
+ {
+  "id": "mallee2015-scaphoid-cochrane",
+  "topic": "Clinically suspected (occult) scaphoid fracture with negative radiographs: CT vs MRI vs bone scintigraphy",
+  "authors": "Mallee WH, Wang J, Poolman RW, et al.",
+  "title": "Computed tomography versus magnetic resonance imaging versus bone scintigraphy for clinically suspected scaphoid fractures in patients with negative plain radiographs",
+  "journal": "Cochrane Database of Systematic Reviews",
+  "year": 2015,
+  "doi": "10.1002/14651858.CD010023.pub2",
+  "pmid": "26045406",
+  "url": "https://doi.org/10.1002/14651858.CD010023.pub2",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "Cochrane review of 11 studies of clinically suspected scaphoid fractures with normal initial radiographs (CT: 4 studies; MRI: 5; bone scintigraphy: 6; some studies assessed two tests).",
+   "Summary sensitivity/specificity: CT 0.72 (95% CI 0.36 to 0.92) / 0.99 (95% CI 0.71 to 1.00); MRI 0.88 (95% CI 0.64 to 0.97) / 1.00 (95% CI 0.38 to 1.00); bone scintigraphy 0.99 (95% CI 0.69 to 1.00) / 0.86 (95% CI 0.73 to 0.94).",
+   "Indirect comparisons suggested significantly higher accuracy for bone scintigraphy than for CT and MRI (CT and MRI comparable); but with a low median prevalence of true fracture (20%), the lower specificity of bone scintigraphy is problematic, and the number of over-treated patients is substantially lower with CT and MRI.",
+   "Confidence intervals were wide for all three tests (only 11 studies, results mostly from indirect comparisons); bone scintigraphy is also more invasive, involves radiation exposure and delays diagnosis by at least 72 hours."
+  ],
+  "key_points_pt": [
+   "Revisão Cochrane de 11 estudos de suspeita clínica de fratura do escafoide com radiografias iniciais normais (TC: 4 estudos; RM: 5; cintigrafia óssea: 6; alguns estudos avaliaram dois exames).",
+   "Sensibilidade/especificidade agregadas: TC 0,72 (IC 95% 0,36–0,92) / 0,99 (IC 95% 0,71–1,00); RM 0,88 (IC 95% 0,64–0,97) / 1,00 (IC 95% 0,38–1,00); cintigrafia óssea 0,99 (IC 95% 0,69–1,00) / 0,86 (IC 95% 0,73–0,94).",
+   "As comparações indiretas sugeriram exatidão significativamente superior da cintigrafia óssea face à TC e à RM (TC e RM comparáveis); contudo, com uma prevalência mediana baixa de fratura verdadeira (20%), a menor especificidade da cintigrafia é problemática e o número de doentes sobretratados é substancialmente menor com TC e RM.",
+   "Os intervalos de confiança foram amplos para os três exames (apenas 11 estudos, resultados maioritariamente de comparações indiretas); a cintigrafia óssea é também mais invasiva, implica exposição a radiação e atrasa o diagnóstico pelo menos 72 horas."
+  ],
+  "modalities": [
+   "XR",
+   "CT",
+   "MR"
+  ],
+  "regions": [
+   "wrist-hand"
+  ],
+  "keywords": [
+   "scaphoid fracture",
+   "occult fracture",
+   "suspected scaphoid fracture",
+   "negative radiographs",
+   "MRI",
+   "CT",
+   "bone scintigraphy",
+   "fratura do escafoide",
+   "fratura oculta",
+   "suspeita de fratura do escafoide",
+   "radiografias negativas",
+   "ressonância magnética",
+   "tomografia computorizada",
+   "cintigrafia óssea",
+   "punho"
+  ],
+  "abstract_excerpt": "We included 11 studies that looked at diagnostic accuracy of one or two index tests: four studies (277 suspected fractures) looked at CT, five studies (221 suspected fractures) looked at MRI and six studies (543 suspected fractures) looked at BS. [...] As few studies made direct comparisons between tests with the same participants, our results are based on data from indirect comparisons, which means that these results are more susceptible to bias due to confounding. [...] Summary sensitivity and specificity of CT were 0.72 (95% confidence interval (CI) 0.36 to 0.92) and 0.99 (95% CI 0.71 to 1.00); for MRI, these were 0.88 (95% CI 0.64 to 0.97) and 1.00 (95% CI 0.38 to 1.00); for BS, these were 0.99 (95% CI 0.69 to 1.00) and 0.86 (95% CI 0.73 to 0.94). Indirect comparisons suggest that diagnostic accuracy of BS was significantly higher than CT and MRI; and CT and MRI have comparable diagnostic accuracy. The low prevalence of a true fracture among suspected fractures (median = 20%) means the lower specificity for BS is problematic. [...] Although quality of the included studies is moderate to good, findings are based on only 11 studies and the confidence intervals for the summary estimates are wide for all three tests. [...] However, physicians must keep in mind that BS is more invasive than the other modalities, with safety issues due to level of radiation exposure, as well as diagnostic delay of at least 72 hours. The number of overtreated patients is substantially lower with CT and MRI."
+ },
+ {
+  "id": "yin2012-scaphoid-imaging-lca",
+  "topic": "Suspected scaphoid fracture: accuracy of follow-up radiographs, MRI, CT and bone scintigraphy (latent class analysis)",
+  "authors": "Yin ZG, Zhang JB, Kan SL, Wang XG",
+  "title": "Diagnostic accuracy of imaging modalities for suspected scaphoid fractures: meta-analysis combined with latent class analysis",
+  "journal": "Journal of Bone and Joint Surgery. British Volume",
+  "year": 2012,
+  "doi": "10.1302/0301-620X.94B8.28998",
+  "pmid": "22844049",
+  "url": "https://doi.org/10.1302/0301-620X.94B8.28998",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "Meta-analysis of 30 clinical studies combined with latent class analysis to account for the lack of a reference standard for suspected scaphoid fractures.",
+   "Estimated sensitivity/specificity: follow-up radiographs 91.1%/99.8%; bone scintigraphy 97.8%/93.5%; MRI 97.7%/99.8%; CT 85.2%/99.5%.",
+   "MRI was the most accurate test; follow-up radiographs and CT may be less sensitive, and bone scintigraphy less specific.",
+   "There was large between-study heterogeneity and imprecision for the sensitivity estimates of follow-up radiographs and CT."
+  ],
+  "key_points_pt": [
+   "Meta-análise de 30 estudos clínicos combinada com análise de classes latentes, para contornar a ausência de padrão de referência na suspeita de fratura do escafoide.",
+   "Sensibilidade/especificidade estimadas: radiografias de controlo 91,1%/99,8%; cintigrafia óssea 97,8%/93,5%; RM 97,7%/99,8%; TC 85,2%/99,5%.",
+   "A RM foi o exame mais exato; as radiografias de controlo e a TC podem ser menos sensíveis e a cintigrafia óssea menos específica.",
+   "Houve grande heterogeneidade entre estudos e imprecisão nas estimativas de sensibilidade das radiografias de controlo e da TC."
+  ],
+  "modalities": [
+   "XR",
+   "CT",
+   "MR"
+  ],
+  "regions": [
+   "wrist-hand"
+  ],
+  "keywords": [
+   "scaphoid fracture",
+   "occult",
+   "suspected scaphoid fracture",
+   "MRI",
+   "CT",
+   "follow-up radiographs",
+   "bone scintigraphy",
+   "latent class analysis",
+   "fratura do escafoide",
+   "oculta",
+   "ressonância magnética",
+   "tomografia computorizada",
+   "radiografias de controlo",
+   "cintigrafia óssea"
+  ],
+  "abstract_excerpt": "We performed a meta-analysis of 30 clinical studies on the diagnosis of suspected scaphoid fractures, in which agreement data between any of follow-up radiographs, bone scintigraphy, magnetic resonance (MR) imaging, or CT could be obtained, and combined this with latent class analysis to infer the accuracy of these tests on the diagnosis of suspected scaphoid fractures in the absence of an established standard. The estimated sensitivity and specificity were respectively 91.1% and 99.8% for follow-up radiographs, 97.8% and 93.5% for bone scintigraphy, 97.7% and 99.8% for MRI, and 85.2% and 99.5% for CT. The results were generally robust in multiple sensitivity analyses. There was large between-study heterogeneity for the sensitivity of follow-up radiographs and CT, and imprecision about their sensitivity estimates. If we acknowledge the lack of a reference standard for diagnosing suspected scaphoid fractures, MRI is the most accurate test; follow-up radiographs and CT may be less sensitive, and bone scintigraphy less specific."
+ },
+ {
+  "id": "lichtman2010-aaos-distal-radius",
+  "topic": "Distal radius fracture: radiographic thresholds in the 2010 AAOS clinical practice guideline (superseded by the 2020 AAOS/ASSH guideline, summary PMID 35143462)",
+  "authors": "Lichtman DM, Bindra RR, Boyer MI, et al.",
+  "title": "Treatment of distal radius fractures",
+  "journal": "Journal of the American Academy of Orthopaedic Surgeons",
+  "year": 2010,
+  "doi": "10.5435/00124635-201003000-00007",
+  "pmid": "20190108",
+  "url": "https://doi.org/10.5435/00124635-201003000-00007",
+  "evidence_type": "guideline",
+  "key_points": [
+   "AAOS clinical practice guideline based on a systematic review: of 29 recommendations, none was graded strong, most were inconclusive or consensus, seven were weak and five were moderate-strength.",
+   "Moderate-strength recommendation: surgical fixation rather than cast fixation for fractures with post-reduction radial shortening >3 mm, dorsal tilt >10 degrees, or intra-articular displacement or step-off >2 mm.",
+   "Moderate-strength recommendation: obtain a post-reduction true lateral radiograph of the carpus to assess radioulnar joint alignment."
+  ],
+  "key_points_pt": [
+   "Norma de orientação clínica da AAOS baseada em revisão sistemática: das 29 recomendações, nenhuma foi de grau forte, a maioria foi inconclusiva ou de consenso, sete foram fracas e cinco de força moderada.",
+   "Recomendação de força moderada: fixação cirúrgica em vez de imobilização gessada nas fraturas com encurtamento radial pós-redução >3 mm, inclinação dorsal >10 graus ou desvio/degrau intra-articular >2 mm.",
+   "Recomendação de força moderada: realizar radiografia de perfil verdadeiro do carpo após redução para avaliar o alinhamento da articulação radiocubital."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "wrist-hand"
+  ],
+  "keywords": [
+   "distal radius fracture",
+   "radial shortening",
+   "dorsal tilt",
+   "dorsal angulation",
+   "articular step-off",
+   "intra-articular",
+   "true lateral radiograph",
+   "DRUJ",
+   "fratura do rádio distal",
+   "encurtamento radial",
+   "inclinação dorsal",
+   "angulação dorsal",
+   "degrau articular",
+   "articulação radiocubital distal",
+   "Colles"
+  ],
+  "abstract_excerpt": "The clinical practice guideline is based on a systematic review of published studies on the treatment of distal radius fractures in adults. None of the 29 recommendations made by the work group was graded as strong; most are graded as inconclusive or consensus; seven are graded as weak. The remaining five moderate-strength recommendations include surgical fixation, rather than cast fixation, for fractures with postreduction radial shortening >3 mm, dorsal tilt >10 degrees , or intra-articular displacement or step-off >2 mm; use of rigid immobilization rather than removable splints for nonsurgical treatment; making a postreduction true lateral radiograph of the carpus to assess dorsal radial ulnar joint alignment; [...]"
+ },
+ {
+  "id": "masionis2019-garden-reliability",
+  "topic": "Garden classification of femoral neck fractures: inter- and intraobserver reliability",
+  "authors": "Masionis P, Uvarovas V, Mazarevičius G, et al.",
+  "title": "The reliability of a Garden, AO and simple II stage classifications for intracapsular hip fractures",
+  "journal": "Orthopaedics & Traumatology: Surgery & Research",
+  "year": 2019,
+  "doi": "10.1016/j.otsr.2018.11.007",
+  "pmid": "30639032",
+  "url": "https://doi.org/10.1016/j.otsr.2018.11.007",
+  "evidence_type": "classification-system",
+  "key_points": [
+   "Six observers classified 136 blinded AP and lateral radiographs of femoral neck fractures twice, one month apart, using the four-stage Garden, AO and a simple two-stage classification.",
+   "Overall agreement was fair for AO (0.22) and Garden (0.33); the simple two-stage classification performed best (0.35 to 0.83; multi-rater agreement 0.50, moderate).",
+   "The authors concluded that the four-stage Garden and AO classifications should be avoided in clinical use because of poor reproducibility, and only the simple two-stage classification showed sufficient reliability; observer experience did not change agreement."
+  ],
+  "key_points_pt": [
+   "Seis observadores classificaram duas vezes, com um mês de intervalo, 136 radiografias (incidências AP e perfil) de fraturas do colo do fémur, avaliadas em ocultação, usando as classificações de Garden (4 estádios), AO e uma classificação simples em 2 estádios.",
+   "A concordância global foi razoável para a AO (0,22) e para Garden (0,33); a classificação simples em 2 estádios teve o melhor desempenho (0,35 a 0,83; concordância entre múltiplos avaliadores 0,50, moderada).",
+   "Os autores concluíram que as classificações de Garden em 4 estádios e AO devem ser evitadas na prática clínica pela fraca reprodutibilidade, e que apenas a classificação simples em 2 estádios mostrou fiabilidade suficiente; a experiência dos observadores não alterou a concordância."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "hip-pelvis"
+  ],
+  "keywords": [
+   "Garden classification",
+   "femoral neck fracture",
+   "intracapsular hip fracture",
+   "hip fracture",
+   "AO classification",
+   "interobserver reliability",
+   "kappa",
+   "displaced",
+   "undisplaced",
+   "classificação de Garden",
+   "fratura do colo do fémur",
+   "fratura intracapsular da anca",
+   "fratura da anca",
+   "concordância interobservador",
+   "desviada",
+   "não desviada"
+  ],
+  "abstract_excerpt": "Four orthopaedic trauma surgeons (two of them professors) and two senior orthopaedic trauma residents were invited to evaluated 136 blinded anterior-posterior and lateral X-rays of patients with femoral neck fractures. Observers classified fractures according to IV stage Garden, AO and simple II stage classifications. The exercise was repeated after one month on same but randomised X-rays. [...] RESULTS: AO classification showed an overall agreement of 0.22 (fair agreement). Garden classification had overall reliability slightly higher than AO, but matching same fair agreement group (0.33). II stage classification provided the highest estimates: from 0.35 (fair agreement) to 0.83 (almost perfect agreement) and multi-rater agreement of 0.50 (moderate agreement). There was seen no difference in intra- and interobserver agreement between observer groups (professors, trauma surgeons and trauma residents) [...] Despite this finding, IV stage Garden and AO classifications should be avoided in clinical use because of poor reproducibility. Only simple II stage classification showed sufficient intra- and interobserver reliability."
+ },
+ {
+  "id": "hajmirzaian2020-occult-hip-meta",
+  "topic": "Radiographically occult hip fracture in elderly patients: frequency and role of advanced imaging (MRI, CT, bone scan)",
+  "authors": "Haj-Mirzaian A, Eng J, Khorasani R, et al.",
+  "title": "Use of Advanced Imaging for Radiographically Occult Hip Fracture in Elderly Patients: A Systematic Review and Meta-Analysis",
+  "journal": "Radiology",
+  "year": 2020,
+  "doi": "10.1148/radiol.2020192167",
+  "pmid": "32633673",
+  "url": "https://doi.org/10.1148/radiol.2020192167",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "35 studies (2992 patients; mean age 76.8 years) of elderly patients with clinically suspected hip fracture but no radiographic evidence of a surgical hip fracture, using MRI as reference standard.",
+   "Radiographically occult surgical hip fracture frequency was 39% (95% CI: 35%, 43%) with no definite radiographic fracture and 92% (95% CI: 83%, 98%) with an isolated greater trochanter fracture on radiographs.",
+   "Occult fracture was more frequent in patients aged at least 80 years (44%), with an equivocal radiographic report (58%) and with a history of trauma (41%).",
+   "CT and bone scanning had comparable performance (P = .67), with sensitivities of 79% and 87% respectively (low strength of evidence); advanced imaging, preferably MRI, may be clinically appropriate in all such patients."
+  ],
+  "key_points_pt": [
+   "35 estudos (2992 doentes; idade média 76,8 anos) de idosos com suspeita clínica de fratura da anca sem evidência radiográfica de fratura cirúrgica, com a RM como padrão de referência.",
+   "A frequência de fratura cirúrgica da anca radiograficamente oculta foi de 39% (IC 95%: 35–43%) sem fratura radiográfica definida e de 92% (IC 95%: 83–98%) quando a radiografia mostrava fratura isolada do grande trocânter.",
+   "A fratura oculta foi mais frequente em doentes com idade igual ou superior a 80 anos (44%), com relatório radiográfico duvidoso (58%) e com antecedentes de traumatismo (41%).",
+   "A TC e a cintigrafia óssea tiveram desempenho comparável (P = 0,67), com sensibilidades de 79% e 87%, respetivamente (baixa força de evidência); a imagiologia avançada, preferencialmente RM, pode ser clinicamente apropriada em todos estes doentes."
+  ],
+  "modalities": [
+   "XR",
+   "CT",
+   "MR"
+  ],
+  "regions": [
+   "hip-pelvis"
+  ],
+  "keywords": [
+   "occult hip fracture",
+   "radiographically occult",
+   "femoral neck fracture",
+   "greater trochanter fracture",
+   "elderly",
+   "MRI",
+   "CT",
+   "bone scan",
+   "fratura oculta da anca",
+   "radiograficamente oculta",
+   "fratura do colo do fémur",
+   "fratura do grande trocânter",
+   "idoso",
+   "ressonância magnética",
+   "tomografia computorizada"
+  ],
+  "abstract_excerpt": "Results Thirty-five studies were identified (2992 patients; mean age, 76.8 years ± 6.0 [standard deviation]; 66% female). The frequency of radiographically occult surgical hip fracture was 39% (1110 of 2835 patients; 95% confidence interval [CI]: 35%, 43%) in studies of patients with no definite radiographic fracture and 92% (134 of 157 patients; 95% CI: 83%, 98%) in studies of patients with radiographic evidence of isolated GT fracture (moderate SOE). The frequency of occult fracture was higher in patients aged at least 80 years (44%, 529 of 1184), those with an equivocal radiographic report (58%, 71 of 126), and those with a history of trauma (41%, 977 of 2370) (moderate SOE). CT and bone scanning yielded comparable diagnostic performance in the detection of radiographically occult hip fracture (P = .67), with a sensitivity of 79% and 87%, respectively (low SOE). Conclusion Elderly patients with acute hip pain and negative or equivocal findings at initial radiography have a high frequency of occult hip fractures. Therefore, the performance of advanced imaging (preferably MRI) may be clinically appropriate in all such patients."
+ },
+ {
+  "id": "kellock2019-ct-occult-hip",
+  "topic": "CT for occult proximal femoral fracture",
+  "authors": "Kellock TT, Khurana B, Mandell JC",
+  "title": "Diagnostic Performance of CT for Occult Proximal Femoral Fractures: A Systematic Review and Meta-Analysis",
+  "journal": "AJR American Journal of Roentgenology",
+  "year": 2019,
+  "doi": "10.2214/AJR.19.21510",
+  "pmid": "31461322",
+  "url": "https://doi.org/10.2214/AJR.19.21510",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "13 heterogeneously reported studies including 1248 patients (496 with hip fracture), with MRI or clinical follow-up as reference standard; there were 50 false-negative CT examinations.",
+   "Summary estimates for CT: sensitivity 94% and specificity 100%.",
+   "CT is a reasonable choice when MRI is contraindicated or unavailable, but MRI should be performed if clinical concern for hip fracture persists despite a normal CT."
+  ],
+  "key_points_pt": [
+   "13 estudos com relato heterogéneo, incluindo 1248 doentes (496 com fratura da anca), com RM ou seguimento clínico como padrão de referência; registaram-se 50 TC falso-negativas.",
+   "Estimativas agregadas para a TC: sensibilidade de 94% e especificidade de 100%.",
+   "A TC é uma opção razoável quando a RM está contraindicada ou indisponível, mas deve realizar-se RM se a suspeita clínica de fratura da anca persistir apesar de TC normal."
+  ],
+  "modalities": [
+   "CT",
+   "MR"
+  ],
+  "regions": [
+   "hip-pelvis"
+  ],
+  "keywords": [
+   "occult hip fracture",
+   "proximal femoral fracture",
+   "CT",
+   "false negative",
+   "MRI",
+   "fratura oculta da anca",
+   "fratura proximal do fémur",
+   "tomografia computorizada",
+   "falso negativo",
+   "ressonância magnética"
+  ],
+  "abstract_excerpt": "Thirteen heterogeneously reported studies were assessed that included 1248 patients (496 with a hip fracture and 752 without) with MRI or clinical follow-up as the reference standard. There were 50 false-negative examinations. The summary estimate of sensitivity was 94% and of specificity was 100%. CONCLUSION. CT can be considered a reasonable choice when occult proximal femoral fracture is suspected clinically in patients for whom MRI is contraindicated or not readily available. However, for patients with ongoing clinical concern about hip fracture despite normal CT findings, MRI should be performed."
+ },
+ {
+  "id": "bachmann2003-ottawa-ankle-meta",
+  "topic": "Ottawa ankle rules for excluding ankle and mid-foot fractures",
+  "authors": "Bachmann LM, Kolb E, Koller MT, Steurer J, ter Riet G",
+  "title": "Accuracy of Ottawa ankle rules to exclude fractures of the ankle and mid-foot: systematic review",
+  "journal": "BMJ",
+  "year": 2003,
+  "doi": "10.1136/bmj.326.7386.417",
+  "pmid": "12595378",
+  "url": "https://doi.org/10.1136/bmj.326.7386.417",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "32 studies met inclusion criteria; 27 studies reporting on 15 581 patients were meta-analysed.",
+   "Pooled negative likelihood ratios: ankle 0.08 (95% CI 0.03 to 0.18), mid-foot 0.08 (0.03 to 0.20), children (both regions) 0.07 (0.03 to 0.18).",
+   "At a 15% fracture prevalence, a negative rule gives a less than 1.4% probability of fracture.",
+   "Sensitivity of almost 100% with modest specificity; use should reduce unnecessary radiographs by 30-40%."
+  ],
+  "key_points_pt": [
+   "32 estudos cumpriram os critérios de inclusão; 27 estudos com 15 581 doentes foram incluídos na meta-análise.",
+   "Razões de verosimilhança negativas agregadas: tornozelo 0,08 (IC 95% 0,03–0,18), mediopé 0,08 (0,03–0,20), crianças (ambas as regiões) 0,07 (0,03–0,18).",
+   "Para uma prevalência de fratura de 15%, uma regra negativa implica uma probabilidade de fratura inferior a 1,4%.",
+   "Sensibilidade de quase 100% com especificidade modesta; a sua aplicação deverá reduzir as radiografias desnecessárias em 30–40%."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "ankle-foot"
+  ],
+  "keywords": [
+   "Ottawa ankle rules",
+   "ankle fracture",
+   "mid-foot fracture",
+   "midfoot",
+   "clinical decision rule",
+   "negative likelihood ratio",
+   "ankle sprain",
+   "regras de Ottawa para o tornozelo",
+   "fratura do tornozelo",
+   "fratura do mediopé",
+   "regra de decisão clínica",
+   "entorse do tornozelo",
+   "razão de verosimilhança negativa"
+  ],
+  "abstract_excerpt": "RESULTS: 32 studies met the inclusion criteria and 27 studies reporting on 15 581 patients were used for meta-analysis. The pooled negative likelihood ratios for the ankle and mid-foot were 0.08 (95% confidence interval 0.03 to 0.18) and 0.08 (0.03 to 0.20), respectively. The pooled negative likelihood ratio for both regions in children was 0.07 (0.03 to 0.18). Applying these ratios to a 15% prevalence of fracture gave a less than 1.4% probability of actual fracture in these subgroups. CONCLUSIONS: Evidence supports the Ottawa ankle rules as an accurate instrument for excluding fractures of the ankle and mid-foot. The instrument has a sensitivity of almost 100% and a modest specificity, and its use should reduce the number of unnecessary radiographs by 30-40%."
+ },
+ {
+  "id": "malek2006-weber-reliability",
+  "topic": "Danis-Weber classification of ankle fractures: reliability on radiographs",
+  "authors": "Malek IA, Machani B, Mevcha AM, Hyder NH",
+  "title": "Inter-observer reliability and intra-observer reproducibility of the Weber classification of ankle fractures",
+  "journal": "Journal of Bone and Joint Surgery. British Volume",
+  "year": 2006,
+  "doi": "10.1302/0301-620X.88B9.17954",
+  "pmid": "16943473",
+  "url": "https://doi.org/10.1302/0301-620X.88B9.17954",
+  "evidence_type": "classification-system",
+  "key_points": [
+   "Five observers with varying experience classified 50 sets of blinded AP and lateral ankle radiographs twice, four weeks apart.",
+   "Inter-observer agreement: mean kappa 0.61 (0.59 to 0.63), proportion of agreement 78%.",
+   "Intra-observer agreement: mean kappa 0.74 (0.39 to 0.86), observed agreement 85%.",
+   "The Weber classification based on two radiographic views showed substantial inter-observer reliability and intra-observer reproducibility."
+  ],
+  "key_points_pt": [
+   "Cinco observadores com experiência variável classificaram duas vezes, com quatro semanas de intervalo, 50 conjuntos de radiografias do tornozelo (AP e perfil), avaliados em ocultação.",
+   "Concordância interobservador: kappa médio de 0,61 (0,59–0,63), proporção de concordância de 78%.",
+   "Concordância intraobservador: kappa médio de 0,74 (0,39–0,86), concordância observada de 85%.",
+   "A classificação de Weber baseada em duas incidências radiográficas mostrou fiabilidade interobservador e reprodutibilidade intraobservador substanciais."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "ankle-foot"
+  ],
+  "keywords": [
+   "Weber classification",
+   "Danis-Weber",
+   "ankle fracture",
+   "lateral malleolus",
+   "fibula fracture",
+   "syndesmosis",
+   "interobserver reliability",
+   "kappa",
+   "classificação de Weber",
+   "classificação de Danis-Weber",
+   "fratura do tornozelo",
+   "maléolo lateral",
+   "fratura do perónio",
+   "sindesmose",
+   "concordância interobservador"
+  ],
+  "abstract_excerpt": "Five observers with varying clinical experience reviewed 50 sets of blinded radiographs. The same observers reviewed the same radiographs again after an interval of four weeks. [...] For inter-observer agreement, the mean kappa value was 0.61 (0.59 to 0.63) and the proportion of agreement was 78% (76% to 79%) and for intra-observer agreement the mean kappa value was 0.74 (0.39 to 0.86) with an 85% (60% to 93%) observed agreement. These results show that the Weber classification of fractures of the ankle based on two radiological views has substantial inter-observer reliability and intra-observer reproducibility."
+ },
+ {
+  "id": "peterson1994-physeal-epidemiology",
+  "topic": "Pediatric physeal (growth plate) fractures: epidemiology and Salter-Harris type distribution",
+  "authors": "Peterson HA, Madhok R, Benson JT, Ilstrup DM, Melton LJ 3rd",
+  "title": "Physeal fractures: Part 1. Epidemiology in Olmsted County, Minnesota, 1979-1988",
+  "journal": "Journal of Pediatric Orthopaedics",
+  "year": 1994,
+  "doi": "10.1097/01241398-199407000-00002",
+  "pmid": "8077422",
+  "url": "https://doi.org/10.1097/01241398-199407000-00002",
+  "evidence_type": "other",
+  "key_points": [
+   "Population-based study: 850 children sustained 951 physeal fractures over 10 years; male:female ratio 2:1.",
+   "Overall age- and sex-adjusted incidence of physeal fractures was 279.2 per 100,000 person-years (95% CI, 261.4-296.9); incidence peaked at 11-12 years in girls and 14 years in boys.",
+   "The phalanges of the fingers were the most common site (37% of physeal fractures).",
+   "Salter-Harris type II was the most common type (54%), but 149 fractures (16%) did not fit the Salter-Harris classification."
+  ],
+  "key_points_pt": [
+   "Estudo de base populacional: 850 crianças sofreram 951 fraturas fisárias em 10 anos; razão sexo masculino:feminino de 2:1.",
+   "A incidência global ajustada à idade e ao sexo foi de 279,2 por 100 000 pessoas-ano (IC 95%: 261,4–296,9); a incidência foi máxima aos 11–12 anos nas raparigas e aos 14 anos nos rapazes.",
+   "As falanges dos dedos da mão foram a localização mais frequente (37% das fraturas fisárias).",
+   "O tipo II de Salter-Harris foi o mais frequente (54%), mas 149 fraturas (16%) não se enquadravam na classificação de Salter-Harris."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "Salter-Harris",
+   "physeal fracture",
+   "growth plate injury",
+   "epiphyseal plate",
+   "pediatric fracture",
+   "children",
+   "Peterson classification",
+   "fratura fisária",
+   "lesão da placa de crescimento",
+   "cartilagem de crescimento",
+   "fise",
+   "fratura pediátrica",
+   "criança",
+   "classificação de Salter-Harris"
+  ],
+  "abstract_excerpt": "Eight-hundred fifty children sustained 951 physeal fractures; 561 boys (66%) sustained 637 fractures, and 289 girls (34%) experienced 314 fractures. The male:female ratio was 2:1 and incidence rates were greatest among 11-12 year-old girls and 14-year-old boys. The overall age- and sex-adjusted incidence of physeal fractures was 279.2 per 100,000 person-years (95% confidence interval, 261.4-296.9). The most common site was the phalanges of fingers, which accounted for 37% of all physeal fractures. Salter-Harris type II was the most common type of fracture (54%), but 149 fractures (16%) did not fit into this classification."
+ },
+ {
+  "id": "rutgers2022-hillsachs-bankart-prevalence",
+  "topic": "Anterior shoulder dislocation: prevalence of Hill-Sachs and Bankart lesions (first-time vs recurrent)",
+  "authors": "Rutgers C, Verweij LPE, Priester-Vink S, et al.",
+  "title": "Recurrence in traumatic anterior shoulder dislocations increases the prevalence of Hill-Sachs and Bankart lesions: a systematic review and meta-analysis",
+  "journal": "Knee Surgery, Sports Traumatology, Arthroscopy",
+  "year": 2022,
+  "doi": "10.1007/s00167-021-06847-7",
+  "pmid": "34988633",
+  "url": "https://doi.org/10.1007/s00167-021-06847-7",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "22 studies (1920 shoulders) assessed after traumatic anterior dislocation by arthroscopy, MRI/MR arthrography or CT.",
+   "Hill-Sachs and Bankart lesions were more frequent after recurrent dislocations (85%; 66%) than after first-time dislocations (71%; 59%) (P < 0.01; P = 0.05).",
+   "Hill-Sachs lesions were more frequent after complete dislocations (82%) than after subluxations (54%; P < 0.01).",
+   "No significant difference between first-time and recurrent dislocations for bony Bankart, SLAP, rotator cuff tears, HAGL and ALPSA lesions; heterogeneity was substantial."
+  ],
+  "key_points_pt": [
+   "22 estudos (1920 ombros) avaliados após luxação anterior traumática por artroscopia, RM/artro-RM ou TC.",
+   "As lesões de Hill-Sachs e de Bankart foram mais frequentes após luxações recidivantes (85%; 66%) do que após primeiras luxações (71%; 59%) (P < 0,01; P = 0,05).",
+   "As lesões de Hill-Sachs foram mais frequentes após luxações completas (82%) do que após subluxações (54%; P < 0,01).",
+   "Sem diferença significativa entre primeira luxação e luxação recidivante para lesões de Bankart ósseo, SLAP, roturas da coifa dos rotadores, HAGL e ALPSA; a heterogeneidade foi substancial."
+  ],
+  "modalities": [
+   "MR",
+   "CT"
+  ],
+  "regions": [
+   "shoulder"
+  ],
+  "keywords": [
+   "anterior shoulder dislocation",
+   "Hill-Sachs lesion",
+   "Bankart lesion",
+   "bony Bankart",
+   "glenohumeral instability",
+   "recurrent dislocation",
+   "SLAP",
+   "luxação anterior do ombro",
+   "lesão de Hill-Sachs",
+   "lesão de Bankart",
+   "Bankart ósseo",
+   "instabilidade glenoumeral",
+   "luxação recidivante"
+  ],
+  "abstract_excerpt": "Studies examining shoulders after traumatic anterior dislocations during arthroscopy or with MRI/MRA or CT published after 1999 were included. A total of 22 studies (1920 shoulders) were included. RESULTS: The proportion of Hill-Sachs and Bankart lesions was higher in recurrent dislocations (85%; 66%) compared to first-time dislocations (71%; 59%) and this was statistically significant (P < 0.01; P = 0.05). No significant difference between recurrent and first-time dislocations was observed for SLAP lesions, rotator-cuff tears, bony Bankart lesions, HAGL lesions and ALPSA lesions. The proportion of Hill-Sachs lesions was significantly higher in complete dislocations (82%) compared to subluxations (54%; P < 0.01). [...] However, results should be interpreted with caution due to substantial heterogeneity and large variance."
+ },
+ {
+  "id": "vopat2021-hillsachs-imaging-sr",
+  "topic": "Imaging modalities for diagnosis and quantification of Hill-Sachs lesions",
+  "authors": "Vopat ML, Peebles LA, McBride T, et al.",
+  "title": "Accuracy and Reliability of Imaging Modalities for the Diagnosis and Quantification of Hill-Sachs Lesions: A Systematic Review",
+  "journal": "Arthroscopy",
+  "year": 2021,
+  "doi": "10.1016/j.arthro.2020.08.005",
+  "pmid": "32798670",
+  "url": "https://doi.org/10.1016/j.arthro.2020.08.005",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "Systematic review of 40 studies (2560 shoulders) on imaging of Hill-Sachs lesions in anterior shoulder instability.",
+   "For detecting Hill-Sachs lesions, CT arthrography had the highest reported accuracy (median 91%; range 66%-100%) and sensitivity (median 94%; range 50%-100%).",
+   "For quantification, intraobserver reliability was highest for 3D CT (ICC 0.916-0.999), followed by 2D CT (ICC 0.858-0.861) and MRI (ICC 0.28-0.97); interobserver reliability: 3D CT ICC 0.772-0.996, 2D CT ICC 0.721-0.879, MRI kappa 0.444-0.700."
+  ],
+  "key_points_pt": [
+   "Revisão sistemática de 40 estudos (2560 ombros) sobre imagiologia das lesões de Hill-Sachs na instabilidade anterior do ombro.",
+   "Na deteção das lesões de Hill-Sachs, a artro-TC teve a maior exatidão relatada (mediana 91%; intervalo 66–100%) e a maior sensibilidade (mediana 94%; intervalo 50–100%).",
+   "Na quantificação, a fiabilidade intraobservador foi maior na TC 3D (ICC 0,916–0,999), seguida da TC 2D (ICC 0,858–0,861) e da RM (ICC 0,28–0,97); fiabilidade interobservador: TC 3D ICC 0,772–0,996, TC 2D ICC 0,721–0,879, RM kappa 0,444–0,700."
+  ],
+  "modalities": [
+   "CT",
+   "MR"
+  ],
+  "regions": [
+   "shoulder"
+  ],
+  "keywords": [
+   "Hill-Sachs lesion",
+   "humeral head bone loss",
+   "glenoid track",
+   "on-track",
+   "off-track",
+   "CT arthrography",
+   "3D CT",
+   "anterior shoulder instability",
+   "lesão de Hill-Sachs",
+   "perda óssea da cabeça umeral",
+   "artro-TC",
+   "TC 3D",
+   "instabilidade anterior do ombro",
+   "luxação do ombro"
+  ],
+  "abstract_excerpt": "RESULTS: Forty studies (2,560 shoulders) met the inclusion criteria and were assessed. For diagnosing the presence of Hill-Sachs lesions, computed tomography (CT) arthrography had the highest reported accuracy (median, 91%; range, 66%-100%). For the same assessment, CT arthrography also had the greatest reported sensitivity (median, 94%; range, 50%-100%). For the quantification of Hill-Sachs lesion parameters, reported intraobserver reliabilities were highest for 3-dimensional (3D) CT (intraclass correlation coefficient [ICC] range, 0.916-0.999), followed by 2-dimensional CT (ICC range, 0.858-0.861) and magnetic resonance imaging (MRI) (ICC range, 0.28-0.97). For the same quantification parameters, interobserver reliabilities were also reported for 3D CT (ICC range, 0.772-0.996), 2-dimensional CT (ICC range, 0.721-0.879), and MRI (κ range, 0.444-0.700)."
+ },
+ {
+  "id": "genant1993-semiquantitative-vertebral",
+  "topic": "Genant semiquantitative (SQ) method for vertebral fracture assessment",
+  "authors": "Genant HK, Wu CY, van Kuijk C, Nevitt MC",
+  "title": "Vertebral fracture assessment using a semiquantitative technique",
+  "journal": "Journal of Bone and Mineral Research",
+  "year": 1993,
+  "doi": "10.1002/jbmr.5650080915",
+  "pmid": "8237484",
+  "url": "https://doi.org/10.1002/jbmr.5650080915",
+  "evidence_type": "classification-system",
+  "key_points": [
+   "Describes and assesses the reliability of the semiquantitative visual approach for prevalent and incident vertebral fractures on conventional radiographs, compared with quantitative morphometry.",
+   "Applied by three independent observers to 57 postmenopausal women aged 65-75 years.",
+   "Showed excellent intraobserver and good interobserver agreement; can be applied reliably when performed with well-defined criteria."
+  ],
+  "key_points_pt": [
+   "Descrição e avaliação da fiabilidade do método visual semiquantitativo para fraturas vertebrais prevalentes e incidentes em radiografia convencional, comparado com a morfometria quantitativa.",
+   "Aplicado por três observadores independentes a 57 mulheres pós-menopáusicas com 65–75 anos.",
+   "Mostrou concordância intraobservador excelente e interobservador boa; pode ser aplicado de forma fiável quando usado com critérios bem definidos."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "spine"
+  ],
+  "keywords": [
+   "Genant",
+   "semiquantitative method",
+   "vertebral fracture",
+   "vertebral compression fracture",
+   "osteoporotic fracture",
+   "vertebral height loss",
+   "morphometry",
+   "método semiquantitativo de Genant",
+   "fratura vertebral",
+   "fratura vertebral por compressão",
+   "fratura osteoporótica",
+   "perda de altura vertebral",
+   "morfometria",
+   "acunhamento vertebral"
+  ],
+  "abstract_excerpt": "The inter- and intraobserver variability was determined for a semiquantitative visual approach that we routinely use in clinical studies for assessing prevalent and incident vertebral fractures. In addition, the semiquantitative approach was compared with a quantitative morpho-metric approach. The incidence and prevalence of vertebral fractures were determined in 57 postmenopausal women (age 65–75 years) by three independent observers. [...] The results show excellent intraobserver agreement and good interobserver agreement for the semiquantitative technique. We conclude that the semiquantitative approach can be applied reliably in vertebral fracture assessment when performed using well-defined criteria."
+ },
+ {
+  "id": "williams2009-vertebral-fracture-underreporting-ct",
+  "topic": "Under-reporting of osteoporotic vertebral compression fractures on CT; value of sagittal reformations",
+  "authors": "Williams AL, Al-Busaidi A, Sparrow PJ, Adams JE, Whitehouse RW",
+  "title": "Under-reporting of osteoporotic vertebral fractures on computed tomography",
+  "journal": "European Journal of Radiology",
+  "year": 2009,
+  "doi": "10.1016/j.ejrad.2007.08.028",
+  "pmid": "17913429",
+  "url": "https://doi.org/10.1016/j.ejrad.2007.08.028",
+  "evidence_type": "retrospective-diagnostic-accuracy",
+  "key_points": [
+   "Thoracic CT scans of 100 consecutive men and 100 consecutive women over 55 years (192 analysed; mean age 70.1 years) were reviewed for moderate (25-40% height loss) or severe (>40% height loss) vertebral fractures from T1 to L1 using an established semiquantitative method.",
+   "38 (19.8%) patients had one or more moderate to severe vertebral fractures, but only 5 (13%) were correctly reported in the official report.",
+   "Sensitivity of axial CT images for vertebral fracture was 0.35; sagittal reformations are strongly recommended to improve detection."
+  ],
+  "key_points_pt": [
+   "Foram revistas TC torácicas de 100 homens e 100 mulheres consecutivos com mais de 55 anos (192 analisados; idade média 70,1 anos) para fraturas vertebrais moderadas (perda de altura de 25–40%) ou graves (perda de altura >40%) de T1 a L1, com um método semiquantitativo estabelecido.",
+   "38 doentes (19,8%) tinham uma ou mais fraturas vertebrais moderadas a graves, mas apenas 5 (13%) foram corretamente descritos no relatório oficial.",
+   "A sensibilidade das imagens axiais de TC para fratura vertebral foi de 0,35; recomendam-se fortemente reformatações sagitais para melhorar a deteção."
+  ],
+  "modalities": [
+   "CT"
+  ],
+  "regions": [
+   "spine"
+  ],
+  "keywords": [
+   "vertebral fracture",
+   "osteoporotic vertebral fracture",
+   "vertebral compression fracture",
+   "incidental finding",
+   "under-reporting",
+   "sagittal reformation",
+   "height loss",
+   "fratura vertebral",
+   "fratura vertebral osteoporótica",
+   "fratura vertebral por compressão",
+   "achado incidental",
+   "subnotificação",
+   "reformatação sagital",
+   "perda de altura"
+  ],
+  "abstract_excerpt": "The thoracic CT scans of 100 consecutive male and 100 consecutive female patients over 55 years were reviewed. [...] The presence of moderate (25-40% height loss) or severe (>40% height loss) vertebral fractures between T1 and L1 was determined using an established semi-quantitative method and confirmed by morphological measurement. [...] Scans of 192 patients were analysed (95 female; 97 male); mean age 70.1 years. Thirty-eight (19.8%) patients had one or more moderate to severe vertebral fractures. Only 5 (13%) were correctly reported as having osteoporotic fractures in the official report. The sensitivity of axial CT images to vertebral fracture was 0.35. CONCLUSION: Incidental osteoporotic vertebral fractures are under-reported on CT. The sensitivity of axial images in detecting these fractures is poor. Sagittal reformations are strongly recommended to improve the detection rate."
+ },
+ {
+  "id": "hoffman2000-nexus",
+  "topic": "NEXUS low-risk criteria for cervical spine imaging after blunt trauma",
+  "authors": "Hoffman JR, Mower WR, Wolfson AB, Todd KH, Zucker MI",
+  "title": "Validity of a set of clinical criteria to rule out injury to the cervical spine in patients with blunt trauma. National Emergency X-Radiography Utilization Study Group",
+  "journal": "New England Journal of Medicine",
+  "year": 2000,
+  "doi": "10.1056/NEJM200007133430203",
+  "pmid": "10891516",
+  "url": "https://doi.org/10.1056/NEJM200007133430203",
+  "evidence_type": "prospective-diagnostic-accuracy",
+  "key_points": [
+   "Prospective observational study at 21 US centres of 34,069 blunt trauma patients who underwent cervical spine radiography.",
+   "Low risk required all five criteria: no midline cervical tenderness, no focal neurologic deficit, normal alertness, no intoxication, and no painful distracting injury.",
+   "The rule identified all but 8 of 818 patients with cervical spine injury: sensitivity 99.0% (95% CI 98.0 to 99.6), NPV 99.8% (95% CI 99.6 to 100), specificity 12.9%; for clinically significant injury sensitivity was 99.6% (95% CI 98.6 to 100).",
+   "Imaging could have been avoided in 4309 (12.6%) of the 34,069 patients."
+  ],
+  "key_points_pt": [
+   "Estudo observacional prospetivo em 21 centros dos EUA com 34 069 doentes com traumatismo fechado submetidos a radiografia da coluna cervical.",
+   "O baixo risco exigia os cinco critérios: ausência de dor à palpação da linha média cervical, ausência de défice neurológico focal, estado de alerta normal, ausência de intoxicação e ausência de lesão dolorosa distrativa.",
+   "A regra identificou todos exceto 8 dos 818 doentes com lesão da coluna cervical: sensibilidade 99,0% (IC 95% 98,0–99,6), valor preditivo negativo 99,8% (IC 95% 99,6–100), especificidade 12,9%; para lesão clinicamente significativa a sensibilidade foi de 99,6% (IC 95% 98,6–100).",
+   "A imagiologia poderia ter sido evitada em 4309 (12,6%) dos 34 069 doentes."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "spine"
+  ],
+  "keywords": [
+   "NEXUS",
+   "cervical spine injury",
+   "C-spine",
+   "clinical decision rule",
+   "blunt trauma",
+   "midline tenderness",
+   "lesão da coluna cervical",
+   "coluna cervical",
+   "regra de decisão clínica",
+   "traumatismo fechado",
+   "critérios NEXUS",
+   "radiografia cervical"
+  ],
+  "abstract_excerpt": "We conducted a prospective, observational study of such a decision instrument at 21 centers across the United States. The decision instrument required patients to meet five criteria in order to be classified as having a low probability of injury: no midline cervical tenderness, no focal neurologic deficit, normal alertness, no intoxication, and no painful, distracting injury. We examined the performance of the decision rule in 34,069 patients who underwent radiography of the cervical spine after blunt trauma. RESULTS: The decision instrument identified all but 8 of the 818 patients who had cervical-spine injury (sensitivity, 99.0 percent [95 percent confidence interval, 98.0 to 99.6 percent]). The negative predictive value was 99.8 percent (95 percent confidence interval, 99.6 to 100 percent), the specificity was 12.9 percent, and the positive predictive value was 2.7 percent. [...] According to the results of assessment with the decision instrument, radiographic imaging could have been avoided in the cases of 4309 (12.6 percent) of the 34,069 evaluated patients."
+ },
+ {
+  "id": "stiell2001-canadian-cspine-rule",
+  "topic": "Canadian C-spine rule: derivation",
+  "authors": "Stiell IG, Wells GA, Vandemheen KL, et al.",
+  "title": "The Canadian C-spine rule for radiography in alert and stable trauma patients",
+  "journal": "JAMA",
+  "year": 2001,
+  "doi": "10.1001/jama.286.15.1841",
+  "pmid": "11597285",
+  "url": "https://doi.org/10.1001/jama.286.15.1841",
+  "evidence_type": "prospective-diagnostic-accuracy",
+  "key_points": [
+   "Prospective derivation cohort (convenience sample) of 8924 alert (GCS 15), stable adults with blunt head/neck trauma in 10 Canadian EDs; 151 (1.7%) had clinically important C-spine injury.",
+   "The rule asks three questions: any high-risk factor mandating radiography (age >=65 years, dangerous mechanism, or paresthesias in extremities); any low-risk factor allowing safe assessment of range of motion; and whether the patient can actively rotate the neck 45 degrees left and right.",
+   "By cross-validation in the derivation cohort: sensitivity 100% (95% CI, 98%-100%) and specificity 42.5% (95% CI, 40%-44%) for clinically important injury; potential radiography ordering rate 58.2%. Prospective validation in other cohorts was still required."
+  ],
+  "key_points_pt": [
+   "Coorte prospetiva de derivação (amostra de conveniência) com 8924 adultos alerta (GCS 15) e estáveis com traumatismo fechado da cabeça/pescoço em 10 serviços de urgência canadianos; 151 (1,7%) tinham lesão cervical clinicamente importante.",
+   "A regra tem três perguntas: existe algum fator de alto risco que obrigue a radiografia (idade >=65 anos, mecanismo perigoso ou parestesias nas extremidades); existe algum fator de baixo risco que permita avaliar com segurança a mobilidade; e o doente consegue rodar ativamente o pescoço 45 graus para a esquerda e para a direita.",
+   "Por validação cruzada na coorte de derivação: sensibilidade de 100% (IC 95%: 98–100%) e especificidade de 42,5% (IC 95%: 40–44%) para lesão clinicamente importante; taxa potencial de pedido de radiografia de 58,2%. Era ainda necessária validação prospetiva noutras coortes."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "spine"
+  ],
+  "keywords": [
+   "Canadian C-spine rule",
+   "CCR",
+   "cervical spine injury",
+   "clinical decision rule",
+   "dangerous mechanism",
+   "alert stable trauma",
+   "regra canadiana da coluna cervical",
+   "lesão da coluna cervical",
+   "regra de decisão clínica",
+   "mecanismo perigoso",
+   "traumatismo cervical"
+  ],
+  "abstract_excerpt": "SETTING: Ten EDs in large Canadian community and university hospitals. PATIENTS: Convenience sample of 8924 adults (mean age, 37 years) who presented to the ED with blunt trauma to the head/neck, stable vital signs, and a Glasgow Coma Scale score of 15. [...] Among the study sample, 151 (1.7%) had important C-spine injury. The resultant model and final Canadian C-Spine Rule comprises 3 main questions: (1) is there any high-risk factor present that mandates radiography (ie, age >/=65 years, dangerous mechanism, or paresthesias in extremities)? (2) is there any low-risk factor present that allows safe assessment of range of motion (ie, simple rear-end motor vehicle collision, sitting position in ED, ambulatory at any time since injury, delayed onset of neck pain, or absence of midline C-spine tenderness)? and (3) is the patient able to actively rotate neck 45 degrees to the left and right? By cross-validation, this rule had 100% sensitivity (95% confidence interval [CI], 98%-100%) and 42.5% specificity (95% CI, 40%-44%) for identifying 151 clinically important C-spine injuries. The potential radiography ordering rate would be 58.2%. [...] If prospectively validated in other cohorts, this rule has the potential to significantly reduce practice variation and inefficiency in ED use of C-spine radiography."
+ },
+ {
+  "id": "stiell2003-ccr-vs-nexus",
+  "topic": "Canadian C-spine rule versus NEXUS low-risk criteria: head-to-head comparison",
+  "authors": "Stiell IG, Clement CM, McKnight RD, et al.",
+  "title": "The Canadian C-spine rule versus the NEXUS low-risk criteria in patients with trauma",
+  "journal": "New England Journal of Medicine",
+  "year": 2003,
+  "doi": "10.1056/NEJMoa031375",
+  "pmid": "14695411",
+  "url": "https://doi.org/10.1056/NEJMoa031375",
+  "evidence_type": "prospective-diagnostic-accuracy",
+  "key_points": [
+   "Prospective cohort in nine Canadian EDs: 8283 alert, stable trauma patients, 169 (2.0%) with clinically important cervical spine injury.",
+   "Excluding indeterminate cases, the CCR was more sensitive (99.4% vs 90.7%) and more specific (45.1% vs 36.8%) than the NEXUS low-risk criteria (P<0.001).",
+   "CCR use would have resulted in lower radiography rates (55.9% vs 66.6%); the CCR would have missed 1 patient and NEXUS 16 patients with important injuries.",
+   "In 845 (10.2%) patients physicians did not evaluate range of motion as required by the CCR."
+  ],
+  "key_points_pt": [
+   "Coorte prospetiva em nove serviços de urgência canadianos: 8283 doentes alerta e estáveis com traumatismo, 169 (2,0%) com lesão cervical clinicamente importante.",
+   "Excluindo os casos indeterminados, a regra canadiana foi mais sensível (99,4% vs 90,7%) e mais específica (45,1% vs 36,8%) do que os critérios de baixo risco NEXUS (P<0,001).",
+   "A regra canadiana resultaria em menos radiografias (55,9% vs 66,6%); teria falhado 1 doente e os critérios NEXUS 16 doentes com lesões importantes.",
+   "Em 845 doentes (10,2%) os médicos não avaliaram a mobilidade cervical, como exige a regra canadiana."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "spine"
+  ],
+  "keywords": [
+   "Canadian C-spine rule",
+   "NEXUS",
+   "cervical spine injury",
+   "clinical decision rule",
+   "comparison",
+   "radiography rate",
+   "regra canadiana da coluna cervical",
+   "critérios NEXUS",
+   "lesão da coluna cervical",
+   "regra de decisão clínica",
+   "traumatismo cervical"
+  ],
+  "abstract_excerpt": "We conducted a prospective cohort study in nine Canadian emergency departments comparing the CCR and NLC as applied to alert patients with trauma who were in stable condition. [...] RESULTS: Among the 8283 patients, 169 (2.0 percent) had clinically important cervical-spine injuries. In 845 (10.2 percent) of the patients, physicians did not evaluate range of motion as required by the CCR algorithm. In analyses that excluded these indeterminate cases, the CCR was more sensitive than the NLC (99.4 percent vs. 90.7 percent, P<0.001) and more specific (45.1 percent vs. 36.8 percent, P<0.001) for injury, and its use would have resulted in lower radiography rates (55.9 percent vs. 66.6 percent, P<0.001). [...] The CCR would have missed 1 patient and the NLC would have missed 16 patients with important injuries."
+ },
+ {
+  "id": "holmes2005-cspine-ct-vs-radiography",
+  "topic": "CT versus radiography for cervical spine injury screening",
+  "authors": "Holmes JF, Akkinepalli R",
+  "title": "Computed tomography versus plain radiography to screen for cervical spine injury: a meta-analysis",
+  "journal": "Journal of Trauma",
+  "year": 2005,
+  "doi": "10.1097/01.ta.0000162138.36519.2a",
+  "pmid": "15920400",
+  "url": "https://doi.org/10.1097/01.ta.0000162138.36519.2a",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "Meta-analysis of seven studies (of 712 articles screened; literature from January 1995 to June 2004) reporting both plain radiography and CT for blunt cervical spine injury; no randomized trials.",
+   "Pooled sensitivity for identifying patients with cervical spine injury: radiography 52% (95% CI 47, 56%) vs CT 98% (95% CI 96, 99%); combined specificity could not be calculated.",
+   "CT should be the initial screening test in patients at very high risk (e.g. significantly depressed mental status); evidence was insufficient to replace radiography with CT in low-risk patients who still require imaging."
+  ],
+  "key_points_pt": [
+   "Meta-análise de sete estudos (de 712 artigos avaliados; literatura de janeiro de 1995 a junho de 2004) com radiografia e TC na lesão da coluna cervical por traumatismo fechado; sem ensaios aleatorizados.",
+   "Sensibilidade agregada para identificar doentes com lesão cervical: radiografia 52% (IC 95% 47–56%) vs TC 98% (IC 95% 96–99%); não foi possível calcular a especificidade combinada.",
+   "A TC deve ser o exame de rastreio inicial nos doentes de risco muito elevado (p. ex., alteração significativa do estado de consciência); a evidência foi insuficiente para substituir a radiografia pela TC em doentes de baixo risco que ainda necessitem de imagem."
+  ],
+  "modalities": [
+   "XR",
+   "CT"
+  ],
+  "regions": [
+   "spine"
+  ],
+  "keywords": [
+   "cervical spine injury",
+   "CT",
+   "radiography",
+   "screening",
+   "blunt trauma",
+   "sensitivity",
+   "lesão da coluna cervical",
+   "tomografia computorizada",
+   "radiografia",
+   "rastreio",
+   "traumatismo fechado",
+   "sensibilidade"
+  ],
+  "abstract_excerpt": "We conducted a MEDLINE search for articles published from January 1995 through June 2004, manually reviewed bibliographies, and hand searched four journals. Studies were included if they contained data on the performance of both plain radiography and CT in the detection of patients with blunt cervical spine injuries. Both authors screened titles and abstracts identified by the search and seven of the 712 articles met all inclusion criteria. [...] RESULTS: Patient entry criteria were highly variable for each study and there were no randomized controlled trials. For identifying patients with cervical spine injury, the pooled sensitivity for cervical spine plain radiography was 52% (95% CI 47, 56%) and for CT was 98% (95% CI 96, 99%). [...] Due to limitations of the gold standard tests in each study, a calculation of a combined specificity was not possible. CONCLUSION: Despite the absence of a randomized controlled trial, ample evidence exists that CT significantly outperforms plain radiography as a screening test for patients at very high risk of cervical spine injury and thus CT should be the initial screening test in those patients with a significantly depressed mental status. There is insufficient evidence to suggest that cervical spine CT should replace plain radiography as the initial screening test for less injured patients who are at low risk for cervical spine injury but still require a screening radiographic examination."
+ },
+ {
+  "id": "acr2025-acute-spinal-trauma",
+  "topic": "ACR Appropriateness Criteria: acute spinal trauma (imaging selection)",
+  "authors": "Expert Panel on Neurological Imaging; Hassankhani A, Freeman CW, Banks J, et al.",
+  "title": "ACR Appropriateness Criteria® Acute Spinal Trauma: 2024 Update",
+  "journal": "Journal of the American College of Radiology",
+  "year": 2025,
+  "doi": "10.1016/j.jacr.2025.02.013",
+  "pmid": "40409895",
+  "url": "https://doi.org/10.1016/j.jacr.2025.02.013",
+  "evidence_type": "guideline",
+  "key_points": [
+   "Evidence-based ACR guideline (2024 update, published 2025) on imaging of acute blunt spine trauma, using GRADE-adapted evidence review and the RAND/UCLA Appropriateness Method.",
+   "CT is generally the first-line imaging modality for acute blunt spine trauma because it is fast, accurate and easily accessible.",
+   "Overuse of imaging is associated with prolonged emergency visits and unnecessary admissions, whereas failure to identify injuries can have severe consequences."
+  ],
+  "key_points_pt": [
+   "Norma de orientação do ACR baseada na evidência (atualização de 2024, publicada em 2025) sobre imagiologia do traumatismo vertebral fechado agudo, com revisão da evidência adaptada do GRADE e método RAND/UCLA.",
+   "A TC é geralmente a modalidade de imagem de primeira linha no traumatismo vertebral fechado agudo por ser rápida, exata e facilmente acessível.",
+   "O uso excessivo de imagiologia associa-se a permanências prolongadas na urgência e internamentos desnecessários, enquanto a falha na identificação de lesões pode ter consequências graves."
+  ],
+  "modalities": [
+   "XR",
+   "CT",
+   "MR"
+  ],
+  "regions": [
+   "spine"
+  ],
+  "keywords": [
+   "ACR Appropriateness Criteria",
+   "acute spinal trauma",
+   "spine fracture",
+   "cervical spine",
+   "thoracolumbar",
+   "CT first-line",
+   "guideline",
+   "critérios de adequação do ACR",
+   "traumatismo vertebral agudo",
+   "fratura vertebral",
+   "coluna cervical",
+   "coluna toracolombar",
+   "norma de orientação"
+  ],
+  "abstract_excerpt": "Due to its wide spectrum of injury patterns, imaging of acute blunt spine trauma can present many challenges. CT is generally the first-line imaging modality, as it is fast, accurate, and easily accessible. Choice of appropriate imaging is important, as overuse of imaging is associated with prolonged emergency visits and unnecessary hospital admission, potentially leading to iatrogenic injuries and an increase in economic burden. In contrast, failure to identify injuries can have severe consequences. [...] Established methodology principles such as Grading of Recommendations Assessment, Development, and Evaluation or GRADE are adapted to evaluate the evidence. The RAND/UCLA Appropriateness Method User Manual provides the methodology to determine the appropriateness of imaging and treatment procedures for specific clinical scenarios."
+ },
+ {
+  "id": "acr2025-acute-hip-pain",
+  "topic": "ACR Appropriateness Criteria: acute hip pain / suspected hip fracture",
+  "authors": "Expert Panel on Musculoskeletal Imaging; Bartolotta RJ, Ha AS, Bateni CP, et al.",
+  "title": "ACR Appropriateness Criteria® Acute Hip Pain: 2024 Update",
+  "journal": "Journal of the American College of Radiology",
+  "year": 2025,
+  "doi": "10.1016/j.jacr.2025.02.039",
+  "pmid": "40409883",
+  "url": "https://doi.org/10.1016/j.jacr.2025.02.039",
+  "evidence_type": "guideline",
+  "key_points": [
+   "Hip fractures cannot be reliably diagnosed or excluded by physical examination alone.",
+   "Radiographs are the initial imaging modality of choice for acute hip pain.",
+   "Specific scenarios in which cross-sectional imaging (CT and/or MRI) should also be obtained are addressed as separate variants."
+  ],
+  "key_points_pt": [
+   "As fraturas da anca não podem ser diagnosticadas nem excluídas de forma fiável apenas pelo exame objetivo.",
+   "A radiografia é a modalidade de imagem inicial de eleição na dor aguda da anca.",
+   "Os cenários específicos em que se deve também obter imagem seccional (TC e/ou RM) são tratados como variantes separadas."
+  ],
+  "modalities": [
+   "XR",
+   "CT",
+   "MR"
+  ],
+  "regions": [
+   "hip-pelvis"
+  ],
+  "keywords": [
+   "ACR Appropriateness Criteria",
+   "acute hip pain",
+   "hip fracture",
+   "occult hip fracture",
+   "radiographs first",
+   "MRI",
+   "CT",
+   "critérios de adequação do ACR",
+   "dor aguda da anca",
+   "fratura da anca",
+   "fratura oculta da anca",
+   "radiografia",
+   "ressonância magnética"
+  ],
+  "abstract_excerpt": "Imaging plays a crucial role in the evaluation of these injuries, noting that hip fractures cannot be reliably diagnosed or excluded via physical examination alone. Radiographs are the initial imaging modality of choice for acute hip pain. Several recent studies have evaluated specific scenarios in which cross-sectional imaging (CT and/or MRI) should also be obtained-these scenarios will be reviewed as separate variants within this document."
+ },
+ {
+  "id": "acr2019-acute-hand-wrist-trauma",
+  "topic": "ACR Appropriateness Criteria: acute hand and wrist trauma",
+  "authors": "Expert Panel on Musculoskeletal Imaging; Torabi M, Lenchik L, Beaman FD, et al.",
+  "title": "ACR Appropriateness Criteria(®) Acute Hand and Wrist Trauma",
+  "journal": "Journal of the American College of Radiology",
+  "year": 2019,
+  "doi": "10.1016/j.jacr.2019.02.029",
+  "pmid": "31054760",
+  "url": "https://doi.org/10.1016/j.jacr.2019.02.029",
+  "evidence_type": "guideline",
+  "key_points": [
+   "In most hand and wrist injuries, conventional radiographs provide sufficient information to guide the treating clinician.",
+   "The guideline addresses seven common clinical variants and discusses appropriate use of CT, MRI, bone scan and ultrasound in addition to radiographs."
+  ],
+  "key_points_pt": [
+   "Na maioria das lesões da mão e do punho, a radiografia convencional fornece informação suficiente para orientar o clínico assistente.",
+   "A norma aborda sete variantes clínicas frequentes e discute o uso apropriado de TC, RM, cintigrafia óssea e ecografia, para além da radiografia."
+  ],
+  "modalities": [
+   "XR",
+   "CT",
+   "MR",
+   "US"
+  ],
+  "regions": [
+   "wrist-hand"
+  ],
+  "keywords": [
+   "ACR Appropriateness Criteria",
+   "hand trauma",
+   "wrist trauma",
+   "scaphoid fracture",
+   "distal radius fracture",
+   "radiographs",
+   "critérios de adequação do ACR",
+   "traumatismo da mão",
+   "traumatismo do punho",
+   "fratura do escafoide",
+   "fratura do rádio distal",
+   "radiografia",
+   "ecografia"
+  ],
+  "abstract_excerpt": "Hand and wrist injuries are common reasons for musculoskeletal-related emergency department visits. Imaging is essential for evaluating many of these injuries. In most cases, conventional radiographs provide sufficient information to guide the treating clinician. This review focuses on seven common variants to guide diagnosis of hand and wrist injuries. In addition to radiographs, appropriate use of CT, MRI, bone scan, and ultrasound are discussed."
+ },
+ {
+  "id": "acr2020-acute-ankle-trauma",
+  "topic": "ACR Appropriateness Criteria: acute trauma to the ankle (Ottawa rules variants)",
+  "authors": "Expert Panel on Musculoskeletal Imaging; Smith SE, Chang EY, Ha AS, et al.",
+  "title": "ACR Appropriateness Criteria® Acute Trauma to the Ankle",
+  "journal": "Journal of the American College of Radiology",
+  "year": 2020,
+  "doi": "10.1016/j.jacr.2020.09.014",
+  "pmid": "33153549",
+  "url": "https://doi.org/10.1016/j.jacr.2020.09.014",
+  "evidence_type": "guideline",
+  "key_points": [
+   "Defines best practices for imaging of patients presenting with acute ankle trauma.",
+   "Variants cover patients in whom the Ottawa rules can be evaluated, those with exclusionary criteria, those in whom the Ottawa rules cannot be evaluated, and specific injuries."
+  ],
+  "key_points_pt": [
+   "Define as melhores práticas de imagiologia nos doentes com traumatismo agudo do tornozelo.",
+   "As variantes abrangem doentes em que as regras de Ottawa podem ser aplicadas, doentes com critérios de exclusão, doentes em que as regras de Ottawa não podem ser aplicadas e lesões específicas."
+  ],
+  "modalities": [
+   "XR",
+   "CT",
+   "MR"
+  ],
+  "regions": [
+   "ankle-foot"
+  ],
+  "keywords": [
+   "ACR Appropriateness Criteria",
+   "acute trauma to the ankle",
+   "ankle fracture",
+   "Ottawa ankle rules",
+   "ankle sprain",
+   "critérios de adequação do ACR",
+   "traumatismo agudo do tornozelo",
+   "fratura do tornozelo",
+   "regras de Ottawa",
+   "entorse do tornozelo"
+  ],
+  "abstract_excerpt": "This ACR Appropriateness Criteria defines best practices for imaging evaluation for several variants of patients presenting with acute ankle trauma. The variants include scenarios when Ottawa Rules can be evaluated, when there are exclusionary criteria, when Ottawa Rules cannot be evaluated, as well as specific injuries."
+ },
+ {
+  "id": "kellgren1957-oa-grading",
+  "topic": "Kellgren-Lawrence radiographic grading of osteoarthritis (original description)",
+  "authors": "Kellgren JH, Lawrence JS",
+  "title": "Radiological assessment of osteo-arthrosis.",
+  "journal": "Ann Rheum Dis",
+  "year": 1957,
+  "doi": "10.1136/ard.16.4.494",
+  "pmid": "13498604",
+  "url": "https://doi.org/10.1136/ard.16.4.494",
+  "evidence_type": "classification-system",
+  "key_points": [
+   "Original 1957 description of the radiographic grading of osteoarthrosis now known as the Kellgren-Lawrence (KL) classification: each radiograph is graded 0 to 4 with increasing severity (grade 0 = no OA, grade 4 = severe OA), with the grades described as 'none, doubtful, minimal, moderate, severe', as summarised by Kohn et al. 2016.",
+   "No abstract is available in PubMed (scanned article); per Kohn et al. 2016, the original authors (two observers) reported inter- and intraobserver correlation coefficients of 0.83 for the knee."
+  ],
+  "key_points_pt": [
+   "Descrição original (1957) da graduação radiográfica da osteoartrose hoje conhecida como classificação de Kellgren-Lawrence (KL): cada radiografia é graduada de 0 a 4 por gravidade crescente (grau 0 = sem osteoartrose, grau 4 = osteoartrose grave), com os graus descritos como 'nenhuma, duvidosa, mínima, moderada, grave', conforme resumido por Kohn et al. 2016.",
+   "Sem resumo disponível na PubMed (artigo digitalizado); segundo Kohn et al. 2016, os autores originais (dois observadores) reportaram coeficientes de correlação inter e intraobservador de 0,83 para o joelho."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "knee",
+   "hip-pelvis",
+   "wrist-hand"
+  ],
+  "keywords": [
+   "Kellgren-Lawrence",
+   "KL grade",
+   "osteoarthritis",
+   "osteoarthrosis",
+   "radiographic grading",
+   "joint space narrowing",
+   "osteophyte",
+   "osteoartrose",
+   "artrose",
+   "gonartrose",
+   "coxartrose",
+   "grau de Kellgren-Lawrence",
+   "osteófito",
+   "redução da interlinha articular"
+  ],
+  "abstract_excerpt": "No abstract in PubMed (scanned 1957 article, PMC1006995). Supporting text from Kohn et al. 2016 full text (PMC4925407): \"Each radiograph was assigned a grade from 0 to 4, which they correlated to increasing severity of OA, with Grade 0 signifying no presence of OA and Grade 4 signifying severe OA\"; \"In their original paper, KL provided simple descriptions of each grade, 'none, doubtful, minimal, moderate, severe,' along with radiographic features considered evidence of OA\"; \"The authors report the inter- and intraobserver reliability correlation coefficient of the knee to both be 0.83\"."
+ },
+ {
+  "id": "kohn2016-kl-classification-in-brief",
+  "topic": "Kellgren-Lawrence classification: grade definitions, reliability and limitations",
+  "authors": "Kohn MD, et al.",
+  "title": "Classifications in Brief: Kellgren-Lawrence Classification of Osteoarthritis.",
+  "journal": "Clin Orthop Relat Res",
+  "year": 2016,
+  "doi": "10.1007/s11999-016-4732-4",
+  "pmid": "26872913",
+  "url": "https://doi.org/10.1007/s11999-016-4732-4",
+  "evidence_type": "narrative-review",
+  "key_points": [
+   "KL grade descriptors (Table 3): 0 = no joint space narrowing (JSN) or reactive changes; 1 = doubtful JSN, possible osteophytic lipping; 2 = definite osteophytes, possible JSN; 3 = moderate osteophytes, definite JSN, some sclerosis, possible bone-end deformity; 4 = large osteophytes, marked JSN, severe sclerosis, definite bone-end deformity.",
+   "Kellgren and Lawrence reported inter- and intraobserver correlation coefficients of 0.83 for the knee; Schiphof et al. found reproducibility depends on which grade description is used (weighted kappa 0.66, 0.69 and 0.63 for three alternative descriptions vs 0.41 for the original description and 0.35 for a fifth description).",
+   "Limitations: Kellgren and Lawrence never explicitly specified which radiographic features correspond to which grade, and the system has been criticised for assuming a linear radiographic progression of OA."
+  ],
+  "key_points_pt": [
+   "Descritores dos graus KL (Tabela 3): 0 = sem redução da interlinha articular nem alterações reativas; 1 = redução duvidosa da interlinha, possível esboço osteofitário; 2 = osteófitos definidos, possível redução da interlinha; 3 = osteófitos moderados, redução definida da interlinha, alguma esclerose, possível deformidade das extremidades ósseas; 4 = osteófitos volumosos, redução marcada da interlinha, esclerose grave, deformidade definida das extremidades ósseas.",
+   "Kellgren e Lawrence reportaram coeficientes de correlação inter e intraobservador de 0,83 para o joelho; Schiphof et al. verificaram que a reprodutibilidade depende da descrição dos graus utilizada (kappa ponderado 0,66, 0,69 e 0,63 para três descrições alternativas vs 0,41 para a descrição original e 0,35 para uma quinta descrição).",
+   "Limitações: Kellgren e Lawrence nunca especificaram explicitamente que achados radiográficos correspondem a cada grau, e o sistema tem sido criticado por assumir uma progressão radiográfica linear da osteoartrose."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "knee",
+   "hip-pelvis",
+   "wrist-hand"
+  ],
+  "keywords": [
+   "Kellgren-Lawrence",
+   "KL grade",
+   "osteoarthritis",
+   "joint space narrowing",
+   "osteophytes",
+   "subchondral sclerosis",
+   "bone-end deformity",
+   "interobserver reliability",
+   "osteoartrose",
+   "gonartrose",
+   "redução da interlinha articular",
+   "osteófitos",
+   "esclerose subcondral",
+   "grau KL"
+  ],
+  "abstract_excerpt": "No abstract in PubMed. Full text (PMC4925407): \"Each radiograph was assigned a grade from 0 to 4, which they correlated to increasing severity of OA, with Grade 0 signifying no presence of OA and Grade 4 signifying severe OA\"; Table 3, KL row: \"0: No JSN or reactive changes\" ... \"2: Definite osteophytes, possible JSN\" ... \"4: Large osteophytes, marked JSN, severe sclerosis, definite bone ends deformity\"; \"The authors report the inter- and intraobserver reliability correlation coefficient of the knee to both be 0.83\"; Schiphof et al.: \"the reproducibility of three of the descriptions was 'good' (weighted κ = 0.66, 0.69, 0.63), whereas the reproducibility of the original description and a fifth description was 'moderate' and 'poor' (weighted κ = 0.41 and 0.35, respectively)\"; \"they never explicitly specified which radiographic features correspond to which grade\"."
+ },
+ {
+  "id": "phelan2016-knee-mri-acl-meniscus-meta",
+  "topic": "Diagnostic accuracy of knee MRI for ACL and meniscal tears (meta-analysis)",
+  "authors": "Phelan N, et al.",
+  "title": "A systematic review and meta-analysis of the diagnostic accuracy of MRI for suspected ACL and meniscal tears of the knee.",
+  "journal": "Knee Surg Sports Traumatol Arthrosc",
+  "year": 2016,
+  "doi": "10.1007/s00167-015-3861-8",
+  "pmid": "26614425",
+  "url": "https://doi.org/10.1007/s00167-015-3861-8",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "Meta-analysis of prospective studies with arthroscopy as reference standard: MRI summary sensitivity 87% (95% CI 77-94%) and specificity 93% (95% CI 91-96%) for ACL tears (14 studies).",
+   "Medial meniscal tears: sensitivity 89% (95% CI 83-94%), specificity 88% (95% CI 82-93%); lateral meniscal tears: sensitivity 78% (95% CI 66-87%), specificity 95% (95% CI 91-97%) (19 studies each).",
+   "Magnetic field strength had no significant effect on accuracy; most studies had a high or unclear risk of bias, and too few ultrasound studies existed for meta-analysis."
+  ],
+  "key_points_pt": [
+   "Meta-análise de estudos prospetivos com artroscopia como padrão de referência: sensibilidade agregada da ressonância magnética de 87% (IC 95% 77-94%) e especificidade de 93% (IC 95% 91-96%) para roturas do ligamento cruzado anterior (14 estudos).",
+   "Roturas do menisco medial: sensibilidade 89% (IC 95% 83-94%), especificidade 88% (IC 95% 82-93%); roturas do menisco lateral: sensibilidade 78% (IC 95% 66-87%), especificidade 95% (IC 95% 91-97%) (19 estudos cada).",
+   "A intensidade do campo magnético não teve efeito significativo na acuidade; a maioria dos estudos tinha risco de viés elevado ou incerto e os estudos de ecografia eram insuficientes para meta-análise."
+  ],
+  "modalities": [
+   "MR"
+  ],
+  "regions": [
+   "knee"
+  ],
+  "keywords": [
+   "anterior cruciate ligament tear",
+   "ACL tear",
+   "meniscal tear",
+   "medial meniscus",
+   "lateral meniscus",
+   "knee MRI",
+   "diagnostic accuracy",
+   "arthroscopy",
+   "rotura do ligamento cruzado anterior",
+   "rotura do LCA",
+   "rotura meniscal",
+   "menisco medial",
+   "menisco lateral",
+   "ressonância magnética do joelho",
+   "sensibilidade",
+   "especificidade"
+  ],
+  "abstract_excerpt": "The summary estimates of sensitivity and specificity of MRI were 87 % (95 % CI 77-94 %) and 93 % (95 % CI 91-96 %), respectively, for ACL tears; 89 % (95 % CI 83-94 %) and 88 % (95 % CI 82-93 %), respectively, for medial meniscal tears; and 78 % (95 % CI 66-87 %) and 95 % (95 % CI 91-97 %), respectively, for lateral meniscal tears. Magnetic field strength had no significant effect on accuracy. Most studies had a high or unclear risk of bias. There were an insufficient number of studies that evaluated US to perform a meta-analysis."
+ },
+ {
+  "id": "dejesus2009-rotator-cuff-mri-mra-us-meta",
+  "topic": "Rotator cuff tear imaging accuracy: MRI vs MR arthrography vs ultrasound (meta-analysis)",
+  "authors": "de Jesus JO, et al.",
+  "title": "Accuracy of MRI, MR arthrography, and ultrasound in the diagnosis of rotator cuff tears: a meta-analysis.",
+  "journal": "AJR Am J Roentgenol",
+  "year": 2009,
+  "doi": "10.2214/AJR.08.1241",
+  "pmid": "19457838",
+  "url": "https://doi.org/10.2214/AJR.08.1241",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "Meta-analysis of 65 articles with a surgical (open or arthroscopic) reference standard: MR arthrography was more sensitive and specific than MRI or ultrasound for both full- and partial-thickness rotator cuff tears (p < 0.05).",
+   "No significant differences in sensitivity or specificity between MRI and ultrasound for partial- or full-thickness tears (p > 0.05).",
+   "Area under the summary ROC curve for all tears: MR arthrography 0.935, ultrasound 0.889, MRI 0.878; pairwise comparison showed no significant difference between MRI and ultrasound (p > 0.05)."
+  ],
+  "key_points_pt": [
+   "Meta-análise de 65 artigos com padrão de referência cirúrgico (aberto ou artroscópico): a artro-RM foi mais sensível e específica do que a ressonância magnética ou a ecografia para roturas transfixivas e parciais da coifa dos rotadores (p < 0,05).",
+   "Sem diferenças significativas de sensibilidade ou especificidade entre ressonância magnética e ecografia para roturas parciais ou transfixivas (p > 0,05).",
+   "Área sob a curva ROC sumária para todas as roturas: artro-RM 0,935, ecografia 0,889, ressonância magnética 0,878; a comparação emparelhada não mostrou diferença significativa entre ressonância magnética e ecografia (p > 0,05)."
+  ],
+  "modalities": [
+   "MR",
+   "US"
+  ],
+  "regions": [
+   "shoulder"
+  ],
+  "keywords": [
+   "rotator cuff tear",
+   "full-thickness tear",
+   "partial-thickness tear",
+   "supraspinatus",
+   "MR arthrography",
+   "shoulder ultrasound",
+   "rotura da coifa dos rotadores",
+   "rotura transfixiva",
+   "rotura parcial",
+   "supraespinhoso",
+   "artro-RM",
+   "ecografia do ombro",
+   "ressonância magnética do ombro"
+  ],
+  "abstract_excerpt": "In diagnosing a full-thickness tear or a partial-thickness rotator cuff tear, MR arthrography is more sensitive and specific than either MRI or ultrasound (p < 0.05). There are no significant differences in either sensitivity or specificity between MRI and ultrasound in the diagnosis of partial- or full-thickness rotator cuff tears (p > 0.05). Summary ROC curves for MR arthrography, MRI, and ultrasound for all tears show the area under the ROC curve is greatest for MR arthrography (0.935), followed by ultrasound (0.889) and then MRI (0.878); however, pairwise comparisons of these curves show no significant differences between MRI and ultrasound (p > 0.05)."
+ },
+ {
+  "id": "khoury2007-dynamic-msk-sonography",
+  "topic": "Dynamic musculoskeletal ultrasound (illustrative review)",
+  "authors": "Khoury V, et al.",
+  "title": "Musculoskeletal sonography: a dynamic tool for usual and unusual disorders.",
+  "journal": "AJR Am J Roentgenol",
+  "year": 2007,
+  "doi": "10.2214/AJR.06.0579",
+  "pmid": "17179329",
+  "url": "https://doi.org/10.2214/AJR.06.0579",
+  "evidence_type": "narrative-review",
+  "key_points": [
+   "Review illustrating a wide variety of musculoskeletal disorders that can be diagnosed with dynamic sonography.",
+   "Dynamic sonography is a useful tool for evaluating a variety of musculoskeletal disorders, many of which cannot be diagnosed by any other imaging method (qualitative conclusion; no accuracy figures in the abstract)."
+  ],
+  "key_points_pt": [
+   "Revisão que ilustra uma grande variedade de patologias musculoesqueléticas diagnosticáveis por ecografia dinâmica.",
+   "A ecografia dinâmica é uma ferramenta útil na avaliação de várias patologias musculoesqueléticas, muitas das quais não podem ser diagnosticadas por nenhum outro método de imagem (conclusão qualitativa; o resumo não apresenta valores de acuidade)."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "dynamic ultrasound",
+   "dynamic sonography",
+   "cine clip",
+   "snapping",
+   "tendon subluxation",
+   "impingement",
+   "instability",
+   "ecografia dinâmica",
+   "clipe de cine",
+   "ressalto",
+   "subluxação tendinosa",
+   "conflito",
+   "instabilidade"
+  ],
+  "abstract_excerpt": "OBJECTIVE: The purpose of this study is to illustrate a wide variety of musculoskeletal disorders that can be diagnosed with dynamic sonography. CONCLUSION: Dynamic sonography is a useful tool for the evaluation of a variety of musculoskeletal disorders. Many of these disorders cannot be diagnosed by any other imaging method."
+ },
+ {
+  "id": "ricci2022-dynamic-us-shoulder-protocol",
+  "topic": "Dynamic ultrasound protocol for the shoulder (EURO-MUSCULUS/USPRM consensus)",
+  "authors": "Ricci V, et al.",
+  "title": "EURO-MUSCULUS/USPRM Dynamic Ultrasound Protocols for Shoulder.",
+  "journal": "Am J Phys Med Rehabil",
+  "year": 2022,
+  "doi": "10.1097/PHM.0000000000001833",
+  "pmid": "34923500",
+  "url": "https://doi.org/10.1097/PHM.0000000000001833",
+  "evidence_type": "consensus/position-paper",
+  "key_points": [
+   "Practical guide prepared by an international consensus of experts (EURO-MUSCULUS and USPRM) describing dynamic ultrasound examination of the shoulder using different manoeuvres for several relevant shoulder problems.",
+   "Scanning videos are coupled with real-time patient examination videos, aiming at a better, uniform/standard approach (qualitative protocol; no accuracy figures in the abstract)."
+  ],
+  "key_points_pt": [
+   "Guia prático elaborado por consenso internacional de peritos (EURO-MUSCULUS e USPRM) que descreve o exame ecográfico dinâmico do ombro com diferentes manobras para vários problemas relevantes do ombro.",
+   "Os vídeos de aquisição ecográfica são associados a vídeos do exame do doente em tempo real, visando uma abordagem melhor e uniforme/padronizada (protocolo qualitativo; o resumo não apresenta valores de acuidade)."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "shoulder"
+  ],
+  "keywords": [
+   "dynamic ultrasound",
+   "shoulder",
+   "shoulder impingement",
+   "subacromial impingement",
+   "long head of biceps tendon instability",
+   "manoeuvre",
+   "cine clip",
+   "ecografia dinâmica",
+   "ombro",
+   "conflito subacromial",
+   "instabilidade do tendão da longa porção do bicípite",
+   "manobra dinâmica",
+   "vídeo ecográfico"
+  ],
+  "abstract_excerpt": "In this dynamic protocol, ultrasound examination of the shoulder using different maneuvers is described for several/relevant shoulder problems. Scanning videos are coupled with real-time patient examination videos for better understanding. The authors believe that this practical guide prepared by an international consensus of several experts (EURO-MUSCULUS: European Musculoskeletal Ultrasound Study Group and USPRM: Ultrasound Study Group of ISPRM [International Society of Physical and Rehabilitation Medicine]) will help musculoskeletal physicians perform a better and uniform/standard approach."
+ },
+ {
+  "id": "pfirrmann2001-disc-degeneration-grading",
+  "topic": "Pfirrmann MRI grading of lumbar disc degeneration",
+  "authors": "Pfirrmann CW, et al.",
+  "title": "Magnetic resonance classification of lumbar intervertebral disc degeneration.",
+  "journal": "Spine (Phila Pa 1976)",
+  "year": 2001,
+  "doi": "10.1097/00007632-200109010-00011",
+  "pmid": "11568697",
+  "url": "https://doi.org/10.1097/00007632-200109010-00011",
+  "evidence_type": "classification-system",
+  "key_points": [
+   "Five-grade (I-V) MRI classification of lumbar disc degeneration with a simple algorithm applied to routine T2-weighted images, tested on 300 discs in 60 patients by three observers.",
+   "Intraobserver kappa 0.84-0.90 and interobserver kappa 0.69-0.81; complete agreement in 83.8% of discs, one-grade difference in 15.9% and two or more grades in 1.3%.",
+   "Disc degeneration can be graded reliably on routine T2-weighted MR images."
+  ],
+  "key_points_pt": [
+   "Classificação por ressonância magnética em cinco graus (I-V) da degenerescência discal lombar, com algoritmo simples aplicado a imagens ponderadas em T2 de rotina, testada em 300 discos de 60 doentes por três observadores.",
+   "Kappa intraobservador 0,84-0,90 e interobservador 0,69-0,81; concordância completa em 83,8% dos discos, diferença de um grau em 15,9% e de dois ou mais graus em 1,3%.",
+   "A degenerescência discal pode ser graduada de forma fiável em imagens de ressonância magnética ponderadas em T2 de rotina."
+  ],
+  "modalities": [
+   "MR"
+  ],
+  "regions": [
+   "spine"
+  ],
+  "keywords": [
+   "Pfirrmann grade",
+   "disc degeneration",
+   "lumbar intervertebral disc",
+   "T2-weighted",
+   "disc height",
+   "nucleus pulposus signal",
+   "grau de Pfirrmann",
+   "degenerescência discal",
+   "degeneração discal",
+   "disco intervertebral lombar",
+   "discopatia degenerativa",
+   "desidratação discal"
+  ],
+  "abstract_excerpt": "There were 14 Grade I, 82 Grade II, 72 Grade III, 68 Grade IV, and 64 Grade V discs. The kappa coefficients for intra- and interobserver agreement were substantial to excellent: intraobserver (kappa range, 0.84-0.90) and interobserver (kappa range, 0.69-0.81). Complete agreement was obtained, on the average, in 83.8% of all the discs. A difference of one grade occurred in 15.9% and a difference of two or more grades in 1.3% of all the cases. CONCLUSION: Disc degeneration can be graded reliably on routine T2-weighted magnetic resonance images using the grading system and algorithm presented in this investigation."
+ },
+ {
+  "id": "modic1988-endplate-marrow-changes",
+  "topic": "Modic vertebral endplate/marrow changes (original classification)",
+  "authors": "Modic MT, et al.",
+  "title": "Degenerative disk disease: assessment of changes in vertebral body marrow with MR imaging.",
+  "journal": "Radiology",
+  "year": 1988,
+  "doi": "10.1148/radiology.166.1.3336678",
+  "pmid": "3336678",
+  "url": "https://doi.org/10.1148/radiology.166.1.3336678",
+  "evidence_type": "classification-system",
+  "key_points": [
+   "In 474 consecutive lumbar MRI patients, type 1 changes (decreased T1 signal, increased T2 signal) were seen in 20 patients (4%) and type 2 changes (increased T1 signal, isointense or slightly increased T2 signal) in 77 patients (16%), always with degenerative disc disease at the involved level.",
+   "Histology (three cases of each type): type 1 showed disruption and fissuring of the end plates with vascularised fibrous tissue; type 2 showed yellow marrow replacement.",
+   "Longitudinally, type 1 changes converted to type 2 in five of six patients within 14 months to 3 years; type 2 changes in ten patients remained stable over 2-3 years."
+  ],
+  "key_points_pt": [
+   "Em 474 doentes consecutivos submetidos a ressonância magnética lombar, observaram-se alterações tipo 1 (hipossinal em T1, hipersinal em T2) em 20 doentes (4%) e alterações tipo 2 (hipersinal em T1, isossinal ou ligeiro hipersinal em T2) em 77 doentes (16%), sempre associadas a discopatia degenerativa no nível envolvido.",
+   "Histologia (três casos de cada tipo): o tipo 1 mostrou rotura e fissuração dos planaltos vertebrais com tecido fibroso vascularizado; o tipo 2 mostrou substituição por medula amarela (gordurosa).",
+   "Longitudinalmente, as alterações tipo 1 converteram-se em tipo 2 em cinco de seis doentes em 14 meses a 3 anos; as alterações tipo 2 mantiveram-se estáveis em dez doentes durante 2-3 anos."
+  ],
+  "modalities": [
+   "MR"
+  ],
+  "regions": [
+   "spine"
+  ],
+  "keywords": [
+   "Modic changes",
+   "Modic type 1",
+   "Modic type 2",
+   "vertebral endplate",
+   "bone marrow edema",
+   "fatty marrow",
+   "degenerative disc disease",
+   "alterações de Modic",
+   "Modic tipo 1",
+   "Modic tipo 2",
+   "planaltos vertebrais",
+   "edema da medula óssea",
+   "infiltração gordurosa",
+   "discopatia degenerativa"
+  ],
+  "abstract_excerpt": "Type 1 changes (decreased signal intensity on T1-weighted spin-echo images and increased signal intensity on T2-weighted images) were identified in 20 patients (4%) and type 2 (increased signal intensity on T1-weighted images and isointense or slightly increased signal intensity on T2-weighted images) in 77 patients (16%). In all cases there was evidence of associated degenerative disk disease at the level of involvement. Histopathologic sections in three cases of type 1 change demonstrated disruption and fissuring of the end plates and vascularized fibrous tissue, while in three cases of type 2 change they demonstrated yellow marrow replacement. ... Type 1 changes in five of six patients converted to a type 2 pattern in 14 months to 3 years. Type 2 changes in ten patients remained stable over a 2-3-year period."
+ },
+ {
+  "id": "fardon2014-lumbar-disc-nomenclature-v2",
+  "topic": "Lumbar disc nomenclature version 2.0 (NASS/ASSR/ASNR consensus)",
+  "authors": "Fardon DF, et al.",
+  "title": "Lumbar disc nomenclature: version 2.0: Recommendations of the combined task forces of the North American Spine Society, the American Society of Spine Radiology and the American Society of Neuroradiology.",
+  "journal": "Spine J",
+  "year": 2014,
+  "doi": "10.1016/j.spinee.2014.04.022",
+  "pmid": "24768732",
+  "url": "https://doi.org/10.1016/j.spinee.2014.04.022",
+  "evidence_type": "consensus/position-paper",
+  "key_points": [
+   "Revised (version 2.0) lumbar disc nomenclature representing consensus recommendations of the combined task forces of the ASSR, ASNR and NASS, updating the 2001 document (also published in Spine 2014, PMID 23970106).",
+   "Recommended diagnostic categories: normal; congenital/developmental variation; degeneration; trauma; infection/inflammation; neoplasia; and/or morphologic variant of uncertain significance.",
+   "Provides a glossary of lumbar disc terms with their recommended usage, describing terms as preferred, nonpreferred, nonstandard and colloquial; the nomenclature is intended to serve as a system for classification and reporting."
+  ],
+  "key_points_pt": [
+   "Nomenclatura revista (versão 2.0) do disco lombar que representa as recomendações de consenso dos grupos de trabalho conjuntos da ASSR, ASNR e NASS, atualizando o documento de 2001 (também publicada na Spine 2014, PMID 23970106).",
+   "Categorias diagnósticas recomendadas: normal; variante congénita/do desenvolvimento; degenerescência; trauma; infeção/inflamação; neoplasia; e/ou variante morfológica de significado incerto.",
+   "Inclui um glossário de termos do disco lombar com a respetiva utilização recomendada, classificando os termos como preferidos, não preferidos, não padronizados e coloquiais; a nomenclatura destina-se a servir como sistema de classificação e de relatório."
+  ],
+  "modalities": [
+   "MR",
+   "CT"
+  ],
+  "regions": [
+   "spine"
+  ],
+  "keywords": [
+   "lumbar disc nomenclature",
+   "disc herniation",
+   "disc protrusion",
+   "disc extrusion",
+   "sequestration",
+   "disc bulge",
+   "annular fissure",
+   "nomenclatura discal lombar",
+   "hérnia discal",
+   "protrusão discal",
+   "extrusão discal",
+   "sequestro discal",
+   "abaulamento discal",
+   "fissura do anel fibroso"
+  ],
+  "abstract_excerpt": "The article provides a discussion of the recommended diagnostic categories pertaining to the lumbar disc: normal; congenital/developmental variation; degeneration; trauma; infection/inflammation; neoplasia; and/or morphologic variant of uncertain significance. The article provides a glossary of terms pertaining to the lumbar disc, a detailed discussion of these terms, and their recommended usage. Terms are described as preferred, nonpreferred, nonstandard, and colloquial. ... We have revised and updated a document that, since 2001, has provided a widely acceptable nomenclature that helps maintain consistency and accuracy in the description of the anatomic and physiologic properties of the normal and abnormal lumbar disc and that serves as a system for classification and reporting built upon that nomenclature."
+ },
+ {
+  "id": "jensen2008-modic-prevalence-sr",
+  "topic": "Prevalence of Modic/endplate signal changes and association with low back pain (systematic review)",
+  "authors": "Jensen TS, et al.",
+  "title": "Vertebral endplate signal changes (Modic change): a systematic literature review of prevalence and association with non-specific low back pain.",
+  "journal": "Eur Spine J",
+  "year": 2008,
+  "doi": "10.1007/s00586-008-0770-2",
+  "pmid": "18787845",
+  "url": "https://doi.org/10.1007/s00586-008-0770-2",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "Systematic review of 82 study samples from 77 articles: median reported prevalence of any vertebral endplate signal change (including Modic changes) was 43% in patients with non-specific low back pain and/or sciatica and 6% in non-clinical populations.",
+   "Prevalence was positively associated with age; a positive association with non-specific low back pain was found in seven of ten studies, with odds ratios from 2.0 to 19.9.",
+   "Endplate signal changes are common in non-specific low back pain and associated with pain, but may also be present in individuals without low back pain."
+  ],
+  "key_points_pt": [
+   "Revisão sistemática de 82 amostras de 77 artigos: a prevalência mediana reportada de qualquer alteração de sinal dos planaltos vertebrais (incluindo alterações de Modic) foi de 43% em doentes com lombalgia inespecífica e/ou ciatalgia e de 6% em populações não clínicas.",
+   "A prevalência associou-se positivamente com a idade; verificou-se associação positiva com lombalgia inespecífica em sete de dez estudos, com odds ratios de 2,0 a 19,9.",
+   "As alterações de sinal dos planaltos vertebrais são frequentes na lombalgia inespecífica e associam-se a dor, mas podem também estar presentes em indivíduos sem lombalgia."
+  ],
+  "modalities": [
+   "MR"
+  ],
+  "regions": [
+   "spine"
+  ],
+  "keywords": [
+   "Modic changes",
+   "vertebral endplate signal changes",
+   "low back pain",
+   "sciatica",
+   "prevalence",
+   "alterações de Modic",
+   "alterações de sinal dos planaltos vertebrais",
+   "lombalgia",
+   "ciatalgia",
+   "prevalência"
+  ],
+  "abstract_excerpt": "The median of the reported prevalence rates for any type of VESC was 43% in patients with non-specific LBP and/or sciatica and 6% in non-clinical populations. The prevalence was positively associated with age and was negatively associated with the overall quality of the studies. A positive association between VESC and non-specific LBP was found in seven of ten studies from the general, working, and clinical populations with ORs from 2.0 to 19.9. This systematic review shows that VESC is a common MRI-finding in patients with non-specific LBP and is associated with pain. However, it should be noted that VESC may be present in individuals without LBP."
+ },
+ {
+  "id": "brinjikji2015-asymptomatic-spine-degeneration",
+  "topic": "Prevalence of degenerative spine imaging findings in asymptomatic people (systematic review)",
+  "authors": "Brinjikji W, et al.",
+  "title": "Systematic literature review of imaging features of spinal degeneration in asymptomatic populations.",
+  "journal": "AJNR Am J Neuroradiol",
+  "year": 2015,
+  "doi": "10.3174/ajnr.A4173",
+  "pmid": "25430861",
+  "url": "https://doi.org/10.3174/ajnr.A4173",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "Systematic review of 33 articles (3110 asymptomatic individuals, CT or MRI): prevalence of disc degeneration increased from 37% at 20 years of age to 96% at 80 years.",
+   "From age 20 to 80 in asymptomatic individuals: disc bulge 30% to 84%, disc protrusion 29% to 43%, annular fissure 19% to 29%.",
+   "Many imaging-based degenerative features are likely part of normal ageing and unassociated with pain, and must be interpreted in the context of the patient's clinical condition."
+  ],
+  "key_points_pt": [
+   "Revisão sistemática de 33 artigos (3110 indivíduos assintomáticos, TC ou ressonância magnética): a prevalência de degenerescência discal aumentou de 37% aos 20 anos para 96% aos 80 anos.",
+   "Dos 20 aos 80 anos em indivíduos assintomáticos: abaulamento discal de 30% para 84%, protrusão discal de 29% para 43%, fissura do anel fibroso de 19% para 29%.",
+   "Muitos achados degenerativos imagiológicos fazem provavelmente parte do envelhecimento normal e não se associam a dor, devendo ser interpretados no contexto clínico do doente."
+  ],
+  "modalities": [
+   "MR",
+   "CT"
+  ],
+  "regions": [
+   "spine"
+  ],
+  "keywords": [
+   "asymptomatic",
+   "disc degeneration",
+   "disc bulge",
+   "disc protrusion",
+   "annular fissure",
+   "incidental finding",
+   "normal ageing",
+   "assintomático",
+   "degenerescência discal",
+   "abaulamento discal",
+   "protrusão discal",
+   "fissura do anel fibroso",
+   "achado incidental",
+   "envelhecimento normal"
+  ],
+  "abstract_excerpt": "The prevalence of disk degeneration in asymptomatic individuals increased from 37% of 20-year-old individuals to 96% of 80-year-old individuals. Disk bulge prevalence increased from 30% of those 20 years of age to 84% of those 80 years of age. Disk protrusion prevalence increased from 29% of those 20 years of age to 43% of those 80 years of age. The prevalence of annular fissure increased from 19% of those 20 years of age to 29% of those 80 years of age. CONCLUSIONS: Imaging findings of spine degeneration are present in high proportions of asymptomatic individuals, increasing with age. Many imaging-based degenerative features are likely part of normal aging and unassociated with pain. These imaging findings must be interpreted in the context of the patient's clinical condition."
+ },
+ {
+  "id": "lodwick1980-bone-lesion-growth-rate",
+  "topic": "Lodwick radiographic grading of focal bone lesions (growth rate)",
+  "authors": "Lodwick GS, et al.",
+  "title": "Determining growth rates of focal lesions of bone from radiographs.",
+  "journal": "Radiology",
+  "year": 1980,
+  "doi": "10.1148/radiology.134.3.6928321",
+  "pmid": "6928321",
+  "url": "https://doi.org/10.1148/radiology.134.3.6928321",
+  "evidence_type": "classification-system",
+  "key_points": [
+   "Radiographic grading of focal bone lesions as an expression of growth rate; rate of growth divides focal bone lesions into two largely mutually exclusive classes.",
+   "Grading helps decide which lesions should be biopsied and which may be safely followed; a set of rules establishes each of five grades in the presence of bone destruction (qualitative; no accuracy figures in the abstract)."
+  ],
+  "key_points_pt": [
+   "Graduação radiográfica das lesões ósseas focais como expressão da taxa de crescimento; a taxa de crescimento divide as lesões ósseas focais em duas classes largamente mutuamente exclusivas.",
+   "A graduação ajuda a decidir que lesões devem ser biopsadas e quais podem ser vigiadas com segurança; um conjunto de regras define cada um dos cinco graus na presença de destruição óssea (qualitativo; o resumo não apresenta valores de acuidade)."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "long-bones",
+   "any"
+  ],
+  "keywords": [
+   "Lodwick grade",
+   "bone lesion margin",
+   "geographic",
+   "moth-eaten",
+   "permeative",
+   "lytic lesion",
+   "growth rate",
+   "bone tumor",
+   "grau de Lodwick",
+   "margem da lesão óssea",
+   "padrão geográfico",
+   "padrão roído de traça",
+   "padrão permeativo",
+   "lesão lítica",
+   "tumor ósseo"
+  ],
+  "abstract_excerpt": "Rate of growth divides focal lesions of bone into two classes which are largely mutually exclusive. Not all focal lesions require biopsy, and grading is especially helpful in deciding which should be biopsied and which may be safely followed. The statistical proof and logic of grading as an expression of growth rate are presented with a set of rules establishing each of the five grades in the presence of bone destruction."
+ },
+ {
+  "id": "caracciolo2016-modified-lodwick-madewell",
+  "topic": "Modified Lodwick-Madewell grading of lytic bone lesions",
+  "authors": "Caracciolo JT, et al.",
+  "title": "A Modified Lodwick-Madewell Grading System for the Evaluation of Lytic Bone Lesions.",
+  "journal": "AJR Am J Roentgenol",
+  "year": 2016,
+  "doi": "10.2214/AJR.15.14368",
+  "pmid": "27070373",
+  "url": "https://doi.org/10.2214/AJR.15.14368",
+  "evidence_type": "classification-system",
+  "key_points": [
+   "Retrospective review of radiographs of 183 bone lesions (selected to include a broad range of benign and malignant tumours) using a three-grade Modified Lodwick-Madewell system: grade I (Lodwick IA and IB), grade II (Lodwick IC), grade III (changing margination, moth-eaten and permeative patterns, radiographically occult); 81 lesions were grade I, 54 grade II and 48 grade III.",
+   "76 of 81 (94%) grade I lesions were benign and 39 of 48 (81%) grade III lesions were malignant; grade II lesions were split nearly equally between benign and malignant.",
+   "Grade I lesions are usually benign, grade II lesions carry moderate risk of malignancy, and grade III lesions have a high likelihood of malignancy."
+  ],
+  "key_points_pt": [
+   "Revisão retrospetiva de radiografias de 183 lesões ósseas (selecionadas para incluir um amplo espetro de tumores benignos e malignos) com o sistema de Lodwick-Madewell modificado em três graus: grau I (Lodwick IA e IB), grau II (Lodwick IC), grau III (margens em mudança, padrões roído de traça e permeativo, lesão radiograficamente oculta); 81 lesões foram de grau I, 54 de grau II e 48 de grau III.",
+   "76 de 81 (94%) lesões de grau I eram benignas e 39 de 48 (81%) lesões de grau III eram malignas; as lesões de grau II dividiram-se de forma quase igual entre benignas e malignas.",
+   "As lesões de grau I são habitualmente benignas, as de grau II têm risco moderado de malignidade e as de grau III têm elevada probabilidade de malignidade."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "long-bones",
+   "any"
+  ],
+  "keywords": [
+   "Lodwick-Madewell",
+   "lytic bone lesion",
+   "geographic margin",
+   "sclerotic rim",
+   "moth-eaten",
+   "permeative",
+   "radiographically occult",
+   "malignancy risk",
+   "lesão lítica",
+   "margem geográfica",
+   "orla esclerótica",
+   "padrão roído de traça",
+   "padrão permeativo",
+   "radiograficamente oculta",
+   "risco de malignidade"
+  ],
+  "abstract_excerpt": "This modified system consists of grade I, which is composed of grades IA and IB as listed in the Lodwick system; grade II, which is grade IC in the Lodwick system; and grade III, which is composed of IIIA (changing margination), IIB (moth-eaten and permeative patterns), and IIIC (radiographically occult). ... Of the 183 tumors, 81 were classified as grade I, 54 as grade II, and 48 as grade III. When correlating grade with pathology, we found that 76 of 81 (94%) grade I lesions were benign and 39 of 48 grade III lesions (81%) were malignant. ... Grade I lesions are usually benign, grade II lesions carry moderate risk of malignancy, and grade III lesions possess a high likelihood of malignancy."
+ },
+ {
+  "id": "acr2024-suspected-primary-bone-tumors",
+  "topic": "ACR Appropriateness Criteria: Suspected Primary Bone Tumors (2024 update)",
+  "authors": "Expert Panel on Musculoskeletal Imaging; Ahlawat S, et al.",
+  "title": "ACR Appropriateness Criteria® Suspected Primary Bone Tumors: 2024 Update.",
+  "journal": "J Am Coll Radiol",
+  "year": 2025,
+  "doi": "10.1016/j.jacr.2025.02.020",
+  "pmid": "40409893",
+  "url": "https://doi.org/10.1016/j.jacr.2025.02.020",
+  "evidence_type": "guideline",
+  "key_points": [
+   "Radiographs are the most appropriate initial imaging study for detection and characterisation of the majority of primary bone tumours and often provide sufficient information for diagnosis.",
+   "For radiographically occult primary bone tumours, MRI and/or CT can be performed.",
+   "For indeterminate or aggressive bone tumours on radiographs, MRI or CT are typically the most appropriate next step to evaluate anatomic extent, viability and to plan biopsy or surgery."
+  ],
+  "key_points_pt": [
+   "A radiografia é o exame inicial mais apropriado para deteção e caracterização da maioria dos tumores ósseos primários e frequentemente fornece informação suficiente para o diagnóstico.",
+   "Nos tumores ósseos primários radiograficamente ocultos, pode realizar-se ressonância magnética e/ou TC.",
+   "Nos tumores ósseos indeterminados ou agressivos na radiografia, a ressonância magnética ou a TC são tipicamente o passo seguinte mais apropriado para avaliar a extensão anatómica, a viabilidade e planear a biópsia ou a cirurgia."
+  ],
+  "modalities": [
+   "XR",
+   "CT",
+   "MR"
+  ],
+  "regions": [
+   "long-bones",
+   "any"
+  ],
+  "keywords": [
+   "primary bone tumor",
+   "aggressive bone lesion",
+   "indeterminate bone lesion",
+   "radiographically occult",
+   "biopsy planning",
+   "ACR Appropriateness Criteria",
+   "tumor ósseo primário",
+   "lesão óssea agressiva",
+   "lesão óssea indeterminada",
+   "radiograficamente oculto",
+   "planeamento de biópsia",
+   "critérios de adequação"
+  ],
+  "abstract_excerpt": "Radiographs are the most appropriate initial imaging study for detection and characterization of the majority of primary bone tumors. Radiographs often provide sufficient information for the diagnosis of primary bone tumors, however, for radiographically occult primary bone tumors, MRI and/or CT can be performed. For indeterminate or aggressive bone tumors on radiographs, MRI or CT are typically the most appropriate next step for the evaluation of anatomic extent, assessment of viability and biopsy or surgical planning."
+ },
+ {
+  "id": "caracciolo2023-bone-rads",
+  "topic": "ACR Bone-RADS risk stratification of bone lesions on radiography",
+  "authors": "Caracciolo JT, et al.",
+  "title": "Bone Tumor Risk Stratification and Management System: A Consensus Guideline from the ACR Bone Reporting and Data System Committee.",
+  "journal": "J Am Coll Radiol",
+  "year": 2023,
+  "doi": "10.1016/j.jacr.2023.07.017",
+  "pmid": "37855758",
+  "url": "https://doi.org/10.1016/j.jacr.2023.07.017",
+  "evidence_type": "consensus/position-paper",
+  "key_points": [
+   "ACR Bone-RADS committee consensus scoring system to stratify a newly identified, potentially neoplastic bone lesion on radiography, viewed in the proper clinical context, as very low, low, intermediate or high risk of malignancy (Bone-RADS score 1-4).",
+   "Radiographic risk features each receive a point value: margination, pattern of periosteal reaction, depth of endosteal erosion, pathological fracture and extra-osseous soft tissue mass; the summed points translate to the Bone-RADS score.",
+   "Evidence-based and best-practice consensus management suggestions are given for each score, with a standardised diagnostic radiography report template."
+  ],
+  "key_points_pt": [
+   "Sistema de pontuação de consenso do comité ACR Bone-RADS para estratificar uma lesão óssea potencialmente neoplásica recém-identificada na radiografia, analisada no contexto clínico adequado, em risco de malignidade muito baixo, baixo, intermédio ou elevado (Bone-RADS 1-4).",
+   "Cada achado radiográfico de risco recebe uma pontuação: margens, padrão de reação periosteal, profundidade da erosão endosteal, fratura patológica e massa de tecidos moles extraóssea; a soma dos pontos traduz-se na categoria Bone-RADS.",
+   "São propostas recomendações de orientação baseadas na evidência e no consenso para cada categoria, com um modelo padronizado de relatório radiográfico."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "long-bones",
+   "any"
+  ],
+  "keywords": [
+   "Bone-RADS",
+   "bone lesion risk stratification",
+   "periosteal reaction",
+   "endosteal erosion",
+   "pathological fracture",
+   "soft tissue mass",
+   "margination",
+   "estratificação de risco de lesão óssea",
+   "reação periosteal",
+   "erosão endosteal",
+   "fratura patológica",
+   "massa de tecidos moles",
+   "margens da lesão"
+  ],
+  "abstract_excerpt": "When viewed in the proper clinical context, a newly identified bone lesion can be risk stratified as having very low, low, intermediate, or high risk of malignancy. Radiographic features predictive of risk are reviewed include margination, pattern of periosteal reaction, depth of endosteal erosion, pathological fracture, and extra-osseous soft tissue mass. ... To apply the Bone-RADS scoring system to a potentially neoplastic bone lesion, radiographic features predictive of risk are each given a point value. Point values are summed to yield a point total, which can be translated to a Bone-RADS score (1-4) with corresponding risk assignment (very low, low, intermediate, high). For each score, evidence-based and best practice consensus management suggestions are outlined. ... a standardized diagnostic radiography report template is provided."
+ },
+ {
+  "id": "acr2025-diabetic-foot-osteomyelitis",
+  "topic": "ACR Appropriateness Criteria: Suspected Osteomyelitis of the Foot in Diabetes Mellitus (2025 update)",
+  "authors": "Expert Panel on Musculoskeletal Imaging; Baker JC, et al.",
+  "title": "ACR Appropriateness Criteria® Suspected Osteomyelitis of the Foot in Patients With Diabetes Mellitus: 2025 Update.",
+  "journal": "J Am Coll Radiol",
+  "year": 2025,
+  "doi": "10.1016/j.jacr.2025.08.031",
+  "pmid": "41193054",
+  "url": "https://doi.org/10.1016/j.jacr.2025.08.031",
+  "evidence_type": "guideline",
+  "key_points": [
+   "Foot infection is a common cause of diabetes-related morbidity, with 20% of patients with diabetic foot ulcers going on to develop osteomyelitis.",
+   "Radiography of the foot is recommended for the initial imaging evaluation of suspected foot osteomyelitis in adults with diabetes mellitus.",
+   "When initial radiographs are negative or indeterminate, or positive and treatment planning is needed, MRI of the foot is most commonly the recommended next study; metal instrumentation can alter recommendations in select cases."
+  ],
+  "key_points_pt": [
+   "A infeção do pé é uma causa frequente de morbilidade relacionada com a diabetes, e 20% dos doentes com úlceras do pé diabético desenvolvem osteomielite.",
+   "A radiografia do pé é recomendada para a avaliação imagiológica inicial da suspeita de osteomielite do pé em adultos com diabetes mellitus.",
+   "Quando as radiografias iniciais são negativas ou indeterminadas, ou positivas com necessidade de planeamento terapêutico, a ressonância magnética do pé é habitualmente o exame seguinte recomendado; a presença de material metálico pode alterar as recomendações em casos selecionados."
+  ],
+  "modalities": [
+   "XR",
+   "MR"
+  ],
+  "regions": [
+   "ankle-foot"
+  ],
+  "keywords": [
+   "diabetic foot",
+   "osteomyelitis",
+   "diabetic foot ulcer",
+   "neuropathic arthropathy",
+   "Charcot",
+   "foot MRI",
+   "metal instrumentation",
+   "ACR Appropriateness Criteria",
+   "pé diabético",
+   "osteomielite",
+   "úlcera do pé diabético",
+   "neuroartropatia de Charcot",
+   "ressonância magnética do pé",
+   "material metálico",
+   "critérios de adequação"
+  ],
+  "abstract_excerpt": "Foot infection is a common cause of diabetes-related morbidity, with 20% of patients with diabetic foot ulcers going on to develop osteomyelitis. Radiography of the foot is recommended for the initial imaging evaluation for suspected osteomyelitis of the foot in adult patients with diabetes mellitus. When initial radiographs are negative or indeterminate or when radiographs are positive for osteomyelitis and treatment planning is necessary, the recommended next imaging study is most commonly MRI of the foot. The presence of metal instrumentation in the foot can alter recommendations in select cases."
+ },
+ {
+  "id": "llewellyn2020-diabetic-foot-osteomyelitis-meta",
+  "topic": "Imaging accuracy for osteomyelitis in diabetic foot ulcers (meta-analysis)",
+  "authors": "Llewellyn A, et al.",
+  "title": "Imaging for detection of osteomyelitis in people with diabetic foot ulcers: A systematic review and meta-analysis.",
+  "journal": "Eur J Radiol",
+  "year": 2020,
+  "doi": "10.1016/j.ejrad.2020.109215",
+  "pmid": "32862106",
+  "url": "https://doi.org/10.1016/j.ejrad.2020.109215",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "Meta-analysis of 36 studies (eight at high risk of bias): MRI had high diagnostic accuracy for osteomyelitis in diabetic foot ulcers (22 studies: sensitivity 96.4% [95% CI 90.7-98.7], specificity 83.8% [76.0-89.5]).",
+   "Radiographs had generally inferior accuracy (16 studies: sensitivity 61.9% [50.5-72.1], specificity 78.3% [62.9-88.5]); scintigraphy 84.2% [76.8-89.6] / 67.7% [56.2-77.4] (17 studies).",
+   "PET also had high accuracy (6 studies: sensitivity 84.3% [52.8-96.3], specificity 92.8% [75.7-98.2]); MRI may be the preferable test in most cases given wider availability and no ionising radiation."
+  ],
+  "key_points_pt": [
+   "Meta-análise de 36 estudos (oito com risco de viés elevado): a ressonância magnética teve elevada acuidade diagnóstica para osteomielite em úlceras do pé diabético (22 estudos: sensibilidade 96,4% [IC 95% 90,7-98,7], especificidade 83,8% [76,0-89,5]).",
+   "A radiografia teve acuidade globalmente inferior (16 estudos: sensibilidade 61,9% [50,5-72,1], especificidade 78,3% [62,9-88,5]); cintigrafia 84,2% [76,8-89,6] / 67,7% [56,2-77,4] (17 estudos).",
+   "A PET também teve elevada acuidade (6 estudos: sensibilidade 84,3% [52,8-96,3], especificidade 92,8% [75,7-98,2]); a ressonância magnética poderá ser o exame preferível na maioria dos casos, dada a maior disponibilidade e a ausência de radiação ionizante."
+  ],
+  "modalities": [
+   "XR",
+   "MR"
+  ],
+  "regions": [
+   "ankle-foot"
+  ],
+  "keywords": [
+   "diabetic foot osteomyelitis",
+   "diabetic foot ulcer",
+   "bone marrow edema",
+   "MRI accuracy",
+   "radiograph sensitivity",
+   "PET",
+   "scintigraphy",
+   "osteomielite do pé diabético",
+   "úlcera do pé diabético",
+   "edema da medula óssea",
+   "sensibilidade",
+   "especificidade",
+   "cintigrafia"
+  ],
+  "abstract_excerpt": "Thirty-six studies were included in the meta-analysis. Eight studies were at high risk of bias MRI had high diagnostic accuracy (22 studies: 96.4 % sensitivity (95 % CI 90.7-98.7); 83.8 % specificity (76.0-89.5)). PET scans also had high accuracy (6 studies: 84.3 % sensitivity (52.8-96.3); 92.8 % specificity (75.7-98.2)) ... Scintigraphy (17 studies: 84.2 % sensitivity (76.8-89.6); 67.7 % specificity (56.2-77.4)), and X-rays (16 studies: 61.9 % sensitivity (50.5-72.1); 78.3 % specificity (62.9-88.5)) had generally inferior diagnostic accuracy. ... MRI may be the preferable test in most cases, given its wider availability and the lack of potentially harmful ionising radiation."
+ },
+ {
+  "id": "griffin2016-warwick-fai-syndrome",
+  "topic": "Warwick Agreement on femoroacetabular impingement syndrome",
+  "authors": "Griffin DR, et al.",
+  "title": "The Warwick Agreement on femoroacetabular impingement syndrome (FAI syndrome): an international consensus statement.",
+  "journal": "Br J Sports Med",
+  "year": 2016,
+  "doi": "10.1136/bjsports-2016-096743",
+  "pmid": "27629403",
+  "url": "https://doi.org/10.1136/bjsports-2016-096743",
+  "evidence_type": "consensus/position-paper",
+  "key_points": [
+   "International multidisciplinary consensus (22 panel members and 1 patient from 9 countries and 5 specialties) introduced the term 'femoroacetabular impingement syndrome' to reflect the central role of symptoms.",
+   "To reach a diagnosis of FAI syndrome, patients should have appropriate symptoms, positive clinical signs and imaging findings (imaging findings are one of three required elements).",
+   "Suitable treatments are conservative care, rehabilitation, and arthroscopic or open surgery."
+  ],
+  "key_points_pt": [
+   "Consenso internacional multidisciplinar (22 membros do painel e 1 doente de 9 países e 5 especialidades) introduziu o termo 'síndrome de conflito femoroacetabular' para refletir o papel central dos sintomas.",
+   "Para o diagnóstico de síndrome de conflito femoroacetabular, os doentes devem apresentar sintomas adequados, sinais clínicos positivos e achados imagiológicos (os achados imagiológicos são um dos três elementos necessários).",
+   "Os tratamentos adequados são o tratamento conservador, a reabilitação e a cirurgia artroscópica ou aberta."
+  ],
+  "modalities": [
+   "XR",
+   "MR"
+  ],
+  "regions": [
+   "hip-pelvis"
+  ],
+  "keywords": [
+   "femoroacetabular impingement syndrome",
+   "FAI syndrome",
+   "cam morphology",
+   "pincer morphology",
+   "hip pain",
+   "Warwick Agreement",
+   "síndrome de conflito femoroacetabular",
+   "conflito femoroacetabular",
+   "morfologia cam",
+   "morfologia pincer",
+   "coxalgia",
+   "dor na anca"
+  ],
+  "abstract_excerpt": "22 panel members and 1 patient from 9 countries and 5 different specialties participated in a 1-day consensus meeting on 29 June 2016. ... The term 'femoroacetabular impingement syndrome' was introduced to reflect the central role of patients' symptoms in the disorder. To reach a diagnosis, patients should have appropriate symptoms, positive clinical signs and imaging findings. Suitable treatments are conservative care, rehabilitation, and arthroscopic or open surgery."
+ },
+ {
+  "id": "mascarenhas2021-lisbon-fai-imaging-part2",
+  "topic": "Lisbon Agreement on FAI imaging: parameters and reporting (alpha angle, LCEA/Wiberg)",
+  "authors": "Mascarenhas VV, et al.",
+  "title": "The Lisbon Agreement on femoroacetabular impingement imaging-part 2: general issues, parameters, and reporting.",
+  "journal": "Eur Radiol",
+  "year": 2021,
+  "doi": "10.1007/s00330-020-07432-1",
+  "pmid": "33411052",
+  "url": "https://doi.org/10.1007/s00330-020-07432-1",
+  "evidence_type": "consensus/position-paper",
+  "key_points": [
+   "Delphi consensus of 30 panel members from 13 countries: 47 statements generated with group consensus for 45; 25 statements cover 'General issues' and 'Parameters and reporting'.",
+   "Radiographic evaluation (AP pelvis and Dunn 45° view) is the cornerstone and the minimum imaging study when evaluating adults for FAI; in most cases cross-sectional imaging is warranted because MRI is the 'gold standard' for comprehensive evaluation, differential diagnosis and surgical planning.",
+   "Acetabular coverage (Wiberg's angle and acetabular index) and version (crossover, posterior wall and ischial spine signs) should be assessed routinely; on the femoral side, head-neck junction morphology (alpha angle and offset), neck-shaft angle and torsion should be assessed."
+  ],
+  "key_points_pt": [
+   "Consenso Delphi de 30 peritos de 13 países: 47 afirmações geradas, com consenso de grupo em 45; 25 afirmações abordam 'Questões gerais' e 'Parâmetros e relatório'.",
+   "A avaliação radiográfica (radiografia AP da bacia e incidência de Dunn a 45°) é a base e o estudo imagiológico mínimo na avaliação de adultos com suspeita de conflito femoroacetabular; na maioria dos casos justifica-se imagem seccional, pois a ressonância magnética é o 'padrão de referência' para avaliação abrangente, diagnóstico diferencial e planeamento cirúrgico.",
+   "A cobertura acetabular (ângulo de Wiberg e índice acetabular) e a versão acetabular (sinais do cruzamento, da parede posterior e da espinha isquiática) devem ser avaliadas por rotina; no fémur, devem avaliar-se a morfologia da junção cabeça-colo (ângulo alfa e offset), o ângulo cervicodiafisário e a torção femoral."
+  ],
+  "modalities": [
+   "XR",
+   "MR"
+  ],
+  "regions": [
+   "hip-pelvis"
+  ],
+  "keywords": [
+   "femoroacetabular impingement",
+   "alpha angle",
+   "lateral center-edge angle",
+   "LCEA",
+   "Wiberg angle",
+   "acetabular index",
+   "crossover sign",
+   "posterior wall sign",
+   "ischial spine sign",
+   "femoral torsion",
+   "Dunn view",
+   "conflito femoroacetabular",
+   "ângulo alfa",
+   "ângulo centro-bordo lateral",
+   "ângulo de Wiberg",
+   "índice acetabular",
+   "sinal do cruzamento",
+   "torção femoral",
+   "displasia da anca",
+   "incidência de Dunn"
+  ],
+  "abstract_excerpt": "Forty-seven statements were generated and group consensus was reached for 45. Twenty-five statements pertaining to 'General issues' (9 addressing diagnosis, differential diagnosis, and postoperative imaging) and 'Parameters and reporting' (16 addressing femoral/acetabular parameters) were produced. ... Radiographic evaluation (AP pelvis and a Dunn 45° view) is the cornerstone of hip-imaging assessment and the minimum imaging study that should be performed when evaluating adult patients for FAI. In most cases, cross-sectional imaging is warranted because MRI is the 'gold standard' imaging modality for the comprehensive evaluation, differential diagnosis assessment, and FAI surgical planning. ... • For acetabular morphology, coverage (Wiberg's angle and acetabular index) and version (crossover, posterior wall, and ischial spine signs) should be assessed routinely. On the femoral side, the head-neck junction morphology (α° and offset), neck morphology (NSA), and torsion should be assessed."
+ },
+ {
+  "id": "notzli2002-alpha-angle",
+  "topic": "Alpha angle of the femoral head-neck junction (cam morphology), original description",
+  "authors": "Nötzli HP, et al.",
+  "title": "The contour of the femoral head-neck junction as a predictor for the risk of anterior impingement.",
+  "journal": "J Bone Joint Surg Br",
+  "year": 2002,
+  "doi": "10.1302/0301-620x.84b4.12014",
+  "pmid": "12043778",
+  "url": "https://doi.org/10.1302/0301-620x.84b4.12014",
+  "evidence_type": "other",
+  "key_points": [
+   "Developed the alpha angle, measured on tilted axial MRI through the centre of the femoral head, to describe concavity at the femoral head-neck junction (case-control study: 39 symptomatic patients vs 35 asymptomatic controls).",
+   "The alpha angle averaged 74.0° in patients with clinical impingement vs 42.0° in controls (p < 0.001); repeated measurements showed good reproducibility among four observers."
+  ],
+  "key_points_pt": [
+   "Desenvolveu o ângulo alfa, medido em cortes axiais oblíquos de ressonância magnética através do centro da cabeça femoral, para descrever a concavidade da junção cabeça-colo femoral (estudo caso-controlo: 39 doentes sintomáticos vs 35 controlos assintomáticos).",
+   "O ângulo alfa médio foi de 74,0° nos doentes com conflito clínico vs 42,0° nos controlos (p < 0,001); as medições repetidas mostraram boa reprodutibilidade entre quatro observadores."
+  ],
+  "modalities": [
+   "MR"
+  ],
+  "regions": [
+   "hip-pelvis"
+  ],
+  "keywords": [
+   "alpha angle",
+   "cam morphology",
+   "cam deformity",
+   "femoral head-neck junction",
+   "femoroacetabular impingement",
+   "head-neck offset",
+   "ângulo alfa",
+   "morfologia cam",
+   "deformidade cam",
+   "junção cabeça-colo femoral",
+   "conflito femoroacetabular",
+   "offset cabeça-colo"
+  ],
+  "abstract_excerpt": "MR scans of 39 patients with groin pain, decreased internal rotation and a positive impingement test were compared with those of 35 asymptomatic control subjects. The waist of the femoral head-neck junction was identified on tilted axial MR scans passing through the centre of the head. The anterior margin of the waist of the femoral neck was defined and measured by an angle (alpha). ... Repeated measurements showed good reproducibility among four observers. The angle alpha averaged 74.0 degrees for the patients and 42.0 degrees for the control group (p < 0.001)."
+ },
+ {
+  "id": "tannast2015-acetabular-coverage-reference",
+  "topic": "Radiographic reference values for acetabular under- and overcoverage (LCEA, acetabular index)",
+  "authors": "Tannast M, et al.",
+  "title": "What are the radiographic reference values for acetabular under- and overcoverage?",
+  "journal": "Clin Orthop Relat Res",
+  "year": 2015,
+  "doi": "10.1007/s11999-014-4038-3",
+  "pmid": "25384429",
+  "url": "https://doi.org/10.1007/s11999-014-4038-3",
+  "evidence_type": "other",
+  "key_points": [
+   "Retrospective comparison of 11 radiographic parameters on AP pelvic radiographs among hip dysplasia (26 hips), controls (21), overcoverage (14) and severe overcoverage/protrusio (25), corrected for neutral pelvic orientation using a true lateral radiograph.",
+   "Reference values: lateral centre-edge angle 23° to 33°, medial centre-edge angle 35° to 44°, acetabular index 3° to 13°, extrusion index 17% to 27%, Sharp angle 38° to 42°, acetabular arc 61° to 65°, negative crossover sign, positive posterior wall sign.",
+   "From dysplasia through control and overcoverage, the lateral centre-edge angle increased while the medial centre-edge angle, extrusion index, acetabular index and Sharp angle decreased."
+  ],
+  "key_points_pt": [
+   "Comparação retrospetiva de 11 parâmetros em radiografias AP da bacia entre ancas displásicas (26), controlos (21), com sobrecobertura (14) e com sobrecobertura grave/protrusão acetabular (25), corrigidos para orientação pélvica neutra com recurso a uma radiografia de perfil verdadeiro.",
+   "Valores de referência: ângulo centro-bordo lateral 23° a 33°, ângulo centro-bordo medial 35° a 44°, índice acetabular 3° a 13°, índice de extrusão 17% a 27%, ângulo de Sharp 38° a 42°, arco acetabular 61° a 65°, sinal do cruzamento negativo, sinal da parede posterior positivo.",
+   "Da displasia para os controlos e para a sobrecobertura, o ângulo centro-bordo lateral aumentou, enquanto o ângulo centro-bordo medial, o índice de extrusão, o índice acetabular e o ângulo de Sharp diminuíram."
+  ],
+  "modalities": [
+   "XR"
+  ],
+  "regions": [
+   "hip-pelvis"
+  ],
+  "keywords": [
+   "hip dysplasia",
+   "acetabular undercoverage",
+   "acetabular overcoverage",
+   "pincer",
+   "lateral center-edge angle",
+   "LCEA",
+   "acetabular index",
+   "extrusion index",
+   "Sharp angle",
+   "protrusio acetabuli",
+   "displasia da anca",
+   "subcobertura acetabular",
+   "sobrecobertura acetabular",
+   "ângulo centro-bordo lateral",
+   "índice acetabular",
+   "índice de extrusão",
+   "ângulo de Sharp",
+   "protrusão acetabular"
+  ],
+  "abstract_excerpt": "From dysplasia through control and overcoverage, the lateral center-edge angle, acetabular arc, and anteroposterior/craniocaudal coverage increased. In contrast, the medial center-edge angle, extrusion/acetabular index, Sharp angle, and prevalence of the posterior wall sign decreased. The following reference values were found: lateral center-edge angle 23° to 33°, medial center-edge angle 35° to 44°, acetabular arc 61° to 65°, extrusion index 17% to 27%, acetabular index 3° to 13°, Sharp angle 38° to 42°, negative crossover sign, positive posterior wall sign, anterior femoral head coverage 15% to 26%, posterior femoral head coverage 36% to 47%, and craniocaudal coverage 70% to 83%."
  }
 ]

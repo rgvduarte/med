@@ -71,9 +71,10 @@ describe('evidence base', () => {
     expect(ev.every((e) => e.findingIds.length === 0)).toBe(true)
   })
 
-  it('penalises region mismatch', () => {
+  it('excludes evidence about another region', () => {
     const q = tokens('rotator cuff tear ultrasound')
-    const shoulder = KB.find((e) => e.regions.includes('shoulder'))!
-    expect(scoreEntry(shoulder, q, 'shoulder', 'US')).toBeGreaterThan(scoreEntry(shoulder, q, 'knee', 'US'))
+    const shoulder = KB.find((e) => e.regions.includes('shoulder') && !e.regions.includes('any'))!
+    expect(scoreEntry(shoulder, q, 'shoulder', 'US')).toBeGreaterThan(0)
+    expect(scoreEntry(shoulder, q, 'knee', 'US')).toBe(0)
   })
 })
