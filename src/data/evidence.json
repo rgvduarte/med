@@ -1,0 +1,1835 @@
+[
+ {
+  "id": "smith2011-us-rotator-cuff-tears",
+  "topic": "Shoulder US: diagnostic accuracy for full- and partial-thickness rotator cuff tears",
+  "authors": "Smith TO, et al.",
+  "title": "Diagnostic accuracy of ultrasound for rotator cuff tears in adults: a systematic review and meta-analysis.",
+  "journal": "Clinical Radiology",
+  "year": 2011,
+  "doi": "10.1016/j.crad.2011.05.007",
+  "pmid": "21737069",
+  "url": "https://doi.org/10.1016/j.crad.2011.05.007",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "Systematic review and meta-analysis of 62 studies (6007 patients, 6066 shoulders) comparing ultrasound with arthroscopic or open surgical findings for rotator cuff tears.",
+   "Partial-thickness tears: pooled sensitivity 0.84, specificity 0.89.",
+   "Full-thickness tears: pooled sensitivity 0.96, specificity 0.93. The authors concluded that US accuracy is superior for full-thickness than for partial-thickness tears.",
+   "The included studies described population characteristics and assessor blinding poorly and had limited sample sizes."
+  ],
+  "key_points_pt": [
+   "Revisão sistemática e meta-análise de 62 estudos (6007 doentes, 6066 ombros) que comparou a ecografia com os achados cirúrgicos (artroscópicos ou abertos) nas roturas da coifa dos rotadores.",
+   "Roturas de espessura parcial: sensibilidade agregada de 0,84 e especificidade de 0,89.",
+   "Roturas de espessura total: sensibilidade agregada de 0,96 e especificidade de 0,93. Os autores concluíram que a acuidade da ecografia é superior nas roturas de espessura total em relação às de espessura parcial.",
+   "Os estudos incluídos descreviam mal as características das populações e a ocultação dos avaliadores, e tinham amostras de dimensão limitada."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "shoulder"
+  ],
+  "keywords": [
+   "rotator cuff tear",
+   "full-thickness tear",
+   "partial-thickness tear",
+   "supraspinatus",
+   "shoulder ultrasound",
+   "sensitivity",
+   "specificity",
+   "rotura da coifa dos rotadores",
+   "rotura de espessura total",
+   "rotura de espessura parcial",
+   "supraespinhoso",
+   "ecografia do ombro",
+   "sensibilidade",
+   "especificidade"
+  ],
+  "abstract_excerpt": "Sixty-two studies assessing 6007 patients and 6066 shoulders were included. Ultrasonography had good sensitivity and specificity for the assessment of partial thickness (sensitivity 0.84; specificity 0.89), and full-thickness rotator cuff tears (sensitivity 0.96; specificity 0.93). However, the literature poorly described population characteristics, assessor blinding, and was based on limited sample sizes. ... The diagnostic test accuracy of ultrasound is superior for the detection of full-thickness compared to partial-thickness cuff tears."
+ },
+ {
+  "id": "roy2015-rc-disorders-us-mri",
+  "topic": "Shoulder US: rotator cuff tears and tendinopathy, comparison of US vs MRI vs MR arthrography and by operator type",
+  "authors": "Roy JS, et al.",
+  "title": "Diagnostic accuracy of ultrasonography, MRI and MR arthrography in the characterisation of rotator cuff disorders: a systematic review and meta-analysis.",
+  "journal": "British Journal of Sports Medicine",
+  "year": 2015,
+  "doi": "10.1136/bjsports-2014-094148",
+  "pmid": "25677796",
+  "url": "https://doi.org/10.1136/bjsports-2014-094148",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "For full-thickness rotator cuff tears, diagnostic accuracy of US, MRI and MR arthrography was high, with overall estimates of sensitivity and specificity above 0.90.",
+   "For partial-thickness tears and tendinopathy, overall specificity was high (>0.90) but sensitivity was lower (0.67-0.83).",
+   "US accuracy was similar whether a trained radiologist, a sonographer or an orthopaedist performed the scan.",
+   "The authors concluded that US is the best option when accuracy, cost and safety are all considered."
+  ],
+  "key_points_pt": [
+   "Nas roturas de espessura total da coifa dos rotadores, a acuidade diagnóstica da ecografia, da RM e da artro-RM foi elevada, com estimativas globais de sensibilidade e especificidade superiores a 0,90.",
+   "Nas roturas de espessura parcial e na tendinopatia, a especificidade global foi elevada (>0,90), mas a sensibilidade foi inferior (0,67-0,83).",
+   "A acuidade diagnóstica da ecografia foi semelhante quando realizada por radiologista treinado, ecografista ou ortopedista.",
+   "Os autores concluíram que, considerando acuidade, custo e segurança, a ecografia é a melhor opção."
+  ],
+  "modalities": [
+   "US",
+   "MR"
+  ],
+  "regions": [
+   "shoulder"
+  ],
+  "keywords": [
+   "rotator cuff tear",
+   "rotator cuff tendinopathy",
+   "partial-thickness tear",
+   "point-of-care ultrasound",
+   "sports medicine",
+   "MR arthrography",
+   "rotura da coifa dos rotadores",
+   "tendinopatia da coifa dos rotadores",
+   "rotura de espessura parcial",
+   "ecografia",
+   "artro-RM",
+   "medicina desportiva"
+  ],
+  "abstract_excerpt": "Diagnostic accuracy of US, MRI and MRA in the characterisation of full-thickness RC tears was high with overall estimates of sensitivity and specificity over 0.90. As for partial RC tears and tendinopathy, overall estimates of specificity were also high (>0.90), while sensitivity was lower (0.67-0.83). Diagnostic accuracy of US was similar whether a trained radiologist, sonographer or orthopaedist performed it. ... When considering accuracy, cost, and safety, US is the best option."
+ },
+ {
+  "id": "lenza2013-cochrane-rc-tears",
+  "topic": "Shoulder US: rotator cuff tears in surgical candidates (Cochrane DTA review)",
+  "authors": "Lenza M, et al.",
+  "title": "Magnetic resonance imaging, magnetic resonance arthrography and ultrasonography for assessing rotator cuff tears in people with shoulder pain for whom surgery is being considered.",
+  "journal": "Cochrane Database of Systematic Reviews",
+  "year": 2013,
+  "doi": "10.1002/14651858.CD009020.pub2",
+  "pmid": "24065456",
+  "url": "https://doi.org/10.1002/14651858.CD009020.pub2",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "Cochrane diagnostic accuracy review of 20 studies (1147 shoulders) in people with suspected rotator cuff tears for whom surgery was being considered. Methodological quality was judged low or unclear.",
+   "Full-thickness tears: US summary sensitivity 92% (95% CI 82% to 96%) and specificity 93% (95% CI 81% to 97%) (10 studies, 729 shoulders). There was no statistically significant difference in diagnostic performance between MRI, MRA and US (P = 0.7), but the comparisons were mostly indirect.",
+   "Any rotator cuff tear: US summary sensitivity 91% (95% CI 83% to 95%) and specificity 85% (95% CI 74% to 92%) (13 studies, 854 shoulders).",
+   "Both MRI and US may have poor sensitivity for partial-thickness tears, and US sensitivity may be much lower than that of MRI."
+  ],
+  "key_points_pt": [
+   "Revisão Cochrane de acuidade diagnóstica com 20 estudos (1147 ombros) em doentes com suspeita de rotura da coifa dos rotadores e candidatos a cirurgia. A qualidade metodológica foi considerada baixa ou incerta.",
+   "Roturas de espessura total: sensibilidade sumária da ecografia de 92% (IC 95% 82% a 96%) e especificidade de 93% (IC 95% 81% a 97%) (10 estudos, 729 ombros). Não houve diferença estatisticamente significativa no desempenho diagnóstico entre RM, artro-RM e ecografia (P = 0,7), mas as comparações foram sobretudo indiretas.",
+   "Qualquer rotura da coifa: sensibilidade sumária da ecografia de 91% (IC 95% 83% a 95%) e especificidade de 85% (IC 95% 74% a 92%) (13 estudos, 854 ombros).",
+   "Tanto a RM como a ecografia podem ter baixa sensibilidade para roturas de espessura parcial, e a sensibilidade da ecografia pode ser muito inferior à da RM."
+  ],
+  "modalities": [
+   "US",
+   "MR"
+  ],
+  "regions": [
+   "shoulder"
+  ],
+  "keywords": [
+   "rotator cuff tear",
+   "full-thickness tear",
+   "partial-thickness tear",
+   "Cochrane",
+   "diagnostic test accuracy",
+   "rotura da coifa dos rotadores",
+   "rotura de espessura total",
+   "rotura de espessura parcial",
+   "acuidade diagnóstica",
+   "ecografia do ombro"
+  ],
+  "abstract_excerpt": "We included 20 studies of people with suspected rotator cuff tears (1147 shoulders), of which six evaluated MRI and US (252 shoulders), or MRA and US (127 shoulders) in the same people. ... Overall, the methodological quality of the studies was judged to be low or unclear. ... Similarly, for the comparison between MRI, MRA and US for detecting full thickness tears, there was no statistically significant difference in diagnostic performance (P = 0.7). For any rotator cuff tears, the summary sensitivity and specificity were 98% (95% CI 92% to 99%) and 79% (95% CI 68% to 87%) respectively for MRI (6 studies, 347 shoulders), and 91% (95% CI 83% to 95%) and 85% (95% CI 74% to 92%) respectively for US (13 studies, 854 shoulders). For full thickness tears, the summary sensitivity and specificity were 94% (95% CI 85% to 98%) and 93% (95% CI 83% to 97%) respectively for MRI (7 studies, 368 shoulders); 94% (95% CI 80% to 98%) and 92% (95% CI 83% to 97%) respectively for MRA (3 studies, 183 shoulders); and 92% (95% CI 82% to 96%) and 93% (95% CI 81% to 97%) respectively for US (10 studies, 729 shoulders). ... The test comparisons for each of the three classifications of the target condition were therefore based on indirect comparisons which may be prone to bias due to confounding. ... However, both MRI and US may have poor sensitivity for detecting partial thickness tears, and the sensitivity of US may be much lower than that of MRI."
+ },
+ {
+  "id": "read1998-dynamic-us-impingement-lhb",
+  "topic": "Shoulder US: dynamic assessment of subacromial impingement, cuff tears and long head of biceps vs surgery",
+  "authors": "Read JW, et al.",
+  "title": "Shoulder ultrasound: diagnostic accuracy for impingement syndrome, rotator cuff tear, and biceps tendon pathology.",
+  "journal": "Journal of Shoulder and Elbow Surgery",
+  "year": 1998,
+  "doi": "10.1016/s1058-2746(98)90055-6",
+  "pmid": "9658352",
+  "url": "https://doi.org/10.1016/s1058-2746(98)90055-6",
+  "evidence_type": "other",
+  "key_points": [
+   "In 42 consecutive surgical cases, US detected all 10 full-thickness cuff tears (sensitivity 1.0, specificity 0.97) but only 6 of 13 partial-thickness tears (sensitivity 0.46, specificity 0.97).",
+   "Dynamic scan criteria correctly diagnosed impingement in 27 of 34 cases (sensitivity 0.79, positive predictive value 0.96).",
+   "Dynamic US can help confirm, but not exclude, a clinical diagnosis of impingement.",
+   "Abnormalities of the long head of biceps were diagnosed accurately, except low-grade tendinitis and SLAP lesions."
+  ],
+  "key_points_pt": [
+   "Em 42 casos cirúrgicos consecutivos, a ecografia detetou as 10 roturas de espessura total da coifa (sensibilidade 1,0; especificidade 0,97), mas apenas 6 de 13 roturas de espessura parcial (sensibilidade 0,46; especificidade 0,97).",
+   "Os critérios da avaliação dinâmica diagnosticaram corretamente o conflito subacromial em 27 de 34 casos (sensibilidade 0,79; valor preditivo positivo 0,96).",
+   "A ecografia dinâmica pode ajudar a confirmar, mas não a excluir, o diagnóstico clínico de conflito subacromial.",
+   "As alterações do tendão da longa porção do bicípite foram diagnosticadas com exatidão, exceto a tendinite de baixo grau e as lesões SLAP."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "shoulder"
+  ],
+  "keywords": [
+   "dynamic ultrasound",
+   "subacromial impingement",
+   "impingement syndrome",
+   "long head of biceps",
+   "partial-thickness tear",
+   "ecografia dinâmica",
+   "conflito subacromial",
+   "síndrome de conflito subacromial",
+   "longa porção do bicípite",
+   "rotura de espessura parcial"
+  ],
+  "abstract_excerpt": "The findings in 42 consecutive surgical cases were compared with the preoperative sonographic readings. Ultrasound detected all of the 10 full-thickness cuff tears identified at surgery (sensitivity 1.0, specificity 0.97) but detected only 6 of 13 partial-thickness cuff tears (sensitivity 0.46, specificity 0.97). ... Dynamic scan criteria correctly diagnosed impingement in 27 of 34 cases (sensitivity 0.79, positive predictive value 0.96). Abnormalities of the long head of the biceps were accurately diagnosed with the exception of low-grade tendinitis and the superior labral tear, anterior to posterior, lesion. ... Dynamic ultrasound can help confirm, but not exclude, a clinical diagnosis of impingement."
+ },
+ {
+  "id": "courage2023-lhb-us-meta",
+  "topic": "Shoulder US: long head of biceps tendon pathology (instability, full and partial tears) vs clinical tests",
+  "authors": "Courage O, et al.",
+  "title": "Ultrasound is more reliable than clinical tests to both confirm and rule out pathologies of the long head of the biceps: a systematic review and meta-analysis.",
+  "journal": "Knee Surgery, Sports Traumatology, Arthroscopy",
+  "year": 2023,
+  "doi": "10.1007/s00167-022-07154-5",
+  "pmid": "36114842",
+  "url": "https://doi.org/10.1007/s00167-022-07154-5",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "Systematic review and meta-analysis of 7 studies (448 patients) comparing clinical tests or ultrasound against arthroscopy for long head of biceps tendon (LHBT) pathology.",
+   "LHBT instability (1 study): US sensitivity 1.00, specificity 0.96. Full-thickness tears (2 studies): US sensitivity 0.88-0.95, specificity 0.71-0.98.",
+   "Partial-thickness LHBT tears (4 studies): US sensitivity 0.27-0.71 and specificity 0.71-1.00, versus 0.17-0.68 and 0.38-0.92 for clinical tests.",
+   "The authors concluded that US is reliable both to confirm and to rule out LHBT pathology, whereas clinical tests are reliable only either to confirm or to rule it out."
+  ],
+  "key_points_pt": [
+   "Revisão sistemática e meta-análise de 7 estudos (448 doentes) que comparou testes clínicos ou ecografia com a artroscopia na patologia do tendão da longa porção do bicípite (TLPB).",
+   "Instabilidade do TLPB (1 estudo): sensibilidade da ecografia de 1,00 e especificidade de 0,96. Roturas de espessura total (2 estudos): sensibilidade de 0,88-0,95 e especificidade de 0,71-0,98.",
+   "Roturas de espessura parcial do TLPB (4 estudos): sensibilidade da ecografia de 0,27-0,71 e especificidade de 0,71-1,00, contra 0,17-0,68 e 0,38-0,92 nos testes clínicos.",
+   "Os autores concluíram que a ecografia é fiável tanto para confirmar como para excluir patologia do TLPB, ao passo que os testes clínicos só são fiáveis para uma destas finalidades (confirmar ou excluir)."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "shoulder"
+  ],
+  "keywords": [
+   "long head of biceps tendon",
+   "biceps instability",
+   "biceps subluxation",
+   "biceps tear",
+   "partial tear",
+   "tendão da longa porção do bicípite",
+   "instabilidade do bicípite",
+   "subluxação do bicípite",
+   "rotura do bicípite",
+   "rotura parcial"
+  ],
+  "abstract_excerpt": "Studies that compared the diagnostic accuracy of clinical tests or ultrasound versus arthroscopy for the assessment of LHBT pathologies were included. Seven studies were included reporting on a total of 448 patients. One study on instability using ultrasound reported sensitivity and specificity of 1.00 and 0.96, respectively. Two studies on full-thickness tears using ultrasound reported sensitivity and specificity of 0.88-0.95 and 0.71-0.98, respectively. Four studies on partial-thickness LHBT tears reported sensitivity and specificity of 0.17-0.68 and 0.38-0.92, respectively, for clinical tests, versus 0.27-0.71 and 0.71-1.00, respectively, for ultrasound. ... The clinical relevance of these findings is that clinical tests are only reliable either to confirm or rule out LHBT pathologies, whereas ultrasound is reliable both to confirm and rule out LHBT pathologies."
+ },
+ {
+  "id": "legoff2010-calcific-tendinopathy-sasd-bursa",
+  "topic": "Shoulder US: calcific tendinopathy features (size, fragmentation, power Doppler) and subacromial-subdeltoid bursa widening associated with pain",
+  "authors": "Le Goff B, et al.",
+  "title": "Assessment of calcific tendonitis of rotator cuff by ultrasonography: comparison between symptomatic and asymptomatic shoulders.",
+  "journal": "Joint Bone Spine",
+  "year": 2010,
+  "doi": "10.1016/j.jbspin.2010.01.012",
+  "pmid": "20434387",
+  "url": "https://doi.org/10.1016/j.jbspin.2010.01.012",
+  "evidence_type": "other",
+  "key_points": [
+   "US with power Doppler was performed in 62 patients (81 shoulders) with symptomatic (n=57) or asymptomatic (n=24) rotator cuff calcific tendonitis.",
+   "Larger (p=0.0015) and fragmented (p=0.01) calcifications were associated with pain.",
+   "Power Doppler signal and subacromial-subdeltoid bursa widening were seen in 21 and 17 of the 57 symptomatic shoulders respectively, and in none of the asymptomatic shoulders (p<0.005). At least one of these signs was present in 31 of 57 (54%) symptomatic shoulders.",
+   "Power Doppler signal within the calcific deposit and SASD bursa widening were strongly associated with pain."
+  ],
+  "key_points_pt": [
+   "Ecografia com power Doppler em 62 doentes (81 ombros) com tendinopatia calcificante da coifa dos rotadores, sintomática (n=57) ou assintomática (n=24).",
+   "Calcificações maiores (p=0,0015) e fragmentadas (p=0,01) associaram-se a dor.",
+   "Observaram-se sinal power Doppler e alargamento da bursa subacromiodeltoideia em 21 e 17 dos 57 ombros sintomáticos, respetivamente, e em nenhum dos ombros assintomáticos (p<0,005). Pelo menos um destes sinais estava presente em 31 de 57 (54%) ombros sintomáticos.",
+   "O sinal power Doppler no depósito cálcico e o alargamento da bursa subacromiodeltoideia associaram-se fortemente à dor."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "shoulder"
+  ],
+  "keywords": [
+   "calcific tendinopathy",
+   "calcific tendonitis",
+   "calcium deposit",
+   "fragmented calcification",
+   "power Doppler",
+   "subacromial-subdeltoid bursitis",
+   "bursal widening",
+   "tendinopatia calcificante",
+   "calcificação fragmentada",
+   "depósito cálcico",
+   "bursite subacromiodeltoideia",
+   "alargamento da bursa"
+  ],
+  "abstract_excerpt": "US was performed in 62 patients (81 shoulders) with symptomatic (n=57) or asymptomatic (n=24) calcific tendonitis. Calcific plaque morphology, power Doppler signaling, and widening of the subacromial-subdeltoid bursa (SSB) were recorded. ... Larger (p=0.0015) and fragmented (p=0.01) calcifications were associated with pain. A power Doppler signal and a widening of the SSB was identified in 21 and 17 of the 57 symptomatic calcification respectively, but in none of the cases of asymptomatic calcification (p<0,005). At least one of these signs was present in 31 of the 57 (54%) symptomatic shoulders (p<0.001). ... Positive power Doppler signal within the calcific deposit and SSB widening are US features strongly associated with pain."
+ },
+ {
+  "id": "kardouni2013-neovascularisation-rc-tendinopathy",
+  "topic": "Tendinopathy US: Doppler neovascularisation in rotator cuff tendinopathy vs asymptomatic controls",
+  "authors": "Kardouni JR, et al.",
+  "title": "Neovascularization prevalence in the supraspinatus of patients with rotator cuff tendinopathy.",
+  "journal": "Clinical Journal of Sport Medicine",
+  "year": 2013,
+  "doi": "10.1097/JSM.0b013e318295ba73",
+  "pmid": "23732364",
+  "url": "https://doi.org/10.1097/JSM.0b013e318295ba73",
+  "evidence_type": "other",
+  "key_points": [
+   "Single-blind cross-sectional colour Doppler study of the supraspinatus tendon and subacromial bursae in 20 patients with rotator cuff tendinopathy (without full-thickness tears) and 20 age-, gender- and hand-dominance-matched asymptomatic controls.",
+   "Neovascularization was found in 6 of 20 patients (30%) and 5 of 20 controls (25%), with no statistically significant difference (P = 0.72).",
+   "The authors suggest neovascularization may not be a relevant sonographic finding for the clinical assessment of rotator cuff tendinopathy."
+  ],
+  "key_points_pt": [
+   "Estudo transversal com ocultação simples, com Doppler a cores do tendão supraespinhoso e das bursas subacromiais, em 20 doentes com tendinopatia da coifa dos rotadores (sem roturas de espessura total) e 20 controlos assintomáticos emparelhados por idade, sexo e dominância manual.",
+   "Detetou-se neovascularização em 6 de 20 doentes (30%) e em 5 de 20 controlos (25%), sem diferença estatisticamente significativa (P = 0,72).",
+   "Os autores sugerem que a neovascularização pode não ser um achado ecográfico relevante para a avaliação clínica da tendinopatia da coifa dos rotadores."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "shoulder"
+  ],
+  "keywords": [
+   "neovascularization",
+   "neovascularisation",
+   "colour Doppler",
+   "supraspinatus tendinopathy",
+   "rotator cuff tendinopathy",
+   "hypervascularity",
+   "neovascularização",
+   "Doppler a cores",
+   "tendinopatia do supraespinhoso",
+   "tendinopatia da coifa dos rotadores",
+   "hipervascularização"
+  ],
+  "abstract_excerpt": "Participants (n = 40; age = 44.9 years, 23-62 years; 20 females) with rotator cuff tendinopathy (n = 20) but without full-thickness rotator cuff tears, and asymptomatic controls that were age, gender, and hand dominance matched (n = 20) to the patients. ... No statistically significant difference in neovascularization was identified between participants with and without rotator cuff tendinopathy (χ = 0.13, df = 1, P = 0.72). Neovascularization was identified in 6 of 20 patients with rotator cuff tendinopathy (30%) and 5 of 20 asymptomatic control participants (25%). ... Neovascularization may not be a relevant sonographic finding to aid the clinical assessment of those with rotator cuff tendinopathy."
+ },
+ {
+  "id": "gould2026-rc-tendinopathy-us-parameters",
+  "topic": "Tendinopathy US grading: parameters and scales (echogenicity, thickness, vascularity, calcification) for rotator cuff tendinopathy",
+  "authors": "Gould G, et al.",
+  "title": "The Use of Diagnostic Ultrasound for the Assessment of Rotator Cuff Tendinopathy: A Systematic Review.",
+  "journal": "Ultrasound in Medicine & Biology",
+  "year": 2026,
+  "doi": "10.1016/j.ultrasmedbio.2025.10.241",
+  "pmid": "41353067",
+  "url": "https://doi.org/10.1016/j.ultrasmedbio.2025.10.241",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "Systematic review of 8 studies on the US parameters used to diagnose rotator cuff tendinopathy (studies with partial- or full-thickness tears excluded). There is currently no standardised US method.",
+   "The most common parameters were echogenicity (88%, n = 7), thickness (88%, n = 7), vascularity (50%, n = 4) and calcification (25%, n = 2).",
+   "A nominal scale was most commonly used for echogenicity (6 of 7 studies), thickness (5 of 7) and calcification (2 of 2). All studies that assessed vascularisation (100%) used an ordinal scale.",
+   "Patient positioning and operator experience varied between studies."
+  ],
+  "key_points_pt": [
+   "Revisão sistemática de 8 estudos sobre os parâmetros ecográficos usados no diagnóstico da tendinopatia da coifa dos rotadores (excluídos os casos com roturas de espessura parcial ou total). Não existe atualmente um método ecográfico padronizado.",
+   "Os parâmetros mais frequentes foram a ecogenicidade (88%, n = 7), a espessura (88%, n = 7), a vascularização (50%, n = 4) e a calcificação (25%, n = 2).",
+   "A escala nominal foi a mais usada para a ecogenicidade (6 de 7 estudos), a espessura (5 de 7) e a calcificação (2 de 2). Todos os estudos que avaliaram a vascularização (100%) usaram uma escala ordinal.",
+   "O posicionamento do doente e a experiência do operador variaram entre estudos."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "shoulder"
+  ],
+  "keywords": [
+   "rotator cuff tendinopathy",
+   "tendon echogenicity",
+   "tendon thickness",
+   "vascularity grading",
+   "ordinal scale",
+   "tendinopathy grading",
+   "tendinopatia da coifa dos rotadores",
+   "ecogenicidade tendinosa",
+   "espessura do tendão",
+   "graduação da vascularização",
+   "escala ordinal"
+  ],
+  "abstract_excerpt": "However, there is currently no standardised method to assess RCT with US. ... Primary diagnosis of previous shoulder operations, partial or full-thickness tears, were excluded. ... A total of 1286 records were identified; eight studies met the inclusion criteria. ... The most common US parameters were echogenicity (88%, n = 7), thickness (88%, n = 7), vascularity (50%, n = 4) and calcification (25%, n = 2). A nominal grading scale was most commonly utilised when assessing echogenicity (86%, n = 6 of 7), thickness (71%, n = 5 of 7) and calcification (100%, n = 2 of 2), while an ordinal scale was utilised in 100% of studies assessing vascularisation. Additionally, it was noted positioning and operator experience varied between studies."
+ },
+ {
+  "id": "dones2014-lateral-epicondylalgia-us",
+  "topic": "Elbow US: lateral epicondylopathy, diagnostic validity of individual US features",
+  "authors": "Dones VC 3rd, et al.",
+  "title": "The diagnostic validity of musculoskeletal ultrasound in lateral epicondylalgia: a systematic review.",
+  "journal": "BMC Medical Imaging",
+  "year": 2014,
+  "doi": "10.1186/1471-2342-14-10",
+  "pmid": "24589069",
+  "url": "https://doi.org/10.1186/1471-2342-14-10",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "Systematic review of 15 diagnostic studies of musculoskeletal ultrasound in lateral epicondylalgia, seven of them Level II diagnostic accuracy studies for chronic lateral epicondylalgia.",
+   "Hypoechogenicity of the common extensor origin had the best combination of sensitivity (0.64; 0.56-0.72) and specificity (0.82; 0.72-0.90).",
+   "Neovascularity (specificity 1.00), calcifications (specificity 0.97) and cortical irregularities (specificity 0.96) were strongly specific for chronic lateral epicondylalgia. Bone changes on the lateral epicondyle had a sensitivity of 0.56.",
+   "Evidence was insufficient for power Doppler, real-time sonoelastography and sonographic probe-induced tenderness. Grey-scale US is recommended."
+  ],
+  "key_points_pt": [
+   "Revisão sistemática de 15 estudos diagnósticos sobre ecografia musculoesquelética na epicondilalgia lateral, sete dos quais estudos de acuidade diagnóstica de nível II na epicondilalgia lateral crónica.",
+   "A hipoecogenicidade da origem comum dos extensores teve a melhor combinação de sensibilidade (0,64; 0,56-0,72) e especificidade (0,82; 0,72-0,90).",
+   "A neovascularização (especificidade 1,00), as calcificações (especificidade 0,97) e as irregularidades corticais (especificidade 0,96) foram muito específicas para a epicondilalgia lateral crónica. As alterações ósseas do epicôndilo lateral tiveram sensibilidade de 0,56.",
+   "A evidência foi insuficiente para o power Doppler, a sonoelastografia em tempo real e a dor provocada pela sonda. Recomenda-se a ecografia em escala de cinzentos."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "elbow"
+  ],
+  "keywords": [
+   "lateral epicondylitis",
+   "lateral epicondylalgia",
+   "lateral elbow tendinopathy",
+   "tennis elbow",
+   "common extensor origin",
+   "hypoechogenicity",
+   "neovascularity",
+   "epicondilite lateral",
+   "epicondilopatia lateral",
+   "epicondilalgia lateral",
+   "cotovelo de tenista",
+   "origem comum dos extensores",
+   "hipoecogenicidade",
+   "neovascularização"
+  ],
+  "abstract_excerpt": "Among the 15 included diagnostic studies in this review, seven were Level II diagnostic accuracy studies for chronic lateral epicondylalgia based on the National Health and Medical Research Council Hierarchy of Evidence. Based from the pooled sensitivity of abnormal ultrasound findings with homogenous results (p > 0.05), the hypoechogenicity of the common extensor origin has the best combination of diagnostic sensitivity and specificity. It is moderately sensitive [Sensitivity: 0.64 (0.56-0.72)] and highly specific [Specificity: 0.82 (0.72-0.90)] in determining elbows with lateral epicondylalgia. Additionally, bone changes on the lateral epicondyle [Sensitivity: 0.56 (0.50-0.62)] were moderately sensitive to chronic LE. Conversely, neovascularity [Specificity: 1.00 (0.97-1.00)], calcifications [Specificity: 0.97 (0.94-0.99)] and cortical irregularities [Specificity: 0.96 (0.88-0.99)] have strong specificity for chronic lateral epicondylalgia. There is insufficient evidence supporting the use of Power Doppler Ultrasonogrophy, Real-time Sonoelastography and sonographic probe-induced tenderness in diagnosing LE. The use of Gray-scale Ultrasonography is recommended in objectively diagnosing lateral epicondylalgia."
+ },
+ {
+  "id": "chang2018-ulnar-nerve-csa-cubital-tunnel",
+  "topic": "Elbow US: ulnar nerve cross-sectional area cut-off for cubital tunnel syndrome",
+  "authors": "Chang KV, et al.",
+  "title": "Ulnar Nerve Cross-Sectional Area for the Diagnosis of Cubital Tunnel Syndrome: A Meta-Analysis of Ultrasonographic Measurements.",
+  "journal": "Archives of Physical Medicine and Rehabilitation",
+  "year": 2018,
+  "doi": "10.1016/j.apmr.2017.08.467",
+  "pmid": "28888384",
+  "url": "https://doi.org/10.1016/j.apmr.2017.08.467",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "Meta-analysis of 14 trials comparing ulnar nerve cross-sectional area (CSA) in participants with and without cubital tunnel syndrome (CuTS).",
+   "The between-group CSA difference was largest at the medial epicondyle (6.0 mm2; 95% CI 4.5-7.4 mm2). In participants without CuTS, pooled mean CSA was 6.6 mm2 at the medial epicondyle, 7.4 mm2 at the cubital tunnel inlet and 7.3 mm2 at the outlet.",
+   "With a 10 mm2 cutoff (5 studies): sensitivity .85 (95% CI .78-.90), specificity .91 (95% CI .86-.94), diagnostic odds ratio 53.96 (95% CI 14.84-196.14).",
+   "Because ulnar nerve CSA in healthy participants rarely exceeds 10 mm2, the authors propose this value as a cutoff for ulnar nerve entrapment at the elbow."
+  ],
+  "key_points_pt": [
+   "Meta-análise de 14 estudos que compararam a área de secção transversal (AST) do nervo cubital entre participantes com e sem síndrome do túnel cubital.",
+   "A diferença de AST entre grupos foi máxima ao nível do epicôndilo medial (6,0 mm²; IC 95% 4,5-7,4 mm²). Nos participantes sem síndrome, a AST média agregada foi de 6,6 mm² no epicôndilo medial, 7,4 mm² na entrada e 7,3 mm² na saída do túnel cubital.",
+   "Com ponto de corte de 10 mm² (5 estudos): sensibilidade de 0,85 (IC 95% 0,78-0,90), especificidade de 0,91 (IC 95% 0,86-0,94) e odds ratio diagnóstico de 53,96 (IC 95% 14,84-196,14).",
+   "Como a AST do nervo cubital em indivíduos saudáveis raramente excede 10 mm², os autores propõem este valor como ponto de corte para neuropatia compressiva do nervo cubital no cotovelo."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "elbow"
+  ],
+  "keywords": [
+   "ulnar nerve",
+   "cubital tunnel syndrome",
+   "ulnar neuropathy at the elbow",
+   "cross-sectional area",
+   "medial epicondyle",
+   "nerve enlargement",
+   "nervo cubital",
+   "síndrome do túnel cubital",
+   "neuropatia cubital no cotovelo",
+   "área de secção transversal",
+   "epicôndilo medial",
+   "aumento de calibre do nervo"
+  ],
+  "abstract_excerpt": "Fourteen trials comparing the ulnar nerve CSA measurements between participants with and without CuTS were included. ... Among different elbow levels, the between-group difference in CSA was the largest at the medial epicondyle (6.0mm2; 95% confidence interval [CI], 4.5-7.4mm2). The pooled mean CSA in participants without CuTS was 5.5mm2 (95% CI, 4.4-6.6mm2) at the arm level, 7.4mm2 (95% CI, 6.7-8.1mm2) at the cubital tunnel inlet, 6.6mm2 (95% CI, 5.9-7.2mm2) at the medial epicondyle, 7.3mm2 (95% CI, 5.6-9.0mm2) at the cubital tunnel outlet, and 5.5mm2 (95% CI, 4.7-6.3mm2) at the forearm level. The sensitivities, specificities, and diagnostic odds ratios pooled from 5 studies, using 10mm2 as the cutoff point, were .85 (95% CI, .78-.90), .91 (95% CI, .86-.94), and 53.96 (95% CI, 14.84-196.14), respectively. ... Because the ulnar nerve CSA in healthy participants, at various locations, rarely exceeds 10mm2, this value can be considered as a cutoff point for diagnosing ulnar nerve entrapment at the elbow region."
+ },
+ {
+  "id": "tai2012-cts-us-meta",
+  "topic": "Wrist US: carpal tunnel syndrome, median nerve CSA cut-off (meta-analysis)",
+  "authors": "Tai TW, et al.",
+  "title": "Ultrasonography for diagnosing carpal tunnel syndrome: a meta-analysis of diagnostic test accuracy.",
+  "journal": "Ultrasound in Medicine & Biology",
+  "year": 2012,
+  "doi": "10.1016/j.ultrasmedbio.2012.02.026",
+  "pmid": "22542258",
+  "url": "https://doi.org/10.1016/j.ultrasmedbio.2012.02.026",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "Meta-analysis of 28 trials (3995 wrists) of ultrasonography for carpal tunnel syndrome (CTS), based on PubMed searches for 1990-2010.",
+   "Wrists with CTS had a greater median nerve CSA at the carpal tunnel inlet and a greater flattening ratio at the level of the hamate than control wrists.",
+   "A CSA at the inlet of 9 mm2 or more was the best single criterion: diagnostic odds ratio 40.4, sensitivity 87.3%, specificity 83.3%."
+  ],
+  "key_points_pt": [
+   "Meta-análise de 28 estudos (3995 punhos) sobre ecografia na síndrome do túnel cárpico, baseada em pesquisas na PubMed de 1990 a 2010.",
+   "Os punhos com síndrome do túnel cárpico tinham maior área de secção transversal (AST) do nervo mediano na entrada do túnel cárpico e maior índice de achatamento ao nível do hamato do que os punhos controlo.",
+   "Uma AST na entrada igual ou superior a 9 mm² foi o melhor critério isolado: odds ratio diagnóstico de 40,4, sensibilidade de 87,3% e especificidade de 83,3%."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "wrist-hand"
+  ],
+  "keywords": [
+   "carpal tunnel syndrome",
+   "median nerve",
+   "cross-sectional area",
+   "carpal tunnel inlet",
+   "flattening ratio",
+   "síndrome do túnel cárpico",
+   "nervo mediano",
+   "área de secção transversal",
+   "entrada do túnel cárpico",
+   "índice de achatamento"
+  ],
+  "abstract_excerpt": "Structured searches of PubMed for 1990-2010 were done and the data were extracted and meta-analyzed by pooling estimates of sensitivity, specificity, likelihood ratios and diagnostic odds ratios. ... Twenty-eight trials involving 3995 wrists were included. A greater cross-sectional area (CSA) of the median nerve at the carpal tunnel inlet (CSA-I) and a greater flattening ratio at the level of the hamate were seen in CTS wrists than in control wrists. A CSA-I ≥9 mm(2) is the best single diagnostic criterion, with a diagnostic odds ratio of 40.4 (sensitivity 87.3%, specificity 83.3%)."
+ },
+ {
+  "id": "cartwright2012-aanem-cts-guideline",
+  "topic": "Wrist US: evidence-based guideline on neuromuscular ultrasound for carpal tunnel syndrome",
+  "authors": "Cartwright MS, et al.",
+  "title": "Evidence-based guideline: neuromuscular ultrasound for the diagnosis of carpal tunnel syndrome.",
+  "journal": "Muscle & Nerve",
+  "year": 2012,
+  "doi": "10.1002/mus.23389",
+  "pmid": "22806381",
+  "url": "https://doi.org/10.1002/mus.23389",
+  "evidence_type": "guideline",
+  "key_points": [
+   "Evidence-based guideline built on a systematic review, with studies classified by American Academy of Neurology criteria: US measurement of median nerve CSA at the wrist is accurate and may be offered as a diagnostic test for carpal tunnel syndrome (Level A).",
+   "Neuromuscular US probably adds value to electrodiagnostic studies when diagnosing CTS and should be considered when screening for structural abnormalities at the wrist (Level B)."
+  ],
+  "key_points_pt": [
+   "Recomendação baseada na evidência, construída sobre uma revisão sistemática com classificação dos estudos segundo os critérios da American Academy of Neurology: a medição ecográfica da área de secção transversal do nervo mediano no punho é exata e pode ser oferecida como teste diagnóstico da síndrome do túnel cárpico (Nível A).",
+   "A ecografia neuromuscular provavelmente acrescenta valor aos estudos eletrodiagnósticos no diagnóstico da síndrome do túnel cárpico e deve ser considerada para pesquisar alterações estruturais no punho (Nível B)."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "wrist-hand"
+  ],
+  "keywords": [
+   "carpal tunnel syndrome",
+   "median nerve cross-sectional area",
+   "neuromuscular ultrasound",
+   "electrodiagnostic studies",
+   "structural abnormality",
+   "guideline",
+   "síndrome do túnel cárpico",
+   "área de secção transversal do nervo mediano",
+   "ecografia neuromuscular",
+   "estudo eletrofisiológico",
+   "alteração estrutural"
+  ],
+  "abstract_excerpt": "A systematic review was performed, and studies were classified according to American Academy of Neurology criteria for rating articles of diagnostic accuracy (question 1) and for screening articles (question 2). Neuromuscular ultrasound measurement of median nerve cross-sectional area at the wrist is accurate and may be offered as a diagnostic test for CTS (Level A). Neuromuscular ultrasound probably adds value to electrodiagnostic studies when diagnosing CTS and should be considered in screening for structural abnormalities at the wrist in those with CTS (Level B)."
+ },
+ {
+  "id": "roomizadeh2019-cts-severity-csa",
+  "topic": "Wrist US: median nerve CSA by electrodiagnostic severity of carpal tunnel syndrome",
+  "authors": "Roomizadeh P, et al.",
+  "title": "Ultrasonographic Assessment of Carpal Tunnel Syndrome Severity: A Systematic Review and Meta-Analysis.",
+  "journal": "American Journal of Physical Medicine & Rehabilitation",
+  "year": 2019,
+  "doi": "10.1097/PHM.0000000000001104",
+  "pmid": "30702462",
+  "url": "https://doi.org/10.1097/PHM.0000000000001104",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "Meta-analysis of 16 studies (2292 wrists: 776 mild, 823 moderate, 693 severe CTS by electrodiagnostic classification) of median nerve CSA measured at the carpal tunnel inlet.",
+   "Pooled mean CSA was 11.64 (95% CI 11.23-12.05) in mild, 13.74 (95% CI 12.59-14.89) in moderate and 16.80 (95% CI 14.50-19.1) in severe CTS. The abstract prints the unit as 'mm'; the quantity is an area (mm2)."
+  ],
+  "key_points_pt": [
+   "Meta-análise de 16 estudos (2292 punhos: 776 ligeiros, 823 moderados e 693 graves segundo a classificação eletrodiagnóstica) da área de secção transversal do nervo mediano medida na entrada do túnel cárpico.",
+   "A AST média agregada foi de 11,64 (IC 95% 11,23-12,05) na síndrome ligeira, 13,74 (IC 95% 12,59-14,89) na moderada e 16,80 (IC 95% 14,50-19,1) na grave. O resumo apresenta a unidade como 'mm'; trata-se de uma área (mm²)."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "wrist-hand"
+  ],
+  "keywords": [
+   "carpal tunnel syndrome severity",
+   "median nerve cross-sectional area",
+   "mild moderate severe",
+   "electrodiagnostic grading",
+   "gravidade da síndrome do túnel cárpico",
+   "área de secção transversal do nervo mediano",
+   "ligeira moderada grave",
+   "classificação eletrofisiológica"
+  ],
+  "abstract_excerpt": "Cross-sectional area values measured at the carpal tunnel inlet were included in the analyses. ... Finally, 16 articles were included for meta-analysis. These studies included a total sample of 2292 wrists including 776 mild, 823 moderate, and 693 severe carpal tunnel syndrome. The pooled analysis revealed a mean cross-sectional area of 11.64 mm (95% confidence interval = 11.23-12.05 mm, P < 0.001) for mild carpal tunnel syndrome, a mean cross-sectional area of 13.74 mm (95% confidence interval = 12.59-14.89 mm, P < 0.001) for moderate carpal tunnel syndrome, and a mean cross-sectional area of 16.80 mm (95% confidence interval = 14.50-19.1 mm, P < 0.001) for severe carpal tunnel syndrome."
+ },
+ {
+  "id": "kwon2010-dequervain-septum-us",
+  "topic": "Wrist US: De Quervain tenosynovitis, detection of the first extensor compartment intracompartmental septum",
+  "authors": "Kwon BC, et al.",
+  "title": "Sonographic Identification of the intracompartmental septum in de Quervain's disease.",
+  "journal": "Clinical Orthopaedics and Related Research",
+  "year": 2010,
+  "doi": "10.1007/s11999-009-1199-6",
+  "pmid": "20033358",
+  "url": "https://doi.org/10.1007/s11999-009-1199-6",
+  "evidence_type": "prospective-diagnostic-accuracy",
+  "key_points": [
+   "43 wrists (40 patients) unresponsive to nonoperative treatment underwent surgical release for de Quervain's disease. Preoperative sonography by a radiologist was compared with surgical findings (Level I diagnostic study).",
+   "Sonography identified the intracompartmental septum in 19 of 19 wrists that had one and correctly showed its absence in 23 of 24: sensitivity 100% (95% CI 80%-100%), specificity 96% (95% CI 78%-100%), accuracy 98%.",
+   "Septum-like structures were also seen in 15 of 37 (41%) asymptomatic contralateral wrists."
+  ],
+  "key_points_pt": [
+   "43 punhos (40 doentes) sem resposta ao tratamento conservador foram submetidos a libertação cirúrgica por tenossinovite de De Quervain. A ecografia pré-operatória, realizada por radiologista, foi comparada com os achados cirúrgicos (estudo diagnóstico de nível I).",
+   "A ecografia identificou o septo intracompartimental em 19 de 19 punhos com septo e mostrou corretamente a sua ausência em 23 de 24: sensibilidade de 100% (IC 95% 80%-100%), especificidade de 96% (IC 95% 78%-100%) e exatidão de 98%.",
+   "Também se observaram estruturas semelhantes a septo em 15 de 37 (41%) punhos contralaterais assintomáticos."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "wrist-hand"
+  ],
+  "keywords": [
+   "De Quervain tenosynovitis",
+   "first extensor compartment",
+   "intracompartmental septum",
+   "abductor pollicis longus",
+   "extensor pollicis brevis",
+   "tenossinovite de De Quervain",
+   "primeiro compartimento extensor",
+   "septo intracompartimental",
+   "longo abdutor do polegar",
+   "curto extensor do polegar"
+  ],
+  "abstract_excerpt": "We performed surgical release of the first extensor compartment in 43 wrists of 40 patients who were unresponsive to nonoperative treatment. In each case, a sonographic evaluation was performed before surgery by a radiologist and the sonographic and surgical findings were compared. Sonography identified the intracompartmental septum in 19 of the 19 septum-present wrists and absence of the septum in 23 of the 24 septum-absent wrists. The sensitivity of sonography was 100% (95% confidence interval, 80%-100%), its specificity 96% (95% confidence interval, 78%-100%), accuracy 98% (95% confidence interval, 87%-100%), positive predictive value 95% (95% confidence interval, 74%-100%), and negative predictive value 100% (95% confidence interval, 83%-100%). Sonography also identified septum-like structures in 15 of 37 (41%) asymptomatic contralateral wrists."
+ },
+ {
+  "id": "guerini2008-trigger-finger-us",
+  "topic": "Hand US: trigger finger, A1 pulley thickness and power Doppler",
+  "authors": "Guerini H, et al.",
+  "title": "Sonographic appearance of trigger fingers.",
+  "journal": "Journal of Ultrasound in Medicine",
+  "year": 2008,
+  "doi": "10.7863/jum.2008.27.10.1407",
+  "pmid": "18809950",
+  "url": "https://doi.org/10.7863/jum.2008.27.10.1407",
+  "evidence_type": "other",
+  "key_points": [
+   "33 trigger fingers (33 patients) were compared with 20 controls using a 7- to 15-MHz probe, with measurement of A1 pulley thickness and power Doppler assessment.",
+   "All trigger fingers showed a thickened, hypoechoic A1 pulley. Mean A1 pulley thickness was 1.8 mm (range 1.1-2.9) in trigger fingers versus 0.5 mm (range 0.4-0.6) in controls (P < .0001).",
+   "Power Doppler showed A1 pulley hypervascularization in 91% of trigger fingers and in none of the controls. Flexor tendinosis was present in 48% and tenosynovitis in 55%."
+  ],
+  "key_points_pt": [
+   "33 dedos em gatilho (33 doentes) foram comparados com 20 controlos com sonda de 7 a 15 MHz, com medição da espessura da polia A1 e avaliação com power Doppler.",
+   "Todos os dedos em gatilho tinham a polia A1 espessada e hipoecogénica. A espessura média da polia A1 foi de 1,8 mm (intervalo 1,1-2,9) nos dedos em gatilho e de 0,5 mm (intervalo 0,4-0,6) nos controlos (P < 0,0001).",
+   "O power Doppler mostrou hipervascularização da polia A1 em 91% dos dedos em gatilho e em nenhum controlo. Havia tendinose dos flexores em 48% e tenossinovite em 55%."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "wrist-hand"
+  ],
+  "keywords": [
+   "trigger finger",
+   "stenosing tenosynovitis",
+   "A1 pulley thickening",
+   "flexor tendinosis",
+   "tenosynovitis",
+   "power Doppler",
+   "dedo em gatilho",
+   "tenossinovite estenosante",
+   "espessamento da polia A1",
+   "tendinose dos flexores",
+   "tenossinovite"
+  ],
+  "abstract_excerpt": "Thirty-three trigger fingers in 33 patients were examined with a 7- to 15-MHz probe. A control group consisted of 20 patients without trigger fingers. ... Thickening and hypoechogenicity of the A1 pulley were found in all patients with trigger fingers. Measurements of A1 pulley thickness were significantly different (P < .0001) between the groups without trigger fingers (mean, 0.5 mm; range, 0.4-0.6 mm) and with trigger fingers (mean, 1.8 mm; range, 1.1-2.9 mm). Hypervascularization of the A1 pulley on power Doppler imaging was found in 91% of the trigger fingers but was never found in the healthy control group. Flexor tendinosis was found in 48% of the trigger fingers; tenosynovitis was found in 55%; and both were found in 39%."
+ },
+ {
+  "id": "teefey2008-hand-wrist-ganglia-us",
+  "topic": "Wrist/hand US: sonographic appearance of ganglion cysts (simple, complex, solid-appearing)",
+  "authors": "Teefey SA, et al.",
+  "title": "Ganglia of the hand and wrist: a sonographic analysis.",
+  "journal": "American Journal of Roentgenology",
+  "year": 2008,
+  "doi": "10.2214/AJR.07.3438",
+  "pmid": "18716098",
+  "url": "https://doi.org/10.2214/AJR.07.3438",
+  "evidence_type": "other",
+  "key_points": [
+   "Retrospective sonographic analysis (reports and images found by computer search) of 60 pathologically proven hand and wrist ganglia: 34 complex, 23 simple and 3 solid-appearing.",
+   "Of the 34 complex ganglia, 91% were in the dorsal or volar wrist; the abstract reports well-defined margins in 97%, locules in 76%, acoustic enhancement in 68%, a thick wall in 47%, internal reflectors in 15% and blood flow in 12%.",
+   "A visible neck was seen in 25% of ganglia. Most flexor tendon sheath ganglia were simple.",
+   "Solid-appearing ganglia are unusual but may mimic a benign neoplasm or synovitis."
+  ],
+  "key_points_pt": [
+   "Análise ecográfica retrospetiva (relatórios e imagens obtidos por pesquisa informática) de 60 gânglios (quistos sinoviais) da mão e do punho com confirmação anatomopatológica: 34 complexos, 23 simples e 3 de aspeto sólido.",
+   "Dos 34 gânglios complexos, 91% localizavam-se no punho dorsal ou volar; o resumo refere margens bem definidas em 97%, loculações em 76%, reforço acústico posterior em 68%, parede espessa em 47%, ecos internos em 15% e fluxo sanguíneo em 12%.",
+   "Foi visível um colo (pedículo) em 25% dos gânglios. A maioria dos gânglios da bainha dos tendões flexores era simples.",
+   "Os gânglios de aspeto sólido são raros, mas podem simular neoplasia benigna ou sinovite."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "wrist-hand"
+  ],
+  "keywords": [
+   "ganglion cyst",
+   "dorsal wrist ganglion",
+   "volar wrist ganglion",
+   "flexor tendon sheath ganglion",
+   "complex cyst",
+   "locules",
+   "acoustic enhancement",
+   "quisto sinovial",
+   "gânglio",
+   "gânglio dorsal do punho",
+   "gânglio volar do punho",
+   "gânglio da bainha dos flexores",
+   "quisto complexo",
+   "reforço acústico posterior"
+  ],
+  "abstract_excerpt": "The purpose of this study was to analyze the sonographic appearance of a large series of pathologically proven ganglia. A computer search of sonography and pathology reports for hand and wrist ganglia was performed. ... Of 60 ganglia, 34 were complex, 91% of which were located within the dorsal or volar wrist; 97% had well-defined margins; 76%, locules; 68%, acoustic enhancement; 47%, a thick wall; 15%, internal reflectors; and 12%, blood flow. Of the 23 simple ganglia, 11 involved the extensor or flexor tendon sheath, 73% of which were simple. ... Three ganglia were solid-appearing. A visible neck was seen in 25% of ganglia. ... Most flexor tendon sheath ganglia are simple rather than complex. Solid-appearing ganglia, although unusual, may mimic a benign neoplasm or synovitis."
+ },
+ {
+  "id": "sconfienza2018-essr-us-indications",
+  "topic": "Standards: ESSR Delphi consensus on clinical indications for musculoskeletal ultrasound (2017 update)",
+  "authors": "Sconfienza LM, et al.",
+  "title": "Clinical indications for musculoskeletal ultrasound updated in 2017 by European Society of Musculoskeletal Radiology (ESSR) consensus.",
+  "journal": "European Radiology",
+  "year": 2018,
+  "doi": "10.1007/s00330-018-5474-3",
+  "pmid": "29876703",
+  "url": "https://doi.org/10.1007/s00330-018-5474-3",
+  "evidence_type": "consensus/position-paper",
+  "key_points": [
+   "ESSR Delphi consensus of 21 musculoskeletal imaging experts updating the 2012 ESSR clinical guidelines for musculoskeletal ultrasound referral. Literature up to July 2017 was scored for the shoulder, elbow, wrist/hand, hip, knee and ankle/foot.",
+   "123 new papers were reviewed. There was no change in evidence for the shoulder (no new relevant articles); 10 new articles were reviewed for the elbow and 28 for the hand/wrist.",
+   "Elastography did not reach level A evidence. For Achilles tendinopathy and lateral epicondylitis, the evidence level was B with a grade 3 indication.",
+   "Four new level A indications were added: gluteal tendon tears, meniscal cysts, ankle joint instability and plantar plate tear."
+  ],
+  "key_points_pt": [
+   "Consenso Delphi da ESSR com 21 peritos em imagiologia musculoesquelética, que atualiza as recomendações clínicas da ESSR de 2012 para referenciação para ecografia musculoesquelética. A literatura até julho de 2017 foi pontuada para ombro, cotovelo, punho/mão, anca, joelho e tornozelo/pé.",
+   "Foram revistos 123 novos artigos. Não houve alteração da evidência para o ombro (sem novos artigos relevantes); foram revistos 10 novos artigos para o cotovelo e 28 para a mão/punho.",
+   "A elastografia não atingiu o nível de evidência A. Na tendinopatia aquiliana e na epicondilite lateral, o nível de evidência foi B, com indicação de grau 3.",
+   "Foram acrescentadas quatro novas indicações de nível A: roturas dos tendões glúteos, quistos meniscais, instabilidade da articulação do tornozelo e rotura da placa plantar."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "shoulder",
+   "elbow",
+   "wrist-hand",
+   "hip-pelvis",
+   "knee",
+   "ankle-foot"
+  ],
+  "keywords": [
+   "ESSR",
+   "clinical indications",
+   "musculoskeletal ultrasound",
+   "Delphi consensus",
+   "elastography",
+   "level of evidence",
+   "indicações clínicas",
+   "ecografia musculoesquelética",
+   "consenso Delphi",
+   "elastografia",
+   "nível de evidência"
+  ],
+  "abstract_excerpt": "To update the 2012 European Society of Musculoskeletal Radiology (ESSR) clinical consensus guidelines for musculoskeletal ultrasound referral in Europe. Twenty-one musculoskeletal imaging experts from the ESSR participated in a consensus study based on a Delphic process. ... Updated musculoskeletal ultrasound literature up to July 2017 was scored for shoulder, elbow, wrist/hand, hip, knee, and ankle/foot. ... A total of 123 new papers were reviewed. No evidence change was found regarding the shoulder. There were no new relevant articles for the shoulder, 10 new articles for the elbow, 28 for the hand/wrist, 3 for the hip, 7 for the knee, and 4 for the ankle/foot. Four new evidence levels of A were determined, one for the hip (gluteal tendons tears), one for the knee (meniscal cysts), one for the ankle (ankle joint instability), and one for the foot (plantar plate tear). There was no level A evidence for elastography, although for Achilles tendinopathy and lateral epicondylitis evidence level was B with grade 3 indication."
+ },
+ {
+  "id": "moller2017-eular-standardised-us-procedures",
+  "topic": "Standards: EULAR 2017 standardised scanning procedures for musculoskeletal ultrasound",
+  "authors": "Möller I, et al.",
+  "title": "The 2017 EULAR standardised procedures for ultrasound imaging in rheumatology.",
+  "journal": "Annals of the Rheumatic Diseases",
+  "year": 2017,
+  "doi": "10.1136/annrheumdis-2017-211585",
+  "pmid": "28814430",
+  "url": "https://doi.org/10.1136/annrheumdis-2017-211585",
+  "evidence_type": "consensus/position-paper",
+  "key_points": [
+   "EULAR update of the 2001 musculoskeletal ultrasound guidelines in rheumatology, built from a systematic literature review, a Delphi survey of rheumatologist and radiologist experts and a nominal group technique.",
+   "Standardised scanning procedures (patient position, probe placement, scanning method and bony/other landmarks) were defined for structures in nine areas: shoulder, elbow, wrist and hand, hip, knee, ankle and foot, peripheral nerves, salivary glands and vessels. They were compiled in an illustrated App.",
+   "Experts agreed which abnormalities US can evaluate in each anatomical structure and how relevant they are for rheumatology."
+  ],
+  "key_points_pt": [
+   "Atualização EULAR das recomendações de 2001 para ecografia musculoesquelética em reumatologia, construída com revisão sistemática da literatura, inquérito Delphi a peritos reumatologistas e radiologistas e técnica de grupo nominal.",
+   "Foram definidos procedimentos padronizados de exploração (posição do doente, colocação da sonda, método de varrimento e referências ósseas/outras) para estruturas de nove áreas: ombro, cotovelo, punho e mão, anca, joelho, tornozelo e pé, nervos periféricos, glândulas salivares e vasos. Os procedimentos foram reunidos numa aplicação ilustrada.",
+   "Os peritos acordaram que alterações a ecografia pode avaliar em cada estrutura anatómica e qual a sua relevância em reumatologia."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "EULAR",
+   "standardised scanning",
+   "probe placement",
+   "patient position",
+   "scanning protocol",
+   "peripheral nerves",
+   "exploração padronizada",
+   "colocação da sonda",
+   "posição do doente",
+   "protocolo de ecografia",
+   "nervos periféricos"
+  ],
+  "abstract_excerpt": "In 2001, the European League Against Rheumatism developed and disseminated the first guidelines for musculoskeletal (MS) ultrasound (US) in rheumatology. ... The project consisted of the following steps: (1) a systematic literature review of MSUS evaluable structures; (2) a Delphi survey among rheumatologist and radiologist experts in MSUS to select MS and non-MS anatomic structures evaluable by US that are relevant to rheumatology, to select abnormalities evaluable by US and to prioritise these pathologies for rheumatology and (3) a nominal group technique to achieve consensus on the US scanning procedures and to produce an electronic illustrated manual (ie, App of these procedures). Structures from nine MS and non-MS areas (ie, shoulder, elbow, wrist and hand, hip, knee, ankle and foot, peripheral nerves, salivary glands and vessels) were selected for MSUS in rheumatic and musculoskeletal diseases (RMD) and their detailed scanning procedures (ie, patient position, probe placement, scanning method and bony/other landmarks) were used to produce the App. In addition, US evaluable abnormalities present in RMD for each anatomic structure and their relevance for rheumatology were agreed on by the MSUS experts."
+ },
+ {
+  "id": "balint2018-omeract-enthesitis-us",
+  "topic": "Standards: OMERACT US definition and scoring of enthesitis",
+  "authors": "Balint PV, et al.",
+  "title": "Reliability of a consensus-based ultrasound definition and scoring for enthesitis in spondyloarthritis and psoriatic arthritis: an OMERACT US initiative.",
+  "journal": "Annals of the Rheumatic Diseases",
+  "year": 2018,
+  "doi": "10.1136/annrheumdis-2018-213609",
+  "pmid": "30076154",
+  "url": "https://doi.org/10.1136/annrheumdis-2018-213609",
+  "evidence_type": "consensus/position-paper",
+  "key_points": [
+   "In this OMERACT US initiative, 11 sonographers evaluated 40 entheses from 5 SpA/PsA patients at four bilateral sites and gave a binary score for each of nine elementary lesions.",
+   "The final US definition of enthesitis includes hypoechogenicity, increased thickness at the enthesis, erosions, calcifications/enthesophytes and Doppler signal at the insertion.",
+   "Reliability ranged from poor (thickened enthesis, kappa 0.1) to good (enthesophytes, kappa 0.6). After adjustment for low prevalence, kappa was 0.9 for Doppler signal at the insertion and 0.8 for bursitis."
+  ],
+  "key_points_pt": [
+   "Nesta iniciativa de ecografia do OMERACT, 11 ecografistas avaliaram 40 enteses de 5 doentes com espondilartrite ou artrite psoriática, em quatro locais bilaterais, e pontuaram de forma binária cada uma de nove lesões elementares.",
+   "A definição ecográfica final de entesite inclui hipoecogenicidade, aumento da espessura da entese, erosões, calcificações/entesófitos e sinal Doppler na inserção.",
+   "A fiabilidade variou de fraca (entese espessada, kappa 0,1) a boa (entesófitos, kappa 0,6). Após ajuste para a baixa prevalência, o kappa foi de 0,9 para o sinal Doppler na inserção e de 0,8 para a bursite."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "enthesitis",
+   "OMERACT",
+   "enthesophyte",
+   "erosion",
+   "Doppler signal at insertion",
+   "enthesis thickening",
+   "entesite",
+   "entesófito",
+   "erosão",
+   "sinal Doppler na inserção",
+   "espessamento da entese"
+  ],
+  "abstract_excerpt": "Eleven sonographers evaluated 40 entheses from five patients with SpA/PsA at four bilateral sites. Nine US elementary lesions were binary-scored: hypoechogenicity, thickened insertion, enthesophytes, calcifications, erosions, bone irregularities, bursitis and Doppler signal inside and around enthesis. ... Reliability ranged from poor to good (the lowest for thickened enthesis (kappa 0.1 (95% CI 0 to 0.7)) and the highest for enthesophytes (kappa 0.6 (95% CI 0.5 to 0.7)). When adjusted for low prevalence, kappa values increased for all lesions, with the best result observed for detecting Doppler signal at insertion (0.9) and for bursitis (0.8). The US components included in the final definition were hypoechogenicity, increased thickness at enthesis, erosions and calcifications/enthesophytes and Doppler signal at insertion."
+ },
+ {
+  "id": "dagostino2017-eular-omeract-synovitis-score",
+  "topic": "Standards: EULAR-OMERACT US definition and semiquantitative scoring of synovitis (grey-scale + power Doppler)",
+  "authors": "D'Agostino MA, et al.",
+  "title": "Scoring ultrasound synovitis in rheumatoid arthritis: a EULAR-OMERACT ultrasound taskforce-Part 1: definition and development of a standardised, consensus-based scoring system.",
+  "journal": "RMD Open",
+  "year": 2017,
+  "doi": "10.1136/rmdopen-2016-000428",
+  "pmid": "28948983",
+  "url": "https://doi.org/10.1136/rmdopen-2016-000428",
+  "evidence_type": "consensus/position-paper",
+  "key_points": [
+   "A multistep EULAR-OMERACT consensus process, including a Delphi exercise, produced a standardised US definition and semiquantitative scoring system for RA synovitis.",
+   "The refined OMERACT synovitis definition includes the presence of both hypoechoic synovial hypertrophy and power Doppler signal. The semiquantitative severity score depends on the amount of PD signal and on the volume and appearance of the synovial hypertrophy.",
+   "On static images, intra- and inter-reader reliability for PD scoring was excellent for both binary and semiquantitative grading, while grey-scale scoring was more variable. In patient-based exercises, mean kappa did not reach 0.50 for any component."
+  ],
+  "key_points_pt": [
+   "Um processo de consenso EULAR-OMERACT em várias etapas, incluindo um exercício Delphi, produziu uma definição ecográfica padronizada e um sistema de pontuação semiquantitativo da sinovite na artrite reumatoide.",
+   "A definição OMERACT refinada de sinovite inclui a presença de hipertrofia sinovial hipoecogénica e de sinal power Doppler. A pontuação semiquantitativa de gravidade depende da quantidade de sinal Doppler e do volume e aspeto da hipertrofia sinovial.",
+   "Em imagens estáticas, a fiabilidade intra e interobservador da pontuação Doppler foi excelente, tanto na graduação binária como na semiquantitativa, e a escala de cinzentos foi mais variável. Nos exercícios com doentes, o kappa médio não atingiu 0,50 em nenhum componente."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "synovitis",
+   "synovial hypertrophy",
+   "power Doppler",
+   "semiquantitative score",
+   "OMERACT",
+   "EULAR",
+   "joint effusion",
+   "sinovite",
+   "hipertrofia sinovial",
+   "pontuação semiquantitativa",
+   "derrame articular"
+  ],
+  "abstract_excerpt": "Using static images, intrareader and inter-reader reliability for scoring PD were excellent for both binary and semiquantitative (SQ) grading but GS showed greater variability for both scoring systems (κ ranges: -0.05 to 1 and 0.59 to 0.92, respectively). In patient-based exercise, both intraobserver and interobserver reliability were variable and the mean κ coefficients did not reach 0.50 for any of the components. The second step resulted in refinement of the preliminary Outcome Measures in Rheumatology synovitis definition by including the presence of both hypoechoic SH and PD signal and the development of a SQ severity score, depending on both the amount of PD and the volume and appearance of SH. A multistep consensus-based process has produced a standardised US definition and quantification system for RA synovitis including combined and individual SH and PD components."
+ },
+ {
+  "id": "pollock2014-bamic",
+  "topic": "Muscle injury classification: British Athletics Muscle Injury Classification (BAMIC)",
+  "authors": "Pollock N, et al.",
+  "title": "British athletics muscle injury classification: a new grading system.",
+  "journal": "British Journal of Sports Medicine",
+  "year": 2014,
+  "doi": "10.1136/bjsports-2013-093302",
+  "pmid": "25031367",
+  "url": "https://doi.org/10.1136/bjsports-2013-093302",
+  "evidence_type": "classification-system",
+  "key_points": [
+   "BAMIC grades muscle injuries 0-4 based on MRI features.",
+   "Grades 1-4 include an additional suffix 'a', 'b' or 'c' if the injury is myofascial, musculo-tendinous or intratendinous, respectively.",
+   "The commonly used three-grade systems (minor, moderate, complete) are described as lacking diagnostic accuracy and providing limited prognostic information.",
+   "At publication, retrospective and prospective studies in elite track and field athletes were underway to validate the classification for hamstring muscle injury management."
+  ],
+  "key_points_pt": [
+   "A BAMIC gradua as lesões musculares de 0 a 4 com base em características de ressonância magnética (RM).",
+   "Os graus 1-4 incluem um sufixo adicional 'a', 'b' ou 'c' consoante a lesão seja miofascial, musculotendinosa ou intratendinosa, respetivamente.",
+   "Os sistemas de graduação habitualmente utilizados, com três graus (lesão ligeira, moderada e completa), são descritos como pouco exatos do ponto de vista diagnóstico e com informação prognóstica limitada.",
+   "À data da publicação, decorriam estudos retrospetivos e prospetivos em atletas de elite de atletismo para validar a classificação na abordagem das lesões musculares dos isquiotibiais."
+  ],
+  "modalities": [
+   "MR"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "muscle injury",
+   "muscle strain",
+   "BAMIC",
+   "British Athletics classification",
+   "hamstring injury",
+   "myofascial",
+   "musculotendinous",
+   "intratendinous",
+   "MRI grading",
+   "lesão muscular",
+   "classificação BAMIC",
+   "lesão dos isquiotibiais",
+   "lesão miofascial",
+   "lesão musculotendinosa",
+   "lesão intratendinosa",
+   "rotura muscular",
+   "graduação por RM"
+  ],
+  "abstract_excerpt": "The commonly used muscle injury grading systems based on three grades of injury, representing minor, moderate and complete injuries to the muscle, are lacking in diagnostic accuracy and provide limited prognostic information to the clinician. [...] Injuries are graded 0-4 based on MRI features, with Grades 1-4 including an additional suffix 'a', 'b' or 'c' if the injury is 'myofascial', 'musculo-tendinous' or 'intratendinous'. Retrospective and prospective studies in elite track and field athletes are underway to validate the classification for use in hamstring muscle injury management."
+ },
+ {
+  "id": "muellerwohlfahrt2013-munich",
+  "topic": "Muscle injury terminology and classification: Munich consensus statement",
+  "authors": "Mueller-Wohlfahrt HW, et al.",
+  "title": "Terminology and classification of muscle injuries in sport: the Munich consensus statement.",
+  "journal": "British Journal of Sports Medicine",
+  "year": 2013,
+  "doi": "10.1136/bjsports-2012-091448",
+  "pmid": "23080315",
+  "url": "https://doi.org/10.1136/bjsports-2012-091448",
+  "evidence_type": "consensus/position-paper",
+  "key_points": [
+   "Four types are defined: functional muscle disorders without macroscopic evidence of fibre tear (type 1 overexertion-related; type 2 neuromuscular) and structural muscle injuries with macroscopic evidence of fibre tear (type 3 partial tears; type 4 (sub)total tears/tendinous avulsions).",
+   "Subclassifications are presented for each type.",
+   "A questionnaire of 30 native English-speaking scientists and team doctors (response rate 63%) confirmed marked variability in muscle-injury terminology, with the most obvious inconsistencies for the term 'strain'.",
+   "Level of evidence: expert opinion, Level V."
+  ],
+  "key_points_pt": [
+   "Definem-se quatro tipos: perturbações musculares funcionais sem evidência macroscópica de rotura de fibras (tipo 1 relacionadas com sobrecarga; tipo 2 neuromusculares) e lesões musculares estruturais com evidência macroscópica de rotura de fibras (tipo 3 roturas parciais; tipo 4 roturas (sub)totais/avulsões tendinosas).",
+   "São apresentadas subclassificações para cada tipo.",
+   "Um questionário a 30 cientistas e médicos de equipa nativos de língua inglesa (taxa de resposta de 63%) confirmou grande variabilidade na terminologia das lesões musculares, com as inconsistências mais evidentes no termo 'strain' (distensão).",
+   "Nível de evidência: opinião de peritos, nível V."
+  ],
+  "modalities": [
+   "any"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "muscle injury",
+   "Munich classification",
+   "functional muscle disorder",
+   "structural muscle injury",
+   "partial muscle tear",
+   "tendinous avulsion",
+   "muscle strain",
+   "lesão muscular",
+   "classificação de Munique",
+   "perturbação muscular funcional",
+   "lesão muscular estrutural",
+   "rotura muscular parcial",
+   "rotura muscular subtotal",
+   "avulsão tendinosa"
+  ],
+  "abstract_excerpt": "RESULTS: The response rate of the survey was 63%. The responses confirmed the marked variability in the use of the terminology relating to muscle injury, with the most obvious inconsistencies for the term strain. In the consensus meeting, practical and systematic terms were defined and established. In addition, a new comprehensive classification system was developed, which differentiates between four types: functional muscle disorders (type 1: overexertion-related and type 2: neuromuscular muscle disorders) describing disorders without macroscopic evidence of fibre tear and structural muscle injuries (type 3: partial tears and type 4: (sub)total tears/tendinous avulsions) with macroscopic evidence of fibre tear, that is, structural damage. Subclassifications are presented for each type. [...] LEVEL OF EVIDENCE: Expert opinion, Level V."
+ },
+ {
+  "id": "pollock2016-bamic-intratendinous",
+  "topic": "Hamstring injury prognosis: BAMIC intratendinous ('c') injuries and return to training",
+  "authors": "Pollock N, et al.",
+  "title": "Time to return to full training is delayed and recurrence rate is higher in intratendinous ('c') acute hamstring injury in elite track and field athletes: clinical application of the British Athletics Muscle Injury Classification.",
+  "journal": "British Journal of Sports Medicine",
+  "year": 2016,
+  "doi": "10.1136/bjsports-2015-094657",
+  "pmid": "26888072",
+  "url": "https://doi.org/10.1136/bjsports-2015-094657",
+  "evidence_type": "other",
+  "key_points": [
+   "Retrospective cohort: 65 acute hamstring injuries in 44 elite track and field athletes, with MRI within 7 days of injury graded by two musculoskeletal radiologists using BAMIC.",
+   "Time to return to full training differed among grades (p<0.001): grade 3 and intratendinous ('c') injuries took significantly longer, grade 0 injuries less.",
+   "There were 12 re-injuries; recurrence was significantly higher in intratendinous ('c') injuries (p<0.001).",
+   "No difference in re-injury rate between grades 1-3, hamstring muscle affected, location (proximal vs central vs distal), age or sex."
+  ],
+  "key_points_pt": [
+   "Coorte retrospetiva: 65 lesões agudas dos isquiotibiais em 44 atletas de elite de atletismo, com RM até 7 dias após a lesão, graduada por dois radiologistas musculoesqueléticos segundo a BAMIC.",
+   "O tempo até ao regresso ao treino completo diferiu entre graus (p<0,001): as lesões de grau 3 e as intratendinosas ('c') demoraram significativamente mais, e as de grau 0 menos.",
+   "Registaram-se 12 recidivas; a taxa de recidiva foi significativamente superior nas lesões intratendinosas ('c') (p<0,001).",
+   "Não houve diferença na taxa de recidiva entre os graus 1-3, músculo isquiotibial afetado, localização (proximal vs central vs distal), idade ou sexo."
+  ],
+  "modalities": [
+   "MR"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "hamstring injury",
+   "intratendinous injury",
+   "BAMIC grade c",
+   "return to play",
+   "return to full training",
+   "re-injury",
+   "recurrence",
+   "lesão dos isquiotibiais",
+   "lesão intratendinosa",
+   "BAMIC grau c",
+   "regresso à competição",
+   "regresso ao treino",
+   "recidiva",
+   "lesão muscular"
+  ],
+  "abstract_excerpt": "Athletes who sustained an acute hamstring injury, with MRI investigation within 7 days of injury, were included. MRI were graded by two musculoskeletal radiologists using the British Athletics Muscle Injury Classification. [...] RESULTS: There were 65 hamstring injuries in 44 athletes (24±4.4 years; 28 male, 16 female). TRFT differed among grades (p<0.001). Grade 3 injuries and 'c' injuries took significantly longer and grade 0 injuries took less TRFT. There were 12 re-injuries; the injury recurrence rate was significantly higher in intratendinous (c) injuries (p<0.001). There was no difference in re-injury rate between number grades 1-3, hamstring muscle affected, location (proximal vs central vs distal), age or sex."
+ },
+ {
+  "id": "reurink2015-hamstring-mri-rtp",
+  "topic": "Hamstring injury: prognostic value of MRI for return to play (systematic review)",
+  "authors": "Reurink G, et al.",
+  "title": "Magnetic resonance imaging in acute hamstring injury: can we provide a return to play prognosis?",
+  "journal": "Sports Medicine",
+  "year": 2015,
+  "doi": "10.1007/s40279-014-0243-1",
+  "pmid": "25119158",
+  "url": "https://doi.org/10.1007/s40279-014-0243-1",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "Of 12 included studies, one had a low and 11 a high risk of bias.",
+   "Moderate evidence: injuries without hyperintensity on fluid-sensitive sequences are associated with shorter time to return to play (RTP); injuries involving the proximal free tendon with longer RTP.",
+   "Limited evidence: central tendon disruption, injury not affecting the musculotendinous junction and total rupture are associated with longer RTP.",
+   "There is currently no strong evidence for any MRI finding that gives a prognosis on time to RTP after acute hamstring injury, owing to considerable risks of bias in the studies."
+  ],
+  "key_points_pt": [
+   "Dos 12 estudos incluídos, um tinha baixo risco de viés e 11 alto risco de viés.",
+   "Evidência moderada: lesões sem hiperintensidade nas sequências sensíveis a líquido associam-se a menor tempo até ao regresso à competição (RTP); lesões envolvendo o tendão livre proximal associam-se a RTP mais longo.",
+   "Evidência limitada: rotura do tendão central, lesão que não envolve a junção musculotendinosa e rotura total associam-se a RTP mais longo.",
+   "Atualmente não há evidência forte de que algum achado de RM permita prever o tempo até ao RTP após lesão aguda dos isquiotibiais, devido ao considerável risco de viés dos estudos."
+  ],
+  "modalities": [
+   "MR"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "hamstring injury",
+   "MRI",
+   "return to play",
+   "prognosis",
+   "fluid-sensitive sequence hyperintensity",
+   "proximal free tendon",
+   "central tendon disruption",
+   "lesão dos isquiotibiais",
+   "ressonância magnética",
+   "regresso à competição",
+   "prognóstico",
+   "hiperintensidade em sequências sensíveis a líquido",
+   "tendão livre proximal",
+   "rotura do tendão central"
+  ],
+  "abstract_excerpt": "RESULTS: Of the 12 studies included, one had a low risk of bias and 11 a high risk of bias. There is moderate evidence that injuries without hyperintensity on fluid-sensitive sequences are associated with a shorter time to RTP and that injuries involving the proximal free tendon are associated with a longer time to RTP. Limited evidence was found for an association of central tendon disruption, injury not affecting the musculotendinous junction and a total rupture with a longer time to RTP. The other MRI findings studied showed either no association or there was conflicting evidence. CONCLUSION: There is currently no strong evidence for any MRI finding that gives a prognosis on the time to RTP after an acute hamstring injury, owing to considerable risks of bias in the studies on this topic."
+ },
+ {
+  "id": "ekstrand2016-hamstring-mri-uefa",
+  "topic": "Hamstring injury: MRI grade, oedema size and return to play in elite football (prospective cohort)",
+  "authors": "Ekstrand J, et al.",
+  "title": "MRI findings and return to play in football: a prospective analysis of 255 hamstring injuries in the UEFA Elite Club Injury Study.",
+  "journal": "British Journal of Sports Medicine",
+  "year": 2016,
+  "doi": "10.1136/bjsports-2016-095974",
+  "pmid": "27084882",
+  "url": "https://doi.org/10.1136/bjsports-2016-095974",
+  "evidence_type": "other",
+  "key_points": [
+   "Prospective analysis of 255 grade 1 and 2 hamstring injuries in male professional footballers (46 elite European teams, 2007-2014), MRI evaluated by two independent radiologists.",
+   "RTP was longer for grade 2 than grade 1 injuries (24±13 vs 18±15 days; mean difference 6 days, 95% CI 2 to 9, p=0.004).",
+   "84% of injuries affected the biceps femoris; lay-off time did not differ between the three muscles (p=0.83), but recurrence was higher for biceps femoris than semimembranosus and semitendinosus combined (18% vs 2%, p=0.009).",
+   "Oedema size weakly correlated with time to RTP (r2=6-12%); no correlation was found between injury location or injury type and time to RTP."
+  ],
+  "key_points_pt": [
+   "Análise prospetiva de 255 lesões dos isquiotibiais de grau 1 e 2 em futebolistas profissionais masculinos (46 equipas europeias de elite, 2007-2014), com RM avaliada por dois radiologistas independentes.",
+   "O tempo até ao regresso à competição foi maior nas lesões de grau 2 do que nas de grau 1 (24±13 vs 18±15 dias; diferença média de 6 dias, IC 95% 2 a 9, p=0,004).",
+   "84% das lesões envolveram o bicípite femoral; o tempo de paragem não diferiu entre os três músculos (p=0,83), mas a recidiva foi superior no bicípite femoral do que no semimembranoso e semitendinoso em conjunto (18% vs 2%, p=0,009).",
+   "A dimensão do edema correlacionou-se fracamente com o tempo até ao regresso (r2=6-12%); não se encontrou correlação entre a localização ou o tipo de lesão e o tempo até ao regresso."
+  ],
+  "modalities": [
+   "MR"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "hamstring injury",
+   "biceps femoris",
+   "MRI grade",
+   "oedema",
+   "return to play",
+   "football",
+   "re-injury",
+   "musculotendinous junction",
+   "lesão dos isquiotibiais",
+   "bicípite femoral",
+   "edema muscular",
+   "grau de lesão em RM",
+   "regresso à competição",
+   "futebol",
+   "recidiva",
+   "junção musculotendinosa"
+  ],
+  "abstract_excerpt": "METHODS: 46 elite European football teams were followed prospectively for hamstring injuries between 2007 and 2014. Club medical staff recorded individual player exposure and time-loss after hamstring injury. MRI parameters were evaluated by two independent radiologists and correlated with the RTP data. RESULTS: A total of 255 grade 1 and 2 injuries were evaluated in this study. RTP was longer for grade 2 than grade 1 injuries (24±13, 95% CI 21 to 26 days vs 18±15, 95% CI 16 to 20 days; mean difference: 6, 95% CI 2 to 9 days, p=0.004, d=0.39). 84% of injuries affected the biceps femoris (BF) muscle, whereas 12% and 4% affected the semimembranosus (SM) and semitendinosus (ST), respectively. No difference in lay-off time was found for injuries to the three different muscles (BF 20±15 days, SM 18±11 days, ST 23±14 days; p=0.83). The recurrence rate was higher for BF injuries than for SM and ST injuries combined (18% vs 2%, p=0.009). The size of the oedema weakly correlated with time to RTP (r(2)=6-12%). No correlation was found between location of injury and time to RTP. The majority of the intramuscular injuries affected the MT junction (56% in grade 1 and 2 injuries), but no difference in lay-off time was found between the different types of injuries."
+ },
+ {
+  "id": "petersen2014-hamstring-us",
+  "topic": "Hamstring injury: diagnostic and prognostic value of ultrasound in soccer",
+  "authors": "Petersen J, et al.",
+  "title": "The diagnostic and prognostic value of ultrasonography in soccer players with acute hamstring injuries.",
+  "journal": "The American Journal of Sports Medicine",
+  "year": 2014,
+  "doi": "10.1177/0363546513512779",
+  "pmid": "24335495",
+  "url": "https://doi.org/10.1177/0363546513512779",
+  "evidence_type": "other",
+  "key_points": [
+   "Case series (level of evidence 4) of 51 soccer players with acute hamstring injury examined with ultrasound 1 to 10 days after injury (mean 5.2 ± 3.0 days); sonographic findings were present in 31 of 51 cases (61%).",
+   "Two thirds of injuries involved the biceps femoris and one third the semitendinosus; no total ruptures were documented.",
+   "Mean absence was 25.4 ± 15.7 days, with no significant difference between players with and without sonographic abnormalities (P = .41); length of the injured area did not correlate with severity (r = 0.19, P = .29).",
+   "Authors conclude hamstring injury prognosis should not be guided by sonographic findings alone."
+  ],
+  "key_points_pt": [
+   "Série de casos (nível de evidência 4) de 51 futebolistas com lesão aguda dos isquiotibiais avaliados por ecografia 1 a 10 dias após a lesão (média 5,2 ± 3,0 dias); houve achados ecográficos em 31 de 51 casos (61%).",
+   "Dois terços das lesões envolveram o bicípite femoral e um terço o semitendinoso; não foram documentadas roturas totais.",
+   "A ausência média foi de 25,4 ± 15,7 dias, sem diferença significativa entre jogadores com e sem alterações ecográficas (P = 0,41); o comprimento da área lesada não se correlacionou com a gravidade (r = 0,19, P = 0,29).",
+   "Os autores concluem que o prognóstico das lesões dos isquiotibiais não deve basear-se apenas nos achados ecográficos."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "hamstring injury",
+   "ultrasound",
+   "biceps femoris",
+   "semitendinosus",
+   "return to play",
+   "prognosis",
+   "soccer",
+   "lesão dos isquiotibiais",
+   "ecografia",
+   "bicípite femoral",
+   "semitendinoso",
+   "regresso à competição",
+   "prognóstico",
+   "futebol",
+   "lesão muscular"
+  ],
+  "abstract_excerpt": "Of 67 players with acute hamstring injuries, 51 underwent ultrasonographic examination of the injured thigh and were included in this study. RESULTS: Ultrasonographic examinations were performed 1 to 10 days after injury (mean, 5.2 ± 3.0 days), and sonographic findings were present in 31 of 51 cases (61%). Two thirds of the injuries were to the biceps femoris muscle and one third to the semitendinosus muscle. No total ruptures were documented. The 51 acute hamstring injuries resulted in absence from soccer of a mean 25.4 ± 15.7 days per injury, with no significant difference between players with and without sonographically verified abnormalities (P = .41). No correlation existed between the length of the injured area and injury severity (r = 0.19, P = .29). CONCLUSION: The biceps femoris is the most commonly injured hamstring muscle detected by ultrasound, and more than half of the injuries are intramuscular. Because neither the presence of sonographic findings nor the size of the findings was correlated with time to return to play in injured soccer players, the prognosis of hamstring injuries should not be guided by these findings alone."
+ },
+ {
+  "id": "aminlari2021-achilles-rupture-us",
+  "topic": "Achilles tendon rupture: ultrasound diagnostic accuracy vs surgery (meta-analysis)",
+  "authors": "Aminlari A, et al.",
+  "title": "Diagnosing Achilles Tendon Rupture with Ultrasound in Patients Treated Surgically: A Systematic Review and Meta-Analysis.",
+  "journal": "The Journal of Emergency Medicine",
+  "year": 2021,
+  "doi": "10.1016/j.jemermed.2021.09.008",
+  "pmid": "34801318",
+  "url": "https://doi.org/10.1016/j.jemermed.2021.09.008",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "15 studies with 808 patients, using surgery as the reference standard.",
+   "For complete Achilles tendon rupture, ultrasound sensitivity was 94.8% (95% CI 91.3-97.2%) and specificity 98.7% (95% CI 97.0-99.6%).",
+   "Positive likelihood ratio 74.0 (95% CI 31.0-176.8); negative likelihood ratio 0.05 (95% CI 0.03-0.09).",
+   "Authors suggest a negative ultrasound result may have the potential to rule out a complete, as well as a partial, rupture (the pooled estimates reported are for complete ruptures). Background: up to 20% of ruptures are misdiagnosed, most commonly as ankle sprain."
+  ],
+  "key_points_pt": [
+   "15 estudos com 808 doentes, com a cirurgia como padrão de referência.",
+   "Na rotura completa do tendão de Aquiles, a ecografia teve sensibilidade de 94,8% (IC 95% 91,3-97,2%) e especificidade de 98,7% (IC 95% 97,0-99,6%).",
+   "Razão de verosimilhança positiva 74,0 (IC 95% 31,0-176,8); razão de verosimilhança negativa 0,05 (IC 95% 0,03-0,09).",
+   "Os autores sugerem que uma ecografia negativa poderá permitir excluir rotura completa e também parcial (as estimativas agregadas apresentadas referem-se a roturas completas). Contexto: até 20% das roturas são mal diagnosticadas, mais frequentemente como entorse do tornozelo."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "ankle-foot"
+  ],
+  "keywords": [
+   "Achilles tendon rupture",
+   "complete rupture",
+   "partial rupture",
+   "ultrasound",
+   "sensitivity",
+   "specificity",
+   "likelihood ratio",
+   "rotura do tendão de Aquiles",
+   "rotura completa",
+   "rotura parcial",
+   "ecografia",
+   "sensibilidade",
+   "especificidade",
+   "razão de verosimilhança"
+  ],
+  "abstract_excerpt": "The diagnosis can often be missed or delayed, with up to 20% misdiagnosed, most commonly as an ankle sprain. [...] RESULTS: A total of 15 studies with 808 patients were included in the primary analysis. The sensitivity of ultrasound for detecting complete Achilles tendon ruptures was 94.8% (95% confidence interval [CI] 91.3-97.2%), specificity was 98.7% (95% CI 97.0-99.6%), positive likelihood ratio was 74.0 (95% CI 31.0-176.8), and negative likelihood ratio was 0.05 (95% CI 0.03-0.09), in patients who underwent surgical treatment. CONCLUSIONS: The results from our study suggested that a negative ultrasound result may have the potential to rule out a complete, as well as a partial, Achilles tendon rupture."
+ },
+ {
+  "id": "cushman2025-tendon-us-prediction",
+  "topic": "Achilles and patellar tendinopathy: predictive value of ultrasound abnormalities in asymptomatic athletes (meta-analysis)",
+  "authors": "Cushman DM, et al.",
+  "title": "Sonographic Assessment of Asymptomatic Patellar and Achilles Tendons to Predict Future Pain: A Systematic Review and Meta-analysis.",
+  "journal": "Clinical Journal of Sport Medicine",
+  "year": 2025,
+  "doi": "10.1097/JSM.0000000000001236",
+  "pmid": "38864880",
+  "url": "https://doi.org/10.1097/JSM.0000000000001236",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "16 studies (prospective studies were required for inclusion) including 810 Achilles and 1156 patellar tendons in athletes without tendon pain at baseline.",
+   "Risk ratio for pain development with abnormal ultrasound: patellar tendon 6.07 (95% CI 2.88-12.81); Achilles tendon 3.96 (95% CI 2.21-7.09).",
+   "Positive and negative predictive values of an abnormal ultrasound finding: 27.2% and 92.0% (Achilles); 27.2% and 93.5% (patellar).",
+   "Ultrasound of asymptomatic Achilles or patellar tendons has a low positive but high negative predictive value for future pain."
+  ],
+  "key_points_pt": [
+   "16 estudos (a inclusão exigia desenho prospetivo) com 810 tendões de Aquiles e 1156 tendões rotulianos em atletas sem dor tendinosa no início.",
+   "Risco relativo de desenvolver dor com ecografia alterada: tendão rotuliano 6,07 (IC 95% 2,88-12,81); tendão de Aquiles 3,96 (IC 95% 2,21-7,09).",
+   "Valores preditivos positivo e negativo de um achado ecográfico alterado: 27,2% e 92,0% (Aquiles); 27,2% e 93,5% (rotuliano).",
+   "A ecografia de tendões de Aquiles ou rotulianos assintomáticos tem baixo valor preditivo positivo mas elevado valor preditivo negativo para dor futura."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "knee",
+   "ankle-foot"
+  ],
+  "keywords": [
+   "Achilles tendinopathy",
+   "patellar tendinopathy",
+   "asymptomatic tendon abnormality",
+   "ultrasound screening",
+   "predictive value",
+   "tendon thickening",
+   "hypoechoic tendon",
+   "tendinopatia de Aquiles",
+   "tendinopatia rotuliana",
+   "alteração tendinosa assintomática",
+   "rastreio ecográfico",
+   "valor preditivo",
+   "espessamento tendinoso",
+   "tendão hipoecogénico",
+   "ecografia"
+  ],
+  "abstract_excerpt": "Inclusion criteria were as follows: prospective studies of Achilles and patellar tendon pain development with baseline US measurements, follow-up clinical measurements, and English-language studies published after 2000. [...] PATIENTS: Athletes without Achilles or patellar tendon pain at baseline. [...] RESULTS: This review of 16 studies included 810 Achilles and 1156 patellar tendons from a variety of sports and demonstrated that the RR for pain development from abnormal Patellar and Achilles tendons was 6.07 [95% confidence interval (CI), 2.88-12.81; P < 0.001] and 3.96 [95% CI, 2.21-7.09; P < 0.001], respectively. The positive and negative predictive values of an abnormal US finding were 27.2% and 92.0% for the Achilles tendon and 27.2% and 93.5% for the patellar tendon, respectively. CONCLUSIONS: This systematic review and meta-analysis identified that the use of asymptomatic US scanning of the Achilles or patellar tendon has a low positive predictive value but a high negative predictive value for the future development of pain."
+ },
+ {
+  "id": "warden2007-patellar-tendinopathy-us-mri",
+  "topic": "Patellar tendinopathy: comparative accuracy of ultrasound (grey-scale and colour Doppler) and MRI",
+  "authors": "Warden SJ, et al.",
+  "title": "Comparative accuracy of magnetic resonance imaging and ultrasonography in confirming clinically diagnosed patellar tendinopathy.",
+  "journal": "The American Journal of Sports Medicine",
+  "year": 2007,
+  "doi": "10.1177/0363546506294858",
+  "pmid": "17261569",
+  "url": "https://doi.org/10.1177/0363546506294858",
+  "evidence_type": "prospective-diagnostic-accuracy",
+  "key_points": [
+   "Prospective comparison of 30 participants with clinically diagnosed patellar tendinopathy and 33 activity-matched asymptomatic participants.",
+   "Accuracy: MRI 70%, grey-scale US 83%, colour Doppler US 83% (P = .04, MRI vs grey-scale US).",
+   "Grey-scale US sensitivity was greater than MRI (87% vs 57%; P = .01), with equivalent specificity (82% vs 82%).",
+   "Colour Doppler US: sensitivity 70% and specificity 94%, not significantly different from grey-scale US (P = .06 and P = .10); positive likelihood ratio 11.6 (vs 4.8 grey-scale US, 3.1 MRI); a positive colour Doppler result indicated a strong likelihood the individual was symptomatic."
+  ],
+  "key_points_pt": [
+   "Comparação prospetiva de 30 participantes com tendinopatia rotuliana diagnosticada clinicamente e 33 participantes assintomáticos com nível de atividade semelhante.",
+   "Exatidão: RM 70%, ecografia em escala de cinzentos 83%, ecografia com Doppler a cores 83% (P = 0,04, RM vs ecografia em escala de cinzentos).",
+   "A sensibilidade da ecografia em escala de cinzentos foi superior à da RM (87% vs 57%; P = 0,01), com especificidade equivalente (82% vs 82%).",
+   "Doppler a cores: sensibilidade 70% e especificidade 94%, sem diferença significativa face à escala de cinzentos (P = 0,06 e P = 0,10); razão de verosimilhança positiva 11,6 (vs 4,8 na escala de cinzentos e 3,1 na RM); um Doppler a cores positivo indicou forte probabilidade de o indivíduo ser sintomático."
+  ],
+  "modalities": [
+   "US",
+   "MR"
+  ],
+  "regions": [
+   "knee"
+  ],
+  "keywords": [
+   "patellar tendinopathy",
+   "jumper's knee",
+   "grey-scale ultrasound",
+   "colour Doppler",
+   "neovascularity",
+   "hypoechoic area",
+   "MRI",
+   "sensitivity",
+   "specificity",
+   "tendinopatia rotuliana",
+   "joelho do saltador",
+   "ecografia em escala de cinzentos",
+   "Doppler a cores",
+   "neovascularização",
+   "área hipoecogénica",
+   "sensibilidade",
+   "especificidade"
+  ],
+  "abstract_excerpt": "RESULTS: The accuracy of MRI, GS-US, and CD-US was 70%, 83%, and 83%, respectively (P = .04; MRI vs GS-US). The likelihood of positive MRI, GS-US, and CD-US was 3.1, 4.8, and 11.6, respectively. The MRI and GS-US had equivalent specificity (82% vs 82%; P = 1.00); however, the sensitivity of GS-US was greater than MRI (87% vs 57%; P = .01). Sensitivity (70% vs 87%; P = .06) and specificity (94% vs 82%; P = .10) did not differ between CD-US and GS-US. CONCLUSIONS: Ultrasonography was more accurate than MRI in confirming clinically diagnosed patellar tendinopathy. GS-US and CD-US may represent the best combination for confirming clinically diagnosed patellar tendinopathy because GS-US had the greatest sensitivity, while a positive CD-US test result indicated a strong likelihood an individual was symptomatic."
+ },
+ {
+  "id": "mcmillan2009-plantar-heel-imaging",
+  "topic": "Plantar fasciitis / chronic plantar heel pain: plantar fascia thickness on ultrasound (meta-analysis)",
+  "authors": "McMillan AM, et al.",
+  "title": "Diagnostic imaging for chronic plantar heel pain: a systematic review and meta-analysis.",
+  "journal": "Journal of Foot and Ankle Research",
+  "year": 2009,
+  "doi": "10.1186/1757-1146-2-32",
+  "pmid": "19912628",
+  "url": "https://doi.org/10.1186/1757-1146-2-32",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "23 studies identified; plantar fascia thickness on ultrasound was the most widely reported imaging feature, and in chronic plantar heel pain the fascia was 2.16 mm thicker than in controls (95% CI 1.60 to 2.71 mm, P < 0.001).",
+   "Patients were more likely to have plantar fascia thickness greater than 4.0 mm (OR 105.11, 95% CI 3.09 to 3577.28, P = 0.01).",
+   "Authors concluded that people with chronic plantar heel pain are likely to have a thickened plantar fascia with associated fluid collection, and that thickness values >4.0 mm are diagnostic of plantar fasciitis.",
+   "Radiographic subcalcaneal spur was more likely than in controls (OR 8.52, 95% CI 4.08 to 17.77, P < 0.001)."
+  ],
+  "key_points_pt": [
+   "Foram identificados 23 estudos; a espessura da fáscia plantar na ecografia foi o achado imagiológico mais reportado, e na talalgia plantar crónica a fáscia era 2,16 mm mais espessa do que nos controlos (IC 95% 1,60 a 2,71 mm, P < 0,001).",
+   "Os doentes tinham maior probabilidade de espessura da fáscia plantar superior a 4,0 mm (OR 105,11, IC 95% 3,09 a 3577,28, P = 0,01).",
+   "Os autores concluíram que os doentes com talalgia plantar crónica tendem a ter fáscia plantar espessada com coleção líquida associada, e que valores de espessura >4,0 mm são diagnósticos de fasciite plantar.",
+   "O esporão subcalcaneano na radiografia foi mais frequente do que nos controlos (OR 8,52, IC 95% 4,08 a 17,77, P < 0,001)."
+  ],
+  "modalities": [
+   "US",
+   "XR"
+  ],
+  "regions": [
+   "ankle-foot"
+  ],
+  "keywords": [
+   "plantar fasciitis",
+   "plantar fascia thickness",
+   "4.0 mm",
+   "chronic plantar heel pain",
+   "perifascial fluid",
+   "calcaneal spur",
+   "ultrasound",
+   "fasciite plantar",
+   "espessura da fáscia plantar",
+   "talalgia plantar",
+   "coleção líquida perifascial",
+   "esporão calcaneano",
+   "ecografia"
+  ],
+  "abstract_excerpt": "RESULTS: Plantar fascia thickness as measured by ultrasonography was the most widely reported imaging feature. Meta-analysis revealed that the plantar fascia of CPHP participants was 2.16 mm thicker than control participants (95% CI = 1.60 to 2.71 mm, P < 0.001) and that CPHP participants were more likely to have plantar fascia thickness values greater than 4.0 mm (OR = 105.11, 95% CI = 3.09 to 3577.28, P = 0.01). CPHP participants were also more likely to show radiographic evidence of subcalcaneal spur than control participants (OR = 8.52, 95% CI = 4.08 to 17.77, P < 0.001). CONCLUSION: This systematic review has identified 23 studies investigating the diagnostic imaging appearance of the plantar fascia and inferior calcaneum in people with CPHP. Analysis of these studies found that people with CPHP are likely to have a thickened plantar fascia with associated fluid collection, and that thickness values >4.0 mm are diagnostic of plantar fasciitis."
+ },
+ {
+  "id": "lee2020-atfl-us",
+  "topic": "Lateral ankle sprain: ultrasound accuracy for anterior talofibular ligament (ATFL) tear vs operative findings (meta-analysis)",
+  "authors": "Lee SH, et al.",
+  "title": "Ankle ultrasound for detecting anterior talofibular ligament tear using operative finding as reference standard: a systematic review and meta-analysis.",
+  "journal": "European Journal of Trauma and Emergency Surgery",
+  "year": 2020,
+  "doi": "10.1007/s00068-019-01169-3",
+  "pmid": "31187159",
+  "url": "https://doi.org/10.1007/s00068-019-01169-3",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "10 studies with operative findings as reference standard.",
+   "Pooled diagnostic accuracy of ankle ultrasound for ATFL tear was 0.95 (95% CI 0.88-0.98); acute tears 0.92 (95% CI 0.85-0.95); chronic tears 0.96 (95% CI 0.84-0.99).",
+   "Pooled accuracy for complete and partial ATFL tears was 0.82 (95% CI 0.72-0.89) and 0.88 (95% CI 0.70-0.96), respectively.",
+   "A high-frequency probe and sufficient examiner experience are described as mandatory for correct diagnosis."
+  ],
+  "key_points_pt": [
+   "10 estudos com os achados cirúrgicos como padrão de referência.",
+   "A exatidão diagnóstica agregada da ecografia para rotura do ligamento talofibular anterior (LTFA) foi 0,95 (IC 95% 0,88-0,98); roturas agudas 0,92 (IC 95% 0,85-0,95); roturas crónicas 0,96 (IC 95% 0,84-0,99).",
+   "A exatidão agregada para roturas completas e parciais do LTFA foi 0,82 (IC 95% 0,72-0,89) e 0,88 (IC 95% 0,70-0,96), respetivamente.",
+   "Uma sonda de alta frequência e experiência suficiente do examinador são descritas como indispensáveis para o diagnóstico correto."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "ankle-foot"
+  ],
+  "keywords": [
+   "anterior talofibular ligament",
+   "ATFL tear",
+   "lateral ankle sprain",
+   "ankle instability",
+   "ultrasound",
+   "diagnostic accuracy",
+   "ligamento talofibular anterior",
+   "LTFA",
+   "ligamento peroneoastragalino anterior",
+   "rotura do LTFA",
+   "entorse do tornozelo",
+   "instabilidade do tornozelo",
+   "ecografia",
+   "exatidão diagnóstica"
+  ],
+  "abstract_excerpt": "RESULTS: Ten studies were included. The pooled proportion of the diagnostic accuracy of ankle ultrasound for ATFL was 0.95 (95% confidence interval [CI] 0.88-0.98). In subgroup analysis, the pooled proportion of the diagnostic accuracy of ankle ultrasound for acute ATFL tear was 0.92 (95% CI 0.85-0.95). The pooled proportion of the diagnostic accuracy of ankle ultrasound for chronic ATFL tear was 0.96 (95% CI 0.84-0.99). The pooled proportions of the diagnostic accuracy for complete and partial ATFL tear were 0.82 (95% CI 0.72-0.89) and 0.88 (95% CI 0.70-0.96), respectively. [...] For correct diagnosis of ATFL tear, a high-frequency ultrasound probe and sufficient experience of the examiner are mandatory."
+ },
+ {
+  "id": "ward2001-baker-cyst-us",
+  "topic": "Baker's (popliteal) cyst: sonographic diagnostic criterion vs MRI",
+  "authors": "Ward EE, et al.",
+  "title": "Sonographic detection of Baker's cysts: comparison with MR imaging.",
+  "journal": "American Journal of Roentgenology",
+  "year": 2001,
+  "doi": "10.2214/ajr.176.2.1760373",
+  "pmid": "11159077",
+  "url": "https://doi.org/10.2214/ajr.176.2.1760373",
+  "evidence_type": "retrospective-diagnostic-accuracy",
+  "key_points": [
+   "36 consecutive knees (36 patients) evaluated with both MRI (gold standard) and ultrasound; MRI showed 21 Baker's cysts, one myxoid liposarcoma, one meniscal cyst and 13 normal examinations.",
+   "Hypoechoic or anechoic fluid between the semimembranosus and medial gastrocnemius tendons gave 100% sensitivity, specificity, PPV, NPV and accuracy for Baker's cyst on retrospective image review.",
+   "In the original sonography reports, all 21 Baker's cysts were correctly diagnosed, but the meniscal cyst and the myxoid liposarcoma were misdiagnosed as Baker's cysts.",
+   "No other sonographic characteristics were significant."
+  ],
+  "key_points_pt": [
+   "36 joelhos consecutivos (36 doentes) avaliados por RM (padrão de referência) e ecografia; a RM mostrou 21 quistos de Baker, um lipossarcoma mixoide, um quisto meniscal e 13 exames normais.",
+   "Líquido hipoecogénico ou anecogénico entre os tendões do semimembranoso e do gastrocnémio medial teve 100% de sensibilidade, especificidade, VPP, VPN e exatidão para quisto de Baker na revisão retrospetiva das imagens.",
+   "Nos relatórios ecográficos originais, os 21 quistos de Baker foram corretamente diagnosticados, mas o quisto meniscal e o lipossarcoma mixoide foram erradamente diagnosticados como quistos de Baker.",
+   "Nenhuma outra característica ecográfica foi significativa."
+  ],
+  "modalities": [
+   "US",
+   "MR"
+  ],
+  "regions": [
+   "knee"
+  ],
+  "keywords": [
+   "Baker's cyst",
+   "popliteal cyst",
+   "semimembranosus-gastrocnemius bursa",
+   "medial gastrocnemius",
+   "posterior knee mass",
+   "ultrasound",
+   "quisto de Baker",
+   "quisto poplíteo",
+   "bursa semimembranoso-gastrocnémio",
+   "gastrocnémio medial",
+   "massa posterior do joelho",
+   "ecografia"
+  ],
+  "abstract_excerpt": "MATERIALS AND METHODS: The study group consisted of 36 consecutive knees in 36 patients evaluated with both MR imaging and sonography. [...] RESULTS: Retrospective review of MR images revealed 21 Baker's cysts, one myxoid liposarcoma, one meniscal cyst, and 13 examinations with normal findings. The sonography reports revealed that the 21 Baker's cysts were correctly diagnosed, whereas the meniscal cyst and myxoid liposarcoma were misdiagnosed as Baker's cysts. Retrospective review of sonographic images showed a 100% sensitivity, specificity, positive predictive value, negative predictive value, and accuracy in the diagnosis of Baker's cyst when hypoechoic or anechoic fluid was present between the semimembranosus and medial gastrocnemius tendons. No other sonographic characteristics were significant."
+ },
+ {
+  "id": "cecava2018-knee-effusion-radiograph",
+  "topic": "Traumatic knee injury: radiographic suprapatellar effusion size and internal derangement on MRI",
+  "authors": "Cecava ND, et al.",
+  "title": "Traumatic knee injury: correlation of radiographic effusion size with the presence of internal derangement on magnetic resonance imaging.",
+  "journal": "Emergency Radiology",
+  "year": 2018,
+  "doi": "10.1007/s10140-018-1605-z",
+  "pmid": "29752650",
+  "url": "https://doi.org/10.1007/s10140-018-1605-z",
+  "evidence_type": "retrospective-diagnostic-accuracy",
+  "key_points": [
+   "Retrospective review of 198 patients aged 18-40 years with acute knee injury, correlating suprapatellar effusion diameter on lateral radiograph with internal derangement on MRI.",
+   "Radiographic effusion size correlated positively with internal derangement on MRI (logistic regression, p < 0.001).",
+   "Using >10 mm as a positive test: sensitivity 55%, specificity 96%, PPV 93%, NPV 71%, accuracy 77%.",
+   "Authors suggest that, in this population, radiographic effusion >10 mm should prompt consideration of knee MRI."
+  ],
+  "key_points_pt": [
+   "Revisão retrospetiva de 198 doentes com 18-40 anos e traumatismo agudo do joelho, correlacionando o diâmetro do derrame suprarrotuliano na radiografia de perfil com lesão interna na RM.",
+   "A dimensão do derrame na radiografia correlacionou-se positivamente com lesão interna na RM (regressão logística, p < 0,001).",
+   "Com limiar >10 mm como teste positivo: sensibilidade 55%, especificidade 96%, VPP 93%, VPN 71%, exatidão 77%.",
+   "Os autores sugerem que, nesta população, um derrame >10 mm na radiografia deve motivar a ponderação de RM do joelho."
+  ],
+  "modalities": [
+   "XR",
+   "MR"
+  ],
+  "regions": [
+   "knee"
+  ],
+  "keywords": [
+   "knee joint effusion",
+   "suprapatellar effusion",
+   "suprapatellar recess",
+   "lateral radiograph",
+   "internal derangement",
+   "acute knee injury",
+   "derrame articular do joelho",
+   "derrame suprarrotuliano",
+   "recesso suprarrotuliano",
+   "radiografia de perfil",
+   "lesão interna do joelho",
+   "traumatismo agudo do joelho"
+  ],
+  "abstract_excerpt": "RESULTS: Logistic regression showed a positive correlation between radiographic effusion size and the presence of internal derangement on magnetic resonance exams (p value < 0.001). Radiographic effusion > 10 mm was established as a positive test, yielding test sensitivity, specificity, positive predictive value, negative predictive value, and accuracy of 55, 96, 93, 71, and 77%, respectively. [...] In this patient population, knee effusion > 10 mm on lateral radiograph should prompt consideration for knee magnetic resonance examination."
+ },
+ {
+  "id": "koski1990-hip-effusion-us",
+  "topic": "Hip joint effusion/synovitis: ultrasound femoral neck-capsule distance",
+  "authors": "Koski JM, et al.",
+  "title": "Hip joint ultrasonography: correlation with intra-articular effusion and synovitis.",
+  "journal": "British Journal of Rheumatology",
+  "year": 1990,
+  "doi": "10.1093/rheumatology/29.3.189",
+  "pmid": "2192770",
+  "url": "https://doi.org/10.1093/rheumatology/29.3.189",
+  "evidence_type": "other",
+  "key_points": [
+   "Ultrasound distance between the femoral neck (collum) and the hip joint capsule was measured in 88 hips of 75 patients with chronic inflammatory joint disease and hip symptoms or signs, plus 10 hips before soft tissue surgery.",
+   "The distance was 7 mm or more in 29 of 33 hips with synovial fluid at joint puncture and in 7 of 9 hips with intra-articular effusion or synovitis at open surgery.",
+   "Both joint effusion and synovitis without effusion can increase the anechogenic bone-capsule distance.",
+   "Intra-articular corticosteroid injection significantly decreased an enlarged distance, in joints with and without synovial fluid; untreated joints showed no change."
+  ],
+  "key_points_pt": [
+   "Mediu-se por ecografia a distância entre o colo do fémur e a cápsula da articulação coxofemoral em 88 ancas de 75 doentes com doença articular inflamatória crónica e sintomas ou sinais na anca, e em 10 ancas antes de cirurgia de partes moles.",
+   "A distância foi igual ou superior a 7 mm em 29 de 33 ancas com líquido sinovial na punção articular e em 7 de 9 ancas com derrame intra-articular ou sinovite na cirurgia aberta.",
+   "Tanto o derrame articular como a sinovite sem derrame podem aumentar a distância anecogénica entre o osso e a cápsula.",
+   "A infiltração intra-articular de corticosteroide reduziu significativamente a distância aumentada, em articulações com e sem líquido sinovial; as articulações não tratadas não mostraram alteração."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "hip-pelvis"
+  ],
+  "keywords": [
+   "hip joint effusion",
+   "hip synovitis",
+   "anterior recess",
+   "femoral neck-capsule distance",
+   "7 mm",
+   "ultrasound",
+   "derrame articular da anca",
+   "derrame coxofemoral",
+   "sinovite da anca",
+   "recesso anterior",
+   "distância colo femoral-cápsula",
+   "ecografia"
+  ],
+  "abstract_excerpt": "The ultrasonographic distance between the collum of the femur and the capsule of the hip joint was measured in 88 hips of 75 patients with chronic inflammatory joint disease and with hip joint symptoms or signs. In addition, 10 other hips were measured before soft tissue operation of the hip joint. The ultrasonographic distance was 7 mm or more in 29 out of 33 hips with synovial fluid in joint puncture and in seven out of nine hips with intra-articular effusion or synovitis in open surgery. Intra-articular injection of corticosteroid resulted in a significant decrease in the enlarged ultrasonographic distance, in joints both with and without synovial fluid. Joints not treated with steroid did not show any change. It is concluded that both joint effusion and synovitis without effusion can increase the anechogenic distance between the bone and the joint capsule."
+ },
+ {
+  "id": "long2013-gtps-us",
+  "topic": "Greater trochanteric pain syndrome: sonographic findings and rarity of primary bursitis",
+  "authors": "Long SS, et al.",
+  "title": "Sonography of greater trochanteric pain syndrome and the rarity of primary bursitis.",
+  "journal": "American Journal of Roentgenology",
+  "year": 2013,
+  "doi": "10.2214/AJR.12.10038",
+  "pmid": "24147479",
+  "url": "https://doi.org/10.2214/AJR.12.10038",
+  "evidence_type": "other",
+  "key_points": [
+   "Retrospective review of musculoskeletal ultrasound in 877 patients with greater trochanteric pain syndrome over a 6-year period.",
+   "700 patients (79.8%) did not have bursitis on ultrasound; 177 (20.2%) had trochanteric bursitis.",
+   "Gluteal tendinosis was found in 438 (49.9%), gluteal tendon tears in 4 (0.5%) and a thickened iliotibial band in 250 (28.5%).",
+   "GTPS is usually caused by some combination of gluteus medius/minimus tendon and iliotibial band pathology; bursitis is present in only a minority."
+  ],
+  "key_points_pt": [
+   "Revisão retrospetiva de ecografias musculoesqueléticas em 877 doentes com síndrome dolorosa do grande trocânter ao longo de 6 anos.",
+   "700 doentes (79,8%) não tinham bursite na ecografia; 177 (20,2%) tinham bursite trocantérica.",
+   "Encontrou-se tendinose glútea em 438 (49,9%), rotura dos tendões glúteos em 4 (0,5%) e espessamento da banda iliotibial em 250 (28,5%).",
+   "A síndrome dolorosa do grande trocânter deve-se habitualmente a uma combinação de patologia dos tendões do glúteo médio/mínimo e da banda iliotibial; a bursite está presente apenas numa minoria."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "hip-pelvis"
+  ],
+  "keywords": [
+   "greater trochanteric pain syndrome",
+   "GTPS",
+   "trochanteric bursitis",
+   "gluteal tendinopathy",
+   "gluteal tendinosis",
+   "gluteus medius",
+   "gluteus minimus",
+   "iliotibial band",
+   "lateral hip pain",
+   "síndrome dolorosa do grande trocânter",
+   "bursite trocantérica",
+   "tendinopatia glútea",
+   "tendinose glútea",
+   "glúteo médio",
+   "glúteo mínimo",
+   "banda iliotibial",
+   "dor lateral da anca",
+   "ecografia"
+  ],
+  "abstract_excerpt": "RESULTS: The final study population consisted of 877 unique patients: 602 women, 275 men; average age, 54 years; and age range, 15-87 years). Of the 877 patients with greater trochanteric pain, 700 (79.8%) did not have bursitis on ultrasound. A minority of patients (177, 20.2%) had trochanteric bursitis. Of the 877 patients with greater trochanteric pain, 438 (49.9%) had gluteal tendinosis, four (0.5%) had gluteal tendon tears, and 250 (28.5%) had a thickened iliotibial band. CONCLUSION: The cause of greater trochanteric pain syndrome is usually some combination of pathology involving the gluteus medius and gluteus minimus tendons as well as the iliotibial band. Bursitis is present in only the minority of patients."
+ },
+ {
+  "id": "westacott2011-gluteal-tendon-tears",
+  "topic": "Greater trochanteric pain syndrome: MRI and ultrasound accuracy for gluteal tendon tears (systematic review)",
+  "authors": "Westacott DJ, et al.",
+  "title": "The diagnostic accuracy of magnetic resonance imaging and ultrasonography in gluteal tendon tears--a systematic review.",
+  "journal": "HIP International",
+  "year": 2011,
+  "doi": "10.5301/HIP.2011.8759",
+  "pmid": "22038311",
+  "url": "https://doi.org/10.5301/HIP.2011.8759",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "7 studies compared MRI or ultrasound with surgical findings in persistent lateral hip pain/GTPS.",
+   "MRI: sensitivity 33-100%, specificity 92-100%, PPV 71-100%, NPV 50%; false positives were common.",
+   "High MRI signal located superior to the trochanter had a stronger association with tears.",
+   "Ultrasound: sensitivity 79-100% and PPV 95-100%; may prove the investigation of choice, although it requires a skilled practitioner; the amount and quality of the literature are limited."
+  ],
+  "key_points_pt": [
+   "7 estudos compararam RM ou ecografia com os achados cirúrgicos em dor lateral persistente da anca/síndrome dolorosa do grande trocânter.",
+   "RM: sensibilidade 33-100%, especificidade 92-100%, VPP 71-100%, VPN 50%; os falsos positivos foram frequentes.",
+   "O hipersinal em RM localizado acima do trocânter associou-se mais fortemente a rotura.",
+   "Ecografia: sensibilidade 79-100% e VPP 95-100%; poderá vir a ser o exame de eleição, embora exija um operador experiente; a quantidade e a qualidade da literatura são limitadas."
+  ],
+  "modalities": [
+   "MR",
+   "US"
+  ],
+  "regions": [
+   "hip-pelvis"
+  ],
+  "keywords": [
+   "gluteal tendon tear",
+   "gluteus medius tear",
+   "gluteus minimus tear",
+   "greater trochanteric pain syndrome",
+   "lateral hip pain",
+   "MRI",
+   "ultrasound",
+   "rotura dos tendões glúteos",
+   "rotura do glúteo médio",
+   "rotura do glúteo mínimo",
+   "síndrome dolorosa do grande trocânter",
+   "dor lateral da anca",
+   "ecografia",
+   "ressonância magnética"
+  ],
+  "abstract_excerpt": "7 studies met the inclusion criteria, comparing either imaging modality with a reference standard of surgical findings. [...] MRI had sensitivity of 33-100%, specificity of 92-100%, positive predictive value of 71-100% and negative predictive value of 50%. False-positives were common. High signal located superior to the trochanter had a stronger association with tears. Ultrasonography had a sensitivity of 79-100% and positive predictive value of 95-100%. The amount and quality of literature on the subject is limited and further well-designed studies are required to establish the optimum diagnostic strategy in this condition. Ultrasonography may prove to be the investigation of choice, despite requiring a skilled practitioner."
+ },
+ {
+  "id": "fredericson1995-tibial-stress-mri",
+  "topic": "Bone stress injury: original Fredericson MRI grading of tibial stress reaction in runners",
+  "authors": "Fredericson M, et al.",
+  "title": "Tibial stress reaction in runners. Correlation of clinical symptoms and scintigraphy with a new magnetic resonance imaging grading system.",
+  "journal": "The American Journal of Sports Medicine",
+  "year": 1995,
+  "doi": "10.1177/036354659502300418",
+  "pmid": "7573660",
+  "url": "https://doi.org/10.1177/036354659502300418",
+  "evidence_type": "classification-system",
+  "key_points": [
+   "MRI suggests a progression of tibial stress injury: periosteal edema, then progressive marrow involvement, and ultimately frank cortical stress fracture.",
+   "In 14 runners (18 symptomatic legs), MRI findings correlated with an established technetium bone scan grading system in 14 of 18 legs and more precisely defined anatomic location and extent of injury.",
+   "Pain with daily ambulation, localized tibial tenderness and pain with direct or indirect percussion correlated with more severe tibial stress injuries.",
+   "When clinically warranted, authors recommend MRI over bone scan for grading tibial stress lesions in runners, citing better correlation of bone involvement with symptoms and no ionizing radiation."
+  ],
+  "key_points_pt": [
+   "A RM sugere uma progressão da lesão de stress da tíbia: edema periosteal, depois envolvimento medular progressivo e, por fim, fratura de stress cortical franca.",
+   "Em 14 corredores (18 membros sintomáticos), os achados de RM correlacionaram-se com uma graduação cintigráfica com tecnécio estabelecida em 14 de 18 membros e definiram com mais precisão a localização anatómica e a extensão da lesão.",
+   "Dor na marcha diária, dor localizada à palpação da tíbia e dor à percussão direta ou indireta correlacionaram-se com lesões de stress tibiais mais graves.",
+   "Quando clinicamente justificado, os autores recomendam a RM em vez da cintigrafia para graduar as lesões de stress tibiais em corredores, pela melhor correlação do envolvimento ósseo com os sintomas e pela ausência de radiação ionizante."
+  ],
+  "modalities": [
+   "MR"
+  ],
+  "regions": [
+   "long-bones"
+  ],
+  "keywords": [
+   "tibial stress reaction",
+   "bone stress injury",
+   "stress fracture",
+   "medial tibial stress syndrome",
+   "shin splints",
+   "periosteal edema",
+   "bone marrow edema",
+   "Fredericson grade",
+   "reação de stress tibial",
+   "lesão óssea de stress",
+   "fratura de stress",
+   "fratura de fadiga",
+   "síndrome de stress tibial medial",
+   "edema periosteal",
+   "edema da medula óssea",
+   "grau de Fredericson"
+  ],
+  "abstract_excerpt": "Our work using magnetic resonance imaging suggests that a progression of injury can be identified, starting with periosteal edema, then progressive marrow involvement, and ultimately frank cortical stress fracture. Fourteen runners, with a total of 18 symptomatic legs, were evaluated and, within 10 days, referred for radiographs, a technetium bone scan, and a magnetic resonance imaging scan. In 14 of the 18 symptomatic legs, magnetic resonance imaging findings correlated with an established technetium bone scan grading system and more precisely defined the anatomic location and extent of injury. We identified clinical symptoms, such as pain with daily ambulation and physical examination findings, including localized tibial tenderness and pain with direct or indirect percussion, that correlated with more severe tibial stress injuries. When clinically warranted, we recommend magnetic resonance imaging over bone scan for grading of tibial stress lesions in runners. Magnetic resonance imaging is more accurate in correlating the degree of bone involvement with clinical symptoms, allowing for more accurate recommendations for rehabilitation and return to impact activity. Additional advantages of magnetic resonance imaging include lack of exposure to ionizing radiation and significantly less imaging time than three-phase bone scintigraphy."
+ },
+ {
+  "id": "kijowski2012-tibial-stress-mri-validation",
+  "topic": "Bone stress injury: validation of the Fredericson MRI classification for tibial stress injuries",
+  "authors": "Kijowski R, et al.",
+  "title": "Validation of MRI classification system for tibial stress injuries.",
+  "journal": "American Journal of Roentgenology",
+  "year": 2012,
+  "doi": "10.2214/AJR.11.6826",
+  "pmid": "22451555",
+  "url": "https://doi.org/10.2214/AJR.11.6826",
+  "evidence_type": "classification-system",
+  "key_points": [
+   "142 tibial stress injuries, retrospectively reviewed in consensus by two musculoskeletal radiologists, graded with the Fredericson system: grade 1 periosteal edema only; grade 2 bone marrow edema on T2-weighted images; grade 3 bone marrow edema on T1- and T2-weighted images; grade 4a multiple focal areas of intracortical signal abnormality; grade 4b linear areas of intracortical signal abnormality.",
+   "Grade 4b injuries had significantly more severe edema and longer time to return to sports, and grade 1 injuries less severe edema and shorter time, than grades 2, 3 and 4a (p < 0.002).",
+   "Grades 2, 3 and 4a did not differ significantly in periosteal/marrow edema or time to return to sports (p = 0.06-0.79).",
+   "Authors suggest combining grades 2, 3 and 4a into a single category (abbreviated Fredericson classification)."
+  ],
+  "key_points_pt": [
+   "142 lesões de stress da tíbia, revistas retrospetivamente em consenso por dois radiologistas musculoesqueléticos, graduadas pelo sistema de Fredericson: grau 1 apenas edema periosteal; grau 2 edema da medula óssea em T2; grau 3 edema da medula óssea em T1 e T2; grau 4a múltiplas áreas focais de alteração de sinal intracortical; grau 4b áreas lineares de alteração de sinal intracortical.",
+   "As lesões de grau 4b tiveram edema significativamente mais grave e maior tempo até ao regresso ao desporto, e as de grau 1 edema menos grave e menor tempo, em comparação com os graus 2, 3 e 4a (p < 0,002).",
+   "Os graus 2, 3 e 4a não diferiram significativamente no edema periosteal/medular nem no tempo até ao regresso ao desporto (p = 0,06-0,79).",
+   "Os autores sugerem agrupar os graus 2, 3 e 4a numa única categoria (classificação de Fredericson abreviada)."
+  ],
+  "modalities": [
+   "MR"
+  ],
+  "regions": [
+   "long-bones"
+  ],
+  "keywords": [
+   "tibial stress injury",
+   "bone stress injury",
+   "stress fracture",
+   "Fredericson classification",
+   "periosteal edema",
+   "bone marrow edema",
+   "intracortical signal abnormality",
+   "return to sport",
+   "lesão de stress tibial",
+   "lesão óssea de stress",
+   "fratura de stress",
+   "classificação de Fredericson",
+   "edema periosteal",
+   "edema da medula óssea",
+   "alteração de sinal intracortical",
+   "regresso ao desporto"
+  ],
+  "abstract_excerpt": "Two musculoskeletal radiologists retrospectively reviewed in consensus the MR findings of 142 tibial stress injuries to quantify the degree of periosteal and bone marrow edema and grade the injuries using the Fredericson classification system (grade 1 = periosteal edema only, grade 2 = bone marrow edema visible on T2-weighted images, grade 3 = bone marrow edema visible on T1-weighted and T2-weighted images, grade 4a = multiple focal areas of intracortical signal abnormality, and grade 4b = linear areas of intracortical signal abnormality). [...] RESULTS: Grade 4b injuries had significantly (p < 0.002) more severe and grade 1 injuries less severe periosteal and bone marrow edema than grades 2, 3, and 4a injuries. Grade 4b injuries had significantly (p < 0.002) longer time and grade 1 injuries shorter time to return to sports activity than grades 2, 3, and 4a injuries. There was no significant difference (p = 0.06-0.79) among grades 2, 3, and 4a injuries in the degree of periosteal and bone marrow edema and the time to return to sports activity. CONCLUSION: Grades 2, 3, and 4a stress injuries had similar degrees of periosteal and bone marrow edema and similar time to return to sports activity, which suggests that these three grades can be combined into a single category in an abbreviated Fredericson classification system."
+ },
+ {
+  "id": "wright2016-stress-fracture-imaging",
+  "topic": "Lower extremity stress fractures: diagnostic accuracy of radiography, MRI, CT, scintigraphy and ultrasound (systematic review)",
+  "authors": "Wright AA, et al.",
+  "title": "Diagnostic Accuracy of Various Imaging Modalities for Suspected Lower Extremity Stress Fractures: A Systematic Review With Evidence-Based Recommendations for Clinical Practice.",
+  "journal": "The American Journal of Sports Medicine",
+  "year": 2016,
+  "doi": "10.1177/0363546515574066",
+  "pmid": "25805712",
+  "url": "https://doi.org/10.1177/0363546515574066",
+  "evidence_type": "systematic-review/meta-analysis",
+  "key_points": [
+   "Conventional radiography: sensitivity 12% to 56%, specificity 88% to 96%; radiographs are likely to be false negative at initial presentation, particularly in early stages, and in some cases may not reveal an existing stress fracture at any time.",
+   "MRI: sensitivity 68% to 99%, specificity 4% to 97%; identified by the authors as the most sensitive and specific imaging test for lower extremity stress fractures.",
+   "Ultrasound: sensitivity 43% to 99%, specificity 13% to 79%; CT: sensitivity 32% to 38%, specificity 88% to 98%; nuclear scintigraphy: sensitivity 50% to 97%, specificity 33% to 98%.",
+   "When MRI is available, nuclear scintigraphy is not recommended because of its low specificity, high dose of ionizing radiation and other limitations."
+  ],
+  "key_points_pt": [
+   "Radiografia convencional: sensibilidade 12% a 56%, especificidade 88% a 96%; a radiografia tende a ser falsamente negativa na apresentação inicial, sobretudo nas fases precoces, e em alguns casos pode nunca revelar uma fratura de stress existente.",
+   "RM: sensibilidade 68% a 99%, especificidade 4% a 97%; identificada pelos autores como o exame de imagem mais sensível e específico para fraturas de stress do membro inferior.",
+   "Ecografia: sensibilidade 43% a 99%, especificidade 13% a 79%; TC: sensibilidade 32% a 38%, especificidade 88% a 98%; cintigrafia: sensibilidade 50% a 97%, especificidade 33% a 98%.",
+   "Quando a RM está disponível, a cintigrafia não é recomendada pela baixa especificidade, elevada dose de radiação ionizante e outras limitações."
+  ],
+  "modalities": [
+   "XR",
+   "MR",
+   "CT",
+   "US"
+  ],
+  "regions": [
+   "long-bones",
+   "ankle-foot",
+   "hip-pelvis"
+  ],
+  "keywords": [
+   "stress fracture",
+   "bone stress injury",
+   "radiograph sensitivity",
+   "false-negative radiograph",
+   "MRI",
+   "bone scintigraphy",
+   "lower extremity",
+   "fratura de stress",
+   "fratura de fadiga",
+   "lesão óssea de stress",
+   "sensibilidade da radiografia",
+   "radiografia falsamente negativa",
+   "ressonância magnética",
+   "cintigrafia óssea",
+   "membro inferior"
+  ],
+  "abstract_excerpt": "RESULTS: Reported sensitivity and specificity (95% CI) were as follows: For conventional radiography, sensitivity ranged from 12% (0%-29%) to 56% (39%-72%) and specificity ranged from 88% (55%-100%) to 96% (87%-100%). For nuclear scintigraphy (NS), sensitivity ranged from 50% (23%-77%) to 97% (90%-100%) and specificity from 33% (12%-53%) to 98% (93%-100%). For magnetic resonance imaging (MRI), sensitivity ranged from 68% (45%-90%) to 99% (95%-100%) and specificity from 4% (0%-11%) to 97% (88%-100%). For computed tomography, sensitivity ranged from 32% (8%-57%) to 38% (16%-59%) and specificity from 88% (55%-100%) to 98% (91%-100%). For ultrasound, sensitivity ranged from 43% (26%-61%) to 99% (95%-100%) and specificity from 13% (0%-45%) to 79% (61%-96%). CONCLUSION: MRI was identified as the most sensitive and specific imaging test for diagnosing stress fractures of the lower extremity. When MRI is available, NS is not recommended because of its low specificity, high dosage of ionizing radiation, and other limitations. Conventional radiographs are likely to result in false negatives upon initial presentation, particularly in the early stages of stress fracture, and in some cases may not reveal an existing stress fracture at any time."
+ },
+ {
+  "id": "finnoff2015-amssm-interventional-us",
+  "topic": "Interventional sports medicine: ultrasound-guided vs landmark-guided injections (AMSSM position statement)",
+  "authors": "Finnoff JT, et al.",
+  "title": "American Medical Society for Sports Medicine (AMSSM) position statement: interventional musculoskeletal ultrasound in sports medicine.",
+  "journal": "British Journal of Sports Medicine",
+  "year": 2015,
+  "doi": "10.1136/bjsports-2014-094219",
+  "pmid": "25330777",
+  "url": "https://doi.org/10.1136/bjsports-2014-094219",
+  "evidence_type": "consensus/position-paper",
+  "key_points": [
+   "Position statement based on a systematic review of the accuracy, efficacy and cost-effectiveness of ultrasound-guided injections in major, intermediate and small joints and soft tissues.",
+   "Ultrasound-guided injections are more accurate than landmark-guided injections (SORT evidence rating A; strong evidence).",
+   "Ultrasound-guided injections are more efficacious (SORT B; moderate evidence) and more cost-effective (SORT B; described as preliminary evidence) than landmark-guided injections.",
+   "Ultrasound guidance is required to perform many new procedures (SORT C)."
+  ],
+  "key_points_pt": [
+   "Tomada de posição baseada numa revisão sistemática da exatidão, eficácia e custo-efetividade das infiltrações ecoguiadas em articulações grandes, intermédias e pequenas e em partes moles.",
+   "As infiltrações ecoguiadas são mais exatas do que as guiadas por referências anatómicas (nível de evidência SORT A; evidência forte).",
+   "As infiltrações ecoguiadas são mais eficazes (SORT B; evidência moderada) e mais custo-efetivas (SORT B; descrita como evidência preliminar) do que as guiadas por referências anatómicas.",
+   "A orientação ecográfica é necessária para realizar muitos procedimentos novos (SORT C)."
+  ],
+  "modalities": [
+   "US"
+  ],
+  "regions": [
+   "any"
+  ],
+  "keywords": [
+   "ultrasound-guided injection",
+   "landmark-guided injection",
+   "injection accuracy",
+   "interventional musculoskeletal ultrasound",
+   "aspiration",
+   "hydrodissection",
+   "tenotomy",
+   "infiltração ecoguiada",
+   "infiltração guiada por referências anatómicas",
+   "exatidão da infiltração",
+   "ecografia de intervenção musculoesquelética",
+   "aspiração ecoguiada",
+   "hidrodissecção",
+   "tenotomia",
+   "fisiatria de intervenção"
+  ],
+  "abstract_excerpt": "OBJECTIVE: Critically review the literature related to the accuracy, efficacy and cost-effectiveness of ultrasound-guided injections (USGIs) in major, intermediate and small joints; and soft tissues. DESIGN: Systematic review of the literature. RESULTS: USGIs are more accurate than landmark-guided injections (LMGIs; strength of recommendation taxonomy (SORT) Evidence Rating=A). USGIs are more efficacious than LMGIs (SORT Evidence Rating=B). USGIs are more cost-effective than LMGIs (SORT Evidence Rating=B). Ultrasound guidance is required to perform many new procedures (SORT Evidence Rating=C). CONCLUSIONS: The findings of this position statement indicate there is strong evidence that USGIs are more accurate than LMGI, moderate evidence that they are more efficacious and preliminary evidence that they are more cost-effective."
+ }
+]
