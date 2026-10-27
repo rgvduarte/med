@@ -1,50 +1,83 @@
 import { useState } from 'react'
-import { CircleCheck, CircleX, LoaderCircle, PlugZap } from 'lucide-react'
+import { CircleCheckBig, CircleMinus, CircleX, LoaderCircle, PlugZap, TriangleAlert } from 'lucide-react'
 import { useSettings } from '../../store/settings'
-import { connectMcp, type McpToolInfo } from '../../lib/evidence/mcp'
-import { errorMessage } from '../../lib/util'
+import { testNotebookConnection, toNotebookCfg, type ConnectionTestResult, type McpErrorCode } from '../../lib/evidence/mcp'
+import { errorMessage, nowIso } from '../../lib/util'
 
+/** Troubleshooting entry matching each error code (same wording as the list in the card). */
+const TROUBLE_HINT: Partial<Record<McpErrorCode, string>> = {
+  'unsupported-browser': 'Safari: use o Chrome, o Edge ou o Firefox.',
+  'no-connection': '«Sem ligação»: o terminal está fechado, a porta está errada ou a permissão foi recusada.',
+  origin: '«Origem não autorizada»: o endereço da app mudou; gere um comando novo.',
+  'invalid-key': '«Chave inválida»: copie de novo o comando.',
+  'google-session': '«Sessão Google expirada»: execute nlm login.',
+  quota: '«Limite de utilização atingido»: tente mais tarde ou consulte nlm usage.',
+  'unknown-tool': 'A ponte não expõe a ferramenta: copie de novo o comando (lista de ferramentas atualizada).',
+  notebook: 'Confirme o endereço do caderno e que a conta Google tem acesso a ele.',
+  'session-expired': 'A ponte foi reiniciada: teste de novo.',
+  timeout: 'O caderno demorou a responder: tente de novo.',
+}
+
+function StepIcon({ status }: { status: string }) {
+  if (status === 'ok') return <CircleCheckBig size={15} className="rp-ok" aria-label="OK" />
+  if (status === 'warn') return <TriangleAlert size={15} className="rp-warn" aria-label="Aviso" />
+  if (status === 'skipped') return <CircleMinus size={15} className="subtle" aria-label="Ignorado" />
+  return <CircleX size={15} className="rp-err" aria-label="Erro" />
+}
+
+/** «Testar ligação»: health → connect → server_info (auth_status) → notebook_get (title + sources). */
 export function McpConnectionTest() {
-  const url = useSettings((s) => s.mcpUrl)
-  const toolName = useSettings((s) => s.mcpToolName)
-  const [state, setState] = useState<{ status: 'idle' | 'busy' | 'ok' | 'error'; message?: string; tools?: McpToolInfo[] }>({ status: 'idle' })
+  const update = useSettings((s) => s.update)
+  const [busy, setBusy] = useState(false)
+  const [res, setRes] = useState<ConnectionTestResult | null>(null)
 
-  const test = async () => {
-    setState({ status: 'busy' })
+  const run = async () => {
+    setBusy(true)
+    setRes(null)
     try {
-      const s = await connectMcp(url)
-      await s.close()
-      const has = s.tools.some((t) => t.name === toolName)
-      setState({
-        status: has ? 'ok' : 'error',
-        tools: s.tools,
-        message: has
-          ? `Ligado${s.serverName ? ` a ${s.serverName}` : ''}. Ferramenta "${toolName}" disponível.`
-          : `Ligado, mas a ferramenta "${toolName}" não existe neste servidor.`,
-      })
+      const r = await testNotebookConnection(toNotebookCfg(useSettings.getState()))
+      setRes(r)
+      update({ mcpLastCheck: { ok: r.ok, at: nowIso(), summary: r.summary } })
     } catch (e) {
-      setState({ status: 'error', message: errorMessage(e) })
+      const summary = errorMessage(e)
+      setRes({ ok: false, steps: [], summary })
+      update({ mcpLastCheck: { ok: false, at: nowIso(), summary } })
+    } finally {
+      setBusy(false)
     }
   }
 
+  const hint = res?.error ? (TROUBLE_HINT[res.error.code] ?? res.error.hint) : undefined
+
   return (
-    <div>
-      <button className="btn" onClick={test} disabled={state.status === 'busy' || !url}>
-        {state.status === 'busy' ? <LoaderCircle size={15} className="spin" /> : <PlugZap size={15} />} Testar ligação
+    <div className="rp-test">
+      <button type="button" className="btn" onClick={run} disabled={busy}>
+        {busy ? <LoaderCircle size={15} className="spin" /> : <PlugZap size={15} />} {busy ? 'A testar…' : 'Testar ligação'}
       </button>
-      {state.message && (
-        <div className={`callout ${state.status === 'ok' ? 'callout-info' : 'callout-warn'}`} style={{ marginTop: 'var(--sp-3)' }}>
-          {state.status === 'ok' ? <CircleCheck size={16} /> : <CircleX size={16} />}
-          <div>
-            <div>{state.message}</div>
-            {state.tools && state.tools.length > 0 && (
-              <div className="subtle" style={{ marginTop: 4 }}>
-                Ferramentas: <span className="mono">{state.tools.map((t) => t.name).join(', ')}</span>
-              </div>
+      <div aria-live="polite">
+        {res && (
+          <div className={`rp-test-result ${res.ok ? 'ok' : 'err'}`}>
+            <div className="rp-test-summary">
+              {res.ok ? <CircleCheckBig size={16} aria-hidden /> : <CircleX size={16} aria-hidden />}
+              <strong>{res.ok ? res.summary : `Erro — ${res.summary}`}</strong>
+            </div>
+            {res.steps.length > 0 && (
+              <ol className="rp-test-steps">
+                {res.steps.map((s) => (
+                  <li key={s.id}>
+                    <StepIcon status={s.status} />
+                    <span>
+                      <span className="rp-test-step">{s.label}</span>
+                      {s.detail && s.detail !== res.summary && <span className="subtle"> · {s.detail}</span>}
+                    </span>
+                  </li>
+                ))}
+              </ol>
             )}
+            {hint && <p className="rp-test-hint">{hint}</p>}
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   )
 }

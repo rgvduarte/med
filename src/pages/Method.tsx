@@ -1,5 +1,45 @@
-import { BookOpen, Brain, ExternalLink, Film, Library, LockKeyhole, ScanLine, ShieldAlert, Stethoscope } from 'lucide-react'
+import { BookOpen, Brain, CircleCheckBig, CircleX, ExternalLink, Film, Gauge, Library, LockKeyhole, ScanLine, ShieldAlert, Stethoscope, Target } from 'lucide-react'
 import { RESPONSIBLE } from '../data/responsible'
+import '../styles/report.css'
+
+const TOC = [
+  { id: 'm-uso', label: 'Utilização prevista' },
+  { id: 'm-pipeline', label: 'Pipeline' },
+  { id: 'm-video', label: 'Vídeo' },
+  { id: 'm-modelos', label: 'Modelos' },
+  { id: 'm-evidencia', label: 'Evidência' },
+  { id: 'm-privacidade', label: 'Privacidade' },
+  { id: 'm-limitacoes', label: 'Limitações' },
+  { id: 'm-desempenho', label: 'Desempenho conhecido' },
+]
+
+/** Peer-reviewed references on AI-assisted fracture detection and automation bias (DOI links). */
+const PERFORMANCE_REFS = [
+  {
+    text: 'Kuo RYL, Harrison C, Curran TA, et al. Artificial intelligence in fracture detection: a systematic review and meta-analysis. Radiology. 2022;304(1):50–62.',
+    doi: '10.1148/radiol.211785',
+  },
+  {
+    text: 'Guermazi A, Tannoury C, Kompel AJ, et al. Improving radiographic fracture recognition performance and efficiency using artificial intelligence. Radiology. 2022;302(3):627–636.',
+    doi: '10.1148/radiol.210937',
+  },
+  {
+    text: 'Dratsch T, Chen X, Rezazade Mehrizi M, et al. Automation bias in mammography: the impact of artificial intelligence BI-RADS suggestions on reader performance. Radiology. 2023;307(4):e222176.',
+    doi: '10.1148/radiol.222176',
+  },
+]
+
+function Toc() {
+  return (
+    <nav className="rp-section-nav rp-toc" aria-label="Nesta página">
+      {TOC.map((t) => (
+        <button key={t.id} type="button" className="btn btn-sm btn-ghost" onClick={() => document.getElementById(t.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
+          {t.label}
+        </button>
+      ))}
+    </nav>
+  )
+}
 
 export function Method() {
   return (
@@ -36,8 +76,39 @@ export function Method() {
         </div>
       </section>
 
+      <Toc />
+
       <div className="prose">
-        <h2 className="row" style={{ gap: 8 }}>
+        <h2 id="m-uso" className="row" style={{ gap: 8 }}>
+          <Target size={20} aria-hidden /> Utilização prevista e não prevista
+        </h2>
+        <div className="rp-use-grid">
+          <div className="rp-use rp-use-yes">
+            <h3>
+              <CircleCheckBig size={16} aria-hidden /> Prevista
+            </h3>
+            <ul>
+              <li>Ensino e formação em imagiologia musculoesquelética, com casos anonimizados.</li>
+              <li>Investigação sobre modelos de visão-linguagem e relatórios fundamentados em literatura.</li>
+              <li>Demonstração de um fluxo de revisão: sugestões da IA, verificação pelo médico, validação e registo de auditoria.</li>
+              <li>Exercícios de leitura em que o médico compara a sua interpretação com as sugestões da IA, depois de ler as imagens.</li>
+            </ul>
+          </div>
+          <div className="rp-use rp-use-no">
+            <h3>
+              <CircleX size={16} aria-hidden /> Não prevista
+            </h3>
+            <ul>
+              <li>Diagnóstico, triagem ou priorização de doentes reais.</li>
+              <li>Decisões terapêuticas ou de encaminhamento com base nas sugestões da IA.</li>
+              <li>Utilização sem supervisão de um médico qualificado, ou por doentes.</li>
+              <li>Carregamento de dados pessoais identificáveis (nomes, números de processo, datas de nascimento).</li>
+              <li>Substituição de um relatório oficial ou de um dispositivo médico com marcação CE.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 id="m-pipeline" className="row" style={{ gap: 8 }}>
           <ScanLine size={20} /> Pipeline de análise
         </h2>
         <ol className="steps">
@@ -70,7 +141,7 @@ export function Method() {
           </li>
         </ol>
 
-        <h2 className="row" style={{ gap: 8 }}>
+        <h2 id="m-video" className="row" style={{ gap: 8 }}>
           <Film size={20} /> Vídeo (ecografia e fluoroscopia)
         </h2>
         <p>
@@ -80,7 +151,7 @@ export function Method() {
           tendinosa) possa ser descrita. Pode sempre rever o clip original no visualizador.
         </p>
 
-        <h2 className="row" style={{ gap: 8 }}>
+        <h2 id="m-modelos" className="row" style={{ gap: 8 }}>
           <Brain size={20} /> Modelos
         </h2>
         <ul>
@@ -93,7 +164,7 @@ export function Method() {
           </li>
         </ul>
 
-        <h2 className="row" style={{ gap: 8 }}>
+        <h2 id="m-evidencia" className="row" style={{ gap: 8 }}>
           <Library size={20} /> Evidência
         </h2>
         <p>
@@ -107,7 +178,7 @@ export function Method() {
           Definições). As respostas do caderno aparecem como evidência <code>NLM-n</code>, separadas da base curada.
         </p>
 
-        <h2 className="row" style={{ gap: 8 }}>
+        <h2 id="m-privacidade" className="row" style={{ gap: 8 }}>
           <LockKeyhole size={20} /> Privacidade
         </h2>
         <ul>
@@ -117,7 +188,7 @@ export function Method() {
           <li>Não introduza nomes, números de processo ou datas de nascimento. Atenção a dados gravados nos próprios píxeis da imagem.</li>
         </ul>
 
-        <h2 className="row" style={{ gap: 8 }}>
+        <h2 id="m-limitacoes" className="row" style={{ gap: 8 }}>
           <ShieldAlert size={20} /> Limitações e uso responsável
         </h2>
         <ul>
@@ -134,6 +205,44 @@ export function Method() {
             clínicas.
           </li>
         </ul>
+
+        <h2 id="m-desempenho" className="row" style={{ gap: 8 }}>
+          <Gauge size={20} aria-hidden /> Desempenho conhecido
+        </h2>
+        <div className="callout callout-warn rp-perf-callout">
+          <ShieldAlert size={16} />
+          <div>
+            <strong>Este pipeline não foi validado clinicamente.</strong> Não existem dados de sensibilidade, especificidade ou concordância com
+            radiologistas para esta plataforma, nem para a combinação de modelo, instruções e evidência que utiliza.
+          </div>
+        </div>
+        <ul>
+          <li>
+            Os resultados publicados de deteção de fraturas por IA referem-se a <strong>detetores dedicados</strong>, treinados e validados para essa
+            tarefa — não a modelos de visão-linguagem generalistas como os usados aqui. Não os transponha para esta plataforma.
+          </li>
+          <li>
+            As sugestões podem falhar achados subtis (ex.: fraturas do escafoide, lesões ocultas), localizar mal as alterações ou descrever achados que
+            não existem.
+          </li>
+          <li>
+            A confiança é declarada pelo próprio modelo e mostrada apenas em palavras (alta, moderada, baixa); não é uma probabilidade calibrada.
+          </li>
+          <li>
+            Sugestões de IA erradas podem levar o leitor a erros (viés de automação). Leia as imagens antes de abrir as sugestões.
+          </li>
+        </ul>
+        <p>Literatura de referência sobre deteção de fraturas assistida por IA e viés de automação:</p>
+        <ol className="rp-perf-refs">
+          {PERFORMANCE_REFS.map((r) => (
+            <li key={r.doi}>
+              {r.text}{' '}
+              <a href={`https://doi.org/${r.doi}`} target="_blank" rel="noreferrer" className="rp-inline-link">
+                doi:{r.doi} <ExternalLink size={12} aria-hidden />
+              </a>
+            </li>
+          ))}
+        </ol>
 
         <h2 className="row" style={{ gap: 8 }}>
           <BookOpen size={20} /> Código

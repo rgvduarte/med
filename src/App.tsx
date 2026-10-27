@@ -7,10 +7,12 @@ import { Method } from './pages/Method'
 import { Settings } from './pages/Settings'
 import { loadDemoCases } from './data/demoCases'
 import { useCases } from './store/cases'
+import { useFixtureRp } from './dev/useFixtureRp'
 
 export default function App() {
   const route = useRoute()
   const upsertCases = useCases((s) => s.upsertCases)
+  useFixtureRp()
 
   useEffect(() => {
     loadDemoCases()

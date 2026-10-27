@@ -1,7 +1,28 @@
 import { useState } from 'react'
-import { Cpu, KeyRound, LockKeyhole, MessageSquareQuote, RotateCcw, ShieldAlert } from 'lucide-react'
+import { Cpu, FileText, KeyRound, LockKeyhole, Notebook, RotateCcw, ShieldAlert, UserRound } from 'lucide-react'
 import { useSettings, type Effort, type Provider } from '../store/settings'
-import { McpConnectionTest } from '../components/settings/McpConnectionTest'
+import { NotebookLmCard } from '../components/settings/NotebookLmCard'
+import { UserCard } from '../components/settings/UserCard'
+import '../styles/report.css'
+
+const SECTIONS = [
+  { id: 'modelo', label: 'Modelo', icon: <Cpu size={14} aria-hidden /> },
+  { id: 'notebooklm', label: 'NotebookLM', icon: <Notebook size={14} aria-hidden /> },
+  { id: 'relatorio', label: 'Relatório', icon: <FileText size={14} aria-hidden /> },
+  { id: 'utilizador', label: 'Utilizador', icon: <UserRound size={14} aria-hidden /> },
+]
+
+function SectionNav() {
+  return (
+    <nav className="rp-section-nav" aria-label="Secções das definições">
+      {SECTIONS.map((x) => (
+        <button key={x.id} type="button" className="btn btn-sm btn-ghost" onClick={() => document.getElementById(x.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
+          {x.icon} {x.label}
+        </button>
+      ))}
+    </nav>
+  )
+}
 
 const MODELS = [
   { id: 'claude-opus-5-5', label: 'Claude Opus 5.5 — maior qualidade (recomendado)' },
@@ -25,18 +46,20 @@ export function Settings() {
       <div className="page-head">
         <div>
           <h1>Definições</h1>
-          <p>Ligação ao modelo de visão-linguagem, ao NotebookLM e preferências do relatório.</p>
+          <p>Ligação ao modelo de visão-linguagem, ao NotebookLM, preferências do relatório e identificação local.</p>
         </div>
-        <button className="btn btn-ghost" onClick={() => confirm('Repor todas as definições e apagar a chave guardada?') && s.reset()}>
+        <button className="btn btn-ghost" onClick={() => confirm('Repor todas as definições e apagar a chave guardada? A chave da ponte NotebookLM também é substituída.') && s.reset()}>
           <RotateCcw size={15} /> Repor
         </button>
       </div>
 
-      <section className="card card-pad">
-        <h2 className="row" style={{ gap: 8 }}>
-          <Cpu size={18} /> Modelo de visão-linguagem (VLM)
+      <SectionNav />
+
+      <section className="card card-pad" id="modelo" aria-labelledby="modelo-title">
+        <h2 id="modelo-title" className="row" style={{ gap: 8 }}>
+          <Cpu size={18} aria-hidden /> Modelo de visão-linguagem (VLM)
         </h2>
-        <div className="row" role="radiogroup" aria-label="Fornecedor" style={{ marginBottom: 'var(--sp-4)' }}>
+        <div className="row rp-provider" role="radiogroup" aria-label="Fornecedor" style={{ marginBottom: 'var(--sp-4)' }}>
           {(
             [
               ['anthropic', 'Claude (API Anthropic)'],
@@ -74,9 +97,9 @@ export function Settings() {
                 nesta sessão do separador.
               </small>
             </label>
-            <label className="row" style={{ gap: 8, marginBottom: 'var(--sp-4)', fontSize: 'var(--fs-sm)' }}>
+            <label className="rp-checkbox" style={{ marginBottom: 'var(--sp-4)' }}>
               <input type="checkbox" checked={s.rememberKey} onChange={(e) => s.update({ rememberKey: e.target.checked })} />
-              Lembrar a chave neste dispositivo (localStorage). Use apenas em computadores pessoais.
+              <span>Lembrar a chave neste dispositivo (localStorage). Use apenas em computadores pessoais.</span>
             </label>
             <div className="grid-2">
               <label className="field">
@@ -134,59 +157,12 @@ export function Settings() {
         )}
       </section>
 
-      <section className="card card-pad">
-        <h2 className="row" style={{ gap: 8 }}>
-          <MessageSquareQuote size={18} /> Literatura — NotebookLM via MCP
-        </h2>
-        <p className="muted" style={{ marginTop: 0 }}>
-          Ligue um caderno NotebookLM com as suas fontes revistas por pares. Cada achado gera uma pergunta ao caderno; as respostas (com as
-          fontes citadas) são usadas como evidência no relatório, em conjunto com a base curada.
-        </p>
-        <label className="row" style={{ gap: 8, marginBottom: 'var(--sp-4)' }}>
-          <input type="checkbox" checked={s.mcpEnabled} onChange={(e) => s.update({ mcpEnabled: e.target.checked })} />
-          Usar NotebookLM durante a análise
-        </label>
-        <div className="grid-2">
-          <label className="field">
-            <span>Endpoint MCP (Streamable HTTP)</span>
-            <input className="input mono" value={s.mcpUrl} onChange={(e) => s.update({ mcpUrl: e.target.value.trim() })} />
-          </label>
-          <label className="field">
-            <span>Ferramenta MCP</span>
-            <input className="input mono" value={s.mcpToolName} onChange={(e) => s.update({ mcpToolName: e.target.value.trim() })} />
-          </label>
-          <label className="field" style={{ gridColumn: '1 / -1' }}>
-            <span>URL do caderno NotebookLM (opcional)</span>
-            <input className="input mono" value={s.notebookUrl} onChange={(e) => s.update({ notebookUrl: e.target.value.trim() })} placeholder="https://notebooklm.google.com/notebook/…" />
-          </label>
-        </div>
-        <McpConnectionTest />
-        <details style={{ marginTop: 'var(--sp-4)' }}>
-          <summary style={{ cursor: 'pointer', fontWeight: 600 }}>Como ligar o NotebookLM (passo a passo)</summary>
-          <div className="prose" style={{ marginTop: 'var(--sp-3)' }}>
-            <ol>
-              <li>
-                Crie um caderno em <a href="https://notebooklm.google.com" target="_blank" rel="noreferrer">notebooklm.google.com</a> e carregue as
-                fontes (PDFs de artigos, guidelines). Pode exportar a lista de referências curadas na página <a href="#/metodo">Método</a>.
-              </li>
-              <li>
-                No seu computador, execute um servidor MCP do NotebookLM exposto por HTTP com CORS para esta origem, por exemplo:
-                <pre>{`npx -y supergateway --stdio "npx -y notebooklm-mcp@latest" \\
-  --outputTransport streamableHttp --port 8000 \\
-  --cors https://rgvduarte.github.io`}</pre>
-              </li>
-              <li>Na primeira utilização, o servidor abre o Chrome para iniciar sessão na sua conta Google.</li>
-              <li>
-                Indique aqui o endpoint (<code>http://localhost:8000/mcp</code>), clique em <strong>Testar ligação</strong> e permita o acesso à rede
-                local se o navegador perguntar.
-              </li>
-            </ol>
-          </div>
-        </details>
-      </section>
+      <NotebookLmCard />
 
-      <section className="card card-pad">
-        <h2>Relatório e processamento</h2>
+      <section className="card card-pad" id="relatorio" aria-labelledby="relatorio-title">
+        <h2 id="relatorio-title" className="row" style={{ gap: 8 }}>
+          <FileText size={18} aria-hidden /> Relatório e processamento
+        </h2>
         <div className="grid-2">
           <label className="field">
             <span>Língua do relatório</span>
@@ -213,6 +189,8 @@ export function Settings() {
           <div>Os estudos carregados ficam apenas em memória e desaparecem ao recarregar a página. Exporte o relatório antes de sair.</div>
         </div>
       </section>
+
+      <UserCard />
     </div>
   )
 }

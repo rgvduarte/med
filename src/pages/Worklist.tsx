@@ -1,12 +1,16 @@
-import { useMemo, useRef, useState } from 'react'
-import { AlertTriangle, FileImage, Inbox, LoaderCircle, Search, Upload } from 'lucide-react'
-import type { Case } from '../types'
+import { useMemo, useRef, useState, type KeyboardEvent } from 'react'
+import { AlertTriangle, ArrowUpDown, FileImage, ImagePlus, Inbox, LoaderCircle, Search, SlidersHorizontal, Upload, X } from 'lucide-react'
+import type { Case, Modality, Region } from '../types'
 import { useCases } from '../store/cases'
 import { useSettings } from '../store/settings'
 import { ACCEPTED_FILES, ingestFiles } from '../lib/imaging/ingest'
-import { navigate } from '../lib/router'
-import { MODALITY_LABEL, REGION_LABEL, STATUS_BADGE, STATUS_LABEL } from '../lib/labels'
-import { formatDateTime, nowIso, uid } from '../lib/util'
+import { href, navigate } from '../lib/router'
+import { MODALITY_LABEL, REGION_LABEL } from '../lib/labels'
+import { CASE_RESULT_LABEL, CASE_RESULT_ORDER, MODALITY_ABBR, MODALITY_DICOM, REPORT_STATE_LABEL, type CaseResult, type ReportState } from '../lib/labels-report'
+import { caseResult, reportState } from '../lib/report/state'
+import { formatDate, formatDateTime, nowIso, uid } from '../lib/util'
+import { ReportStateChip, ResultChip } from '../components/report/StatusChips'
+import '../styles/report.css'
 
 function pseudoId(): string {
   const n = crypto.getRandomValues(new Uint16Array(1))[0] % 10000
@@ -159,24 +163,137 @@ function NewCase() {
   )
 }
 
+
+type SortKey = 'result' | 'date' | 'priority'
+type ReportFilter = 'all' | ReportState
+type ResultFilter = 'all' | CaseResult
+
+const SORTS: { id: SortKey; label: string }[] = [
+  { id: 'result', label: 'Resultado IA' },
+  { id: 'date', label: 'Data (recentes primeiro)' },
+  { id: 'priority', label: 'Prioridade clínica' },
+]
+
+function unique<T>(xs: T[]): T[] {
+  return xs.filter((v, i, a) => a.indexOf(v) === i)
+}
+
+function lateralityShort(c: Case): string {
+  const l = c.series.find((s) => s.laterality && s.laterality !== 'unknown' && s.laterality !== 'none')?.laterality
+  return l === 'left' ? ' E' : l === 'right' ? ' D' : l === 'bilateral' ? ' bilat.' : ''
+}
+
+function imageCount(c: Case): string {
+  const videos = c.series.filter((s) => s.kind === 'video').length
+  const images = c.series.filter((s) => s.kind !== 'video').reduce((n, s) => n + s.frames.length, 0)
+  return (
+    [images ? `${images} ${images === 1 ? 'imagem' : 'imagens'}` : '', videos ? `${videos} ${videos === 1 ? 'vídeo' : 'vídeos'}` : ''].filter(Boolean).join(' + ') ||
+    '—'
+  )
+}
+
+function relativeDate(iso: string): string {
+  const d = new Date(iso)
+  const diff = Date.now() - d.getTime()
+  if (Number.isNaN(diff)) return '—'
+  const min = Math.round(diff / 60000)
+  if (min < 1) return 'agora'
+  if (min < 60) return `há ${min} min`
+  if (min < 24 * 60 && new Date().toDateString() === d.toDateString()) return `há ${Math.round(min / 60)} h`
+  return formatDate(iso)
+}
+
+function FilterSelect<T extends string>({ label, value, options, onChange }: { label: string; value: T; options: [T, string][]; onChange: (v: T) => void }) {
+  return (
+    <label className={`rp-filter ${value !== 'all' ? 'active' : ''}`}>
+      <span>{label}</span>
+      <select className="select" value={value} onChange={(e) => onChange(e.target.value as T)}>
+        {options.map(([v, l]) => (
+          <option key={v} value={v}>
+            {l}
+          </option>
+        ))}
+      </select>
+    </label>
+  )
+}
+
 export function Worklist() {
   const cases = useCases((s) => s.cases)
   const [q, setQ] = useState('')
-  const [filter, setFilter] = useState<'all' | 'pending' | 'done'>('all')
+  const [modality, setModality] = useState<'all' | Modality>('all')
+  const [region, setRegion] = useState<'all' | Region>('all')
+  const [result, setResult] = useState<ResultFilter>('all')
+  const [reportF, setReportF] = useState<ReportFilter>('all')
+  const [sort, setSort] = useState<SortKey>('result')
+  const [filtersOpen, setFiltersOpen] = useState(false)
+  const tbodyRef = useRef<HTMLTableSectionElement>(null)
+
+  const rows = useMemo(
+    () =>
+      cases.map((c) => ({
+        c,
+        result: caseResult(c),
+        report: reportState(c.report),
+        modalities: unique(c.series.map((s) => s.modality)),
+        regions: unique(c.series.map((s) => s.region)),
+      })),
+    [cases],
+  )
+
+  const present = useMemo(
+    () => ({
+      modalities: (Object.keys(MODALITY_LABEL) as Modality[]).filter((m) => rows.some((r) => r.modalities.includes(m))),
+      regions: (Object.keys(REGION_LABEL) as Region[]).filter((g) => rows.some((r) => r.regions.includes(g))),
+    }),
+    [rows],
+  )
 
   const shown = useMemo(() => {
     const s = q.trim().toLowerCase()
-    return cases
-      .filter((c) => (filter === 'all' ? true : filter === 'pending' ? c.status !== 'validated' : c.status === 'validated'))
-      .filter((c) => !s || [c.pseudoId, c.title, c.indication].some((v) => v.toLowerCase().includes(s)))
-      .sort((a, b) => (a.priority === b.priority ? (a.createdAt < b.createdAt ? 1 : -1) : a.priority === 'urgent' ? -1 : 1))
-  }, [cases, q, filter])
+    const byDate = (a: Case, b: Case) => (a.createdAt < b.createdAt ? 1 : a.createdAt > b.createdAt ? -1 : 0)
+    return rows
+      .filter((r) => modality === 'all' || r.modalities.includes(modality))
+      .filter((r) => region === 'all' || r.regions.includes(region))
+      .filter((r) => result === 'all' || r.result === result)
+      .filter((r) => reportF === 'all' || r.report === reportF)
+      .filter((r) => !s || [r.c.pseudoId, r.c.title, r.c.indication, ...r.regions.map((g) => REGION_LABEL[g])].some((v) => v.toLowerCase().includes(s)))
+      .sort((a, b) => {
+        if (sort === 'date') return byDate(a.c, b.c)
+        if (sort === 'priority' && a.c.priority !== b.c.priority) return a.c.priority === 'urgent' ? -1 : 1
+        return CASE_RESULT_ORDER[a.result] - CASE_RESULT_ORDER[b.result] || byDate(a.c, b.c)
+      })
+  }, [rows, q, modality, region, result, reportF, sort])
+
+  const selectFilters = [modality, region, result, reportF].filter((v) => v !== 'all').length
+  const activeFilters = selectFilters + (q.trim() ? 1 : 0)
+  const clear = () => {
+    setQ('')
+    setModality('all')
+    setRegion('all')
+    setResult('all')
+    setReportF('all')
+  }
 
   const stats = {
     total: cases.length,
-    pending: cases.filter((c) => c.status === 'new').length,
-    draft: cases.filter((c) => c.status === 'analysed').length,
-    validated: cases.filter((c) => c.status === 'validated').length,
+    pending: rows.filter((r) => r.result === 'new').length,
+    toValidate: rows.filter((r) => r.report === 'draft' || r.report === 'review').length,
+    validated: rows.filter((r) => r.report === 'validated').length,
+  }
+
+  const open = (id: string) => navigate({ name: 'case', id })
+  const onRowKey = (e: KeyboardEvent<HTMLTableRowElement>, id: string) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      open(id)
+      return
+    }
+    if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return
+    e.preventDefault()
+    const els = Array.from(tbodyRef.current?.querySelectorAll<HTMLTableRowElement>('tr') ?? [])
+    const i = els.indexOf(e.currentTarget)
+    els[Math.max(0, Math.min(els.length - 1, i + (e.key === 'ArrowDown' ? 1 : -1)))]?.focus()
   }
 
   return (
@@ -186,6 +303,9 @@ export function Worklist() {
           <h1>Lista de trabalho</h1>
           <p>Estudos de imagiologia musculoesquelética carregados nesta sessão do navegador.</p>
         </div>
+        <button type="button" className="btn btn-primary" onClick={() => document.getElementById('novo-caso')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
+          <ImagePlus size={16} /> Novo estudo
+        </button>
       </div>
 
       <div className="stats">
@@ -199,9 +319,9 @@ export function Worklist() {
         </div>
         <div className="stat">
           <div className="stat-value" style={{ color: 'var(--ai)' }}>
-            {stats.draft}
+            {stats.toValidate}
           </div>
-          <div className="stat-label">Rascunhos da IA por validar</div>
+          <div className="stat-label">Relatórios por validar</div>
         </div>
         <div className="stat">
           <div className="stat-value" style={{ color: 'var(--normal)' }}>
@@ -213,122 +333,178 @@ export function Worklist() {
 
       <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: 'var(--sp-4)' }}>
         <section className="card" aria-label="Estudos">
-          <div className="worklist-toolbar">
-            <div className="row" style={{ gap: 6, flex: 1, minWidth: 200, flexWrap: 'nowrap' }}>
+          <div className="rp-wl-toolbar">
+            <div className="rp-wl-search">
               <Search size={16} className="subtle" aria-hidden />
-              <input className="input" placeholder="Pesquisar por ID, região ou indicação…" value={q} onChange={(e) => setQ(e.target.value)} aria-label="Pesquisar" />
+              <input className="input" type="search" placeholder="Pesquisar ID, região, indicação…" value={q} onChange={(e) => setQ(e.target.value)} aria-label="Pesquisar estudos" />
+              <button
+                type="button"
+                className={`btn rp-wl-filter-toggle ${filtersOpen ? 'on' : ''}`}
+                aria-expanded={filtersOpen}
+                aria-controls="rp-wl-filters"
+                onClick={() => setFiltersOpen((v) => !v)}
+              >
+                <SlidersHorizontal size={15} /> Filtros{selectFilters > 0 ? ` (${selectFilters})` : ''}
+              </button>
             </div>
-            <div className="row" style={{ gap: 4 }} role="group" aria-label="Filtro">
-              {(
-                [
+            <div id="rp-wl-filters" className={`rp-wl-filters ${filtersOpen ? 'open' : ''}`} role="group" aria-label="Filtros e ordenação">
+              <FilterSelect
+                label="Modalidade"
+                value={modality}
+                onChange={setModality}
+                options={[['all', 'Todas'], ...present.modalities.map((m): ['all' | Modality, string] => [m, `${MODALITY_ABBR[m]} · ${MODALITY_LABEL[m]}`])]}
+              />
+              <FilterSelect label="Região" value={region} onChange={setRegion} options={[['all', 'Todas'], ...present.regions.map((g): ['all' | Region, string] => [g, REGION_LABEL[g]])]} />
+              <FilterSelect
+                label="Resultado IA"
+                value={result}
+                onChange={setResult}
+                options={[
                   ['all', 'Todos'],
-                  ['pending', 'Por validar'],
-                  ['done', 'Validados'],
-                ] as const
-              ).map(([k, l]) => (
-                <button key={k} className={`btn btn-sm ${filter === k ? '' : 'btn-ghost'}`} aria-pressed={filter === k} onClick={() => setFilter(k)}>
-                  {l}
-                </button>
-              ))}
+                  ...(Object.keys(CASE_RESULT_ORDER) as CaseResult[])
+                    .sort((a, b) => CASE_RESULT_ORDER[a] - CASE_RESULT_ORDER[b])
+                    .map((r): [ResultFilter, string] => [r, CASE_RESULT_LABEL[r]]),
+                ]}
+              />
+              <FilterSelect
+                label="Relatório"
+                value={reportF}
+                onChange={setReportF}
+                options={[
+                  ['all', 'Todos'],
+                  ['draft', REPORT_STATE_LABEL.draft],
+                  ['review', REPORT_STATE_LABEL.review],
+                  ['validated', REPORT_STATE_LABEL.validated],
+                  ['none', REPORT_STATE_LABEL.none],
+                ]}
+              />
+              <label className="rp-filter rp-sort">
+                <span>
+                  <ArrowUpDown size={11} aria-hidden /> Ordenar por
+                </span>
+                <select className="select" value={sort} onChange={(e) => setSort(e.target.value as SortKey)}>
+                  {SORTS.map((s) => (
+                    <option key={s.id} value={s.id}>
+                      {s.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
             </div>
+            {activeFilters > 0 && (
+              <button type="button" className="btn btn-ghost btn-sm rp-wl-clear" onClick={clear}>
+                <X size={14} /> Limpar filtros ({activeFilters})
+              </button>
+            )}
           </div>
           {shown.length === 0 ? (
             <div className="empty">
               <Inbox size={28} aria-hidden />
-              <div>Ainda não há estudos. Carregue imagens abaixo ou abra um caso de demonstração.</div>
+              {cases.length === 0 ? (
+                <div>Ainda não há estudos. Arraste ficheiros DICOM, PNG, JPG ou vídeo (MP4/WebM) para «Novo estudo», abaixo.</div>
+              ) : (
+                <>
+                  <div>Nenhum estudo corresponde aos filtros.</div>
+                  <button type="button" className="btn btn-sm" onClick={clear}>
+                    Limpar filtros
+                  </button>
+                </>
+              )}
             </div>
           ) : (
             <>
-            <ul className="wl-cards" aria-label="Estudos">
-              {shown.map((c) => {
-                const f = c.analysis?.findings.filter((x) => x.severity !== 'normal') ?? []
-                const crit = f.filter((x) => x.severity === 'critical').length
-                return (
+              <ul className="rp-wl-cards" aria-label="Estudos">
+                {shown.map(({ c, result: res, report, modalities }) => (
                   <li key={c.id}>
-                    <a className="wl-card" href={`#/caso/${encodeURIComponent(c.id)}`}>
-                      {c.series[0]?.frames[0] ? <img className="thumb thumb-lg" src={c.series[0].frames[0].url} alt="" /> : <span className="thumb thumb-lg" />}
-                      <div style={{ minWidth: 0, flex: 1 }}>
-                        <div className="row" style={{ gap: 6, justifyContent: 'space-between', flexWrap: 'nowrap' }}>
-                          <span className="mono subtle" style={{ fontSize: 'var(--fs-xs)' }}>{c.pseudoId}</span>
-                          <span className={`badge ${STATUS_BADGE[c.status]}`}>{STATUS_LABEL[c.status]}</span>
+                    <a className="rp-wl-card" href={href({ name: 'case', id: c.id })}>
+                      {c.series[0]?.frames[0] ? <img className="thumb rp-wl-thumb" src={c.series[0].frames[0].url} alt="" /> : <span className="thumb rp-wl-thumb" />}
+                      <div className="rp-wl-card-body">
+                        <div className="rp-wl-card-top">
+                          <ResultChip result={res} />
+                          <span className="mono subtle rp-wl-id">{c.pseudoId}</span>
                         </div>
-                        <div style={{ fontWeight: 600, color: 'var(--text)', marginTop: 2 }}>{c.title}</div>
-                        {c.indication && <div className="muted wl-ind">{c.indication}</div>}
-                        <div className="row" style={{ gap: 6, marginTop: 6 }}>
+                        <div className="rp-wl-card-title">
+                          {REGION_LABEL[c.series[0]?.region ?? 'other']}
+                          {lateralityShort(c)} · {modalities.map((m) => MODALITY_ABBR[m]).join(' + ')}
+                        </div>
+                        {c.indication && <div className="muted rp-wl-ind">{c.indication}</div>}
+                        <div className="rp-wl-card-meta">
+                          {report !== 'none' && <ReportStateChip state={report} />}
                           {c.priority === 'urgent' && <span className="badge badge-critical">Urgente</span>}
                           {c.isDemo && <span className="badge badge-info">Demo</span>}
-                          {c.analysis && (
-                            <span className={`badge ${crit ? 'badge-critical' : f.length ? 'badge-significant' : 'badge-normal'}`}>{f.length ? `${f.length} achado(s)` : 'Sem alterações'}</span>
-                          )}
+                          <span className="subtle">
+                            {imageCount(c)} · {relativeDate(c.createdAt)}
+                          </span>
                         </div>
                       </div>
                     </a>
                   </li>
-                )
-              })}
-            </ul>
-            <div className="table-wrap wl-table">
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th aria-label="Miniatura" />
-                    <th>ID</th>
-                    <th>Estudo</th>
-                    <th>Indicação clínica</th>
-                    <th>Prioridade</th>
-                    <th>Estado</th>
-                    <th>Achados IA</th>
-                    <th>Data</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {shown.map((c) => {
-                    const f = c.analysis?.findings.filter((x) => x.severity !== 'normal') ?? []
-                    const crit = f.filter((x) => x.severity === 'critical').length
-                    return (
-                      <tr key={c.id} onClick={() => navigate({ name: 'case', id: c.id })} tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && navigate({ name: 'case', id: c.id })}>
-                        <td>{c.series[0]?.frames[0] && <img className="thumb" src={c.series[0].frames[0].url} alt="" />}</td>
-                        <td className="mono">
-                          {c.pseudoId}
-                          {c.isDemo && (
-                            <div>
-                              <span className="badge badge-info">Demo</span>
-                            </div>
-                          )}
+                ))}
+              </ul>
+              <div className="table-wrap rp-wl-table">
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Resultado IA</th>
+                      <th scope="col">Caso</th>
+                      <th scope="col">Região</th>
+                      <th scope="col">Mod.</th>
+                      <th scope="col">Indicação clínica</th>
+                      <th scope="col">Imagens</th>
+                      <th scope="col">Relatório</th>
+                      <th scope="col">Data</th>
+                    </tr>
+                  </thead>
+                  <tbody ref={tbodyRef}>
+                    {shown.map(({ c, result: res, report, regions, modalities }) => (
+                      <tr key={c.id} onClick={() => open(c.id)} tabIndex={0} onKeyDown={(e) => onRowKey(e, c.id)}>
+                        <td>
+                          <ResultChip result={res} />
                         </td>
                         <td>
-                          <div style={{ fontWeight: 600 }}>{c.title}</div>
-                          <div className="subtle" style={{ fontSize: 'var(--fs-sm)' }}>
-                            {c.series.length} série(s) · {c.series.reduce((n, s) => n + s.frames.length, 0)} imagem(ns)
-                            {c.ageYears ? ` · ${c.ageYears} anos` : ''}
-                            {c.sex ? ` · ${c.sex}` : ''}
+                          <div className="rp-wl-case">
+                            {c.series[0]?.frames[0] ? <img className="thumb rp-wl-thumb-sm" src={c.series[0].frames[0].url} alt="" /> : <span className="thumb rp-wl-thumb-sm" />}
+                            <div>
+                              <div className="mono">{c.pseudoId}</div>
+                              {(c.priority === 'urgent' || c.isDemo) && (
+                                <div className="rp-wl-badges">
+                                  {c.priority === 'urgent' && <span className="badge badge-critical">Urgente</span>}
+                                  {c.isDemo && <span className="badge badge-info">Demo</span>}
+                                </div>
+                              )}
+                            </div>
                           </div>
                         </td>
-                        <td style={{ maxWidth: 320 }} className="muted">
-                          {c.indication || '—'}
-                        </td>
-                        <td>{c.priority === 'urgent' ? <span className="badge badge-critical">Urgente</span> : <span className="badge badge-neutral">Normal</span>}</td>
                         <td>
-                          <span className={`badge ${STATUS_BADGE[c.status]}`}>{STATUS_LABEL[c.status]}</span>
+                          {regions.map((g) => REGION_LABEL[g]).join(', ')}
+                          {lateralityShort(c)}
+                          <div className="subtle rp-wl-sub">{[c.ageYears ? `${c.ageYears} anos` : '', c.sex ?? ''].filter(Boolean).join(' · ')}</div>
                         </td>
                         <td>
-                          {c.analysis ? (
-                            <span className={`badge ${crit ? 'badge-critical' : f.length ? 'badge-significant' : 'badge-normal'}`}>{f.length ? `${f.length} achado(s)` : 'Sem alterações'}</span>
-                          ) : (
-                            <span className="subtle">—</span>
-                          )}
+                          {modalities.map((m) => (
+                            <abbr key={m} title={`${MODALITY_LABEL[m]} (DICOM ${MODALITY_DICOM[m]})`} className="rp-mod">
+                              {MODALITY_ABBR[m]}
+                            </abbr>
+                          ))}
                         </td>
-                        <td className="mono subtle" style={{ whiteSpace: 'nowrap' }}>
-                          {formatDateTime(c.createdAt)}
+                        <td className="muted rp-wl-ind-cell">{c.indication || '—'}</td>
+                        <td className="subtle rp-nowrap">{imageCount(c)}</td>
+                        <td>
+                          <ReportStateChip state={report} />
+                        </td>
+                        <td className="mono subtle rp-nowrap" title={formatDateTime(c.createdAt)}>
+                          {relativeDate(c.createdAt)}
                         </td>
                       </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
-            </div>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </>
           )}
+          <div className="rp-wl-foot">
+            {shown.length} de {cases.length} {cases.length === 1 ? 'caso' : 'casos'} · Guardados apenas em memória, neste separador do navegador.
+          </div>
         </section>
 
         <NewCase />

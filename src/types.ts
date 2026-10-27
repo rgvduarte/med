@@ -264,4 +264,10 @@ export interface Report {
   editedByClinician: boolean
   validatedBy?: string
   validatedAt?: string
+
+  // --- Report review UI (optional; added for section review and validation) ---
+  /** Report sections the clinician accepted or edited ('indication', 'technique', 'comparison', 'findings', 'impression', 'recommendations', 'limitations'). */
+  reviewedSections?: string[]
+  /** Optional professional licence number («cédula profissional») of the validating clinician. */
+  validatorLicence?: string
 }
