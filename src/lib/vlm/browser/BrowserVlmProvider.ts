@@ -58,13 +58,19 @@ export class BrowserVlmProvider implements VlmProvider {
     this.worker.terminate()
   }
 
-  private run(req: Omit<Extract<ToWorker, { type: 'generate' }>, 'type' | 'id'>, signal?: AbortSignal) {
+  private run(req: Omit<Extract<ToWorker, { type: 'generate' }>, 'type' | 'id'>, signal?: AbortSignal, onProgress?: (chars: number) => void) {
     const id = this.nextId++
+    let chars = 0
     return new Promise<Extract<FromWorker, { type: 'result' }>>((resolve, reject) => {
       const onAbort = () => this.send({ type: 'interrupt' })
       const onMsg = (e: MessageEvent<FromWorker>) => {
         const m = e.data
         if (!('id' in m) || m.id !== id) return
+        if (m.type === 'token') {
+          chars += m.text.length
+          onProgress?.(chars)
+          return
+        }
         if (m.type === 'result' || m.type === 'error') {
           this.worker.removeEventListener('message', onMsg)
           signal?.removeEventListener('abort', onAbort)
@@ -93,7 +99,7 @@ export class BrowserVlmProvider implements VlmProvider {
     let inputTokens = 0
     let outputTokens = 0
     for (let attempt = 0; attempt < 2; attempt++) {
-      const r = await this.run({ system, text, images, jsonSchema, maxNewTokens: (req.maxTokens ?? 1536) * (attempt + 1) }, req.signal)
+      const r = await this.run({ system, text, images, jsonSchema, maxNewTokens: (req.maxTokens ?? 1536) * (attempt + 1) }, req.signal, req.onProgress)
       inputTokens += r.inputTokens
       outputTokens += r.outputTokens
       try {
