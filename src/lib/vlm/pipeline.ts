@@ -36,7 +36,7 @@ export interface RunHandle {
   done: Promise<void>
 }
 
-interface ImageRef {
+export interface ImageRef {
   number: number
   seriesId: string
   frameIndex: number
@@ -146,7 +146,7 @@ function toTriage(t: TriageOut): Triage {
   }
 }
 
-function toFindings(out: FindingsOut, images: ImageRef[]): Finding[] {
+export function toFindings(out: FindingsOut, images: ImageRef[]): Finding[] {
   const byNumber = new Map(images.map((im) => [im.number, im]))
   const findings: Finding[] = out.findings.map((f, i) => {
     const locations: FindingLocation[] = f.locations
@@ -261,7 +261,7 @@ const AI_DECLARATION: Record<ReportLanguage, (model: string) => string> = {
     `This report was pre-drafted by a vision-language model (${m}; protocol ${PROMPT_VERSION}) on a research platform that is not a medical device. Findings and text require review and validation by a physician.`,
 }
 
-function citationIssues(report: Report, evidence: EvidenceItem[], lang: ReportLanguage): VerificationIssue[] {
+export function citationIssues(report: Report, evidence: EvidenceItem[], lang: ReportLanguage): VerificationIssue[] {
   const ids = new Set(evidence.map((e) => e.id))
   const text = [report.technique, ...report.findingsByRegion.map((f) => f.text), ...report.impression, ...report.recommendations, report.limitations].join(' ')
   const unknown = new Set<string>()
