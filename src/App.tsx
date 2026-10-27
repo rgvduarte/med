@@ -17,6 +17,7 @@ export default function App() {
       .then(upsertCases)
       .catch(() => undefined)
   }, [upsertCases])
+  useEffect(() => void (window.location.search.includes('fixture=1') && import('./dev/fixture-ws').then((m) => m.loadWsFixture())), [])
 
   useEffect(() => {
     document.querySelector('.main')?.scrollTo(0, 0)
