@@ -1,239 +1,655 @@
-import { useState } from 'react'
-import { AlertTriangle, Check, CircleCheck, CircleDot, CircleX, KeyRound, LoaderCircle, Sparkles, X } from 'lucide-react'
-import type { Case, Finding, StageState } from '../../types'
+import { useEffect, useId, useRef, useState, type ReactNode } from 'react'
+import {
+  Activity,
+  Check,
+  ChevronDown,
+  ChevronRight,
+  Info,
+  Lock,
+  MapPinOff,
+  Pencil,
+  RotateCcw,
+  Sparkles,
+  TriangleAlert,
+  UserRound,
+  X,
+} from 'lucide-react'
+import type { Case, Finding, Laterality } from '../../types'
 import { useCases } from '../../store/cases'
 import { isVlmConfigured, useSettings } from '../../store/settings'
-import { runAnalysis } from '../../lib/vlm/run'
 import { href } from '../../lib/router'
+import { REGION_LABEL } from '../../lib/labels'
 import {
-  CERTAINTY_LABEL,
-  CERTAINTY_RANGE,
-  FINDING_STATUS_LABEL,
-  LATERALITY_LABEL,
-  MODALITY_LABEL,
-  REGION_LABEL,
-  SEVERITY_BADGE,
-  SEVERITY_LABEL,
-  STAGE_LABEL,
-} from '../../lib/labels'
-import { errorMessage, formatDuration } from '../../lib/util'
+  AI_GENERATED,
+  AI_HINT,
+  APPROX_HINT,
+  CLASS_LABEL,
+  CONFIDENCE_HELP,
+  CONFIDENCE_LEVEL,
+  CONFIDENCE_WORD,
+  GROUP_LABEL,
+  LATERALITY_OPTIONS,
+  LATERALITY_SHORT,
+  PROVIDER_LABEL,
+  REJECT_REASONS,
+  REVIEW_LABEL,
+  plural,
+} from '../../lib/labels-findings'
+import { formatDateTime } from '../../lib/util'
+import { ClassChip, ClassGlyph } from '../viewer/ClassChip'
+import { fmtClockShort } from '../viewer/format'
+import { isLocked, reviewProgress, studyClass } from '../viewer/findingModel'
+import { AnalyseButton, useAnalysisRun } from './PipelinePanel'
+import '../../styles/workspace.css'
 
-function StageIcon({ s }: { s: StageState }) {
-  if (s.status === 'running') return <LoaderCircle size={16} className="spin" style={{ color: 'var(--accent)' }} />
-  if (s.status === 'done') return <CircleCheck size={16} style={{ color: 'var(--normal)' }} />
-  if (s.status === 'error') return <CircleX size={16} style={{ color: 'var(--critical)' }} />
-  if (s.status === 'skipped') return <CircleDot size={16} style={{ color: 'var(--text-3)' }} />
-  return <CircleDot size={16} style={{ color: 'var(--border-strong)' }} />
+export interface FindingActionRequest {
+  id: string
+  kind: 'reject' | 'edit'
+  nonce: number
 }
 
-export function Pipeline({ stages }: { stages: StageState[] }) {
+interface Props {
+  c: Case
+  codes: Map<string, string>
+  selectedId?: string
+  hoveredId?: string
+  onSelect: (id: string) => void
+  onHover: (id: string | undefined) => void
+  actionRequest?: FindingActionRequest
+  onOpenTab: (tab: 'evidence' | 'analysis') => void
+}
+
+// ---------------------------------------------------------------------------
+
+function ConfidenceMeter({ f }: { f: Finding }) {
+  const [open, setOpen] = useState(false)
+  const tipId = useId()
+  const level = CONFIDENCE_LEVEL[f.confidence]
   return (
-    <div className="pipeline" aria-label="Etapas da análise">
-      {stages.map((s) => {
-        const ms = s.startedAt && s.finishedAt ? new Date(s.finishedAt).getTime() - new Date(s.startedAt).getTime() : undefined
-        return (
-          <div key={s.id} className={`stage ${s.status}`}>
-            <StageIcon s={s} />
-            <div>
-              <div>{STAGE_LABEL[s.id]}</div>
-              {s.message && <div className="subtle" style={{ fontSize: 'var(--fs-xs)' }}>{s.message}</div>}
-            </div>
-            <span className="meta">
-              {ms !== undefined ? formatDuration(ms) : ''}
-              {s.usage ? ` · ${(s.usage.inputTokens / 1000).toFixed(1)}k/${(s.usage.outputTokens / 1000).toFixed(1)}k tok` : ''}
-            </span>
-          </div>
-        )
-      })}
-    </div>
+    <span className="fp-conf">
+      <span className="fp-conf-label">Confiança</span>
+      <span className={`fp-meter lvl-${level}`} aria-hidden>
+        {[1, 2, 3].map((i) => (
+          <i key={i} className={i <= level ? 'on' : undefined} />
+        ))}
+      </span>
+      <span className="fp-conf-word">{CONFIDENCE_WORD[f.confidence]}</span>
+      <span className="fp-tip-wrap">
+        <button
+          type="button"
+          className="fp-info"
+          aria-label="Sobre a confiança"
+          aria-describedby={tipId}
+          aria-expanded={open}
+          onClick={(e) => {
+            e.stopPropagation()
+            setOpen((o) => !o)
+          }}
+          onBlur={() => setOpen(false)}
+        >
+          <Info size={13} aria-hidden />
+        </button>
+        <span id={tipId} role="tooltip" className={`fp-tip ${open ? 'is-open' : ''}`}>
+          {CONFIDENCE_HELP}
+        </span>
+      </span>
+    </span>
   )
 }
 
-function FindingCard({ c, f, n, selected, onSelect }: { c: Case; f: Finding; n: number; selected: boolean; onSelect: () => void }) {
-  const setStatus = useCases((s) => s.setFindingStatus)
-  const updateFinding = useCases((s) => s.updateFinding)
-  const lang = c.analysis?.language ?? 'pt-PT'
-  const [editing, setEditing] = useState(false)
-  const [note, setNote] = useState(f.clinicianNote ?? '')
-  const locked = c.status === 'validated'
+function OriginBadge({ f }: { f: Finding }) {
+  if (f.origin === 'clinician')
+    return (
+      <span className="fp-origin is-user" title="Achado adicionado pelo clínico">
+        <UserRound size={11} aria-hidden /> Clínico
+      </span>
+    )
+  return (
+    <span className="fp-origin" title={AI_GENERATED}>
+      <Sparkles size={11} aria-hidden /> IA
+    </span>
+  )
+}
+
+function locationText(c: Case, f: Finding): { where: string; approx: boolean; none: boolean } {
+  const lat = LATERALITY_SHORT[f.laterality]
+  const site = [f.anatomicSite, lat].filter(Boolean).join(' ')
+  const loc = f.locations.find((l) => l.bbox) ?? f.locations[0]
+  const si = loc ? c.series.findIndex((s) => s.id === loc.seriesId) : -1
+  const s = si >= 0 ? c.series[si] : undefined
+  const parts = [site]
+  if (s) {
+    if (s.kind === 'video' && f.frameRange) {
+      const [a, b] = f.frameRange
+      const ta = s.frames[a]?.timeSec
+      const tb = s.frames[b]?.timeSec
+      parts.push(`Série ${si + 1}`)
+      parts.push(`${ta !== undefined && tb !== undefined ? `${fmtClockShort(ta)}–${fmtClockShort(tb)} · ` : ''}fotogramas ${a + 1}–${b + 1}`)
+    } else {
+      parts.push(`Série ${si + 1}${s.view ? ` (${s.view})` : ''}`)
+      parts.push(`Img ${(loc?.frameIndex ?? 0) + 1}`)
+    }
+  }
+  return { where: parts.filter(Boolean).join(' · '), approx: !!loc?.bbox && f.origin === 'ai', none: !loc?.bbox }
+}
+
+// ---------------------------------------------------------------------------
+
+function RejectForm({ onCancel, onConfirm }: { onCancel: () => void; onConfirm: (reason: string) => void }) {
+  const [reason, setReason] = useState<string>('')
+  const [other, setOther] = useState('')
+  const name = useId()
+  const firstRef = useRef<HTMLInputElement>(null)
+  useEffect(() => firstRef.current?.focus(), [])
+  const valid = reason && (reason !== 'Outro' || other.trim().length > 1)
+  return (
+    <form
+      className="fp-pop"
+      onClick={(e) => e.stopPropagation()}
+      onKeyDown={(e) => {
+        if (e.key === 'Escape') {
+          e.stopPropagation()
+          onCancel()
+        }
+      }}
+      onSubmit={(e) => {
+        e.preventDefault()
+        if (valid) onConfirm(reason === 'Outro' ? `Outro: ${other.trim()}` : reason)
+      }}
+    >
+      <fieldset>
+        <legend>Motivo da rejeição</legend>
+        {REJECT_REASONS.map((r, i) => (
+          <label key={r} className="fp-radio">
+            <input ref={i === 0 ? firstRef : undefined} type="radio" name={name} value={r} checked={reason === r} onChange={() => setReason(r)} />
+            <span>{r === 'Outro' ? 'Outro (especificar)' : r}</span>
+          </label>
+        ))}
+        {reason === 'Outro' && (
+          <input className="input" value={other} onChange={(e) => setOther(e.target.value)} placeholder="Especifique o motivo" aria-label="Outro motivo" autoFocus />
+        )}
+      </fieldset>
+      <div className="fp-pop-actions">
+        <button type="submit" className="btn btn-sm btn-danger" disabled={!valid}>
+          <X size={14} aria-hidden /> Rejeitar
+        </button>
+        <button type="button" className="btn btn-sm btn-ghost" onClick={onCancel}>
+          Cancelar
+        </button>
+      </div>
+    </form>
+  )
+}
+
+function EditForm({ f, onCancel, onSave }: { f: Finding; onCancel: () => void; onSave: (p: { label: string; description: string; anatomicSite: string; laterality: Laterality }) => void }) {
+  const [label, setLabel] = useState(f.label)
+  const [description, setDescription] = useState(f.description)
+  const [anatomicSite, setSite] = useState(f.anatomicSite)
+  const [laterality, setLat] = useState<Laterality>(f.laterality)
+  const id = useId()
+  return (
+    <form
+      className="fp-pop fp-edit"
+      onClick={(e) => e.stopPropagation()}
+      onKeyDown={(e) => {
+        if (e.key === 'Escape') {
+          e.stopPropagation()
+          onCancel()
+        }
+      }}
+      onSubmit={(e) => {
+        e.preventDefault()
+        if (label.trim()) onSave({ label: label.trim(), description: description.trim(), anatomicSite: anatomicSite.trim(), laterality })
+      }}
+    >
+      <label className="field" htmlFor={`${id}-l`}>
+        <span>Designação</span>
+        <input id={`${id}-l`} className="input" value={label} onChange={(e) => setLabel(e.target.value)} required autoFocus />
+      </label>
+      <label className="field" htmlFor={`${id}-d`}>
+        <span>Descrição</span>
+        <textarea id={`${id}-d`} className="textarea" value={description} onChange={(e) => setDescription(e.target.value)} rows={3} />
+      </label>
+      <div className="fp-edit-row">
+        <label className="field" htmlFor={`${id}-s`}>
+          <span>Localização</span>
+          <input id={`${id}-s`} className="input" value={anatomicSite} onChange={(e) => setSite(e.target.value)} />
+        </label>
+        <label className="field" htmlFor={`${id}-t`}>
+          <span>Lateralidade</span>
+          <select id={`${id}-t`} className="select" value={laterality} onChange={(e) => setLat(e.target.value as Laterality)}>
+            {LATERALITY_OPTIONS.map((o) => (
+              <option key={o.value} value={o.value}>
+                {o.label}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <div className="fp-pop-actions">
+        <button type="submit" className="btn btn-sm btn-primary" disabled={!label.trim()}>
+          <Check size={14} aria-hidden /> Guardar alterações
+        </button>
+        <button type="button" className="btn btn-sm btn-ghost" onClick={onCancel}>
+          Cancelar
+        </button>
+      </div>
+    </form>
+  )
+}
+
+// ---------------------------------------------------------------------------
+
+function FindingRow({
+  c,
+  f,
+  code,
+  selected,
+  hovered,
+  locked,
+  generating,
+  request,
+  onSelect,
+  onHover,
+  onEvidence,
+}: {
+  c: Case
+  f: Finding
+  code: string
+  selected: boolean
+  hovered: boolean
+  locked: boolean
+  generating: boolean
+  request?: FindingActionRequest
+  onSelect: () => void
+  onHover: (on: boolean) => void
+  onEvidence: () => void
+}) {
+  const accept = useCases((s) => s.acceptFinding)
+  const reject = useCases((s) => s.rejectFinding)
+  const resetReview = useCases((s) => s.resetFindingReview)
+  const edit = useCases((s) => s.editFinding)
+  const [mode, setMode] = useState<'view' | 'reject' | 'edit'>('view')
+  const ref = useRef<HTMLElement>(null)
+  const loc = locationText(c, f)
+  const confirmed = f.status === 'accepted' || f.status === 'edited'
+
+  useEffect(() => {
+    if (selected) ref.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
+  }, [selected])
+
+  useEffect(() => {
+    if (request && request.id === f.id && !locked) setMode(request.kind)
+  }, [request, f.id, locked])
+
+  const statusText = f.status === 'pending' ? REVIEW_LABEL.pending : f.status === 'accepted' ? 'Confirmado por si' : f.status === 'edited' ? 'Editado por si' : REVIEW_LABEL.rejected
 
   return (
     <article
-      className={`finding sev-${f.severity} ${selected ? 'selected' : ''} ${f.status === 'rejected' ? 'rejected' : ''}`}
+      ref={ref}
+      className={`fp-row st-${f.status} ${selected ? 'is-sel' : ''} ${hovered ? 'is-hov' : ''}`}
       onClick={onSelect}
-      aria-current={selected}
+      onMouseEnter={() => onHover(true)}
+      onMouseLeave={() => onHover(false)}
+      aria-current={selected ? 'true' : undefined}
     >
-      <div className="finding-head">
-        <div>
-          <div className="finding-title">
-            {n}. {f.label}
-          </div>
-          <div className="subtle" style={{ fontSize: 'var(--fs-xs)', marginTop: 2 }}>
-            {f.anatomicSite}
-            {f.laterality !== 'none' && f.laterality !== 'unknown' ? ` · ${LATERALITY_LABEL[f.laterality]}` : ''}
-          </div>
-        </div>
-        <span className={`badge ${SEVERITY_BADGE[f.severity]}`}>{SEVERITY_LABEL[f.severity]}</span>
-      </div>
-      <p>{f.description}</p>
-      <div className="row" style={{ gap: 8 }}>
-        <span className="badge badge-ai" title={`Probabilidade aproximada: ${CERTAINTY_RANGE[f.certainty]}`}>
-          {CERTAINTY_LABEL[lang][f.certainty]}
+      <div className="fp-row-head">
+        <ClassGlyph cls={f.cls} size={13} />
+        <button
+          type="button"
+          className="fp-row-title"
+          onClick={(e) => {
+            e.stopPropagation()
+            onSelect()
+          }}
+          aria-label={`${code} ${f.label}, ${CLASS_LABEL[f.cls]}. Mostrar na imagem`}
+        >
+          <span className="fp-code mono">{code}</span>
+          <span className="fp-label">{f.label}</span>
+        </button>
+        <span className="fp-row-tags">
+          <OriginBadge f={f} />
+          {generating && f.status === 'pending' && <span className="fp-gen">A gerar…</span>}
         </span>
+      </div>
+      <div className="fp-row-chips">
+        <ClassChip cls={f.cls} small />
         {f.classification && (
-          <span className="badge badge-info" title={f.classification.rationale}>
-            {f.classification.system}: {f.classification.grade}
+          <span className="badge badge-neutral" title={f.classification.rationale}>
+            {f.classification.system} {f.classification.grade}
           </span>
         )}
-        <span className="confidence" title="Confiança declarada pelo modelo, não calibrada. Use como indicação, não como probabilidade.">
-          Confiança {f.confidence === 'high' ? 'alta' : f.confidence === 'moderate' ? 'moderada' : 'baixa'}
-        </span>
-        {f.status !== 'pending' && <span className={`badge ${f.status === 'rejected' ? 'badge-critical' : 'badge-normal'}`}>{FINDING_STATUS_LABEL[f.status]}</span>}
       </div>
-      {f.clinicianNote && !editing && (
-        <p style={{ borderLeft: '2px solid var(--info)', paddingLeft: 8 }}>
-          <strong style={{ color: 'var(--info)' }}>Nota do médico:</strong> {f.clinicianNote}
-        </p>
-      )}
-      {editing && (
-        <div onClick={(e) => e.stopPropagation()} style={{ marginTop: 8 }}>
-          <textarea className="textarea" value={note} onChange={(e) => setNote(e.target.value)} placeholder="Correção ou comentário clínico…" aria-label="Nota do médico" />
-          <div className="row" style={{ marginTop: 6, gap: 6 }}>
+      <div className="fp-row-meta">
+        <span>{loc.where}</span>
+        {loc.approx && (
+          <span className="fp-approx" title={APPROX_HINT}>
+            ≈ localização aprox.
+          </span>
+        )}
+        {loc.none && (
+          <span className="fp-approx" title="Achado sem localização na imagem">
+            <MapPinOff size={12} aria-hidden /> Sem localização
+          </span>
+        )}
+      </div>
+      <ConfidenceMeter f={f} />
+      {f.description && <p className={`fp-desc ${selected ? 'is-full' : ''}`}>«{f.description}»</p>}
+      {f.evidenceIds.length > 0 && (
+        <div className="fp-ev">
+          <span>Evidência</span>
+          {f.evidenceIds.map((id) => (
             <button
-              className="btn btn-sm btn-primary"
-              onClick={() => {
-                updateFinding(c.id, f.id, { clinicianNote: note.trim() || undefined })
-                setStatus(c.id, f.id, 'edited', note.trim())
-                setEditing(false)
+              key={id}
+              type="button"
+              className="fp-ev-chip mono"
+              title="Ver evidência"
+              onClick={(e) => {
+                e.stopPropagation()
+                onEvidence()
               }}
             >
-              Guardar nota
+              [{id}]
             </button>
-            <button className="btn btn-sm btn-ghost" onClick={() => setEditing(false)}>
-              Cancelar
-            </button>
-          </div>
+          ))}
         </div>
       )}
-      {!locked && !editing && (
-        <div className="finding-actions" onClick={(e) => e.stopPropagation()}>
-          <button className="btn btn-sm" aria-pressed={f.status === 'accepted'} onClick={() => setStatus(c.id, f.id, 'accepted')}>
-            <Check size={14} /> Aceitar
-          </button>
-          <button className="btn btn-sm" aria-pressed={f.status === 'rejected'} onClick={() => setStatus(c.id, f.id, 'rejected')}>
-            <X size={14} /> Rejeitar
-          </button>
-          <button className="btn btn-sm btn-ghost" onClick={() => setEditing(true)}>
-            Anotar
-          </button>
+      {f.status === 'rejected' && f.rejectReason && <p className="fp-reason">Motivo: «{f.rejectReason}»</p>}
+
+      {mode === 'reject' && (
+        <RejectForm
+          onCancel={() => setMode('view')}
+          onConfirm={(reason) => {
+            reject(c.id, f.id, reason)
+            setMode('view')
+          }}
+        />
+      )}
+      {mode === 'edit' && (
+        <EditForm
+          f={f}
+          onCancel={() => setMode('view')}
+          onSave={(patch) => {
+            edit(c.id, f.id, patch)
+            setMode('view')
+          }}
+        />
+      )}
+
+      {mode === 'view' && (
+        <div className="fp-actions" onClick={(e) => e.stopPropagation()}>
+          {!locked && (
+            <>
+              <button
+                type="button"
+                className={`btn btn-sm fp-act-accept ${confirmed ? 'is-on' : ''}`}
+                aria-pressed={f.status === 'accepted'}
+                title={f.status === 'accepted' ? 'Anular confirmação' : 'Aceitar (Enter)'}
+                onClick={() => (f.status === 'accepted' ? resetReview(c.id, f.id) : accept(c.id, f.id))}
+              >
+                <Check size={14} aria-hidden /> {f.status === 'accepted' ? 'Aceite' : 'Aceitar'}
+              </button>
+              <button type="button" className="btn btn-sm" title="Editar (E)" onClick={() => setMode('edit')}>
+                <Pencil size={13} aria-hidden /> Editar
+              </button>
+              <button type="button" className="btn btn-sm" title="Rejeitar (X)" onClick={() => setMode('reject')}>
+                <X size={14} aria-hidden /> Rejeitar
+              </button>
+            </>
+          )}
+          <span className={`fp-status st-${f.status}`}>
+            {confirmed && <Check size={12} aria-hidden />}
+            {statusText}
+          </span>
         </div>
       )}
     </article>
   )
 }
 
-export function FindingsPanel({ c, selectedId, onSelect }: { c: Case; selectedId?: string; onSelect: (id: string) => void }) {
-  const settings = useSettings()
-  const audit = useCases((s) => s.audit)
-  const [error, setError] = useState<string | null>(null)
-  const configured = isVlmConfigured(settings)
-  const a = c.analysis
+function ChecklistRow({ f }: { f: Finding }) {
+  return (
+    <li className="fp-check">
+      <ClassGlyph cls={f.cls} size={13} />
+      <span className="fp-check-label">
+        {f.label}
+        {f.cls === 'not-assessable' && <span className="subtle"> · não avaliável</span>}
+      </span>
+      <span className="fp-check-conf" title={CONFIDENCE_HELP}>
+        confiança {CONFIDENCE_WORD[f.confidence].toLowerCase()}
+      </span>
+    </li>
+  )
+}
 
-  const start = async () => {
-    setError(null)
-    audit(c.id, { actor: 'user', action: 'Análise pedida' })
-    try {
-      await runAnalysis(c.id).done
-    } catch (e) {
-      setError(errorMessage(e))
-    }
+function RejectedRow({ c, f, code, locked }: { c: Case; f: Finding; code: string; locked: boolean }) {
+  const restore = useCases((s) => s.restoreFinding)
+  return (
+    <li className="fp-rej">
+      <div>
+        <span className="fp-code mono">{code}</span> <s>{f.label}</s>
+        <div className="subtle">{f.rejectReason ? `«${f.rejectReason}»` : 'Rejeitado'}</div>
+      </div>
+      {!locked && (
+        <button type="button" className="btn btn-sm btn-ghost" onClick={() => restore(c.id, f.id)}>
+          <RotateCcw size={13} aria-hidden /> Restaurar
+        </button>
+      )}
+    </li>
+  )
+}
+
+function Group({ title, count, defaultOpen = true, children, tone }: { title: string; count: number; defaultOpen?: boolean; children: ReactNode; tone?: string }) {
+  const [open, setOpen] = useState(defaultOpen)
+  const id = useId()
+  return (
+    <section className={`fp-group ${tone ?? ''}`}>
+      <h3>
+        <button type="button" className="fp-group-head" aria-expanded={open} aria-controls={id} onClick={() => setOpen((o) => !o)}>
+          {open ? <ChevronDown size={15} aria-hidden /> : <ChevronRight size={15} aria-hidden />}
+          <span>{title}</span>
+          <span className="fp-count">{count}</span>
+        </button>
+      </h3>
+      <div id={id} hidden={!open}>
+        {children}
+      </div>
+    </section>
+  )
+}
+
+// ---------------------------------------------------------------------------
+
+export function FindingsPanel({ c, codes, selectedId, hoveredId, onSelect, onHover, actionRequest, onOpenTab }: Props) {
+  const a = c.analysis
+  const { running, error } = useAnalysisRun(c)
+  const configured = isVlmConfigured(useSettings())
+  const locked = isLocked(c)
+
+  if (!a || (a.findings.length === 0 && running)) {
+    return (
+      <div className="fp-empty">
+        {running ? (
+          <>
+            <p>A IA está a analisar este caso. Os achados aparecem aqui à medida que cada imagem é concluída.</p>
+            <button type="button" className="btn" onClick={() => onOpenTab('analysis')}>
+              <Activity size={16} aria-hidden /> Ver progresso da análise
+            </button>
+          </>
+        ) : (
+          <>
+            <Sparkles size={26} aria-hidden className="fp-empty-ic" />
+            <p>Ainda não há análise de IA para este caso. Leia primeiro as imagens; a análise sugere achados para rever, nunca um diagnóstico.</p>
+            {error && (
+              <div className="callout callout-warn fp-empty-error" role="alert">
+                <TriangleAlert size={16} aria-hidden />
+                <div>
+                  <strong>Erro.</strong> {error}{' '}
+                  <button type="button" className="fp-link" onClick={() => onOpenTab('analysis')}>
+                    Ver detalhes
+                  </button>
+                </div>
+              </div>
+            )}
+            <AnalyseButton c={c} />
+            {!configured && (
+              <p className="subtle fp-empty-hint">
+                Para analisar, configure um modelo em <a href={href({ name: 'settings' })}>Definições → Ligações</a>.
+              </p>
+            )}
+          </>
+        )}
+      </div>
+    )
   }
 
+  const findings = a.findings
+  const active = findings.filter((f) => f.status !== 'rejected')
+  const priority = active.filter((f) => f.group === 'priority')
+  const other = active.filter((f) => f.group === 'other')
+  const checklist = active.filter((f) => f.group === 'checklist')
+  const rejected = findings.filter((f) => f.status === 'rejected' && f.group !== 'checklist')
+  const sc = studyClass(a)
+  const { total, reviewed, pending } = reviewProgress(findings)
+  const nPos = priority.filter((f) => f.cls === 'positive').length
+  const nDub = priority.filter((f) => f.cls === 'doubtful').length
+  const regionMismatch = a.triage && c.series[0] && a.triage.region !== 'other' && c.series[0].region !== 'other' && a.triage.region !== c.series[0].region
+  const assessed = checklist.map((f) => f.label.toLowerCase())
+
+  const row = (f: Finding) => (
+    <FindingRow
+      key={f.id}
+      c={c}
+      f={f}
+      code={codes.get(f.id) ?? ''}
+      selected={f.id === selectedId}
+      hovered={f.id === hoveredId}
+      locked={locked}
+      generating={running}
+      request={actionRequest}
+      onSelect={() => onSelect(f.id)}
+      onHover={(on) => onHover(on ? f.id : undefined)}
+      onEvidence={() => onOpenTab('evidence')}
+    />
+  )
+
   return (
-    <div>
-      {a?.precomputed && (
-        <div className="callout callout-info" style={{ marginBottom: 'var(--sp-3)' }}>
-          <Sparkles size={16} />
-          <div>
-            Análise de demonstração <strong>pré-calculada</strong> com o mesmo protocolo ({a.model}). Configure um modelo em Definições para
-            analisar os seus próprios estudos.
-          </div>
+    <div className="fp">
+      <section className="fp-summary" aria-labelledby="fp-summary-title">
+        <h2 id="fp-summary-title" className="fp-summary-title" title={AI_HINT}>
+          <Sparkles size={14} aria-hidden /> Resultado da IA — sugestão, verificar
+          {running && <span className="fp-gen">A gerar…</span>}
+        </h2>
+        <div className="fp-summary-main">
+          {sc && <ClassChip cls={sc} />}
+          <span className="fp-summary-counts">
+            {[
+              nPos ? plural(nPos, 'positivo', 'positivos') : '',
+              nDub ? plural(nDub, 'duvidoso', 'duvidosos') : '',
+              other.length ? plural(other.length, 'outro', 'outros') : '',
+              checklist.length ? plural(checklist.length, 'não detetado', 'não detetados') : '',
+            ]
+              .filter(Boolean)
+              .join(' · ') || 'sem achados'}
+          </span>
         </div>
-      )}
-
-      {a && <Pipeline stages={a.stages} />}
-
-      {!a && (
-        <div style={{ display: 'grid', gap: 'var(--sp-3)' }}>
-          <p className="muted" style={{ margin: 0 }}>
-            O modelo de visão-linguagem analisa as imagens e os fotogramas-chave em seis etapas. Cada etapa produz dados estruturados que
-            pode rever.
+        {sc === 'not-assessable' && (
+          <p className="fp-caution">
+            <TriangleAlert size={14} aria-hidden /> {a.triage?.qualityNotes || a.triage?.summary || 'O estudo não pôde ser avaliado pela IA.'}
           </p>
-          <Pipeline stages={['preprocess', 'triage', 'findings', 'evidence', 'report', 'verify'].map((id) => ({ id: id as StageState['id'], status: 'pending' }))} />
-          {!configured && (
-            <div className="callout callout-warn">
-              <KeyRound size={16} />
-              <div>
-                Nenhum modelo configurado. <a href={href({ name: 'settings' })}>Abra as Definições</a> para indicar a sua chave da API Anthropic
-                ou um servidor local (ex.: MedGemma).
-              </div>
-            </div>
-          )}
-          <button className="btn btn-primary" onClick={start} disabled={!configured || c.status === 'analysing'}>
-            <Sparkles size={16} /> Analisar com IA
-          </button>
-        </div>
-      )}
-
-      {error && (
-        <div className="callout callout-warn" style={{ margin: 'var(--sp-3) 0' }}>
-          <AlertTriangle size={16} />
-          <div>{error}</div>
-        </div>
-      )}
-
-      {a?.triage && (
-        <div className="evidence" style={{ marginTop: 'var(--sp-3)' }}>
-          <div className="row" style={{ justifyContent: 'space-between' }}>
-            <strong>Triagem</strong>
-            <span className={`badge ${a.triage.imageQuality === 'adequate' ? 'badge-normal' : a.triage.imageQuality === 'limited' ? 'badge-significant' : 'badge-critical'}`}>
-              Qualidade: {a.triage.imageQuality === 'adequate' ? 'adequada' : a.triage.imageQuality === 'limited' ? 'limitada' : 'não diagnóstica'}
+        )}
+        {sc === 'negative' && (
+          <p className="fp-negative">
+            <strong>Sem achados prioritários.</strong>
+            {assessed.length ? ` A IA avaliou: ${assessed.join(', ')}.` : ''}
+          </p>
+        )}
+        {c.indication && (
+          <p className="fp-question">
+            <span className="subtle">Pergunta clínica:</span> «{c.indication}»
+          </p>
+        )}
+        {total > 0 && (
+          <div className="fp-progress">
+            <span>
+              Revistos {reviewed}/{total}
+            </span>
+            <span className="fp-progress-bar" role="progressbar" aria-label="Achados revistos" aria-valuemin={0} aria-valuemax={total} aria-valuenow={reviewed}>
+              <i style={{ width: `${(reviewed / total) * 100}%` }} />
             </span>
           </div>
-          <div className="muted" style={{ marginTop: 4 }}>
-            {MODALITY_LABEL[a.triage.modality]} · {REGION_LABEL[a.triage.region]} · {a.triage.view}
-            {a.triage.laterality !== 'none' && a.triage.laterality !== 'unknown' ? ` · ${LATERALITY_LABEL[a.triage.laterality]}` : ''}
+        )}
+        <p className="fp-summary-meta">
+          {PROVIDER_LABEL[a.provider] ?? a.provider} · <span className="mono">{a.model}</span> · {formatDateTime(a.finishedAt ?? a.startedAt)}
+          {a.precomputed ? ' · pré-calculada' : ''}
+        </p>
+      </section>
+
+      {regionMismatch && (
+        <div className="callout callout-warn" role="alert">
+          <TriangleAlert size={16} aria-hidden />
+          <div>
+            <strong>Possível discordância de região anatómica.</strong> O pedido indica {REGION_LABEL[c.series[0].region].toLowerCase()}, mas a IA identificou{' '}
+            {REGION_LABEL[a.triage!.region].toLowerCase()}. Verifique antes de aceitar achados.
           </div>
-          <div className="muted" style={{ marginTop: 4 }}>{a.triage.summary}</div>
-          {a.triage.qualityNotes && <div className="subtle" style={{ marginTop: 4 }}>{a.triage.qualityNotes}</div>}
         </div>
       )}
 
-      {a && a.findings.length > 0 && (
-        <>
-          <div className="callout callout-ai" style={{ margin: 'var(--sp-3) 0' }}>
-            <Sparkles size={16} />
-            <div>Sugestões geradas por IA. Reveja cada achado — aceite, rejeite ou anote — antes de validar o relatório.</div>
-          </div>
-          {a.findings.map((f, i) => (
-            <FindingCard key={f.id} c={c} f={f} n={i + 1} selected={f.id === selectedId} onSelect={() => onSelect(f.id)} />
-          ))}
-        </>
-      )}
-
-      {a?.verification && a.verification.issues.length > 0 && (
-        <div style={{ marginTop: 'var(--sp-4)' }}>
-          <h3 style={{ fontSize: 'var(--fs-sm)', marginBottom: 8 }}>Verificação automática</h3>
-          {a.verification.issues.map((it, i) => (
-            <div key={i} className={`callout ${it.severity === 'error' ? 'callout-warn' : 'callout-info'}`} style={{ marginBottom: 6 }}>
-              <AlertTriangle size={14} />
-              <div>
-                <strong>{it.section}:</strong> {it.message}
-              </div>
+      {locked ? (
+        <p className="fp-locked">
+          <Lock size={14} aria-hidden /> Relatório validado — os achados estão bloqueados.
+        </p>
+      ) : (
+        pending.length > 0 && (
+          <div className="fp-pending" role="status">
+            <TriangleAlert size={16} aria-hidden />
+            <div>
+              <strong>{plural(pending.length, 'achado por rever', 'achados por rever')}.</strong> Aceite, edite ou rejeite cada achado antes de validar.
             </div>
-          ))}
-        </div>
+            <button
+              type="button"
+              className="btn btn-sm"
+              onClick={() => {
+                const idx = pending.findIndex((f) => f.id === selectedId)
+                onSelect(pending[(idx + 1) % pending.length].id)
+              }}
+            >
+              Rever seguinte
+            </button>
+          </div>
+        )
       )}
+
+      <Group title={GROUP_LABEL.priority} count={priority.length}>
+        {priority.length ? priority.map(row) : <p className="fp-none">Sem achados prioritários.</p>}
+      </Group>
+      {other.length > 0 && (
+        <Group title={GROUP_LABEL.other} count={other.length}>
+          {other.map(row)}
+        </Group>
+      )}
+      {checklist.length > 0 && (
+        <Group title={GROUP_LABEL.checklist} count={checklist.length} defaultOpen={false}>
+          <ul className="fp-checklist">
+            {checklist.map((f) => (
+              <ChecklistRow key={f.id} f={f} />
+            ))}
+          </ul>
+        </Group>
+      )}
+      {rejected.length > 0 && (
+        <Group title={GROUP_LABEL.rejected} count={rejected.length} defaultOpen={false} tone="is-rejected">
+          <ul className="fp-checklist">
+            {rejected.map((f) => (
+              <RejectedRow key={f.id} c={c} f={f} code={codes.get(f.id) ?? ''} locked={locked} />
+            ))}
+          </ul>
+        </Group>
+      )}
+      <p className="fp-foot subtle">
+        <Info size={12} aria-hidden /> Localizações aproximadas e confiança declarada pelo modelo, não calibrada. Só os achados aceites, editados ou
+        adicionados pelo clínico entram no relatório.
+      </p>
     </div>
   )
 }

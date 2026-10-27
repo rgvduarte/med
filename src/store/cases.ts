@@ -15,6 +15,19 @@ interface CasesState {
   setFindingStatus: (caseId: string, findingId: string, status: FindingStatus, note?: string) => void
   updateFinding: (caseId: string, findingId: string, patch: Partial<Finding>) => void
   updateReport: (caseId: string, patch: Partial<Report>) => void
+  /** Review actions used by the findings panel; each one is written to the audit trail. */
+  acceptFinding: (caseId: string, findingId: string) => void
+  rejectFinding: (caseId: string, findingId: string, reason: string) => void
+  restoreFinding: (caseId: string, findingId: string) => void
+  resetFindingReview: (caseId: string, findingId: string) => void
+  editFinding: (caseId: string, findingId: string, patch: Pick<Partial<Finding>, 'label' | 'description' | 'anatomicSite' | 'laterality'>) => void
+}
+
+const EDITABLE_FIELD_LABEL: Record<string, string> = {
+  label: 'designação',
+  description: 'descrição',
+  anatomicSite: 'localização',
+  laterality: 'lateralidade',
 }
 
 export const useCases = create<CasesState>((set, get) => ({
@@ -56,7 +69,46 @@ export const useCases = create<CasesState>((set, get) => ({
     ),
   updateReport: (caseId, patch) =>
     get().updateCase(caseId, (c) => (c.report ? { report: { ...c.report, ...patch } } : {})),
+  acceptFinding: (caseId, findingId) => {
+    const f = findFinding(get().cases, caseId, findingId)
+    if (!f) return
+    get().updateFinding(caseId, findingId, { status: 'accepted', rejectReason: undefined })
+    get().audit(caseId, { actor: 'user', action: 'Achado aceite', detail: f.label })
+  },
+  rejectFinding: (caseId, findingId, reason) => {
+    const f = findFinding(get().cases, caseId, findingId)
+    if (!f) return
+    get().updateFinding(caseId, findingId, { status: 'rejected', rejectReason: reason })
+    get().audit(caseId, { actor: 'user', action: 'Achado rejeitado', detail: `${f.label} — «${reason}»` })
+  },
+  restoreFinding: (caseId, findingId) => {
+    const f = findFinding(get().cases, caseId, findingId)
+    if (!f) return
+    get().updateFinding(caseId, findingId, { status: 'pending', rejectReason: undefined })
+    get().audit(caseId, { actor: 'user', action: 'Achado restaurado', detail: f.label })
+  },
+  resetFindingReview: (caseId, findingId) => {
+    const f = findFinding(get().cases, caseId, findingId)
+    if (!f) return
+    get().updateFinding(caseId, findingId, { status: 'pending', rejectReason: undefined })
+    get().audit(caseId, { actor: 'user', action: 'Revisão do achado anulada', detail: f.label })
+  },
+  editFinding: (caseId, findingId, patch) => {
+    const f = findFinding(get().cases, caseId, findingId)
+    if (!f) return
+    const changed = (Object.keys(patch) as (keyof typeof patch)[]).filter((k) => patch[k] !== undefined && patch[k] !== f[k])
+    get().updateFinding(caseId, findingId, { ...patch, status: 'edited', rejectReason: undefined })
+    get().audit(caseId, {
+      actor: 'user',
+      action: 'Achado editado',
+      detail: `${patch.label ?? f.label}${changed.length ? ` — alterado: ${changed.map((k) => EDITABLE_FIELD_LABEL[k]).join(', ')}` : ''}`,
+    })
+  },
 }))
+
+function findFinding(cases: Case[], caseId: string, findingId: string): Finding | undefined {
+  return cases.find((c) => c.id === caseId)?.analysis?.findings.find((f) => f.id === findingId)
+}
 
 export function useCase(id: string | undefined): Case | undefined {
   return useCases((s) => s.cases.find((c) => c.id === id))
