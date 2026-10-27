@@ -138,7 +138,7 @@ export function Settings() {
               <label className="field">
                 <span>URL base (compatível OpenAI)</span>
                 <input className="input mono" value={s.localBaseUrl} onChange={(e) => s.update({ localBaseUrl: e.target.value.trim() })} />
-                <small>Ollama: http://localhost:11434/v1 · LM Studio: http://localhost:1234/v1</small>
+                <small>Ollama: http://localhost:11434/v1 · LM Studio: http://localhost:1234/v1 · GitHub Codespaces: /ollama/v1</small>
               </label>
               <label className="field">
                 <span>Modelo</span>
@@ -149,8 +149,18 @@ export function Settings() {
             <div className="callout callout-info">
               <LockKeyhole size={16} />
               <div>
-                Com um modelo local as imagens nunca saem do seu computador. O servidor tem de permitir pedidos desta origem (CORS), por exemplo{' '}
-                <code>OLLAMA_ORIGINS=https://rgvduarte.github.io</code>.
+                {s.localBaseUrl.startsWith('/') ? (
+                  <>
+                    A correr no GitHub Codespaces: as imagens vão do navegador para a sua máquina virtual no GitHub (não para um fornecedor de IA).
+                    Use apenas imagens anonimizadas. Num CPU, cada etapa pode demorar vários minutos — o modo local envia no máximo 4 imagens.
+                  </>
+                ) : (
+                  <>
+                    Com um modelo no seu computador as imagens não saem da máquina. O servidor tem de permitir pedidos desta origem (CORS), por exemplo{' '}
+                    <code>OLLAMA_ORIGINS={location.origin}</code>. O Safari bloqueia pedidos a <code>localhost</code> a partir de sites https: use
+                    Chrome, Edge ou Firefox, ou abra a app localmente (ver <code>local-ai/</code> no repositório).
+                  </>
+                )}
               </div>
             </div>
           </>

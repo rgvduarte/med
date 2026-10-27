@@ -49,12 +49,16 @@ export interface Settings {
 
 export const DEFAULT_MCP_BASE_URL = 'http://127.0.0.1:8765'
 
+// Build-time defaults (set by .devcontainer/devcontainer.json in GitHub Codespaces, where the
+// app is served next to Ollama and reaches it through the same-origin /ollama proxy).
+const env = import.meta.env
+
 export const DEFAULT_SETTINGS: Settings = {
-  provider: 'anthropic',
+  provider: env.VITE_DEFAULT_PROVIDER === 'openai-compatible' ? 'openai-compatible' : 'anthropic',
   anthropicModel: 'claude-opus-5-5',
   effort: 'high',
-  localBaseUrl: 'http://localhost:11434/v1',
-  localModel: 'medgemma',
+  localBaseUrl: env.VITE_LOCAL_BASE_URL || 'http://localhost:11434/v1',
+  localModel: env.VITE_LOCAL_MODEL || 'medgemma',
   mcpEnabled: false,
   mcpServerKind: 'nlm-cli',
   mcpBaseUrl: DEFAULT_MCP_BASE_URL,
