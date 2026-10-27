@@ -1,0 +1,99 @@
+/* Design tokens — dark clinical theme (PACS conventions) with a light print/report theme. */
+@import '@fontsource-variable/inter';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+
+:root {
+  /* Surfaces */
+  --bg: #0a0e13;
+  --surface-1: #10161e;
+  --surface-2: #151d27;
+  --surface-3: #1c2632;
+  --surface-hover: #223040;
+  --viewer-bg: #000000;
+  --border: #243140;
+  --border-strong: #33455a;
+
+  /* Text */
+  --text: #e7edf4;
+  --text-2: #aab7c5;
+  --text-3: #7d8b9b;
+  --text-inverse: #0a0e13;
+
+  /* Accent */
+  --accent: #3fb8f5;
+  --accent-strong: #1c9fe0;
+  --accent-soft: rgba(63, 184, 245, 0.14);
+  --focus-ring: 0 0 0 2px #0a0e13, 0 0 0 4px #3fb8f5;
+
+  /* Clinical status (AA on --surface-1) */
+  --critical: #ff6b6b;
+  --critical-soft: rgba(255, 107, 107, 0.14);
+  --significant: #ffa94d;
+  --significant-soft: rgba(255, 169, 77, 0.14);
+  --minor: #ffd43b;
+  --minor-soft: rgba(255, 212, 59, 0.12);
+  --normal: #51cf66;
+  --normal-soft: rgba(81, 207, 102, 0.12);
+  --info: #8fb3ff;
+  --info-soft: rgba(143, 179, 255, 0.12);
+  --ai: #b197fc;
+  --ai-soft: rgba(177, 151, 252, 0.14);
+
+  /* Overlay colours on images (high contrast on greyscale) */
+  --overlay-critical: #ff4d4f;
+  --overlay-significant: #ffa940;
+  --overlay-minor: #fadb14;
+  --overlay-normal: #52c41a;
+  --overlay-measure: #40e0ff;
+  --overlay-text: #ffe58f;
+
+  /* Typography */
+  --font-sans: 'Inter Variable', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --fs-xs: 11px;
+  --fs-sm: 12.5px;
+  --fs-md: 14px;
+  --fs-lg: 16px;
+  --fs-xl: 20px;
+  --fs-2xl: 26px;
+
+  /* Spacing / shape */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --radius-sm: 4px;
+  --radius: 6px;
+  --radius-lg: 10px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+
+  --topbar-h: 52px;
+  --banner-h: 28px;
+
+  color-scheme: dark;
+}
+
+/* Light theme used for the report document and print. */
+.theme-paper {
+  --bg: #ffffff;
+  --surface-1: #ffffff;
+  --surface-2: #f6f8fa;
+  --surface-3: #eef2f6;
+  --border: #d9e0e7;
+  --border-strong: #b8c4d0;
+  --text: #111827;
+  --text-2: #374151;
+  --text-3: #6b7280;
+  --accent: #0b6fb3;
+  --accent-soft: rgba(11, 111, 179, 0.1);
+  --critical: #c92a2a;
+  --significant: #c25e00;
+  --minor: #8a6d00;
+  --normal: #2b8a3e;
+  --info: #1f5fbf;
+  --ai: #6741d9;
+  color-scheme: light;
+}
