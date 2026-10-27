@@ -105,6 +105,12 @@ function CaseInfo({ c }: { c: Case }) {
           )}
         </div>
       ))}
+      {c.teachingPoint && (
+        <details className="evidence" style={{ marginTop: 'var(--sp-3)' }}>
+          <summary style={{ cursor: 'pointer', fontWeight: 600 }}>Ponto de ensino (descrição da fonte) — abrir só depois de ler as imagens</summary>
+          <p className="muted" style={{ margin: '8px 0 0' }}>{c.teachingPoint}</p>
+        </details>
+      )}
       {c.attribution && c.attribution.length > 0 && (
         <>
           <h3>Origem das imagens (licença aberta)</h3>

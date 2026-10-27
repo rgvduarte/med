@@ -1,0 +1,301 @@
+[
+ {
+  "id": "demo-punho",
+  "pseudoId": "DEMO-01",
+  "title": "Punho esquerdo — RX PA e perfil",
+  "indication": "Doente idosa (cenário fictício), queda sobre a mão em extensão; dor, edema e deformidade em 'dorso de garfo' do punho esquerdo. (Indicação fictícia, apenas para ensino.)",
+  "priority": "urgent",
+  "teaching": "Fratura da metáfise distal do rádio (tipo Colles), com angulação/desvio dorsal do fragmento distal no perfil. Ponto de ensino: avaliar inclinação radial, inclinação palmar, encurtamento, extensão intra-articular e estiloide cubital.",
+  "series": [
+   {
+    "id": "demo-punho-s1",
+    "kind": "image",
+    "modality": "XR",
+    "region": "wrist-hand",
+    "view": "PA e perfil",
+    "laterality": "left",
+    "description": "Punho — PA e perfil",
+    "file": "img/xr_punho_fratura_radio_distal_pa_perfil.jpg",
+    "width": 1280,
+    "height": 1414
+   }
+  ],
+  "attribution": [
+   {
+    "title": "Punho esquerdo — fratura da extremidade distal do rádio",
+    "author": "Lucien Monfils (versão editada para a app Anatomist, derivada de File:Collesfracture.jpg)",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Colles%27_Fracture_of_Radius.jpg",
+    "text": "“Colles' Fracture of Radius”, Lucien Monfils, CC BY-SA 4.0, via Wikimedia Commons. Redimensionado."
+   }
+  ],
+  "ageYears": 72,
+  "sex": "F"
+ },
+ {
+  "id": "demo-anca",
+  "pseudoId": "DEMO-02",
+  "title": "Anca direita — RX AP",
+  "indication": "Doente idosa (cenário fictício), queda da própria altura; dor inguinal direita, incapacidade de carga, membro encurtado e em rotação externa. (Indicação fictícia, apenas para ensino.)",
+  "priority": "urgent",
+  "teaching": "Fratura subcapital do colo do fémur direito, com desvio completo (Garden IV segundo a descrição da fonte) e encurtamento do colo femoral. Marcador lateral 'DROIT' (direito). Ponto de ensino: classificação de Garden e risco de necrose avascular.",
+  "series": [
+   {
+    "id": "demo-anca-s1",
+    "kind": "image",
+    "modality": "XR",
+    "region": "hip-pelvis",
+    "view": "AP",
+    "laterality": "right",
+    "description": "Anca direita — AP",
+    "file": "img/xr_anca_fratura_colo_femur_ap.jpg",
+    "width": 1280,
+    "height": 960
+   }
+  ],
+  "attribution": [
+   {
+    "title": "Anca direita — fratura subcapital do colo do fémur",
+    "author": "Emmanuel Ucla (Eucla, Wikipédia em francês)",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fracture_du_col_du_f%C3%A9mur.jpg",
+    "text": "“Fracture du col du fémur”, Emmanuel Ucla (Eucla), CC BY-SA 3.0, via Wikimedia Commons. Redimensionado."
+   }
+  ],
+  "ageYears": 81,
+  "sex": "F"
+ },
+ {
+  "id": "demo-joelho",
+  "pseudoId": "DEMO-03",
+  "title": "Joelho — RX AP",
+  "indication": "Adulto com mais de 50 anos (cenário fictício), gonalgia mecânica crónica, rigidez matinal inferior a 30 minutos e crepitação. (Indicação fictícia, apenas para ensino.)",
+  "priority": "routine",
+  "teaching": "Osteoartrose femorotibial com predomínio no compartimento lateral: redução marcada da entrelinha articular, osteófitos marginais e esclerose subcondral. Ponto de ensino: graduação de Kellgren–Lawrence e necessidade de incidência em carga.",
+  "series": [
+   {
+    "id": "demo-joelho-s1",
+    "kind": "image",
+    "modality": "XR",
+    "region": "knee",
+    "view": "AP",
+    "laterality": "unknown",
+    "description": "Joelho — AP",
+    "file": "img/xr_joelho_gonartrose_ap.jpg",
+    "width": 500,
+    "height": 700
+   }
+  ],
+  "attribution": [
+   {
+    "title": "Joelho — gonartrose de predomínio lateral",
+    "author": "J. Lengerke (Praxis Dr. Jochen Lengerke)",
+    "license": "CC BY-SA 3.0 DE",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Roe-Gonarthrose.jpg",
+    "text": "“Roe-Gonarthrose”, J. Lengerke, CC BY-SA 3.0 DE, via Wikimedia Commons. Recortado (painel superior) e redimensionado."
+   }
+  ],
+  "ageYears": 63,
+  "sex": "M"
+ },
+ {
+  "id": "demo-tornozelo",
+  "pseudoId": "DEMO-04",
+  "title": "Tornozelo — RX AP e perfil",
+  "indication": "Adulto (cenário fictício), entorse em supinação/rotação externa; dor e edema maleolar lateral, incapacidade de carga (regras de Ottawa positivas). (Indicação fictícia, apenas para ensino.)",
+  "priority": "urgent",
+  "teaching": "Fratura oblíqua do maléolo lateral (perónio distal) ao nível da sindesmose tibioperoneal: Weber B (AO/OTA 44-B). Ponto de ensino: avaliar espaço livre medial, congruência da mortalha e lesão do maléolo medial/posterior.",
+  "series": [
+   {
+    "id": "demo-tornozelo-s1",
+    "kind": "image",
+    "modality": "XR",
+    "region": "ankle-foot",
+    "view": "AP e perfil",
+    "laterality": "unknown",
+    "description": "Tornozelo — AP e perfil",
+    "file": "img/xr_tornozelo_fratura_weber_b_ap_perfil.jpg",
+    "width": 960,
+    "height": 792
+   }
+  ],
+  "attribution": [
+   {
+    "title": "Tornozelo direito — fratura maleolar lateral Weber B",
+    "author": "Hellerhoff",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Weber-B_Fraktur_61W_-_CR_2_Ebenen_-_001.jpg",
+    "text": "“Weber-B Fraktur 61W - CR 2 Ebenen - 001”, Hellerhoff, CC BY-SA 4.0, via Wikimedia Commons. Redimensionado."
+   }
+  ],
+  "ageYears": 34,
+  "sex": "M"
+ },
+ {
+  "id": "demo-ombro",
+  "pseudoId": "DEMO-05",
+  "title": "Ombro — RX AP + Y (DICOM)",
+  "indication": "Adulto jovem (cenário fictício), dor intensa e impotência funcional do ombro esquerdo após movimento brusco; perda do contorno deltoideu (sinal da dragona). (Indicação fictícia, apenas para ensino.)",
+  "priority": "urgent",
+  "teaching": "Luxação glenoumeral anterior (subcoracoideia): cabeça umeral deslocada medial e inferiormente à glenoide, abaixo da coracoide. Ponto de ensino: confirmar na incidência em Y/axilar e procurar lesões de Hill-Sachs e Bankart ósseo após redução.",
+  "series": [
+   {
+    "id": "demo-ombro-s1",
+    "kind": "image",
+    "modality": "XR",
+    "region": "shoulder",
+    "view": "AP",
+    "laterality": "unknown",
+    "description": "Ombro — AP",
+    "file": "img/xr_ombro_luxacao_anterior_ap.jpg",
+    "width": 500,
+    "height": 804
+   },
+   {
+    "id": "demo-ombro-s2",
+    "kind": "dicom",
+    "modality": "XR",
+    "region": "shoulder",
+    "view": "Y da omoplata",
+    "laterality": "unknown",
+    "description": "Ombro — Y (DICOM)",
+    "file": "img/dx_ombro_luxacao_anterior_y.dcm"
+   }
+  ],
+  "attribution": [
+   {
+    "title": "Ombro esquerdo — luxação glenoumeral anterior",
+    "author": "Mikael Häggström, M.D.",
+    "license": "CC0 1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shoulder_dislocation,_anteroposterior_before_reduction.jpg",
+    "text": "“Shoulder dislocation, anteroposterior before reduction”, Mikael Häggström, M.D., CC0 1.0 (domínio público), via Wikimedia Commons."
+   },
+   {
+    "title": "Ombro esquerdo — incidência em Y (DICOM) na luxação anterior",
+    "author": "Mikael Häggström, M.D.",
+    "license": "CC0 1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shoulder_dislocation,_Y-projection_before_reduction.jpg",
+    "text": "“Shoulder dislocation, Y-projection before reduction”, Mikael Häggström, M.D., CC0 1.0 (domínio público), via Wikimedia Commons. Convertido para DICOM."
+   }
+  ],
+  "ageYears": 27,
+  "sex": "M"
+ },
+ {
+  "id": "demo-coluna",
+  "pseudoId": "DEMO-06",
+  "title": "Coluna lombar — RX perfil",
+  "indication": "Doente idosa (cenário fictício) com osteoporose conhecida; lombalgia aguda após esforço mínimo. (Indicação fictícia, apenas para ensino.)",
+  "priority": "routine",
+  "teaching": "Fratura por compressão de um corpo vertebral lombar, com perda de altura e depressão do prato vertebral (acunhamento/achatamento) em comparação com os níveis adjacentes. Ponto de ensino: graduação semiquantitativa de Genant, avaliação do muro posterior e retropulsão.",
+  "series": [
+   {
+    "id": "demo-coluna-s1",
+    "kind": "image",
+    "modality": "XR",
+    "region": "spine",
+    "view": "Perfil",
+    "laterality": "none",
+    "description": "Coluna lombar — perfil",
+    "file": "img/xr_coluna_lombar_fratura_compressao_perfil.png",
+    "width": 500,
+    "height": 667
+   }
+  ],
+  "attribution": [
+   {
+    "title": "Coluna lombar — fratura vertebral por compressão",
+    "author": "Dirk69CS",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:LWK_vorher.png",
+    "text": "“LWK vorher”, Dirk69CS, CC BY-SA 3.0, via Wikimedia Commons. Redimensionado."
+   }
+  ],
+  "ageYears": 76,
+  "sex": "F"
+ },
+ {
+  "id": "demo-cotovelo-us",
+  "pseudoId": "DEMO-07",
+  "title": "Cotovelo — ecografia dinâmica (clip)",
+  "indication": "Adulto trabalhador manual (cenário fictício) com epicondilalgia lateral; pedido de avaliação dinâmica do tendão extensor comum. (Indicação fictícia, apenas para ensino.)",
+  "priority": "routine",
+  "teaching": "Clip ecográfico in vivo (voluntário de investigação) do tendão extensor comum do cotovelo em eixo longo, com padrão fibrilar e deslizamento tendinoso durante a contração muscular sobre as referências ósseas do cotovelo lateral. A fonte não descreve patologia: serve de referência de normalidade e para demonstrar a extração de keyframes. Ponto de ensino: na epicondilite procurar hipoecogenicidade, espessamento, roturas e hipervascularização Doppler.",
+  "series": [
+   {
+    "id": "demo-cotovelo-us-s1",
+    "kind": "video",
+    "modality": "US",
+    "region": "elbow",
+    "view": "Eixo longo, dinâmico",
+    "laterality": "unknown",
+    "description": "Cotovelo — tendão extensor comum (clip)",
+    "video": "us-cotovelo/clip.mp4",
+    "duration": 15.23,
+    "keyframes": [
+     {
+      "file": "us-cotovelo/kf-01.jpg",
+      "t": 0.76
+     },
+     {
+      "file": "us-cotovelo/kf-02.jpg",
+      "t": 2.28
+     },
+     {
+      "file": "us-cotovelo/kf-03.jpg",
+      "t": 3.81
+     },
+     {
+      "file": "us-cotovelo/kf-04.jpg",
+      "t": 5.33
+     },
+     {
+      "file": "us-cotovelo/kf-05.jpg",
+      "t": 6.85
+     },
+     {
+      "file": "us-cotovelo/kf-06.jpg",
+      "t": 8.38
+     },
+     {
+      "file": "us-cotovelo/kf-07.jpg",
+      "t": 9.9
+     },
+     {
+      "file": "us-cotovelo/kf-08.jpg",
+      "t": 11.42
+     },
+     {
+      "file": "us-cotovelo/kf-09.jpg",
+      "t": 12.95
+     },
+     {
+      "file": "us-cotovelo/kf-10.jpg",
+      "t": 14.47
+     }
+    ],
+    "width": 800,
+    "height": 242
+   }
+  ],
+  "attribution": [
+   {
+    "title": "Cotovelo — ecografia dinâmica do tendão extensor comum (referência normal)",
+    "author": "Chuang B, Hsu J, Kuo L, Jou I, Su F, Sun Y (BioMedical Engineering OnLine, 2017; doi:10.1186/s12938-017-0335-x)",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tendon-motion-tracking-in-an-ultrasound-image-sequence-using-optical-flow-based-block-matching-12938_2017_335_MOESM1_ESM.ogv",
+    "text": "Vídeo: Chuang B, Hsu J, Kuo L, Jou I, Su F, Sun Y. “Tendon-motion tracking in an ultrasound image sequence using optical-flow-based block matching”. BioMed Eng OnLine 2017;16:47 (Additional file 1), CC BY 4.0. Recortado e convertido."
+   }
+  ],
+  "ageYears": 45,
+  "sex": "M"
+ }
+]

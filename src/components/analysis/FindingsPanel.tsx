@@ -494,7 +494,7 @@ export function FindingsPanel({ c, codes, selectedId, hoveredId, onSelect, onHov
             <AnalyseButton c={c} />
             {!configured && (
               <p className="subtle fp-empty-hint">
-                Para analisar, configure um modelo em <a href={href({ name: 'settings' })}>Definições → Ligações</a>.
+                Para analisar, configure um modelo em <a href={href({ name: 'settings' })}>Definições → Modelo</a>.
               </p>
             )}
           </>

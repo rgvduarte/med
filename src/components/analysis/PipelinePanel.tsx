@@ -154,7 +154,7 @@ export function AnalyseButton({ c, label = 'Analisar com IA', className = 'btn b
       className={className}
       onClick={() => startAnalysis(c.id)}
       disabled={!configured || running || c.status === 'validated'}
-      title={configured ? undefined : 'Configure um modelo em Definições → Ligações'}
+      title={configured ? undefined : 'Configure um modelo em Definições → Modelo'}
     >
       {running ? <LoaderCircle size={16} className="spin" aria-hidden /> : <Sparkles size={16} aria-hidden />}
       {running ? 'A analisar…' : label}
@@ -210,7 +210,7 @@ export function PipelinePanel({ c }: { c: Case }) {
             <Ban size={14} aria-hidden /> Cancelar análise
           </button>
         ) : a && !locked ? (
-          <button type="button" className="btn btn-sm" onClick={() => setConfirmRerun(true)} disabled={!configured} title={configured ? undefined : 'Configure um modelo em Definições → Ligações'}>
+          <button type="button" className="btn btn-sm" onClick={() => setConfirmRerun(true)} disabled={!configured} title={configured ? undefined : 'Configure um modelo em Definições → Modelo'}>
             <RotateCcw size={14} aria-hidden /> Analisar novamente
           </button>
         ) : null}
@@ -256,7 +256,7 @@ export function PipelinePanel({ c }: { c: Case }) {
         <div className="callout callout-warn">
           <KeyRound size={16} aria-hidden />
           <div>
-            Nenhum modelo configurado. <a href={href({ name: 'settings' })}>Configure um modelo em Definições → Ligações</a> (chave da API Anthropic ou
+            Nenhum modelo configurado. <a href={href({ name: 'settings' })}>Configure um modelo em Definições → Modelo</a> (chave da API Anthropic ou
             servidor local compatível). O visualizador e o relatório manual continuam disponíveis.
           </div>
         </div>

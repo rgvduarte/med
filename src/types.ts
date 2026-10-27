@@ -87,6 +87,8 @@ export interface Case {
   status: CaseStatus
   series: Series[]
   isDemo?: boolean
+  /** Demo cases only: the teaching point described by the image source (shown after review). */
+  teachingPoint?: string
   attribution?: Attribution[]
   analysis?: AnalysisResult
   report?: Report
