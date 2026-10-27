@@ -516,7 +516,7 @@ function Workspace({ id }: { id: string }) {
                   onOpenTab={setTab}
                 />
               )}
-              {tab === 'evidence' && <EvidencePanel c={c} />}
+              {tab === 'evidence' && <EvidencePanel c={c} onSelectFinding={(fid) => selectFinding(fid, 'list')} />}
               {tab === 'report' && <ReportPanel c={c} />}
               {tab === 'analysis' && <PipelinePanel c={c} />}
               {tab === 'info' && <CaseInfo c={c} />}
