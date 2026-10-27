@@ -45,6 +45,8 @@ export interface ImageRef {
   /** Size of the image as sent to the model (bounding boxes come back in these pixels). */
   width: number
   height: number
+  /** Original picture inside the sent image [x, y, w, h] px; equals [0, 0, width, height] unless letterboxed. */
+  content?: [number, number, number, number]
   caption: string
   part: ContentPart
 }
@@ -108,7 +110,7 @@ async function prepareImages(c: Case, signal: AbortSignal, provider: VlmProvider
     const f = s.frames[p.frameIndex]
     // MedGemma's vision encoder works at 896 px; larger uploads only cost time on a local model.
     // Claude 4.7+ reads up to 2576 px on the long edge; 2000 px keeps requests with >20 images valid.
-    const enc = await encodeFrame(f, provider.scope === 'triage' ? 768 : local ? 896 : 2000)
+    const enc = await encodeFrame(f, provider.scope === 'triage' ? 768 : local ? 896 : 2000, 'image/jpeg', local)
     const where =
       s.frames.length > 1
         ? `, ${s.kind === 'video' ? 'keyframe' : 'frame'} ${p.frameIndex + 1}/${s.frames.length}${f.timeSec !== undefined ? ` at t=${formatTime(f.timeSec)}` : ''}`
@@ -119,6 +121,7 @@ async function prepareImages(c: Case, signal: AbortSignal, provider: VlmProvider
       frameIndex: p.frameIndex,
       width: enc.width,
       height: enc.height,
+      content: enc.content,
       caption: `Image ${i + 1} — series "${s.description}" (${s.modality}${s.view ? `, ${s.view}` : ''})${where}; ${enc.width}×${enc.height} px${
         f.pixelSpacing ? `; pixel spacing ${f.pixelSpacing[0].toFixed(3)} mm` : ''
       }`,
@@ -166,11 +169,12 @@ export function toFindings(out: FindingsOut, images: ImageRef[]): Finding[] {
         if (!im) return null
         let bbox: [number, number, number, number] | undefined
         if (l.bbox) {
-          // Pixels of the sent image → normalised 0..1 (frames keep their aspect ratio when resized).
-          const x = clamp01(l.bbox.x / im.width)
-          const y = clamp01(l.bbox.y / im.height)
-          const w = Math.min(1 - x, clamp01(l.bbox.w / im.width))
-          const h = Math.min(1 - y, clamp01(l.bbox.h / im.height))
+          // Pixels of the sent image → normalised 0..1 of the original frame (undoing any letterbox).
+          const [cx, cy, cw, ch] = im.content ?? [0, 0, im.width, im.height]
+          const x = clamp01((l.bbox.x - cx) / cw)
+          const y = clamp01((l.bbox.y - cy) / ch)
+          const w = Math.min(1 - x, clamp01(l.bbox.w / cw))
+          const h = Math.min(1 - y, clamp01(l.bbox.h / ch))
           if (w > 0.005 && h > 0.005) bbox = [x, y, w, h]
         }
         return { seriesId: im.seriesId, frameIndex: im.frameIndex, bbox }

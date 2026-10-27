@@ -155,7 +155,7 @@ export function Settings() {
               <div>
                 {s.localBaseUrl.startsWith('/') ? (
                   <>
-                    A correr no GitHub Codespaces: as imagens vão do navegador para a sua máquina virtual no GitHub (não para um fornecedor de IA).
+                    Endereço relativo (GitHub Codespaces ou `vite preview`): as imagens vão do navegador para a máquina onde a app corre — no Codespaces, a sua máquina virtual no GitHub (não um fornecedor de IA).
                     Use apenas imagens anonimizadas. Num CPU, cada etapa pode demorar vários minutos — o modo local envia no máximo 4 imagens.
                   </>
                 ) : (

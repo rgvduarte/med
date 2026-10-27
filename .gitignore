@@ -25,3 +25,5 @@ dist-ssr
 
 # Local agent worktrees
 .claude/worktrees/
+local-ai/.app-cache/
+local-ai/.ollama-serve.log

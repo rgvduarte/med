@@ -1,0 +1,8 @@
+# GPU AMD (ROCm, Linux) para o serviço ollama.
+#   docker compose -f docker-compose.yml -f docker-compose.amd.yml up -d
+services:
+  ollama:
+    image: ollama/ollama:${OLLAMA_TAG:-0.40.3}-rocm
+    devices:
+      - /dev/kfd
+      - /dev/dri

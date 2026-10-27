@@ -39,13 +39,13 @@ Plataforma web para análise de radiografia, TC, RM, ecografia e fluoroscopia mu
 | Opção | Onde corre | Custo | Qualidade | Para quê |
 |---|---|---|---|---|
 | **Claude Opus 5.5** (API Anthropic) | Servidores da Anthropic (a chave fica no seu navegador) | Pago por utilização | A mais alta | Análise completa |
-| **MedGemma 4B** (Google, modelo médico aberto) | O seu computador **ou** GitHub Codespaces | Gratuito | Intermédia | Análise completa sem API |
+| **MedGemma 1.5 4B** (Google, modelo médico aberto) | O seu computador **ou** GitHub Codespaces | Gratuito | Intermédia | Análise completa sem API |
 | **No navegador** (Qwen3.5 0,8B, WebGPU) | O seu dispositivo, dentro do separador | Gratuito | Baixa — só triagem | Demonstração, sem instalar nada |
 
 ### Opção 1 — GitHub Codespaces (sem instalar nada, sem API)
 
 1. Clique em **[Abrir no GitHub Codespaces](https://codespaces.new/rgvduarte/med?quickstart=1)**. Precisa de uma conta GitHub; o plano gratuito inclui 120 horas-núcleo por mês.
-2. Aguarde 5–10 minutos na primeira vez. O ambiente instala o Ollama, descarrega o MedGemma 4B (3,3 GB) e arranca a app.
+2. Aguarde 5–10 minutos na primeira vez. O ambiente instala o Ollama, descarrega o MedGemma 1.5 4B (3,3 GB) e arranca a app.
 3. A app abre automaticamente na porta 4173, já configurada para o MedGemma.
 
 Notas:

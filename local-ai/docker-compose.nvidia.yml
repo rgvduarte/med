@@ -1,0 +1,12 @@
+# GPU NVIDIA para o serviço ollama. Requisitos: controlador NVIDIA + NVIDIA Container Toolkit (Linux)
+# ou Docker Desktop com WSL 2 (Windows).
+#   docker compose -f docker-compose.yml -f docker-compose.nvidia.yml up -d
+services:
+  ollama:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

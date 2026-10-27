@@ -53,6 +53,18 @@ describe('toFindings', () => {
     expect(checklist.map((c) => c.cls)).toEqual(['negative', 'not-assessable'])
   })
 
+  it('undoes letterboxing when mapping boxes back to the original frame', () => {
+    const padded: ImageRef[] = [{ number: 1, seriesId: 's1', frameIndex: 0, width: 896, height: 896, content: [0, 224, 896, 448], caption: '', part: { type: 'text', text: '' } }]
+    const out: FindingsOut = {
+      checklist: [],
+      findings: [{ ...base, label: 'x', certainty: 'possible', confidence: 'low', locations: [{ image_number: 1, bbox: { x: 448, y: 224 + 112, w: 224, h: 224 } }] }],
+      pertinent_negatives: [],
+      limitations: '',
+    }
+    const [x, y, w, h] = toFindings(out, padded)[0].locations[0].bbox!
+    expect([x, y, w, h]).toEqual([0.5, 0.25, 0.25, 0.5])
+  })
+
   it('maps keyframe ranges only within one series', () => {
     const out: FindingsOut = {
       checklist: [],

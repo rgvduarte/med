@@ -1,0 +1,73 @@
+# MSK·VLM — IA local com Docker: Ollama + MedGemma + aplicação em http://localhost:8080
+#
+#   cd local-ai
+#   docker compose up -d                                                    # só CPU (qualquer SO)
+#   docker compose -f docker-compose.yml -f docker-compose.nvidia.yml up -d # GPU NVIDIA (Linux, ou Windows com WSL 2)
+#   docker compose logs -f model-init                                       # acompanhar a transferência do modelo
+#
+# No macOS o Docker não usa a GPU (Metal): instale o Ollama nativo e use apenas  docker compose up -d app
+name: msk-vlm-local
+
+x-ollama-image: &ollama-image ollama/ollama:${OLLAMA_TAG:-0.40.3}
+
+services:
+  ollama:
+    image: *ollama-image
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:11434:11434"   # só este computador
+    environment:
+      OLLAMA_ORIGINS: "https://rgvduarte.github.io"   # a app em http://localhost:* já é aceite por omissão
+      OLLAMA_CONTEXT_LENGTH: "${NUM_CTX:-16384}"
+      OLLAMA_NO_CLOUD: "1"
+      OLLAMA_KEEP_ALIVE: "30m"
+    volumes:
+      - ollama-models:/root/.ollama
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+
+  # Executa uma vez: transfere o modelo base (se faltar) e cria "medgemma" (o nome que a app usa por omissão) com contexto alargado.
+  model-init:
+    image: *ollama-image
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      OLLAMA_HOST: "http://ollama:11434"
+      BASE_MODEL: "${BASE_MODEL:-medgemma1.5:4b}"
+      LOCAL_MODEL: "${LOCAL_MODEL:-medgemma}"
+      NUM_CTX: "${NUM_CTX:-16384}"
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        set -e
+        if ! ollama show "$$BASE_MODEL" >/dev/null 2>&1; then
+          echo "A transferir $$BASE_MODEL (ao usar o modelo aceita os termos HAI-DEF da Google)..."
+          ollama pull "$$BASE_MODEL"
+        fi
+        printf 'FROM %s\nPARAMETER num_ctx %s\nPARAMETER temperature 0\n' "$$BASE_MODEL" "$$NUM_CTX" > /tmp/Modelfile
+        ollama create "$$LOCAL_MODEL" -f /tmp/Modelfile
+        echo "Modelo pronto: $$LOCAL_MODEL"
+    restart: "no"
+
+  # A aplicação compilada a partir deste repositório, servida por nginx, já configurada para o Ollama local.
+  # O navegador fala diretamente com http://localhost:11434 (o Ollama aceita http://localhost:* por omissão).
+  app:
+    build:
+      context: ..
+      dockerfile: local-ai/app.Dockerfile
+      args:
+        VITE_DEFAULT_PROVIDER: openai-compatible
+        VITE_LOCAL_BASE_URL: http://localhost:11434/v1
+        VITE_LOCAL_MODEL: "${LOCAL_MODEL:-medgemma}"
+    image: msk-vlm-app:local
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${APP_PORT:-8080}:80"
+
+volumes:
+  ollama-models:

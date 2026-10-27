@@ -3,7 +3,7 @@
 # With --pull: also download the model, create the short alias the app uses by default, and preload it.
 set -euo pipefail
 
-MODEL="${OLLAMA_MODEL:-medgemma:4b}"
+MODEL="${OLLAMA_MODEL:-medgemma1.5:4b}"
 ALIAS="${OLLAMA_MODEL_ALIAS:-medgemma}"
 API="http://${OLLAMA_HOST:-127.0.0.1:11434}"
 LOG=/tmp/ollama.log
@@ -33,7 +33,7 @@ fi
 echo
 
 if [ "${1:-}" = "--pull" ]; then
-  echo "[ollama-up] pulling $MODEL (about 3.3 GB for medgemma:4b)"
+  echo "[ollama-up] pulling $MODEL (about 3.3 GB for medgemma1.5:4b)"
   ollama pull "$MODEL"
   if [ -n "$ALIAS" ] && [ "$ALIAS" != "$MODEL" ]; then
     ollama cp "$MODEL" "$ALIAS"

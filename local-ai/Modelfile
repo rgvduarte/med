@@ -1,0 +1,8 @@
+# Modelo local para o MSK·VLM: MedGemma 1.5 4B (biblioteca oficial do Ollama) com contexto
+# alargado para pedidos com várias imagens e decodificação determinística.
+#   ollama pull medgemma1.5:4b
+#   ollama create medgemma -f local-ai/Modelfile     (o nome "medgemma" é o que a aplicação usa por omissão)
+# (os scripts start.sh / start.ps1 e o docker-compose fazem isto automaticamente)
+FROM medgemma1.5:4b
+PARAMETER num_ctx 16384
+PARAMETER temperature 0

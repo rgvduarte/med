@@ -23,7 +23,7 @@
     "OLLAMA_CONTEXT_LENGTH": "32768",
     "OLLAMA_KEEP_ALIVE": "1h",
     "OLLAMA_NUM_PARALLEL": "1",
-    "OLLAMA_MODEL": "medgemma:4b",
+    "OLLAMA_MODEL": "medgemma1.5:4b",
     "OLLAMA_MODEL_ALIAS": "medgemma",
     "VITE_DEFAULT_PROVIDER": "openai-compatible",
     "VITE_LOCAL_BASE_URL": "/ollama/v1",
