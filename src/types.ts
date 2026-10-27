@@ -146,6 +146,14 @@ export type Severity = 'critical' | 'significant' | 'minor' | 'normal'
 
 export type FindingStatus = 'pending' | 'accepted' | 'rejected' | 'edited'
 
+/** Study/finding class shown to the clinician (BoneView-style): shape + colour + text. */
+export type FindingClass = 'positive' | 'doubtful' | 'negative' | 'not-assessable'
+
+/** Priority = relevant to the clinical question or urgent; checklist = assessed and not detected. */
+export type FindingGroup = 'priority' | 'other' | 'checklist'
+
+export type VerbalConfidence = 'high' | 'moderate' | 'low'
+
 export interface FindingLocation {
   seriesId: string
   frameIndex: number
@@ -155,18 +163,26 @@ export interface FindingLocation {
 
 export interface Finding {
   id: string
+  origin: 'ai' | 'clinician'
+  cls: FindingClass
+  group: FindingGroup
   label: string
   description: string
   anatomicSite: string
   laterality: Laterality
   certainty: Certainty
   severity: Severity
-  /** Model self-reported confidence 0..1 — not calibrated; display with caution. */
-  confidence: number
+  /** Self-reported by the model and NOT calibrated — shown only as a word, never as a percentage. */
+  confidence: VerbalConfidence
   classification?: { system: string; grade: string; rationale: string }
   locations: FindingLocation[]
+  /** Video/cine: first and last keyframe index where the finding is visible. */
+  frameRange?: [number, number]
   evidenceQuery: string[]
+  /** Evidence ids attached after retrieval. */
+  evidenceIds: string[]
   status: FindingStatus
+  rejectReason?: string
   clinicianNote?: string
 }
 
@@ -230,6 +246,10 @@ export interface ReportCitation {
 
 export interface Report {
   language: ReportLanguage
+  /** Free-text AI-use declaration appended automatically (not editable). */
+  aiDeclaration?: string
+  /** SHA-256 of the canonical report JSON at validation time. */
+  contentHash?: string
   clinicalIndication: string
   technique: string
   comparison: string

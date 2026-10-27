@@ -85,11 +85,8 @@ function FindingCard({ c, f, n, selected, onSelect }: { c: Case; f: Finding; n: 
             {f.classification.system}: {f.classification.grade}
           </span>
         )}
-        <span className="confidence" title="Confiança auto-reportada pelo modelo — não calibrada">
-          <span className="bar">
-            <i style={{ width: `${Math.round(f.confidence * 100)}%` }} />
-          </span>
-          {Math.round(f.confidence * 100)}%
+        <span className="confidence" title="Confiança declarada pelo modelo, não calibrada. Use como indicação, não como probabilidade.">
+          Confiança {f.confidence === 'high' ? 'alta' : f.confidence === 'moderate' ? 'moderada' : 'baixa'}
         </span>
         {f.status !== 'pending' && <span className={`badge ${f.status === 'rejected' ? 'badge-critical' : 'badge-normal'}`}>{FINDING_STATUS_LABEL[f.status]}</span>}
       </div>
