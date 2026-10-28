@@ -5,6 +5,12 @@ export type ComponentDtype = 'q4' | 'q4f16' | 'fp16' | 'fp32'
 export interface BrowserModelSpec {
   /** Hugging Face repo id of the ONNX build, e.g. "onnx-community/Qwen3.5-0.8B-ONNX". */
   id: string
+  /** Processor calling convention: Qwen takes (text, images), LFM2-VL takes (images, text). */
+  family: 'qwen' | 'lfm2-vl'
+  label: string
+  licence: string
+  /** Total download in MB for the f16 and f32 dtype paths (weights only, from the repo listing). */
+  downloadMb: { f16: number; f32: number }
   /** Pinned commit so the cached weights and the code never drift apart. */
   revision: string
   /** Per-component dtype; keys are the ONNX file stems in the repo's onnx/ folder. */

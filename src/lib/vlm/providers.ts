@@ -3,6 +3,7 @@ import { betaZodOutputFormat } from '@anthropic-ai/sdk/helpers/beta/zod'
 import * as z from 'zod'
 import type { TokenUsage } from '../../types'
 import type { Effort, Settings } from '../../store/settings'
+import { resolveBrowserModel } from './browser/models'
 
 export type ContentPart = { type: 'text'; text: string } | { type: 'image'; mediaType: 'image/jpeg' | 'image/png'; base64: string }
 
@@ -328,11 +329,18 @@ export async function createProvider(
     if (typeof navigator === 'undefined' || !('gpu' in navigator)) {
       throw new Error('Este navegador não suporta WebGPU. Use Chrome ou Edge num computador (ou Safari 26+ no Mac).')
     }
-    const { BrowserVlmProvider, BROWSER_MODELS } = await import('./browser/BrowserVlmProvider')
-    const spec = BROWSER_MODELS[s.browserModel as keyof typeof BROWSER_MODELS] ?? BROWSER_MODELS['qwen3.5-0.8b']
-    if (browserProvider?.key !== spec.id) {
+    const key = resolveBrowserModel(s.browserModel)
+    if (!key) {
+      throw new Error(
+        'Este aparelho fechou a página por falta de memória ao correr o modelo no navegador, mesmo o mais pequeno. A IA integrada não funciona aqui: use um computador, ou escolha outro modelo em Definições → Modelo.',
+      )
+    }
+    // Ask the browser not to evict the multi-hundred-MB weights under storage pressure (best effort).
+    void navigator.storage?.persist?.().catch(() => undefined)
+    const { BrowserVlmProvider } = await import('./browser/BrowserVlmProvider')
+    if (browserProvider?.key !== key) {
       ;(browserProvider?.provider as { dispose?: () => void } | undefined)?.dispose?.()
-      browserProvider = { key: spec.id, provider: new BrowserVlmProvider(spec, (f, l, t) => browserLoadListener?.(f, l, t)) }
+      browserProvider = { key, provider: new BrowserVlmProvider(key, (f, l, t) => browserLoadListener?.(f, l, t)) }
     }
     browserLoadListener = onLoadProgress
     const current = browserProvider.provider as InstanceType<typeof BrowserVlmProvider>

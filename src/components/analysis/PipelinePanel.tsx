@@ -24,6 +24,7 @@ import { href } from '../../lib/router'
 import { LATERALITY_LABEL, MODALITY_LABEL, REGION_LABEL } from '../../lib/labels'
 import { PIPELINE_ORDER, PIPELINE_STEP, PROVIDER_LABEL, STAGE_STATUS_LABEL, plural } from '../../lib/labels-findings'
 import { errorMessage, formatDateTime, formatDuration, nowIso } from '../../lib/util'
+import { BrowserModelNote } from '../settings/BrowserModelInfo'
 
 // ---------------------------------------------------------------------------
 // Run controller: one handle per case, kept outside React so a run survives tab
@@ -341,8 +342,10 @@ export function PipelinePanel({ c }: { c: Case }) {
             cada etapa produz dados estruturados que pode rever.
           </p>
           <AnalyseButton c={c} />
+          <BrowserModelNote />
         </div>
       )}
+      {a && !running && <BrowserModelNote />}
 
       {!configured && !running && !locked && (
         <div className="callout callout-warn">

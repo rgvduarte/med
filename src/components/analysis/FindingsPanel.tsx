@@ -45,6 +45,7 @@ import { findingsStageDone, isTriageOnly } from '../../lib/report/state'
 import { MODALITY_LABEL } from '../../lib/labels'
 import { AnalyseButton, useAnalysisRun } from './PipelinePanel'
 import { GlassProgress } from '../ui/glass'
+import { BrowserModelNote } from '../settings/BrowserModelInfo'
 
 export interface FindingActionRequest {
   id: string
@@ -518,6 +519,7 @@ export function FindingsPanel({ c, codes, selectedId, hoveredId, onSelect, onHov
               </div>
             )}
             <AnalyseButton c={c} />
+            <BrowserModelNote />
             {!configured && (
               <p className="subtle fp-empty-hint">
                 Para analisar, configure um modelo em <a href={href({ name: 'settings' })}>Definições → Modelo</a>.

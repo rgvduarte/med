@@ -27,8 +27,10 @@ export interface Settings {
   /** OpenAI-compatible local endpoint (e.g. Ollama / LM Studio serving MedGemma). */
   localBaseUrl: string
   localModel: string
-  /** In-browser model (WebGPU, Transformers.js) — experimental, triage only. */
+  /** Built-in model (WebGPU, Transformers.js): 'auto' picks by device (see lib/vlm/browser/models.ts). */
   browserModel: string
+  /** True once the user picks a built-in model by hand. */
+  browserModelChosen: boolean
   /** NotebookLM via a local MCP server bridged to Streamable HTTP by supergateway. */
   mcpEnabled: boolean
   mcpServerKind: McpServerKind
@@ -65,7 +67,8 @@ export const DEFAULT_SETTINGS: Settings = {
   effort: 'high',
   localBaseUrl: env.VITE_LOCAL_BASE_URL || 'http://localhost:11434/v1',
   localModel: env.VITE_LOCAL_MODEL || 'medgemma',
-  browserModel: 'qwen3.5-0.8b',
+  browserModel: 'auto',
+  browserModelChosen: false,
   mcpEnabled: false,
   mcpServerKind: 'nlm-cli',
   mcpBaseUrl: DEFAULT_MCP_BASE_URL,
@@ -137,6 +140,11 @@ function migrate(stored: StoredSettings): Partial<Settings> {
   if (out.notebookUrl && !out.notebookId) out.notebookId = parseNotebookId(out.notebookUrl)
   // Settings saved before providerChosen existed held the old default (Claude) or a localhost server that
   // can never work on a phone: move them once to the built-in default. A remembered Claude key is a choice.
+  // The fixed Qwen3.5 0.8B of earlier versions was a default, not a choice: let the device pick now.
+  if (out.browserModelChosen === undefined) {
+    out.browserModel = 'auto'
+    out.browserModelChosen = false
+  }
   if (out.providerChosen === undefined) {
     const keptClaude = out.provider === 'anthropic' && !!safeGet(local, KEY_KEY)
     out.providerChosen = keptClaude
@@ -156,7 +164,7 @@ function loadSettings(): Settings {
     try {
       const stored = JSON.parse(raw) as StoredSettings
       loaded = { ...DEFAULT_SETTINGS, ...migrate(stored) }
-      if (stored.providerChosen === undefined) persistSettings(loaded)
+      if (stored.providerChosen === undefined || stored.browserModelChosen === undefined) persistSettings(loaded)
     } catch {
       loaded = DEFAULT_SETTINGS
     }

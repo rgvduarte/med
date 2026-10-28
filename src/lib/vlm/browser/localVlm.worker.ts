@@ -58,7 +58,8 @@ async function toImage(img: { mediaType: string; base64: string }, maxSide: numb
   const bytes = Uint8Array.from(atob(img.base64), (c) => c.charCodeAt(0))
   const raw = await RawImage.fromBlob(new Blob([bytes], { type: img.mediaType }))
   const scale = Math.min(1, maxSide / Math.max(raw.width, raw.height))
-  // Multiples of 32 keep Qwen's 16px patches x 2x2 merge aligned; also bounds visual tokens (~(w/32)*(h/32)).
+  // Multiples of 32 keep the 16px patches x 2x2 merge of both Qwen and LFM2-VL aligned, and bound the
+  // visual tokens (~(w/32)*(h/32)). LFM2-VL at <= 512 px stays a single tile (no extra tiles on phones).
   const w = Math.max(32, Math.round((raw.width * scale) / 32) * 32)
   const h = Math.max(32, Math.round((raw.height * scale) / 32) * 32)
   return raw.width === w && raw.height === h ? raw : raw.resize(w, h)
@@ -73,7 +74,13 @@ async function generate(req: Extract<ToWorker, { type: 'generate' }>) {
   ]
   // Processor.apply_chat_template defaults to tokenize:false -> string (typed loosely, hence the cast).
   const prompt = processor.apply_chat_template(messages, { add_generation_prompt: true }) as unknown as string
-  const inputs = await processor(prompt, images.length ? images : null, { add_special_tokens: false })
+  // Qwen processors take (text, images); LFM2-VL's takes (images, text) and needs at least one image.
+  const inputs =
+    spec.family === 'lfm2-vl'
+      ? images.length
+        ? await processor(images, prompt, { add_special_tokens: false })
+        : processor.tokenizer!(prompt, { add_special_tokens: false })
+      : await processor(prompt, images.length ? images : null, { add_special_tokens: false })
   const promptLen = (inputs.input_ids as Tensor).dims.at(-1)!
 
   const stopper = stoppers.get(req.id) ?? new InterruptableStoppingCriteria()

@@ -2,25 +2,13 @@
 // worker (which pulls in Transformers.js + ONNX Runtime) lands in the main bundle.
 import * as z from 'zod'
 import type { GenerateRequest, GenerateResult, VlmProvider } from '../providers'
-import type { BrowserModelSpec, FromWorker, ToWorker } from './protocol'
+import type { FromWorker, ToWorker } from './protocol'
+import { BROWSER_MODELS, clearInFlight, markInFlight, type BrowserModelKey } from './models'
 
-export const BROWSER_MODELS = {
-  // Apache-2.0, ungated. 0.81 GB (f16 path) / 1.07 GB (f32 path). Revision = commit sha from the HF API.
-  // Keep all components on the same float width: Transformers.js copies image features into the text
-  // embeddings with TypedArray.set, which is only value-correct across fp16/fp32 when Float16Array exists.
-  'qwen3.5-0.8b': {
-    id: 'onnx-community/Qwen3.5-0.8B-ONNX-OPT',
-    revision: '9a4c21d8f724176b0a7edaaed36303044451886e', // https://huggingface.co/api/models/onnx-community/Qwen3.5-0.8B-ONNX-OPT -> .sha (2026-10-13)
-    dtype: {
-      f16: { embed_tokens: 'q4f16', vision_encoder: 'fp16', decoder_model_merged: 'q4f16' },
-      f32: { embed_tokens: 'q4', vision_encoder: 'fp32', decoder_model_merged: 'q4' },
-    },
-    maxImageSide: 768,
-  },
-} satisfies Record<string, BrowserModelSpec>
+export { BROWSER_MODELS }
 
 export class BrowserVlmProvider implements VlmProvider {
-  label = 'No navegador (experimental, demonstração)'
+  label = 'No navegador'
   local = true
   scope = 'triage' as const
   model: string
@@ -36,8 +24,14 @@ export class BrowserVlmProvider implements VlmProvider {
     this.pending.clear()
   }
 
-  constructor(spec: BrowserModelSpec, onProgress?: (fraction: number, loaded: number, total: number) => void) {
+  private key: BrowserModelKey
+
+  constructor(key: BrowserModelKey, onProgress?: (fraction: number, loaded: number, total: number) => void) {
+    const spec = BROWSER_MODELS[key]
+    this.key = key
     this.model = spec.id
+    this.label = `No navegador · ${spec.label}`
+    markInFlight(key, 'load')
     // Vite: new URL(...) must be written inline inside new Worker(...) for detection.
     this.worker = new Worker(new URL('./localVlm.worker.ts', import.meta.url), { type: 'module', name: 'local-vlm' })
     // A worker that fails to load or crashes must not leave analyses waiting forever.
@@ -47,7 +41,7 @@ export class BrowserVlmProvider implements VlmProvider {
       const onMsg = (e: MessageEvent<FromWorker>) => {
         const m = e.data
         if (m.type === 'progress') onProgress?.(m.progress / 100, m.loaded, m.total)
-        else if (m.type === 'ready') { this.worker.removeEventListener('message', onMsg); resolve() }
+        else if (m.type === 'ready') { this.worker.removeEventListener('message', onMsg); clearInFlight(); resolve() }
         else if (m.type === 'error' && m.id === undefined) { this.worker.removeEventListener('message', onMsg); reject(new Error(m.message)) }
       }
       this.worker.addEventListener('message', onMsg)
@@ -71,6 +65,7 @@ export class BrowserVlmProvider implements VlmProvider {
 
   private run(req: Omit<Extract<ToWorker, { type: 'generate' }>, 'type' | 'id'>, signal?: AbortSignal, onProgress?: (chars: number) => void) {
     const id = this.nextId++
+    markInFlight(this.key, 'generate')
     let chars = 0
     return new Promise<Extract<FromWorker, { type: 'result' }>>((resolve, reject) => {
       const onAbort = () => {
@@ -79,6 +74,7 @@ export class BrowserVlmProvider implements VlmProvider {
         reject(new DOMException('Análise cancelada', 'AbortError'))
       }
       const cleanup = () => {
+        clearInFlight()
         this.worker.removeEventListener('message', onMsg)
         signal?.removeEventListener('abort', onAbort)
         this.pending.delete(id)
