@@ -11,7 +11,7 @@ import { FindingsOverlay, type OverlayItem, type Rect } from './FindingsOverlay'
 import { CineBar, type CineSpan } from './CineBar'
 import { ShortcutsDialog } from './ShortcutsDialog'
 import { fmtClock, fmtNum } from './format'
-import { isDrawable, orderedRange, playableLoop, seriesDuration } from './findingModel'
+import { isDrawable, orderedRange, playableLoop, seriesDuration, studyClass } from './findingModel'
 
 type P2 = [number, number]
 
@@ -1102,7 +1102,13 @@ export function Viewer(props: ViewerProps) {
                   ? `IA ${aiVisible ? 'visível' : 'oculta'} · ${props.navTotal}`
                   : c.status === 'analysing'
                     ? 'IA · a analisar…'
-                    : 'IA · sem achados'}
+                    : c.status === 'error'
+                      ? 'IA · análise falhou'
+                      : studyClass(c.analysis) === 'negative'
+                        ? 'IA · sem achados'
+                        : studyClass(c.analysis) === 'not-assessable'
+                          ? 'IA · não avaliável'
+                          : 'IA · sem marcações'}
               </span>
             </button>
             {props.navTotal > 0 && (

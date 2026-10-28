@@ -15,7 +15,7 @@ import {
   type ImageRef,
 } from './pipeline'
 import { verifySystem } from './prompts'
-import { cspHint } from './providers'
+import { cspHint, deviceHint } from './providers'
 import type { FindingsOut } from './schemas'
 import type { Case, EvidenceItem, Frame, Report, Series } from '../../types'
 
@@ -211,5 +211,20 @@ describe('citationIssues', () => {
     expect(issues).toHaveLength(1)
     expect(issues[0].message).toContain('inventado2020')
     expect(issues[0].severity).toBe('error')
+  })
+})
+
+describe('deviceHint', () => {
+  const iphone = 'Mozilla/5.0 (iPhone; CPU iPhone OS 26_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Mobile/15E148 Safari/604.1'
+  const ipad = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Safari/605.1.15'
+  const desktop = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36'
+  it('explains localhost on phones and iPads (iPadOS reports a Mac with touch)', () => {
+    expect(deviceHint('http://localhost:11434/v1', iphone, 5)).toMatch(/próprio aparelho/)
+    expect(deviceHint('http://127.0.0.1:11434/v1', ipad, 5)).toMatch(/No navegador/)
+  })
+  it('stays silent on desktops and for non-local servers', () => {
+    expect(deviceHint('http://localhost:11434/v1', desktop, 0)).toBe('')
+    expect(deviceHint('http://localhost:11434/v1', ipad, 0)).toBe('')
+    expect(deviceHint('/ollama/v1', iphone, 5)).toBe('')
   })
 })

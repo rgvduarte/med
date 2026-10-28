@@ -148,6 +148,23 @@ export function cspHint(baseUrl: string, pageUrl = typeof location !== 'undefine
   }
 }
 
+/**
+ * On a phone or tablet, «localhost» is the device itself, which runs no model server (and iOS browsers block
+ * http://localhost from an https page). Say so instead of a generic connection error.
+ */
+export function deviceHint(baseUrl: string, ua = typeof navigator !== 'undefined' ? navigator.userAgent : '', touchPoints = typeof navigator !== 'undefined' ? navigator.maxTouchPoints : 0): string {
+  try {
+    const { hostname } = new URL(baseUrl, 'http://x/')
+    if (hostname !== 'localhost' && hostname !== '127.0.0.1') return ''
+  } catch {
+    return ''
+  }
+  const mobile = /iPhone|iPad|iPod|Android|Mobile/i.test(ua) || (/Macintosh/.test(ua) && touchPoints > 1)
+  return mobile
+    ? ' Neste telemóvel ou tablet, «localhost» é o próprio aparelho, onde não corre nenhum servidor de IA: escolha «No navegador» em Definições → Modelo.'
+    : ''
+}
+
 /** Local OpenAI-compatible server (Ollama, LM Studio, vLLM) — e.g. MedGemma; images never leave the machine. */
 export class OpenAICompatibleProvider implements VlmProvider {
   label = 'Modelo local (compatível OpenAI)'
@@ -196,7 +213,9 @@ export class OpenAICompatibleProvider implements VlmProvider {
       } catch (e) {
         if (req.signal?.aborted) throw new DOMException('Análise cancelada', 'AbortError')
         throw new Error(
-          `Sem ligação ao servidor local em ${this.baseUrl}. Confirme que está a correr e que permite pedidos desta origem (CORS, ex.: OLLAMA_ORIGINS).${cspHint(this.baseUrl)} (${e instanceof Error ? e.message : String(e)})`,
+          deviceHint(this.baseUrl)
+            ? `Sem ligação ao servidor local em ${this.baseUrl}.${deviceHint(this.baseUrl)}`
+            : `Sem ligação ao servidor local em ${this.baseUrl}. Confirme que está a correr e que permite pedidos desta origem (CORS, ex.: OLLAMA_ORIGINS).${cspHint(this.baseUrl)} (${e instanceof Error ? e.message : String(e)})`,
         )
       }
       if (!res.ok) throw new Error(`Servidor local respondeu ${res.status}: ${(await res.text()).slice(0, 300)}`)

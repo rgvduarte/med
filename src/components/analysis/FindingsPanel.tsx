@@ -40,6 +40,7 @@ import { formatDateTime } from '../../lib/util'
 import { ClassChip, ClassGlyph } from '../viewer/ClassChip'
 import { fmtClockShort } from '../viewer/format'
 import { isLocked, orderedRange, reviewProgress, studyClass } from '../viewer/findingModel'
+import { findingsStageDone } from '../../lib/report/state'
 import { AnalyseButton, useAnalysisRun } from './PipelinePanel'
 import { GlassProgress } from '../ui/glass'
 
@@ -464,8 +465,11 @@ export function FindingsPanel({ c, codes, selectedId, hoveredId, onSelect, onHov
   const { running, error } = useAnalysisRun(c)
   const configured = isVlmConfigured(useSettings())
   const locked = isLocked(c)
+  // A failed run is not a result: never present it as «sem achados» or «não avaliável».
+  const failed = c.status === 'error'
+  const failMessage = error ?? a?.stages.find((s) => s.status === 'error')?.message
 
-  if (!a || (a.findings.length === 0 && running)) {
+  if (!a || (a.findings.length === 0 && (running || failed))) {
     return (
       <div className="fp-empty">
         {running ? (
@@ -478,12 +482,16 @@ export function FindingsPanel({ c, codes, selectedId, hoveredId, onSelect, onHov
         ) : (
           <>
             <Sparkles size={26} aria-hidden className="fp-empty-ic" />
-            <p>Ainda não há análise de IA para este caso. Leia primeiro as imagens; a análise sugere achados para rever, nunca um diagnóstico.</p>
-            {error && (
+            <p>
+              {failed
+                ? 'A análise da IA falhou e não há resultado para este caso. Leia as imagens normalmente; pode tentar de novo depois de resolver o erro.'
+                : 'Ainda não há análise de IA para este caso. Leia primeiro as imagens; a análise sugere achados para rever, nunca um diagnóstico.'}
+            </p>
+            {failMessage && (
               <div className="callout callout-warn fp-empty-error" role="alert">
                 <TriangleAlert size={16} aria-hidden />
                 <div>
-                  <strong>Erro.</strong> {error}{' '}
+                  <strong>Erro.</strong> {failMessage}{' '}
                   <button type="button" className="fp-link" onClick={() => onOpenTab('analysis')}>
                     Ver detalhes
                   </button>
@@ -544,7 +552,13 @@ export function FindingsPanel({ c, codes, selectedId, hoveredId, onSelect, onHov
           {running && <span className="fp-gen">A gerar…</span>}
         </h2>
         <div className="fp-summary-main">
-          {sc && <ClassChip cls={sc} ai />}
+          {failed && !findingsStageDone(a) ? (
+            <span className="wsx-chip is-err">
+              <X size={12} aria-hidden /> Análise incompleta
+            </span>
+          ) : (
+            sc && <ClassChip cls={sc} ai />
+          )}
           <span className="fp-summary-counts">
             {[
               nPos ? plural(nPos, 'positivo', 'positivos') : '',
@@ -557,7 +571,12 @@ export function FindingsPanel({ c, codes, selectedId, hoveredId, onSelect, onHov
               .join(' · ') || 'sem achados'}
           </span>
         </div>
-        {sc === 'not-assessable' && (
+        {failed && (
+          <p className="fp-caution">
+            <TriangleAlert size={14} aria-hidden /> A análise da IA não terminou{failMessage ? `: ${failMessage}` : '.'} Os achados abaixo são parciais.
+          </p>
+        )}
+        {sc === 'not-assessable' && !failed && (
           <p className="fp-caution">
             <TriangleAlert size={14} aria-hidden /> {a.triage?.qualityNotes || a.triage?.summary || 'O estudo não pôde ser avaliado pela IA.'}
           </p>

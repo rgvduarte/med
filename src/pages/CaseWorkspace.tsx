@@ -418,9 +418,12 @@ function Workspace({ id }: { id: string }) {
     evidence: nEvidence || undefined,
   }
   const reviewable = findings.filter((f) => f.group !== 'checklist').length
+  const failed = c.status === 'error'
   const handleText = running
     ? 'Análise em curso'
-    : !c.analysis
+    : failed
+      ? 'A análise da IA falhou'
+      : !c.analysis
       ? 'Sem análise de IA'
       : pending.length
         ? plural(pending.length, 'achado por rever', 'achados por rever')
@@ -488,11 +491,15 @@ function Workspace({ id }: { id: string }) {
                   aria-expanded={sheet !== 'min'}
                   aria-controls="wsx-sheet"
                   onClick={onHandleClick}
-                  aria-label={`${sheet === 'min' ? 'Abrir' : 'Recolher'} painel: ${TAB_LABEL[tab]}. ${sc && !running ? `Resultado da IA: ${CASE_RESULT_LABEL[sc]}. ` : ''}${handleText}`}
+                  aria-label={`${sheet === 'min' ? 'Abrir' : 'Recolher'} painel: ${TAB_LABEL[tab]}. ${sc && !running && !failed ? `Resultado da IA: ${CASE_RESULT_LABEL[sc]}. ` : ''}${handleText}`}
                 >
                   {running ? (
                     <span className="wsx-chip is-run">
                       <LoaderCircle size={12} className="spin" aria-hidden /> IA
+                    </span>
+                  ) : failed ? (
+                    <span className="wsx-chip is-err">
+                      <CircleX size={12} aria-hidden /> Erro
                     </span>
                   ) : sc ? (
                     <ClassChip cls={sc} small ai />
