@@ -462,12 +462,12 @@ export function Viewer(props: ViewerProps) {
         }
       }
       if (label) {
-        ctx.font = '600 12px "Inter Variable", system-ui, sans-serif'
+        ctx.font = '600 12px "Geist Variable", system-ui, sans-serif'
         ctx.shadowBlur = 0
         const tw = ctx.measureText(label).width
         const lx = clamp(anchor[0] + 8, 2, size.w - tw - 10)
         const ly = clamp(anchor[1] - 22, 2, size.h - 20)
-        ctx.fillStyle = 'rgba(11,15,20,0.85)'
+        ctx.fillStyle = 'rgba(12,12,12,0.85)'
         ctx.fillRect(lx, ly, tw + 8, 18)
         ctx.fillStyle = MEASURE_COLOR
         ctx.fillText(label, lx + 4, ly + 13)
@@ -599,13 +599,13 @@ export function Viewer(props: ViewerProps) {
       ctx.strokeStyle = color
       ctx.strokeRect(o.rect.x, o.rect.y, o.rect.w, o.rect.h)
       ctx.setLineDash([])
-      ctx.font = '600 11px "Inter Variable", system-ui, sans-serif'
+      ctx.font = '600 11px "Geist Variable", system-ui, sans-serif'
       const label = `IA ${o.code} ≈ ${o.finding.label}`
       const tw = ctx.measureText(label).width
       const ly = o.rect.y > 20 ? o.rect.y - 18 : o.rect.y + 2
-      ctx.fillStyle = 'rgba(11,15,20,0.85)'
+      ctx.fillStyle = 'rgba(12,12,12,0.85)'
       ctx.fillRect(o.rect.x, ly, tw + 8, 16)
-      ctx.fillStyle = '#e7edf4'
+      ctx.fillStyle = '#f5f5f5'
       ctx.fillText(label, o.rect.x + 4, ly + 12)
     }
     out.toBlob((blob) => {

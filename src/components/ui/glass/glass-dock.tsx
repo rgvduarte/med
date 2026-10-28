@@ -33,7 +33,7 @@ export function GlassDock({ items, className, label }: { items: DockItem[]; clas
             aria-current={item.active ? 'page' : undefined}
             className={cn(
               'relative flex flex-col items-center gap-1 rounded-xl px-2 py-1.5 text-[11px] font-semibold text-white/65 no-underline transition-all duration-200',
-              'hover:bg-white/10 hover:text-white hover:no-underline',
+              'hover:bg-white/10 hover:text-white hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white',
               item.active && 'border border-white/30 bg-white/15 text-white shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)]',
             )}
           >

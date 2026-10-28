@@ -320,8 +320,8 @@ export function Worklist() {
         <Stat value={stats.total} label="Estudos" />
         <Stat value={stats.pending} label="Por analisar" />
         {/* The glow marks the one figure that asks for the clinician's action. */}
-        <Stat value={stats.toValidate} label="Relatórios por validar" color="var(--ai)" glow={stats.toValidate > 0} />
-        <Stat value={stats.validated} label="Validados pelo médico" color="var(--normal)" />
+        <Stat value={stats.toValidate} label="Relatórios por validar" color={stats.toValidate > 0 ? 'var(--significant)' : undefined} glow={stats.toValidate > 0} />
+        <Stat value={stats.validated} label="Validados pelo médico" color={stats.validated > 0 ? 'var(--normal)' : undefined} />
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: 'var(--sp-4)' }}>

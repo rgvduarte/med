@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Cpu, FileText, KeyRound, LockKeyhole, Notebook, RotateCcw, ShieldAlert, UserRound } from 'lucide-react'
+import { useState, type KeyboardEvent } from 'react'
+import { Check, Cpu, FileText, KeyRound, LockKeyhole, Notebook, RotateCcw, ShieldAlert, UserRound } from 'lucide-react'
 import { useSettings, type Effort, type Provider } from '../store/settings'
 import { NotebookLmCard } from '../components/settings/NotebookLmCard'
 import { UserCard } from '../components/settings/UserCard'
@@ -38,9 +38,26 @@ const EFFORTS: { id: Effort; label: string }[] = [
   { id: 'max', label: 'Máximo' },
 ]
 
+const PROVIDERS: [Provider, string][] = [
+  ['browser', 'No navegador (por defeito)'],
+  ['anthropic', 'Claude (API Anthropic)'],
+  ['openai-compatible', 'MedGemma local / Codespaces'],
+]
+
 export function Settings() {
   const s = useSettings()
   const [showKey, setShowKey] = useState(false)
+
+  // Radio-group keyboard pattern: arrows move the selection and the focus together.
+  const onProviderKey = (e: KeyboardEvent<HTMLDivElement>) => {
+    const step = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1 : 0
+    if (!step) return
+    e.preventDefault()
+    const i = PROVIDERS.findIndex(([id]) => id === s.provider)
+    const next = PROVIDERS[(i + step + PROVIDERS.length) % PROVIDERS.length][0]
+    s.update({ provider: next, providerChosen: true })
+    e.currentTarget.querySelector<HTMLElement>(`[data-provider="${next}"]`)?.focus()
+  }
 
   return (
     <div className="page page-narrow">
@@ -60,15 +77,19 @@ export function Settings() {
         <h2 id="modelo-title" className="row" style={{ gap: 8 }}>
           <Cpu size={18} aria-hidden /> Modelo de visão-linguagem (VLM)
         </h2>
-        <div className="row rp-provider" role="radiogroup" aria-label="Fornecedor" style={{ marginBottom: 'var(--sp-4)' }}>
-          {(
-            [
-              ['browser', 'No navegador (por defeito)'],
-              ['anthropic', 'Claude (API Anthropic)'],
-              ['openai-compatible', 'MedGemma local / Codespaces'],
-            ] as [Provider, string][]
-          ).map(([id, label]) => (
-            <button key={id} role="radio" aria-checked={s.provider === id} className={`btn ${s.provider === id ? 'btn-primary' : ''}`} onClick={() => s.update({ provider: id, providerChosen: true })}>
+        <div className="row rp-provider" role="radiogroup" aria-label="Fornecedor" style={{ marginBottom: 'var(--sp-4)' }} onKeyDown={onProviderKey}>
+          {PROVIDERS.map(([id, label]) => (
+            <button
+              key={id}
+              type="button"
+              role="radio"
+              data-provider={id}
+              aria-checked={s.provider === id}
+              tabIndex={s.provider === id ? 0 : -1}
+              className={`btn rp-choice ${s.provider === id ? 'is-selected' : ''}`}
+              onClick={() => s.update({ provider: id, providerChosen: true })}
+            >
+              {s.provider === id && <Check size={15} aria-hidden />}
               {label}
             </button>
           ))}

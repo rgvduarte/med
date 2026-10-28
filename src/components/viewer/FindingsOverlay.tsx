@@ -37,7 +37,7 @@ let measureCtx: CanvasRenderingContext2D | null = null
 function textWidth(text: string): number {
   if (!measureCtx) {
     measureCtx = document.createElement('canvas').getContext('2d')
-    if (measureCtx) measureCtx.font = '600 11px "Inter Variable", Inter, system-ui, sans-serif'
+    if (measureCtx) measureCtx.font = '600 11px "Geist Variable", system-ui, sans-serif'
   }
   return measureCtx ? measureCtx.measureText(text).width : text.length * 6.5
 }

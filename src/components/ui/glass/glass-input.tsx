@@ -5,7 +5,7 @@ import { cn } from '../cn'
 const field = cn(
   'relative w-full rounded-xl px-4 py-2 text-sm',
   'border border-white/20 bg-white/10 backdrop-blur-xl',
-  'text-white placeholder:text-white/40',
+  'text-white placeholder:text-white/60',
   'shadow-[0_4px_16px_rgba(0,0,0,0.2)]',
   'transition-all duration-300',
   'focus:border-white/40 focus:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60',

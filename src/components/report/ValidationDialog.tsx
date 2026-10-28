@@ -169,7 +169,7 @@ export function ValidationDialog({ c, r, open, onClose, onDone }: { c: Case; r: 
             assinatura eletrónica qualificada.
           </p>
           {error && (
-            <div className="callout callout-warn" role="alert">
+            <div className="callout callout-error" role="alert">
               <CircleX size={16} />
               <div>{error}</div>
             </div>

@@ -74,6 +74,9 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
                 <a className="conn-pill" href={href({ name: 'settings' })} aria-label={`Modelo: ${vlmLabel}`}>
                   <span className={`dot ${vlmOk ? 'ok' : 'warn'}`} />
                   <span className="label">{vlmLabel}</span>
+                  <span className="label-short" aria-hidden>
+                    IA
+                  </span>
                 </a>
               </GlassTooltipTrigger>
               <GlassTooltipContent side="bottom">Estado do modelo de visão-linguagem — abrir Definições</GlassTooltipContent>
@@ -83,6 +86,9 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
                 <a className="conn-pill" href={href({ name: 'settings' })} aria-label={nlm.label}>
                   <span className={`dot ${nlm.dot}`} />
                   <span className="label">{nlm.label}</span>
+                  <span className="label-short" aria-hidden>
+                    NLM
+                  </span>
                 </a>
               </GlassTooltipTrigger>
               <GlassTooltipContent side="bottom" align="end">

@@ -201,7 +201,7 @@ function CaseHeader({ c }: { c: Case }) {
         {c.isDemo && <span className="badge badge-info wsx-hide-sm">Demonstração</span>}
         {privacy.clear ? (
           <span
-            className="wsx-chip is-ok wsx-hide-sm"
+            className="wsx-chip wsx-hide-sm"
             title={`Identificador pseudonimizado; ${plural(removed, 'etiqueta DICOM identificativa removida', 'etiquetas DICOM identificativas removidas')}; todas as séries DICOM declaram não ter texto gravado na imagem (BurnedInAnnotation = NO).`}
           >
             <ShieldCheck size={13} aria-hidden /> Anonimizado
@@ -213,6 +213,9 @@ function CaseHeader({ c }: { c: Case }) {
           >
             <ShieldAlert size={13} aria-hidden />
             <span className="wsx-chip-long">Verifique texto gravado na imagem</span>
+            <span className="wsx-chip-short" aria-hidden>
+              Texto na imagem?
+            </span>
           </span>
         )}
         {c.report?.status === 'validated' ? (
@@ -511,8 +514,8 @@ function Workspace({ id }: { id: string }) {
                   ) : (
                     <span className="badge badge-neutral">Sem IA</span>
                   )}
-                  <span className="wsx-handle-text">
-                    <strong>{TAB_LABEL[tab]}</strong> · {handleText}
+                  <span className={`wsx-handle-text ${!running && !failed && !triageOnly && pending.length ? 'is-pending' : ''}`}>
+                    <strong>{TAB_LABEL[tab]}</strong> · <span className="wsx-handle-count">{handleText}</span>
                   </span>
                   {sheet === 'min' ? <ChevronUp size={18} aria-hidden /> : <ChevronDown size={18} aria-hidden />}
                 </button>

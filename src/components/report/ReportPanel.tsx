@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
-import { BadgeCheck, BookMarked, Check, FileText, Library, Lock, Notebook, Pencil, ShieldCheck, TriangleAlert, X } from 'lucide-react'
+import { BadgeCheck, BookMarked, Check, FileText, Library, Lock, Notebook, Pencil, ShieldAlert, ShieldCheck, TriangleAlert, X } from 'lucide-react'
 import type { Case, Report } from '../../types'
 import { useCases } from '../../store/cases'
 import { aiDeclarationFor, citationNumbers, citedEvidence, reportStrings, studyLine } from '../../lib/report/format'
@@ -302,7 +302,7 @@ export function ReportPanel({ c }: { c: Case }) {
       )}
       {issues.length > 0 && !locked && (
         <div className={`callout ${issues.some((i) => i.severity === 'error') ? 'callout-warn' : 'callout-info'}`}>
-          <ShieldCheck size={16} />
+          {issues.some((i) => i.severity !== 'info') ? <ShieldAlert size={16} /> : <ShieldCheck size={16} />}
           <details style={{ flex: 1, minWidth: 0 }}>
             <summary style={{ cursor: 'pointer' }}>
               <strong>Segundo leitor (IA): {issues.length} observação(ões)</strong>

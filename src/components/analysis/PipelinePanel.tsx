@@ -367,7 +367,7 @@ export function PipelinePanel({ c }: { c: Case }) {
       )}
 
       {error && !running && (
-        <div className="callout callout-warn" role="alert">
+        <div className="callout callout-error" role="alert">
           <CircleX size={16} aria-hidden />
           <div>
             <strong>Erro.</strong> {error}
@@ -432,7 +432,7 @@ export function PipelinePanel({ c }: { c: Case }) {
         <section className="pp-card" aria-labelledby="pp-triage">
           <div className="pp-card-head">
             <h3 id="pp-triage">Triagem</h3>
-            <span className={`badge ${a.triage.imageQuality === 'adequate' ? 'badge-normal' : a.triage.imageQuality === 'limited' ? 'badge-significant' : 'badge-critical'}`}>
+            <span className={`badge ${a.triage.imageQuality === 'adequate' ? 'badge-neutral' : a.triage.imageQuality === 'limited' ? 'badge-significant' : 'badge-critical'}`}>
               Qualidade {a.triage.imageQuality === 'adequate' ? 'adequada' : a.triage.imageQuality === 'limited' ? 'limitada' : 'não diagnóstica'}
             </span>
           </div>
@@ -451,7 +451,7 @@ export function PipelinePanel({ c }: { c: Case }) {
         <section className="pp-card" aria-labelledby="pp-verify">
           <div className="pp-card-head">
             <h3 id="pp-verify">Verificações de segurança</h3>
-            <span className={`badge ${a.verification.passed ? 'badge-normal' : 'badge-significant'}`}>{a.verification.passed ? 'Sem bloqueios' : 'A rever'}</span>
+            <span className={`badge ${a.verification.passed ? 'badge-neutral' : 'badge-significant'}`}>{a.verification.passed ? 'Sem bloqueios' : 'A rever'}</span>
           </div>
           {a.verification.issues.length === 0 && <p className="muted">Sem problemas detetados.</p>}
           {a.verification.issues.map((it, i) => (

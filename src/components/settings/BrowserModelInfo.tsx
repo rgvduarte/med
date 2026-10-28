@@ -120,7 +120,7 @@ export function BrowserModelInfo() {
       </label>
 
       <div className="row" style={{ gap: 8 }}>
-        <span className={`badge ${webgpu ? 'badge-normal' : 'badge-critical'}`}>
+        <span className={`badge ${webgpu ? 'badge-neutral' : 'badge-critical'}`}>
           <Cpu size={12} /> WebGPU {webgpu ? 'disponível' : 'indisponível neste navegador'}
         </span>
         {cachedMb !== null && (

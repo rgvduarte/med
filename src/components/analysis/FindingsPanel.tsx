@@ -175,7 +175,7 @@ function RejectForm({ onCancel, onConfirm }: { onCancel: () => void; onConfirm: 
         )}
       </fieldset>
       <div className="fp-pop-actions">
-        <button type="submit" className="btn btn-sm btn-danger" disabled={!valid}>
+        <button type="submit" className="btn btn-sm" disabled={!valid}>
           <X size={14} aria-hidden /> Rejeitar
         </button>
         <button type="button" className="btn btn-sm btn-ghost" onClick={onCancel}>
@@ -508,7 +508,7 @@ export function FindingsPanel({ c, codes, selectedId, hoveredId, onSelect, onHov
                 : 'Ainda não há análise de IA para este caso. Leia primeiro as imagens; a análise sugere achados para rever, nunca um diagnóstico.'}
             </p>
             {failMessage && (
-              <div className="callout callout-warn fp-empty-error" role="alert">
+              <div className="callout callout-error fp-empty-error" role="alert">
                 <TriangleAlert size={16} aria-hidden />
                 <div>
                   <strong>Erro.</strong> {failMessage}{' '}

@@ -49,8 +49,11 @@ a {
 .fp-link:hover {
   text-decoration-color: currentColor;
 }
-:focus-visible {
-  box-shadow: var(--focus-ring);
+.input:focus-visible,
+.select:focus-visible,
+.textarea:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.92);
+  outline-offset: 1px;
 }
 
 /* Shared glass recipes */
@@ -163,14 +166,13 @@ a {
   background: rgba(255, 255, 255, 0.14);
   border-color: rgba(255, 255, 255, 0.3);
 }
+/* A working connection is system status, not clinical validation: white, not green. */
 .dot.ok {
-  box-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
+  background: #fff;
 }
-.dot.warn {
-  box-shadow: 0 0 8px rgba(255, 175, 95, 0.75);
-}
-.dot.err {
-  box-shadow: 0 0 8px rgba(255, 122, 122, 0.8);
+.conn-pill .label-short {
+  display: none;
+  font-weight: 600;
 }
 .footer {
   background: rgba(255, 255, 255, 0.03);
@@ -236,7 +238,7 @@ a {
   border-color: rgba(248, 113, 113, 0.42);
   background: var(--glass-highlight), rgba(239, 68, 68, 0.22);
   color: #fecaca;
-  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.22);
+  box-shadow: var(--glass-shadow-sm), var(--glass-inset);
 }
 .btn-danger:hover:not(:disabled) {
   background: var(--glass-highlight), rgba(239, 68, 68, 0.34);
@@ -272,7 +274,7 @@ a {
 }
 .input::placeholder,
 .textarea::placeholder {
-  color: rgba(255, 255, 255, 0.42);
+  color: rgba(255, 255, 255, 0.6);
 }
 .input:focus,
 .select:focus,
@@ -463,6 +465,11 @@ input[type='range'] {
   background: var(--glass-highlight), rgba(245, 158, 11, 0.16);
   color: #fde3b5;
 }
+.callout-error {
+  border-color: rgba(248, 113, 113, 0.42);
+  background: var(--glass-highlight), rgba(239, 68, 68, 0.16);
+  color: #fecaca;
+}
 .callout-ai {
   border-color: rgba(192, 132, 252, 0.38);
   background: var(--glass-highlight), rgba(168, 85, 247, 0.16);
@@ -608,13 +615,18 @@ input[type='range'] {
   border-color: rgba(255, 255, 255, 0.25);
 }
 .wsx-tab-count.is-pending {
-  background: linear-gradient(135deg, #fbbf24, #f59e0b);
-  border-color: rgba(255, 255, 255, 0.35);
+  background: var(--significant);
+  border-color: var(--significant);
   color: #1d1300;
-  box-shadow: 0 0 10px rgba(245, 158, 11, 0.6);
 }
 .wsx-panel {
   animation: glass-in 0.32s var(--ease-out);
+}
+.wsx-handle-text.is-pending .wsx-handle-count {
+  color: var(--significant);
+}
+.wsx-chip-short {
+  display: none;
 }
 
 /* Series panel */
@@ -693,6 +705,18 @@ input[type='range'] {
   background: rgba(12, 12, 12, 0.72);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), var(--glass-inset);
 }
+/* AI provenance on and around the image stays violet. */
+.vw-aichip {
+  border-color: rgba(177, 151, 252, 0.5);
+}
+.vt-btn.vt-ai[aria-pressed='true'] {
+  background: var(--ai-soft);
+  color: var(--ai);
+  box-shadow: inset 0 0 0 1px rgba(177, 151, 252, 0.45);
+}
+.vt-btn.vt-ai[aria-pressed='true']::after {
+  background: var(--ai);
+}
 .cb-head {
   background: #fff;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
@@ -737,7 +761,15 @@ input[type='range'] {
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
-.fp-meter > i,
+/* Confidence segments: filled = white, unfilled = outline only (never all white: «Baixa» must not look like «Alta»). */
+.fp-meter i {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.32);
+}
+.fp-meter i.on {
+  background: #fff;
+  border-color: #fff;
+}
 .confidence .bar > i {
   background: #fff;
 }
@@ -840,6 +872,38 @@ input[type='range'] {
 .rp-sec-auto {
   background: rgba(255, 255, 255, 0.03);
 }
+/* Provenance and review state of report sections (the shared glass border above must not erase them). */
+.rp-sec-ai {
+  border-left: 2px solid var(--ai);
+}
+.rp-sec-reviewed {
+  border-left: 2px solid var(--normal);
+}
+.rp-sec-valid {
+  border-color: rgba(74, 222, 128, 0.45);
+}
+/* Automatic pre-checks, intended use, connection tests: process status, so white ticks, not green. */
+.rp-check.ok svg,
+.rp-use-yes h3 svg,
+.rp-use-no h3 svg {
+  color: var(--text);
+}
+.rp-conn.ok,
+.rp-test-result.ok {
+  border-color: var(--border-strong);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+}
+/* «Não avaliável» is a warning about the study; «Só triagem» is a process state; «Negativo» stays plain grey. */
+.rp-res-not-assessable {
+  color: var(--significant);
+  background: var(--significant-soft);
+  border-color: rgba(251, 191, 36, 0.4);
+  border-style: dashed;
+}
+.rp-res-triage {
+  border-style: dashed;
+}
 .rp-sec-editing {
   border-color: rgba(255, 255, 255, 0.75);
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.55), 0 0 24px rgba(255, 255, 255, 0.1);
@@ -854,6 +918,13 @@ input[type='range'] {
 }
 .rp-radio:hover {
   border-color: rgba(255, 255, 255, 0.3);
+}
+/* Selected option of a choice group: a raised glass pill, not the primary call to action. */
+.rp-choice.is-selected,
+.rp-choice.is-selected:hover:not(:disabled) {
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35), var(--glass-shadow-sm);
 }
 .rp-radio.on {
   border-color: rgba(255, 255, 255, 0.7);
@@ -900,6 +971,17 @@ input[type='range'] {
 /* ---------------------------------------------------------------- Phone dock */
 
 @media (max-width: 860px) {
+  /* Status pills keep a word next to the dot on phones (no hover tooltip on touch). */
+  .conn-pill .label-short {
+    display: inline;
+  }
+  /* The export menu opens as a bottom sheet: keep it above the floating dock. */
+  .rp-menu {
+    bottom: calc(92px + env(safe-area-inset-bottom));
+  }
+  .wsx-chip-short {
+    display: inline;
+  }
   .app {
     grid-template-rows: auto var(--topbar-h) 1fr auto;
   }
