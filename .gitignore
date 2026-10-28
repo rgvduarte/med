@@ -26,3 +26,5 @@ npm-debug.log*
 pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+# Raw evaluation outputs are written live by eval/run.mts; final files are added with git add -f
+eval/results/
