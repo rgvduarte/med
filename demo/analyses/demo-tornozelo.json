@@ -1,0 +1,676 @@
+{
+ "analysis": {
+  "provider": "Claude (API Anthropic)",
+  "model": "claude-opus-5-5",
+  "language": "pt-PT",
+  "startedAt": "2026-10-27T23:00:00.000Z",
+  "finishedAt": "2026-10-27T23:00:00.000Z",
+  "precomputed": true,
+  "stages": [
+   {
+    "id": "preprocess",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "1 imagem(ns) preparada(s)"
+   },
+   {
+    "id": "triage",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "XR · AP (rotação aparentemente próxima de mortise, não confirmada) e perfil, compostas numa única imagem"
+   },
+   {
+    "id": "findings",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "2 achado(s) · 17 item(ns) da lista de verificação"
+   },
+   {
+    "id": "evidence",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "6 referência(s) da base curada"
+   },
+   {
+    "id": "report",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "5 ponto(s) na conclusão · protocolo msk-v1"
+   },
+   {
+    "id": "verify",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "6 problema(s) corrigido(s) automaticamente; 3 observação(ões) por rever"
+   }
+  ],
+  "triage": {
+   "modality": "XR",
+   "region": "ankle-foot",
+   "view": "AP (rotação aparentemente próxima de mortise, não confirmada) e perfil, compostas numa única imagem",
+   "laterality": "right",
+   "imageQuality": "adequate",
+   "qualityNotes": "Duas incidências compostas numa só imagem JPEG, com exposição e posicionamento globalmente adequados. A rotação de mortise verdadeira não está confirmada e não há incidências em carga ou de stress. O antepé e o mediopé distal estão fora do campo (base do 5.º metatarso, articulação de Lisfranc; navicular só parcialmente incluído). No AP, as partes moles laterais ficam cortadas no bordo esquerdo da imagem. Não há escala de referência, pelo que não é possível fazer medições absolutas.",
+   "skeletalMaturity": "adult",
+   "hardwarePresent": false,
+   "summary": "Radiografia do tornozelo direito de adulto em duas incidências (AP e perfil) numa imagem composta, sem material de osteossíntese. A qualidade é adequada para avaliar os maléolos e a mortise, mas não há incidências em carga/stress nem inclusão do pé distal."
+  },
+  "findings": [
+   {
+    "id": "F1",
+    "origin": "ai",
+    "cls": "positive",
+    "group": "priority",
+    "label": "Fratura oblíqua do perónio distal (maléolo lateral) ao nível da sindesmose",
+    "description": "No AP há um degrau na cortical lateral do perónio distal, um pouco acima da linha articular, e uma linha oblíqua curta, com bordo esclerótico por sobreposição de fragmentos, que sobe em direção à margem medial do perónio, na zona de sobreposição tibioperonial. O desvio parece mínimo (discreto degrau cortical), sem encurtamento evidente e com a mortise congruente. No perfil, o traço não se individualiza com segurança por sobreposição com a tíbia.",
+    "anatomicSite": "Perónio distal / maléolo lateral, ao nível da sindesmose tibioperonial distal",
+    "laterality": "right",
+    "certainty": "consistent-with",
+    "severity": "significant",
+    "confidence": "high",
+    "classification": {
+     "system": "Danis-Weber",
+     "grade": "B (provável)",
+     "rationale": "No AP, o traço fica na zona de sobreposição tíbia-perónio (nível da sindesmose), pouco acima da linha articular e sem extensão proximal evidente acima da sindesmose, o que é compatível com Weber B e com um mecanismo de supinação/rotação externa. No perfil, a orientação do traço (ântero-inferior para póstero-superior) não se confirma por sobreposição. Faltam também uma incidência de mortise dedicada e uma escala, pelo que Weber C não pode ser totalmente excluído."
+    },
+    "locations": [
+     {
+      "seriesId": "demo-tornozelo-s1",
+      "frameIndex": 0,
+      "bbox": [
+       0.10208333333333333,
+       0.2904040404040404,
+       0.12291666666666666,
+       0.09595959595959595
+      ]
+     }
+    ],
+    "evidenceQuery": [
+     "Weber B ankle fracture",
+     "supination external rotation ankle fracture stability",
+     "gravity stress radiograph medial clear space",
+     "weight-bearing radiograph isolated fibula fracture",
+     "deltoid ligament injury diagnosis"
+    ],
+    "evidenceIds": [
+     "malek2006-weber-reliability",
+     "bachmann2003-ottawa-ankle-meta",
+     "wright2016-stress-fracture-imaging"
+    ],
+    "status": "pending"
+   },
+   {
+    "id": "F2",
+    "origin": "ai",
+    "cls": "doubtful",
+    "group": "priority",
+    "label": "Tumefação de partes moles perimaleolar lateral",
+    "description": "No AP, as partes moles laterais ao maléolo lateral estão mais espessas e convexas do que acima e do que no lado medial, ultrapassando o bordo da imagem entre o terço distal do perónio e a ponta do maléolo. O achado é compatível com edema ou hematoma perifraturário.",
+    "anatomicSite": "Partes moles laterais ao maléolo lateral",
+    "laterality": "right",
+    "certainty": "suspicious-for",
+    "severity": "minor",
+    "confidence": "moderate",
+    "locations": [
+     {
+      "seriesId": "demo-tornozelo-s1",
+      "frameIndex": 0,
+      "bbox": [
+       0,
+       0.41035353535353536,
+       0.09166666666666666,
+       0.2967171717171717
+      ]
+     }
+    ],
+    "evidenceQuery": [
+     "ankle soft tissue swelling radiograph fracture",
+     "lateral malleolus soft tissue swelling",
+     "Ottawa ankle rules diagnostic accuracy"
+    ],
+    "evidenceIds": [
+     "malek2006-weber-reliability",
+     "bachmann2003-ottawa-ankle-meta",
+     "acr2020-acute-ankle-trauma"
+    ],
+    "status": "pending"
+   },
+   {
+    "id": "C1",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Fratura do maléolo medial",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C2",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Fratura do maléolo posterior (margem posterior da tíbia)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C3",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Alargamento do espaço claro medial (incidência estática)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C4",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Diástase da sindesmose tibioperonial",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C5",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Translação (shift) do astrágalo / incongruência da mortise",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C6",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Luxação ou subluxação tibiotársica",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C7",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Lesão osteocondral / fratura da cúpula do astrágalo",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C8",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Fratura da base do 5.º metatarso (avulsão vs Jones)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C9",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Fratura do calcâneo / redução do ângulo de Böhler",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C10",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Alinhamento de Lisfranc",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C11",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Fratura do navicular",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C12",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Fratura de stress (linhas escleróticas, reação periosteal)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C13",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Derrame articular tibiotársico",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C14",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Alterações degenerativas (redução da entrelinha, osteófitos, esclerose subcondral)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C15",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Lesão óssea focal / alteração da densidade óssea",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C16",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Gás, corpos estranhos ou calcificações de partes moles",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C17",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Material de osteossíntese / complicações",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   }
+  ],
+  "evidence": [
+   {
+    "id": "malek2006-weber-reliability",
+    "source": "kb",
+    "title": "Inter-observer reliability and intra-observer reproducibility of the Weber classification of ankle fractures",
+    "citation": "Malek IA, Machani B, Mevcha AM, Hyder NH. Inter-observer reliability and intra-observer reproducibility of the Weber classification of ankle fractures Journal of Bone and Joint Surgery. British Volume. 2006.",
+    "url": "https://doi.org/10.1302/0301-620X.88B9.17954",
+    "doi": "10.1302/0301-620X.88B9.17954",
+    "pmid": "16943473",
+    "year": 2006,
+    "evidenceType": "classification-system",
+    "points": [
+     "Cinco observadores com experiência variável classificaram duas vezes, com quatro semanas de intervalo, 50 conjuntos de radiografias do tornozelo (AP e perfil), avaliados em ocultação.",
+     "Concordância interobservador: kappa médio de 0,61 (0,59–0,63), proporção de concordância de 78%.",
+     "Concordância intraobservador: kappa médio de 0,74 (0,39–0,86), concordância observada de 85%.",
+     "A classificação de Weber baseada em duas incidências radiográficas mostrou fiabilidade interobservador e reprodutibilidade intraobservador substanciais."
+    ],
+    "findingIds": [
+     "F1",
+     "F2"
+    ],
+    "score": 51.6
+   },
+   {
+    "id": "bachmann2003-ottawa-ankle-meta",
+    "source": "kb",
+    "title": "Accuracy of Ottawa ankle rules to exclude fractures of the ankle and mid-foot: systematic review",
+    "citation": "Bachmann LM, Kolb E, Koller MT, Steurer J, ter Riet G. Accuracy of Ottawa ankle rules to exclude fractures of the ankle and mid-foot: systematic review BMJ. 2003.",
+    "url": "https://doi.org/10.1136/bmj.326.7386.417",
+    "doi": "10.1136/bmj.326.7386.417",
+    "pmid": "12595378",
+    "year": 2003,
+    "evidenceType": "systematic-review/meta-analysis",
+    "points": [
+     "32 estudos cumpriram os critérios de inclusão; 27 estudos com 15 581 doentes foram incluídos na meta-análise.",
+     "Razões de verosimilhança negativas agregadas: tornozelo 0,08 (IC 95% 0,03–0,18), mediopé 0,08 (0,03–0,20), crianças (ambas as regiões) 0,07 (0,03–0,18).",
+     "Para uma prevalência de fratura de 15%, uma regra negativa implica uma probabilidade de fratura inferior a 1,4%.",
+     "Sensibilidade de quase 100% com especificidade modesta; a sua aplicação deverá reduzir as radiografias desnecessárias em 30–40%."
+    ],
+    "findingIds": [
+     "F1",
+     "F2"
+    ],
+    "score": 36.4
+   },
+   {
+    "id": "wright2016-stress-fracture-imaging",
+    "source": "kb",
+    "title": "Diagnostic Accuracy of Various Imaging Modalities for Suspected Lower Extremity Stress Fractures: A Systematic Review With Evidence-Based Recommendations for Clinical Practice.",
+    "citation": "Wright AA, et al.. Diagnostic Accuracy of Various Imaging Modalities for Suspected Lower Extremity Stress Fractures: A Systematic Review With Evidence-Based Recommendations for Clinical Practice. The American Journal of Sports Medicine. 2016.",
+    "url": "https://doi.org/10.1177/0363546515574066",
+    "doi": "10.1177/0363546515574066",
+    "pmid": "25805712",
+    "year": 2016,
+    "evidenceType": "systematic-review/meta-analysis",
+    "points": [
+     "Radiografia convencional: sensibilidade 12% a 56%, especificidade 88% a 96%; a radiografia tende a ser falsamente negativa na apresentação inicial, sobretudo nas fases precoces, e em alguns casos pode nunca revelar uma fratura de stress existente.",
+     "RM: sensibilidade 68% a 99%, especificidade 4% a 97%; identificada pelos autores como o exame de imagem mais sensível e específico para fraturas de stress do membro inferior.",
+     "Ecografia: sensibilidade 43% a 99%, especificidade 13% a 79%; TC: sensibilidade 32% a 38%, especificidade 88% a 98%; cintigrafia: sensibilidade 50% a 97%, especificidade 33% a 98%.",
+     "Quando a RM está disponível, a cintigrafia não é recomendada pela baixa especificidade, elevada dose de radiação ionizante e outras limitações."
+    ],
+    "findingIds": [
+     "F1"
+    ],
+    "score": 30.4
+   },
+   {
+    "id": "suh2024-gpt4v-gemini-diagnosis-please",
+    "source": "kb",
+    "title": "Comparing Diagnostic Accuracy of Radiologists versus GPT-4V and Gemini Pro Vision Using Image Inputs from Diagnosis Please Cases",
+    "citation": "Suh PS, Shim WH, Suh CH, et al.. Comparing Diagnostic Accuracy of Radiologists versus GPT-4V and Gemini Pro Vision Using Image Inputs from Diagnosis Please Cases Radiology. 2024.",
+    "url": "https://doi.org/10.1148/radiol.240273",
+    "doi": "10.1148/radiol.240273",
+    "pmid": "38980179",
+    "year": 2024,
+    "evidenceType": "retrospective-diagnostic-accuracy",
+    "points": [
+     "Estudo retrospetivo de 190 casos 'Diagnosis Please' da revista Radiology (2008-2023), incluindo 17 casos musculoesqueléticos. O GPT-4V e o Gemini Pro Vision receberam as imagens originais e capturas da história clínica e das legendas das figuras (sem os achados imagiológicos). Foram-lhes pedidos três diagnósticos diferenciais, repetidos cinco vezes com temperaturas 0, 0,5 e 1. Oito radiologistas com formação subespecializada resolveram também os casos.",
+     "Com temperatura 1, a exatidão global foi de 49% (93/190) para o GPT-4V e de 39% (74/190) para o Gemini Pro Vision, face a 61% (115/190) para os radiologistas. Os radiologistas superaram o Gemini Pro Vision (P < 0,001); a diferença face ao GPT-4V não foi estatisticamente significativa após correção de Bonferroni (P = 0,02).",
+     "Os radiologistas (intervalo 45%-88%) superaram os modelos de linguagem com temperatura 1 (intervalo 24%-75%) na maioria das subespecialidades.",
+     "Um caso foi considerado correto se os diagnósticos gerados incluíssem o diagnóstico final ao fim de cinco repetições. A exatidão aumentou com a temperatura (GPT-4V 41%, 45% e 49%; Gemini Pro Vision 29%, 36% e 39% com 0, 0,5 e 1), mas a tendência não foi significativa após correção de Bonferroni."
+    ],
+    "findingIds": [],
+    "score": 26.8
+   },
+   {
+    "id": "acr2020-acute-ankle-trauma",
+    "source": "kb",
+    "title": "ACR Appropriateness Criteria® Acute Trauma to the Ankle",
+    "citation": "Expert Panel on Musculoskeletal Imaging; Smith SE, Chang EY, Ha AS, et al.. ACR Appropriateness Criteria® Acute Trauma to the Ankle Journal of the American College of Radiology. 2020.",
+    "url": "https://doi.org/10.1016/j.jacr.2020.09.014",
+    "doi": "10.1016/j.jacr.2020.09.014",
+    "pmid": "33153549",
+    "year": 2020,
+    "evidenceType": "guideline",
+    "points": [
+     "Define as melhores práticas de imagiologia nos doentes com traumatismo agudo do tornozelo.",
+     "As variantes abrangem doentes em que as regras de Ottawa podem ser aplicadas, doentes com critérios de exclusão, doentes em que as regras de Ottawa não podem ser aplicadas e lesões específicas."
+    ],
+    "findingIds": [
+     "F2"
+    ],
+    "score": 26.3
+   },
+   {
+    "id": "esr2018-structured-reporting",
+    "source": "kb",
+    "title": "ESR paper on structured reporting in radiology",
+    "citation": "European Society of Radiology (ESR). ESR paper on structured reporting in radiology Insights into Imaging. 2018.",
+    "url": "https://doi.org/10.1007/s13244-017-0588-8",
+    "doi": "10.1007/s13244-017-0588-8",
+    "pmid": "29460129",
+    "year": 2018,
+    "evidenceType": "consensus/position-paper",
+    "points": [
+     "A ESR endossa a transição dos relatórios convencionais em prosa para o relatório estruturado como um desenvolvimento positivo, que deve ser um esforço internacional.",
+     "A padronização da estrutura do relatório assegura que os relatórios são completos e comparáveis. A linguagem padronizada minimiza a ambiguidade.",
+     "Os relatórios estruturados com elementos de dados-chave e parâmetros quantificados suportam funções automáticas (p. ex., estadiamento TNM), a integração com outros parâmetros clínicos, a partilha de dados (registos, biobancos) e a mineração de dados.",
+     "Uma estratégia bem-sucedida requer conteúdo e estrutura definidos, terminologias padronizadas, ferramentas e protocolos, com cooperação internacional e entre sociedades e integração com a indústria."
+    ],
+    "findingIds": [],
+    "score": 22.5
+   }
+  ],
+  "notebookLm": [],
+  "verification": {
+   "passed": false,
+   "issues": [
+    {
+     "severity": "error",
+     "section": "findings_sections: Osso (Maléolo medial) / recommendations[5]",
+     "message": "A frase sobre a «linha esclerótica curvilínea no maléolo medial», interpretada como sobreposição dos colículos, não tem suporte nos achados estruturados. O C1 é apenas «fratura improvável», sem descrição, e não há nenhum achado que corresponda a essa linha. Há duas opções: retirar a frase dos achados e da recomendação 5, ou registá-la como achado estruturado próprio (p. ex., classe «doubtful», com certeza explícita) para que o médico a possa validar."
+    },
+    {
+     "severity": "warning",
+     "section": "conclusion[2]",
+     "message": "«O aspeto é compatível com fratura unimaleolar» é uma inferência que não consta dos achados estruturados. Também ignora duas coisas: a linha do maléolo medial ainda está por esclarecer, e o ligamento deltoide não é avaliável (possível equivalente bimaleolar). Sugere-se escrever «sem evidência radiográfica de fratura dos maléolos medial ou posterior» ou acrescentar estas ressalvas na própria conclusão."
+    },
+    {
+     "severity": "warning",
+     "section": "findings_sections: Alinhamento / conclusion[2]",
+     "message": "O espaço claro medial está a ser avaliado num AP cuja rotação de mortise não está confirmada, o que limita a avaliação. O relatório só refere que a incidência é estática e que o deltoide não está excluído. Falta a ressalva da rotação junto da afirmação «sem alargamento evidente do espaço claro medial», tanto nos achados como na conclusão."
+    },
+    {
+     "severity": "info",
+     "section": "findings_sections: Alinhamento / Osso",
+     "message": "«O espaço claro superior é uniforme» e «contorno regular» da cúpula do astrágalo não estão explícitos nos achados estruturados. São coerentes com F1 (mortise congruente), C5 e C7, mas convém não acrescentar descritores que não foram registados."
+    },
+    {
+     "severity": "info",
+     "section": "clinical_indication",
+     "message": "A citação [bachmann2003-ottawa-ankle-meta] sustenta a elevada sensibilidade das regras de Ottawa, que permite dispensar a radiografia quando são negativas. Não sustenta diretamente o encadeamento «sensibilidade de quase 100%, pelo que, sendo positivas, está indicada a radiografia»: a especificidade é modesta. Sugere-se reformular para «As regras positivas indicam radiografia; quando negativas, a elevada sensibilidade permite dispensá-la»."
+    },
+    {
+     "severity": "info",
+     "section": "technique",
+     "message": "A frase «estruturado segundo as recomendações da ESR» não tem citação, embora [esr2018-structured-reporting] esteja disponível. Pode citar-se ou retirar-se a frase."
+    },
+    {
+     "severity": "info",
+     "section": "recommendations[2]",
+     "message": "As incidências em carga podem não ser exequíveis na fase aguda, porque o doente não consegue fazer carga. Convém dar prioridade ao stress gravitacional, que não exige carga e já está referido, ou indicar que a radiografia em carga fica para depois da imobilização inicial, segundo a decisão da ortopedia."
+    },
+    {
+     "severity": "info",
+     "section": "structured findings (evidence_ids)",
+     "message": "Algumas evidências associadas aos achados estruturados não sustentam diretamente esses achados: o F1 cita [wright2016-stress-fracture-imaging] (fraturas de stress) e [bachmann2003-ottawa-ankle-meta] (regras de Ottawa), e o F2 cita [malek2006-weber-reliability] (classificação de Weber). O texto do relatório não reutiliza estas citações nas frases de F1/F2, pelo que não há impacto no relatório, mas convém rever o mapeamento."
+    }
+   ],
+   "revisedIssues": 6
+  }
+ },
+ "report": {
+  "language": "pt-PT",
+  "clinicalIndication": "Homem de 34 anos com entorse do tornozelo em supinação/rotação externa, dor e edema maleolar lateral e incapacidade de carga, com regras de Ottawa positivas. Pedido urgente. Questão clínica: excluir fratura do tornozelo. As regras de Ottawa têm sensibilidade de quase 100% para fratura do tornozelo e do mediopé, pelo que, sendo positivas, está indicada a avaliação radiográfica [bachmann2003-ottawa-ankle-meta].",
+  "technique": "Radiografia do tornozelo direito em duas incidências, anteroposterior e perfil, compostas numa única imagem JPEG. A rotação do AP parece próxima da de mortise, mas não está confirmada. Não há incidências em carga nem de stress. Não há escala de referência. O antepé e o mediopé distal estão fora do campo (base do 5.º metatarso, articulação de Lisfranc), e o navicular só está parcialmente incluído. Foi avaliada 1 imagem (2 incidências). A análise foi assistida por um modelo de visão-linguagem. Os achados descritos são sugestões geradas automaticamente que aguardam validação por radiologista. O relatório está estruturado segundo as recomendações da ESR.",
+  "comparison": "Sem exames prévios disponíveis para comparação.",
+  "findingsByRegion": [
+   {
+    "heading": "Alinhamento",
+    "text": "A mortise tibioperoniastragalina parece congruente e o espaço claro superior é uniforme. A translação (shift) do astrágalo e a incongruência da mortise são improváveis. No perfil, a luxação ou subluxação tibiotársica é improvável. Na incidência estática, o espaço claro medial não parece alargado em relação ao espaço claro superior (alargamento improvável), mas isto não exclui instabilidade por lesão do ligamento deltoide. A diástase da sindesmose tibioperonial não é avaliável: não há escala nem incidência de mortise confirmada, pelo que não se mediram o espaço claro tibioperonial nem a sobreposição tibioperonial. O alinhamento de Lisfranc não é avaliável porque está fora do campo."
+   },
+   {
+    "heading": "Osso",
+    "text": "Perónio distal (maléolo lateral), no AP: há um degrau na cortical lateral, um pouco acima da linha articular. A partir dele, um traço oblíquo curto sobe em direção à margem medial do perónio, na zona de sobreposição tibioperonial, com bordo esclerótico por sobreposição de fragmentos. O aspeto é compatível com fratura oblíqua do maléolo lateral ao nível da sindesmose tibioperonial distal. No AP, o desvio parece mínimo (discreto degrau cortical) e não há encurtamento evidente. No perfil, o traço não se individualiza com segurança por sobreposição com a tíbia, pelo que o desvio no plano sagital não é avaliável.\nClassificação de Danis-Weber: tipo B provável. O traço está ao nível da sindesmose, sem extensão proximal evidente, o que concorda com o mecanismo de supinação/rotação externa. O tipo C é menos provável, mas não pode ser totalmente excluído, porque o traço não se confirma no perfil e falta uma incidência de mortise dedicada. A classificação de Weber feita em duas incidências tem fiabilidade interobservador substancial (kappa médio de 0,61) [malek2006-weber-reliability].\nMaléolo medial: fratura improvável. Foi assinalada uma linha esclerótica curvilínea no maléolo medial, interpretada como provável sobreposição dos colículos anterior e posterior. Esta interpretação deve ser confirmada pelo radiologista, para a distinguir de um traço de fratura.\nMaléolo posterior: no perfil, a fratura da margem posterior da tíbia é improvável.\nCúpula do astrágalo: contorno regular; lesão osteocondral ou fratura da cúpula improvável.\nCalcâneo: fratura improvável. O ângulo de Böhler parece preservado (não medido).\nOutros: lesão óssea focal ou alteração da densidade óssea improváveis. Fratura de stress improvável, sem linhas escleróticas nem reação periosteal evidentes. Não se identifica material de osteossíntese (improvável).\nA base do 5.º metatarso (fora do campo) e o navicular (só parcialmente incluído) não são avaliáveis quanto a fratura."
+   },
+   {
+    "heading": "Articulações",
+    "text": "A articulação tibiotársica parece congruente e a entrelinha está preservada. Alterações degenerativas improváveis: sem redução evidente da entrelinha, osteófitos ou esclerose subcondral. O derrame articular tibiotársico não é avaliável nestas incidências."
+   },
+   {
+    "heading": "Partes moles",
+    "text": "Suspeita de tumefação das partes moles laterais ao maléolo lateral. No AP, parecem mais espessas e convexas do que acima e do que no lado medial, e ultrapassam o bordo da imagem entre o terço distal do perónio e a ponta do maléolo. Se se confirmar, poderá corresponder a edema ou hematoma perifraturário. A avaliação fica limitada porque, no AP, as partes moles laterais estão cortadas no bordo da imagem. Gás, corpos estranhos ou calcificações de partes moles improváveis."
+   }
+  ],
+  "impression": [
+   "Achados compatíveis com fratura oblíqua do maléolo lateral direito (perónio distal) ao nível da sindesmose. O desvio parece mínimo no AP (não avaliável no plano sagital) e não há encurtamento evidente. Classificação de Danis-Weber: tipo B provável; o tipo C é menos provável, mas não pode ser totalmente excluído. Resposta à questão clínica: há achados compatíveis com fratura, em concordância com o mecanismo de supinação/rotação externa e com as regras de Ottawa positivas.",
+   "Fratura dos maléolos medial e posterior improvável, pelo que o aspeto é compatível com fratura unimaleolar. A mortise parece congruente, com translação do astrágalo improvável e sem alargamento evidente do espaço claro medial na incidência estática. Ainda assim, a estabilidade (ligamento deltoide e sindesmose) não é avaliável sem incidências em carga ou de stress.",
+   "Suspeita de tumefação das partes moles perimaleolares laterais, possivelmente por edema ou hematoma perifraturário. A avaliação está limitada pelo corte das partes moles no bordo da imagem.",
+   "Luxação ou subluxação tibiotársica, lesão osteocondral da cúpula do astrágalo e fratura do calcâneo improváveis.",
+   "A base do 5.º metatarso, a articulação de Lisfranc e o navicular não são avaliáveis: os dois primeiros estão fora do campo e o navicular só está parcialmente incluído."
+  ],
+  "recommendations": [
+   "Pedir avaliação ortopédica urgente para decisão terapêutica, dados os achados compatíveis com fratura do maléolo lateral.",
+   "Fazer uma incidência de mortise dedicada e incidências em carga ou de stress (p. ex., stress gravitacional) para avaliar a estabilidade (ligamento deltoide e sindesmose), já que a incidência estática não exclui lesão do deltoide. Os exames complementares devem ser escolhidos segundo os critérios de adequação para traumatismo agudo do tornozelo [acr2020-acute-ankle-trauma].",
+   "Se houver dor no mediopé ou na base do 5.º metatarso (regras de Ottawa do pé), estão indicadas incidências do pé, porque esta região não foi incluída no estudo. As regras de Ottawa mantêm elevada exatidão também no mediopé, com razão de verosimilhança negativa agregada de 0,08 [bachmann2003-ottawa-ankle-meta].",
+   "Considerar TC do tornozelo se persistir dúvida sobre a orientação e a extensão proximal do traço (Weber B vs C), sobre lesões associadas subtis ou se for necessária para o planeamento.",
+   "Todos os achados são sugestões do modelo que aguardam revisão e devem ser validados por radiologista, incluindo a interpretação da linha esclerótica no maléolo medial."
+  ],
+  "limitations": "As duas incidências estão compostas numa única imagem JPEG de resolução limitada. A rotação de mortise do AP não está confirmada e não há incidências em carga nem de stress, pelo que não é possível avaliar a estabilidade (integridade do ligamento deltoide e da sindesmose). O traço de fratura só se vê com segurança no AP. No perfil, a sobreposição com a tíbia impede individualizá-lo, o que limita a avaliação da orientação do traço, do desvio no plano sagital e da classificação de Weber. Sem escala, não é possível medir o espaço claro medial, o espaço claro tibioperonial nem a sobreposição tibioperonial. O pé distal (base do 5.º metatarso, Lisfranc) não está incluído e o navicular só parcialmente. No AP, as partes moles laterais estão cortadas no bordo da imagem.\n\nMesmo entre observadores humanos, a concordância na classificação de Weber é substancial, mas não perfeita (kappa médio de 0,61) [malek2006-weber-reliability]. A ausência de sinais radiográficos de fratura de stress tem valor limitado, porque a sensibilidade da radiografia convencional para estas fraturas é de 12% a 56% [wright2016-stress-fracture-imaging].\n\nEsta avaliação foi feita por um modelo de visão-linguagem, que pode não detetar achados subtis, como pequenas avulsões, lesões osteocondrais ou fraturas não desviadas. Num estudo retrospetivo de 190 casos 'Diagnosis Please', a exatidão com temperatura 1 foi de 49% para o GPT-4V e de 39% para o Gemini Pro Vision, face a 61% para os radiologistas. A diferença foi estatisticamente significativa para o Gemini Pro Vision (P < 0,001), mas não para o GPT-4V após correção de Bonferroni (P = 0,02) [suh2024-gpt4v-gemini-diagnosis-please]. Esse estudo avaliou a geração de diagnósticos diferenciais, e não a deteção de fraturas em radiografia, o que limita a extrapolação para este exame. Todos os achados aguardam revisão por radiologista. A TC ou incidências adicionais podem confirmar ou excluir achados subtis.",
+  "citations": [
+   {
+    "evidenceId": "bachmann2003-ottawa-ankle-meta",
+    "statement": "As regras de Ottawa têm sensibilidade de quase 100% para fratura do tornozelo e do mediopé; com regras positivas, está indicada a avaliação radiográfica."
+   },
+   {
+    "evidenceId": "malek2006-weber-reliability",
+    "statement": "A classificação de Weber feita em duas incidências radiográficas tem fiabilidade interobservador substancial (kappa médio de 0,61), embora não perfeita."
+   },
+   {
+    "evidenceId": "acr2020-acute-ankle-trauma",
+    "statement": "Os exames complementares no traumatismo agudo do tornozelo devem ser escolhidos segundo os critérios de adequação do ACR."
+   },
+   {
+    "evidenceId": "bachmann2003-ottawa-ankle-meta",
+    "statement": "As regras de Ottawa também se aplicam ao mediopé (razão de verosimilhança negativa agregada de 0,08), o que justifica incidências do pé se houver dor nessa região."
+   },
+   {
+    "evidenceId": "wright2016-stress-fracture-imaging",
+    "statement": "A sensibilidade da radiografia convencional para fraturas de stress do membro inferior é de 12% a 56%, pelo que a sua ausência radiográfica tem valor limitado."
+   },
+   {
+    "evidenceId": "suh2024-gpt4v-gemini-diagnosis-please",
+    "statement": "Em 190 casos 'Diagnosis Please', com temperatura 1, a exatidão foi de 49% (GPT-4V) e 39% (Gemini Pro Vision), face a 61% para os radiologistas. A diferença foi significativa para o Gemini Pro Vision (P < 0,001), mas não para o GPT-4V após correção de Bonferroni (P = 0,02). O estudo avaliou diagnósticos diferenciais, não a deteção de fraturas em radiografia."
+   }
+  ],
+  "status": "draft",
+  "generatedBy": "Claude (API Anthropic) · claude-opus-5-5 · pré-calculado",
+  "generatedAt": "2026-10-27T23:00:00.000Z",
+  "editedByClinician": false,
+  "revisedAfterVerification": true
+ }
+}

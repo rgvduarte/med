@@ -1,0 +1,884 @@
+{
+ "analysis": {
+  "provider": "Claude (API Anthropic)",
+  "model": "claude-opus-5-5",
+  "language": "pt-PT",
+  "startedAt": "2026-10-27T23:00:00.000Z",
+  "finishedAt": "2026-10-27T23:00:00.000Z",
+  "precomputed": true,
+  "stages": [
+   {
+    "id": "preprocess",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "1 imagem(ns) preparada(s)"
+   },
+   {
+    "id": "triage",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "XR · AP (carga não confirmada)"
+   },
+   {
+    "id": "findings",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "4 achado(s) · 25 item(ns) da lista de verificação"
+   },
+   {
+    "id": "evidence",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "6 referência(s) da base curada"
+   },
+   {
+    "id": "report",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "5 ponto(s) na conclusão · protocolo msk-v1"
+   },
+   {
+    "id": "verify",
+    "status": "done",
+    "startedAt": "2026-10-27T23:00:00.000Z",
+    "finishedAt": "2026-10-27T23:00:00.000Z",
+    "message": "6 problema(s) corrigido(s) automaticamente; 2 observação(ões) por rever"
+   }
+  ],
+  "triage": {
+   "modality": "XR",
+   "region": "knee",
+   "view": "AP (carga não confirmada)",
+   "laterality": "unknown",
+   "imageQuality": "adequate",
+   "qualityNotes": "Incidência AP única, sem marcador de lateralidade e sem indicação de carga. Não há perfil nem axial da rótula. A imagem tem resolução reduzida (500×700), compressão JPEG e ruído granular. A margem medial do joelho fica junto ao limite da imagem, pelo que os tecidos moles mediais estão pouco representados. A sobreposição parcial do perónio proximal à tíbia está dentro do habitual. O perónio projeta-se à esquerda da imagem: na convenção habitual de visualização seria um joelho direito, mas sem marcador isto não se pode confirmar.",
+   "skeletalMaturity": "adult",
+   "hardwarePresent": false,
+   "summary": "Radiografia simples do joelho de um adulto, numa única incidência AP, sem marcador de lateralidade e sem confirmação de carga. Sem material ortopédico. Faltam o perfil e a axial da rótula."
+  },
+  "findings": [
+   {
+    "id": "F1",
+    "origin": "ai",
+    "cls": "doubtful",
+    "group": "priority",
+    "label": "Redução da entrelinha femorotibial lateral",
+    "description": "A entrelinha do compartimento femorotibial lateral (lado do perónio, à esquerda da imagem) está fina mas regular, e é claramente mais estreita do que a do compartimento medial, que se mantém ampla. Não há calibração nem confirmação de carga, por isso a redução só pode ser descrita em termos relativos, sem medições em milímetros. Para confirmar e quantificar: AP bilateral em carga ou PA em flexão de 45° (Rosenberg).",
+    "anatomicSite": "Compartimento femorotibial lateral do joelho",
+    "laterality": "unknown",
+    "certainty": "consistent-with",
+    "severity": "significant",
+    "confidence": "moderate",
+    "classification": {
+     "system": "Kellgren-Lawrence",
+     "grade": "3 (provisório)",
+     "rationale": "A entrelinha do compartimento lateral está claramente reduzida, há um osteófito marginal no prato tibial lateral e possível esclerose subcondral. Não há osteófitos volumosos, esclerose marcada nem deformidade franca dos topos ósseos, que apontariam para grau 4. O grau é provisório: há uma só projeção, a carga não está confirmada e o osteófito é pequeno. Se o osteófito não se confirmar, o grau pode ser inferior (2)."
+    },
+    "locations": [
+     {
+      "seriesId": "demo-joelho-s1",
+      "frameIndex": 0,
+      "bbox": [
+       0.164,
+       0.5714285714285714,
+       0.268,
+       0.04857142857142857
+      ]
+     }
+    ],
+    "evidenceQuery": [
+     "knee osteoarthritis",
+     "lateral tibiofemoral joint space narrowing",
+     "weight-bearing knee radiograph",
+     "Kellgren-Lawrence grading reliability"
+    ],
+    "evidenceIds": [
+     "kohn2016-kl-classification-in-brief",
+     "kellgren1957-oa-grading",
+     "cecava2018-knee-effusion-radiograph"
+    ],
+    "status": "pending"
+   },
+   {
+    "id": "F2",
+    "origin": "ai",
+    "cls": "doubtful",
+    "group": "priority",
+    "label": "Osteófito marginal do prato tibial lateral",
+    "description": "Na margem lateral do prato tibial lateral há um rebordo ósseo em bico, de contorno arredondado, que ultrapassa lateralmente o contorno do côndilo femoral lateral. O aspeto sugere um osteófito marginal pequeno. Não se veem osteófitos inequívocos nas margens do compartimento medial.",
+    "anatomicSite": "Margem lateral do prato tibial lateral",
+    "laterality": "unknown",
+    "certainty": "suspicious-for",
+    "severity": "minor",
+    "confidence": "moderate",
+    "locations": [
+     {
+      "seriesId": "demo-joelho-s1",
+      "frameIndex": 0,
+      "bbox": [
+       0.104,
+       0.5714285714285714,
+       0.072,
+       0.045714285714285714
+      ]
+     }
+    ],
+    "evidenceQuery": [
+     "marginal osteophyte knee radiograph",
+     "knee osteoarthritis radiographic diagnosis",
+     "osteophyte detection radiography versus MRI"
+    ],
+    "evidenceIds": [
+     "kellgren1957-oa-grading",
+     "cecava2018-knee-effusion-radiograph",
+     "phelan2016-knee-mri-acl-meniscus-meta"
+    ],
+    "status": "pending"
+   },
+   {
+    "id": "F3",
+    "origin": "ai",
+    "cls": "doubtful",
+    "group": "priority",
+    "label": "Possível esclerose subcondral do prato tibial lateral",
+    "description": "Logo abaixo da superfície articular do prato tibial lateral há uma faixa de densidade ligeiramente aumentada, mais marcada do que no prato medial. O achado é ténue e pode dever-se, em parte, à sobreposição dos rebordos anterior e posterior do prato, por isso só se considera possível.",
+    "anatomicSite": "Osso subcondral do prato tibial lateral",
+    "laterality": "unknown",
+    "certainty": "possible",
+    "severity": "minor",
+    "confidence": "low",
+    "locations": [
+     {
+      "seriesId": "demo-joelho-s1",
+      "frameIndex": 0,
+      "bbox": [
+       0.19,
+       0.5914285714285714,
+       0.244,
+       0.06
+      ]
+     }
+    ],
+    "evidenceQuery": [
+     "subchondral sclerosis knee osteoarthritis",
+     "OARSI radiographic atlas",
+     "knee radiograph osteoarthritis features"
+    ],
+    "evidenceIds": [
+     "kohn2016-kl-classification-in-brief",
+     "kellgren1957-oa-grading",
+     "cecava2018-knee-effusion-radiograph"
+    ],
+    "status": "pending"
+   },
+   {
+    "id": "F4",
+    "origin": "ai",
+    "cls": "doubtful",
+    "group": "priority",
+    "label": "Possível alinhamento em valgo com translação lateral da tíbia",
+    "description": "A interlinha articular tem forma de cunha, estreita do lado lateral e aberta do lado medial. A tíbia parece ligeiramente deslocada para o lado lateral em relação ao fémur: o côndilo femoral medial ultrapassa a margem do prato tibial medial. Isto pode traduzir um desvio em valgo ligado ao colapso do compartimento lateral, mas a rotação ou a posição do membro podem simular o mesmo aspeto; o eixo mecânico só se avalia numa telerradiografia dos membros inferiores em carga.",
+    "anatomicSite": "Articulação femorotibial (alinhamento coronal)",
+    "laterality": "unknown",
+    "certainty": "possible",
+    "severity": "minor",
+    "confidence": "low",
+    "locations": [
+     {
+      "seriesId": "demo-joelho-s1",
+      "frameIndex": 0
+     }
+    ],
+    "evidenceQuery": [
+     "valgus knee osteoarthritis",
+     "lateral tibial subluxation radiograph",
+     "full-length standing radiograph lower limb alignment"
+    ],
+    "evidenceIds": [
+     "kellgren1957-oa-grading",
+     "cecava2018-knee-effusion-radiograph",
+     "phelan2016-knee-mri-acl-meniscus-meta"
+    ],
+    "status": "pending"
+   },
+   {
+    "id": "C1",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Fratura do prato tibial",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C2",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Fratura do fémur distal",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C3",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Fratura da rótula (sobreposta ao fémur; sem perfil nem axial)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C4",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Fratura da cabeça do perónio",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C5",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Fratura de Segond (avulsão da margem lateral do prato tibial)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C6",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Outras avulsões ósseas (espinhas tibiais, inserções ligamentares)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C7",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Derrame articular / lipo-hemartrose (requer perfil)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C8",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Osteoartrose do compartimento femorotibial medial",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C9",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Osteoartrose do compartimento femoropatelar (requer perfil/axial)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C10",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Esclerose subcondral",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C11",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Quistos subcondrais (geodes)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C12",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Erosões ósseas",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C13",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Condrocalcinose (meniscal ou hialina)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C14",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Lesão osteocondral",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C15",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Corpos livres intra-articulares",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C16",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Posição da rótula",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C17",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Alinhamento coronal / congruência femorotibial",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C18",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Luxação femorotibial",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C19",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Lesão óssea focal (lítica ou esclerótica)",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C20",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Reação periosteal",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C21",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Osteopenia / alteração da densidade óssea",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C22",
+    "origin": "ai",
+    "cls": "not-assessable",
+    "group": "checklist",
+    "label": "Tumefação dos tecidos moles",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "possible",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C23",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Gás ou corpos estranhos nos tecidos moles",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C24",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Calcificações dos tecidos moles",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   },
+   {
+    "id": "C25",
+    "origin": "ai",
+    "cls": "negative",
+    "group": "checklist",
+    "label": "Material ortopédico / complicações",
+    "description": "",
+    "anatomicSite": "",
+    "laterality": "none",
+    "certainty": "unlikely",
+    "severity": "normal",
+    "confidence": "moderate",
+    "locations": [],
+    "evidenceQuery": [],
+    "evidenceIds": [],
+    "status": "pending"
+   }
+  ],
+  "evidence": [
+   {
+    "id": "kohn2016-kl-classification-in-brief",
+    "source": "kb",
+    "title": "Classifications in Brief: Kellgren-Lawrence Classification of Osteoarthritis.",
+    "citation": "Kohn MD, et al.. Classifications in Brief: Kellgren-Lawrence Classification of Osteoarthritis. Clin Orthop Relat Res. 2016.",
+    "url": "https://doi.org/10.1007/s11999-016-4732-4",
+    "doi": "10.1007/s11999-016-4732-4",
+    "pmid": "26872913",
+    "year": 2016,
+    "evidenceType": "narrative-review",
+    "points": [
+     "Descritores dos graus KL (Tabela 3): 0 = sem redução da interlinha articular nem alterações reativas; 1 = redução duvidosa da interlinha, possível esboço osteofitário; 2 = osteófitos definidos, possível redução da interlinha; 3 = osteófitos moderados, redução definida da interlinha, alguma esclerose, possível deformidade das extremidades ósseas; 4 = osteófitos volumosos, redução marcada da interlinha, esclerose grave, deformidade definida das extremidades ósseas.",
+     "Kellgren e Lawrence reportaram coeficientes de correlação inter e intraobservador de 0,83 para o joelho; Schiphof et al. verificaram que a reprodutibilidade depende da descrição dos graus utilizada (kappa ponderado 0,66, 0,69 e 0,63 para três descrições alternativas vs 0,41 para a descrição original e 0,35 para uma quinta descrição).",
+     "Limitações: Kellgren e Lawrence nunca especificaram explicitamente que achados radiográficos correspondem a cada grau, e o sistema tem sido criticado por assumir uma progressão radiográfica linear da osteoartrose."
+    ],
+    "findingIds": [
+     "F1",
+     "F3"
+    ],
+    "score": 43.8
+   },
+   {
+    "id": "kellgren1957-oa-grading",
+    "source": "kb",
+    "title": "Radiological assessment of osteo-arthrosis.",
+    "citation": "Kellgren JH, Lawrence JS. Radiological assessment of osteo-arthrosis. Ann Rheum Dis. 1957.",
+    "url": "https://doi.org/10.1136/ard.16.4.494",
+    "doi": "10.1136/ard.16.4.494",
+    "pmid": "13498604",
+    "year": 1957,
+    "evidenceType": "classification-system",
+    "points": [
+     "Descrição original (1957) da graduação radiográfica da osteoartrose hoje conhecida como classificação de Kellgren-Lawrence (KL): cada radiografia é graduada de 0 a 4 por gravidade crescente (grau 0 = sem osteoartrose, grau 4 = osteoartrose grave), com os graus descritos como 'nenhuma, duvidosa, mínima, moderada, grave', conforme resumido por Kohn et al. 2016.",
+     "Sem resumo disponível na PubMed (artigo digitalizado); segundo Kohn et al. 2016, os autores originais (dois observadores) reportaram coeficientes de correlação inter e intraobservador de 0,83 para o joelho."
+    ],
+    "findingIds": [
+     "F1",
+     "F2",
+     "F3",
+     "F4"
+    ],
+    "score": 39.300000000000004
+   },
+   {
+    "id": "suh2024-gpt4v-gemini-diagnosis-please",
+    "source": "kb",
+    "title": "Comparing Diagnostic Accuracy of Radiologists versus GPT-4V and Gemini Pro Vision Using Image Inputs from Diagnosis Please Cases",
+    "citation": "Suh PS, Shim WH, Suh CH, et al.. Comparing Diagnostic Accuracy of Radiologists versus GPT-4V and Gemini Pro Vision Using Image Inputs from Diagnosis Please Cases Radiology. 2024.",
+    "url": "https://doi.org/10.1148/radiol.240273",
+    "doi": "10.1148/radiol.240273",
+    "pmid": "38980179",
+    "year": 2024,
+    "evidenceType": "retrospective-diagnostic-accuracy",
+    "points": [
+     "Estudo retrospetivo de 190 casos 'Diagnosis Please' da revista Radiology (2008-2023), incluindo 17 casos musculoesqueléticos. O GPT-4V e o Gemini Pro Vision receberam as imagens originais e capturas da história clínica e das legendas das figuras (sem os achados imagiológicos). Foram-lhes pedidos três diagnósticos diferenciais, repetidos cinco vezes com temperaturas 0, 0,5 e 1. Oito radiologistas com formação subespecializada resolveram também os casos.",
+     "Com temperatura 1, a exatidão global foi de 49% (93/190) para o GPT-4V e de 39% (74/190) para o Gemini Pro Vision, face a 61% (115/190) para os radiologistas. Os radiologistas superaram o Gemini Pro Vision (P < 0,001); a diferença face ao GPT-4V não foi estatisticamente significativa após correção de Bonferroni (P = 0,02).",
+     "Os radiologistas (intervalo 45%-88%) superaram os modelos de linguagem com temperatura 1 (intervalo 24%-75%) na maioria das subespecialidades.",
+     "Um caso foi considerado correto se os diagnósticos gerados incluíssem o diagnóstico final ao fim de cinco repetições. A exatidão aumentou com a temperatura (GPT-4V 41%, 45% e 49%; Gemini Pro Vision 29%, 36% e 39% com 0, 0,5 e 1), mas a tendência não foi significativa após correção de Bonferroni."
+    ],
+    "findingIds": [],
+    "score": 26.8
+   },
+   {
+    "id": "cecava2018-knee-effusion-radiograph",
+    "source": "kb",
+    "title": "Traumatic knee injury: correlation of radiographic effusion size with the presence of internal derangement on magnetic resonance imaging.",
+    "citation": "Cecava ND, et al.. Traumatic knee injury: correlation of radiographic effusion size with the presence of internal derangement on magnetic resonance imaging. Emergency Radiology. 2018.",
+    "url": "https://doi.org/10.1007/s10140-018-1605-z",
+    "doi": "10.1007/s10140-018-1605-z",
+    "pmid": "29752650",
+    "year": 2018,
+    "evidenceType": "retrospective-diagnostic-accuracy",
+    "points": [
+     "Revisão retrospetiva de 198 doentes com 18-40 anos e traumatismo agudo do joelho, correlacionando o diâmetro do derrame suprarrotuliano na radiografia de perfil com lesão interna na RM.",
+     "A dimensão do derrame na radiografia correlacionou-se positivamente com lesão interna na RM (regressão logística, p < 0,001).",
+     "Com limiar >10 mm como teste positivo: sensibilidade 55%, especificidade 96%, VPP 93%, VPN 71%, exatidão 77%.",
+     "Os autores sugerem que, nesta população, um derrame >10 mm na radiografia deve motivar a ponderação de RM do joelho."
+    ],
+    "findingIds": [
+     "F1",
+     "F2",
+     "F3",
+     "F4"
+    ],
+    "score": 25.4
+   },
+   {
+    "id": "esr2018-structured-reporting",
+    "source": "kb",
+    "title": "ESR paper on structured reporting in radiology",
+    "citation": "European Society of Radiology (ESR). ESR paper on structured reporting in radiology Insights into Imaging. 2018.",
+    "url": "https://doi.org/10.1007/s13244-017-0588-8",
+    "doi": "10.1007/s13244-017-0588-8",
+    "pmid": "29460129",
+    "year": 2018,
+    "evidenceType": "consensus/position-paper",
+    "points": [
+     "A ESR endossa a transição dos relatórios convencionais em prosa para o relatório estruturado como um desenvolvimento positivo, que deve ser um esforço internacional.",
+     "A padronização da estrutura do relatório assegura que os relatórios são completos e comparáveis. A linguagem padronizada minimiza a ambiguidade.",
+     "Os relatórios estruturados com elementos de dados-chave e parâmetros quantificados suportam funções automáticas (p. ex., estadiamento TNM), a integração com outros parâmetros clínicos, a partilha de dados (registos, biobancos) e a mineração de dados.",
+     "Uma estratégia bem-sucedida requer conteúdo e estrutura definidos, terminologias padronizadas, ferramentas e protocolos, com cooperação internacional e entre sociedades e integração com a indústria."
+    ],
+    "findingIds": [],
+    "score": 22.5
+   },
+   {
+    "id": "phelan2016-knee-mri-acl-meniscus-meta",
+    "source": "kb",
+    "title": "A systematic review and meta-analysis of the diagnostic accuracy of MRI for suspected ACL and meniscal tears of the knee.",
+    "citation": "Phelan N, et al.. A systematic review and meta-analysis of the diagnostic accuracy of MRI for suspected ACL and meniscal tears of the knee. Knee Surg Sports Traumatol Arthrosc. 2016.",
+    "url": "https://doi.org/10.1007/s00167-015-3861-8",
+    "doi": "10.1007/s00167-015-3861-8",
+    "pmid": "26614425",
+    "year": 2016,
+    "evidenceType": "systematic-review/meta-analysis",
+    "points": [
+     "Meta-análise de estudos prospetivos com artroscopia como padrão de referência: sensibilidade agregada da ressonância magnética de 87% (IC 95% 77-94%) e especificidade de 93% (IC 95% 91-96%) para roturas do ligamento cruzado anterior (14 estudos).",
+     "Roturas do menisco medial: sensibilidade 89% (IC 95% 83-94%), especificidade 88% (IC 95% 82-93%); roturas do menisco lateral: sensibilidade 78% (IC 95% 66-87%), especificidade 95% (IC 95% 91-97%) (19 estudos cada).",
+     "A intensidade do campo magnético não teve efeito significativo na acuidade; a maioria dos estudos tinha risco de viés elevado ou incerto e os estudos de ecografia eram insuficientes para meta-análise."
+    ],
+    "findingIds": [
+     "F2",
+     "F4"
+    ],
+    "score": 20.2
+   }
+  ],
+  "notebookLm": [],
+  "verification": {
+   "passed": false,
+   "issues": [
+    {
+     "severity": "error",
+     "section": "findings_sections/Articulações; conclusion[0] (graduação Kellgren-Lawrence)",
+     "message": "Contradição interna na graduação. O relatório afirma que, sem osteófito definido, não é atribuível grau 2 ou superior [kohn2016-kl-classification-in-brief]. Contudo, o único osteófito é 'apenas suspeito' (F2, suspicious-for) e, segundo o próprio texto, está 'aquém dos osteófitos moderados descritos para o grau 3'. A redução da entrelinha só é avaliável em termos relativos e a esclerose é só possível (F3). Com estas premissas, os descritores citados não sustentam o grau 3 proposto, mesmo com o rótulo 'provisório'. Rever a formulação: o grau não é atribuível com segurança nesta projeção. Será ≥2 apenas se o osteófito se confirmar como definido, e o grau 3 exige redução definida da interlinha em carga e osteófitos moderados. Em alternativa, devolver a classificação de F1 para revisão."
+    },
+    {
+     "severity": "error",
+     "section": "findings_sections/Articulações; conclusion[0]; citations[1]",
+     "message": "A via de despromoção contradiz o achado estruturado F1. A fundamentação de F1 diz que, se o osteófito não se confirmar, 'o grau pode ser inferior (2)'. O relatório afirma que, nesse caso, não é atribuível grau 2 ou superior (ou seja, grau 0–1). A versão do relatório está de acordo com os descritores de Kohn et al., mas diverge de F1 sem o assinalar. É preciso explicitar a discrepância para o médico revisor e corrigir a fundamentação de F1, em vez de a alterar em silêncio."
+    },
+    {
+     "severity": "info",
+     "section": "citations[2]; recommendations[0]",
+     "message": "A afirmação de que os descritores KL 'assentam na redução da interlinha articular e nos osteófitos' simplifica Kohn et al. Os descritores incluem também a esclerose e a deformidade das extremidades ósseas. Sugere-se escrever 'assentam sobretudo em…' ou enumerar os quatro elementos."
+    },
+    {
+     "severity": "info",
+     "section": "findings_sections/Osso; checklist C10",
+     "message": "F3 regista a esclerose subcondral como 'possível', mas o item C10 do checklist classifica-a como 'não avaliável'. O relatório segue F3, o que é coerente com a descrição, mas não assinala a discrepância. Harmonizar C10 com F3 antes da revisão médica."
+    },
+    {
+     "severity": "info",
+     "section": "clinical_indication",
+     "message": "'Pesquisa de osteoartrose do joelho' não consta do pedido: é uma inferência a partir do quadro clínico (mais de 50 anos, rigidez inferior a 30 min, crepitação). A inferência é razoável e não acrescenta história, mas convém apresentá-la como pergunta clínica presumida."
+    },
+    {
+     "severity": "info",
+     "section": "conclusion[0]",
+     "message": "'Com predomínio no compartimento femorotibial lateral' sugere que outros compartimentos estão envolvidos em menor grau. No entanto, a osteoartrose medial é improvável (C8) e o compartimento femoropatelar não é avaliável (C9). Preferir 'localizadas no compartimento femorotibial lateral (femoropatelar não avaliável)'."
+    },
+    {
+     "severity": "info",
+     "section": "limitations",
+     "message": "Inclui duas afirmações que não vêm dos achados estruturados nem da evidência: a subestimação da redução da entrelinha numa radiografia sem carga e a utilidade de uma incidência em túnel para lesões osteocondrais. São conhecimento radiológico corrente e não alteram as conclusões, mas a incidência em túnel não aparece nas recomendações."
+    },
+    {
+     "severity": "info",
+     "section": "Terminologia (findings_sections, conclusion, citations)",
+     "message": "O relatório alterna 'entrelinha' e 'interlinha' para o mesmo conceito; a alternância já vem dos achados estruturados. Uniformizar o termo em todo o relatório."
+    }
+   ],
+   "revisedIssues": 6
+  }
+ },
+ "report": {
+  "language": "pt-PT",
+  "clinicalIndication": "Doente do sexo masculino, 63 anos. Gonalgia mecânica crónica, rigidez matinal inferior a 30 minutos e crepitação. Pesquisa de osteoartrose do joelho. Lateralidade não indicada no pedido. Prioridade: rotina.",
+  "technique": "Radiografia simples do joelho: uma única incidência anteroposterior (AP), ou seja, 1 imagem avaliada. A imagem não tem marcador de lateralidade e não há confirmação de carga. Não foram fornecidos perfil nem axial da rótula. A imagem tem resolução reduzida (500×700 píxeis), compressão JPEG e ruído granular. A análise foi assistida por um modelo de visão-linguagem, que avaliou 1 imagem. Os achados descritos são sugestões automáticas que aguardam revisão médica.",
+  "comparison": "Sem exames prévios disponíveis para comparação.",
+  "findingsByRegion": [
+   {
+    "heading": "Alinhamento",
+    "text": "A entrelinha femorotibial tem forma de cunha: é estreita do lado lateral (lado do perónio, à esquerda da imagem) e aberta do lado medial. A tíbia parece ligeiramente deslocada para o lado lateral em relação ao fémur, e o côndilo femoral medial ultrapassa a margem do prato tibial medial. Isto pode corresponder a um desvio em valgo associado ao colapso do compartimento lateral. No entanto, a rotação ou a posição do membro podem simular o mesmo aspeto, pelo que o achado se considera apenas possível. O alinhamento coronal não é avaliável com fiabilidade nesta projeção, e o eixo mecânico só se avalia numa telerradiografia dos membros inferiores em carga. Luxação femorotibial improvável. A posição da rótula não é avaliável sem perfil nem axial."
+   },
+   {
+    "heading": "Osso",
+    "text": "Não se identifica fratura do fémur distal, do prato tibial nem da cabeça do perónio nesta projeção (improvável). Também não se identificam fragmentos de avulsão, incluindo fratura de Segond ou avulsão das espinhas tibiais e das inserções ligamentares (improváveis). A rótula sobrepõe-se ao fémur e não há perfil nem axial, pelo que a sua integridade não é avaliável. Logo abaixo da superfície articular do prato tibial lateral há uma faixa de densidade ligeiramente aumentada, mais marcada do que no prato medial. Pode tratar-se de esclerose subcondral, mas o achado é ténue e pode dever-se em parte à sobreposição dos rebordos anterior e posterior do prato, pelo que se considera apenas possível. Quistos subcondrais (geodes), erosões, lesões ósseas focais líticas ou escleróticas e reação periosteal não se identificam nesta projeção e consideram-se improváveis. Lesão osteocondral improvável, embora a sua deteção esteja limitada pela qualidade da imagem. A densidade óssea (osteopenia) não é avaliável com fiabilidade. Sem material ortopédico."
+   },
+   {
+    "heading": "Articulações",
+    "text": "Compartimento femorotibial lateral: a entrelinha é fina mas regular e claramente mais estreita do que a do compartimento medial. Esta redução relativa da entrelinha é compatível com alteração degenerativa. Só pode ser descrita em termos relativos, porque a imagem não tem calibração e a carga não está confirmada. Na margem lateral do prato tibial lateral há um rebordo ósseo em bico, de contorno arredondado, que ultrapassa lateralmente o contorno do côndilo femoral lateral. É suspeito de osteófito marginal pequeno. Compartimento femorotibial medial: a entrelinha está preservada e não há osteófitos marginais inequívocos (osteoartrose medial improvável). Condrocalcinose meniscal ou hialina e corpos livres intra-articulares não se identificam e consideram-se improváveis, com deteção limitada pela resolução da imagem. O compartimento femoropatelar não é avaliável sem perfil e axial da rótula. Classificação de Kellgren-Lawrence (escala de 0 a 4 por gravidade crescente [kellgren1957-oa-grading]): grau 3 proposto, provisório. Nos descritores citados, o grau 3 corresponde a osteófitos moderados, redução definida da interlinha, alguma esclerose e possível deformidade das extremidades ósseas [kohn2016-kl-classification-in-brief]. Neste exame, estes critérios estão apenas parcialmente cumpridos. A redução da entrelinha lateral é o achado mais consistente, mas só é avaliável em termos relativos e sem carga confirmada. O osteófito é pequeno e apenas suspeito, aquém dos osteófitos moderados descritos para o grau 3. A esclerose subcondral é só possível. Não se identificam osteófitos volumosos, esclerose marcada nem deformidade franca das extremidades ósseas, que apontariam para grau 4 [kohn2016-kl-classification-in-brief]. O grau é provisório porque há uma só projeção, a carga não está confirmada e o osteófito é pequeno e não confirmado. Se o osteófito não se confirmar, o grau será inferior: nos mesmos descritores, todos os graus a partir do 2 incluem osteófitos (definidos no grau 2, moderados no grau 3, volumosos no grau 4), pelo que, sem osteófito definido, não é atribuível grau 2 ou superior [kohn2016-kl-classification-in-brief]."
+   },
+   {
+    "heading": "Partes moles",
+    "text": "Não se identificam calcificações, gás nem corpos estranhos nos tecidos moles (improváveis). A tumefação dos tecidos moles não é avaliável. Os tecidos moles mediais estão pouco representados, porque a margem medial do joelho fica junto ao limite da imagem. O derrame articular e a lipo-hemartrose não são avaliáveis: o derrame suprarrotuliano avalia-se na incidência de perfil [cecava2018-knee-effusion-radiograph], que não foi fornecida."
+   }
+  ],
+  "impression": [
+   "Alterações compatíveis com osteoartrose do joelho com predomínio no compartimento femorotibial lateral, concordantes com a suspeita clínica. Os achados são uma redução relativa da entrelinha lateral, compatível com alteração degenerativa, um aspeto suspeito de osteófito marginal pequeno no prato tibial lateral e uma possível esclerose subcondral. Propõe-se grau 3 de Kellgren-Lawrence (escala de 0 a 4 [kellgren1957-oa-grading]), provisório e com critérios apenas parcialmente cumpridos: o osteófito é pequeno e apenas suspeito, a esclerose é só possível e a redução da entrelinha só é avaliável em termos relativos, sem carga confirmada. Se o osteófito não se confirmar, não é atribuível grau 2 ou superior, porque nos descritores citados todos os graus a partir do 2 incluem osteófitos definidos [kohn2016-kl-classification-in-brief].",
+   "Compartimento femorotibial medial com entrelinha preservada e sem osteófitos marginais inequívocos (osteoartrose medial improvável). Sem fratura visível do fémur distal, do prato tibial nem da cabeça do perónio nesta projeção; a integridade da rótula não é avaliável. Erosões, quistos subcondrais, condrocalcinose e lesões ósseas focais são improváveis, com deteção limitada pela resolução da imagem.",
+   "Há um possível alinhamento em valgo com discreta translação lateral da tíbia, eventualmente relacionado com o colapso do compartimento lateral. Não se pode confirmar numa AP isolada, porque a rotação ou a posição do membro podem simular este aspeto.",
+   "O compartimento femoropatelar, a rótula e o derrame articular não são avaliáveis, porque não há perfil nem axial da rótula.",
+   "O estudo é limitado: há uma única AP, a carga e a lateralidade não estão confirmadas e a resolução é reduzida. Os achados foram sugeridos por um modelo de visão-linguagem e aguardam validação médica. Recomenda-se completar o estudo radiográfico."
+  ],
+  "recommendations": [
+   "Radiografia AP bilateral em carga ou PA em flexão de 45° (Rosenberg), para confirmar e graduar a redução da entrelinha femorotibial lateral e confirmar ou excluir o osteófito marginal. Isto permite consolidar o grau de Kellgren-Lawrence, que depende da redução da interlinha e dos osteófitos [kohn2016-kl-classification-in-brief].",
+   "Incidências de perfil e axial da rótula, para avaliar o compartimento femoropatelar e a posição e integridade da rótula. O perfil permite também avaliar o derrame no recesso suprarrotuliano [cecava2018-knee-effusion-radiograph].",
+   "Telerradiografia dos membros inferiores em carga, apenas se o alinhamento coronal tiver relevância para a decisão terapêutica.",
+   "Confirmar a lateralidade (repetir com marcador ou confirmar no registo do exame) e fazer validar os achados por médico radiologista, em correlação com o quadro clínico."
+  ],
+  "limitations": "Há apenas uma incidência AP, sem marcador de lateralidade e sem confirmação de carga. Numa radiografia sem carga, a redução da entrelinha pode ser subestimada, pelo que o grau de Kellgren-Lawrence é apenas provisório. A própria classificação tem reprodutibilidade variável conforme a descrição dos graus utilizada (kappa ponderado de 0,41 com a descrição original). Os autores originais nunca especificaram explicitamente que achados radiográficos correspondem a cada grau, e a classificação foi criticada por assumir uma progressão radiográfica linear [kohn2016-kl-classification-in-brief]. Sem perfil nem axial da rótula, não se avaliam o compartimento femoropatelar, a posição e a integridade da rótula nem o derrame articular. A imagem não tem calibração, pelo que não há medições em milímetros. O alinhamento coronal exige uma telerradiografia dos membros inferiores em carga. A resolução reduzida (500×700 píxeis), a compressão JPEG e o ruído limitam a deteção de osteófitos pequenos, de condrocalcinose ténue e de lesões osteocondrais (para estas seria útil uma incidência em túnel). Os tecidos moles mediais estão pouco representados. Quanto à lateralidade, o perónio projeta-se à esquerda da imagem; na convenção habitual de visualização seria um joelho direito, mas sem marcador isto não se pode confirmar. A análise foi assistida por um modelo de visão-linguagem, que pode falhar achados subtis ou interpretar mal sobreposições. Num estudo retrospetivo com 190 casos 'Diagnosis Please' da revista Radiology, dos quais apenas 17 musculoesqueléticos, foi pedido aos modelos que propusessem diagnósticos diferenciais a partir das imagens e da história clínica. Com temperatura 1, a exatidão foi de 49% para o GPT-4V e de 39% para o Gemini Pro Vision, face a 61% para radiologistas com formação subespecializada. A diferença foi significativa para o Gemini Pro Vision (P < 0,001), mas não para o GPT-4V após correção de Bonferroni (P = 0,02) [suh2024-gpt4v-gemini-diagnosis-please]. Como a tarefa avaliada foi o diagnóstico diferencial em casos selecionados, e não a graduação da osteoartrose do joelho, estes resultados não se aplicam diretamente a este exame. Todos os achados são sugestões pendentes de revisão e devem ser confirmados por um médico.",
+  "citations": [
+   {
+    "evidenceId": "kohn2016-kl-classification-in-brief",
+    "statement": "Nos descritores de Kohn et al., o grau 3 de Kellgren-Lawrence corresponde a osteófitos moderados, redução definida da interlinha, alguma esclerose e possível deformidade das extremidades ósseas. O grau 4 corresponde a osteófitos volumosos, redução marcada da interlinha, esclerose grave e deformidade definida das extremidades ósseas."
+   },
+   {
+    "evidenceId": "kohn2016-kl-classification-in-brief",
+    "statement": "Nos mesmos descritores, o grau 2 exige osteófitos definidos, e os graus 3 e 4 osteófitos moderados e volumosos; sem osteófito definido, não é atribuível grau 2 ou superior."
+   },
+   {
+    "evidenceId": "kohn2016-kl-classification-in-brief",
+    "statement": "Os descritores dos graus de Kellgren-Lawrence assentam na redução da interlinha articular e nos osteófitos."
+   },
+   {
+    "evidenceId": "kohn2016-kl-classification-in-brief",
+    "statement": "A reprodutibilidade da classificação de Kellgren-Lawrence varia conforme a descrição dos graus utilizada (kappa ponderado de 0,41 com a descrição original). Os autores originais nunca especificaram explicitamente que achados correspondem a cada grau, e a classificação foi criticada por assumir uma progressão radiográfica linear."
+   },
+   {
+    "evidenceId": "kellgren1957-oa-grading",
+    "statement": "A classificação de Kellgren-Lawrence gradua a osteoartrose radiográfica de 0 a 4 por gravidade crescente."
+   },
+   {
+    "evidenceId": "cecava2018-knee-effusion-radiograph",
+    "statement": "O derrame suprarrotuliano foi avaliado e medido na radiografia de perfil do joelho; esta incidência não foi fornecida neste estudo."
+   },
+   {
+    "evidenceId": "suh2024-gpt4v-gemini-diagnosis-please",
+    "statement": "Em 190 casos 'Diagnosis Please' (17 musculoesqueléticos), com temperatura 1, a exatidão diagnóstica foi de 49% para o GPT-4V e de 39% para o Gemini Pro Vision, face a 61% para radiologistas com formação subespecializada. A diferença foi significativa para o Gemini Pro Vision (P < 0,001), mas não para o GPT-4V após correção de Bonferroni (P = 0,02)."
+   }
+  ],
+  "status": "draft",
+  "generatedBy": "Claude (API Anthropic) · claude-opus-5-5 · pré-calculado",
+  "generatedAt": "2026-10-27T23:00:00.000Z",
+  "editedByClinician": false,
+  "revisedAfterVerification": true
+ }
+}

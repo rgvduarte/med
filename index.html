@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#060912" />
+    <meta name="description" content="Análise de imagiologia musculoesquelética (radiografia, TC, RM, ecografia) com modelos de visão-linguagem e evidência revista por pares. Protótipo de investigação." />
+    <!--
+      connect-src: this app, local servers over http (Ollama, LM Studio, NotebookLM bridge), the Claude API and the
+      Hugging Face download hosts of the in-browser model. Another HTTPS endpoint must be added here, or at build
+      time with CSP_CONNECT_EXTRA="https://host" (see vite.config.ts). frame-ancestors cannot be set from a meta tag.
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; media-src 'self' blob: data:; font-src 'self' data:; connect-src 'self' https://api.anthropic.com http://localhost:* http://127.0.0.1:* https://huggingface.co https://*.huggingface.co https://*.hf.co; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'"
+    />
+    <meta name="referrer" content="no-referrer" />
+    <title>MSK.ai — Imagiologia musculoesquelética com IA</title>
+    <script type="module" crossorigin src="./assets/index-CYnm-TC4.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/state-l50lyrym.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-BTdmRKoB.js">
+    <link rel="modulepreload" crossorigin href="./assets/json-schema-processors-BD81Moio.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-TD2HQMvS.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
