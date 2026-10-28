@@ -13,7 +13,7 @@ export function GlassTooltipContent({ className, sideOffset = 6, ...props }: Com
         sideOffset={sideOffset}
         className={cn(
           'z-50 max-w-72 overflow-hidden rounded-lg px-3 py-1.5',
-          'border border-white/20 bg-[rgba(16,22,36,0.86)] backdrop-blur-xl',
+          'border border-white/20 bg-[rgba(20,20,20,0.88)] backdrop-blur-xl',
           'text-xs text-white shadow-[0_4px_16px_rgba(0,0,0,0.3)]',
           'animate-in fade-in-0 zoom-in-95',
           'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',

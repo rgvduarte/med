@@ -220,7 +220,7 @@ function FilterSelect<T extends string>({ label, value, options, onChange }: { l
   return (
     <label className="rp-filter">
       <span>{label}</span>
-      <GlassSelect className={cn('h-9 px-3', value !== 'all' && 'border-cyan-400/60 bg-cyan-400/10')} value={value} onChange={(e) => onChange(e.target.value as T)}>
+      <GlassSelect className={cn('h-9 px-3', value !== 'all' && 'border-white/50 bg-white/15')} value={value} onChange={(e) => onChange(e.target.value as T)}>
         {options.map(([v, l]) => (
           <option key={v} value={v}>
             {l}

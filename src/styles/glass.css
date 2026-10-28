@@ -1,6 +1,7 @@
-/* Liquid glass (Ein UI, MIT) applied to the app's own classes. Loaded last in the `legacy` layer, so it
+/* Monochrome liquid glass (after Ein UI, MIT) applied to the app's own classes. Loaded last in the `legacy` layer, so it
    refines app.css / workspace.css / report.css; the Ein UI React components in components/ui/glass carry
-   their own Tailwind utilities. Clinical content keeps its contrast; the image viewer stays pure black. */
+   their own Tailwind utilities. Black, white and grey only; hue is kept for clinical meaning (see tokens.css).
+   The image viewer stays pure black. */
 
 /* ---------------------------------------------------------------- Field */
 
@@ -12,7 +13,7 @@ body {
   font-feature-settings: normal;
   scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
 }
-/* Fixed gradient field behind every glass surface (cyan · blue · purple, Ein UI palette). */
+/* Fixed field behind every glass surface: black with a faint neutral "lightbox" glow. */
 body::before {
   content: '';
   position: fixed;
@@ -20,21 +21,33 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(60rem 42rem at 8% -12%, rgba(6, 182, 212, 0.24), transparent 62%),
-    radial-gradient(52rem 40rem at 100% 8%, rgba(59, 130, 246, 0.2), transparent 60%),
-    radial-gradient(64rem 46rem at 55% 118%, rgba(168, 85, 247, 0.2), transparent 62%),
-    radial-gradient(30rem 24rem at 30% 55%, rgba(14, 165, 233, 0.06), transparent 70%),
+    radial-gradient(70rem 44rem at 12% -14%, rgba(255, 255, 255, 0.085), transparent 62%),
+    radial-gradient(52rem 40rem at 100% 6%, rgba(255, 255, 255, 0.05), transparent 60%),
+    radial-gradient(64rem 46rem at 50% 120%, rgba(255, 255, 255, 0.045), transparent 62%),
     var(--bg);
 }
 ::selection {
-  background: rgba(34, 211, 238, 0.32);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.85);
+  color: #000;
 }
 * {
   scrollbar-width: thin;
 }
 a {
-  color: #67e8f9;
+  color: var(--text);
+}
+/* Links inside running text are underlined (no colour to tell them apart); interface links (all classed) are not. */
+:where(p, li, small, dd, td, .callout, .prose, .rp-ev-links, .rp-ev-foot, .rp-dialog-note, .rp-perf-refs) a:not([class]),
+.rp-inline-link,
+.fp-link {
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.4);
+  text-underline-offset: 2px;
+}
+:where(p, li, small, dd, td, .callout, .prose, .rp-ev-links, .rp-ev-foot, .rp-dialog-note, .rp-perf-refs) a:not([class]):hover,
+.rp-inline-link:hover,
+.fp-link:hover {
+  text-decoration-color: currentColor;
 }
 :focus-visible {
   box-shadow: var(--focus-ring);
@@ -90,13 +103,13 @@ a {
   bottom: -1px;
   height: 1px;
   pointer-events: none;
-  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.45), rgba(168, 85, 247, 0.4), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
 }
 .brand {
   letter-spacing: -0.02em;
 }
 .brand-tld {
-  background: linear-gradient(90deg, #67e8f9, #93c5fd 45%, #c4b5fd);
+  background: linear-gradient(90deg, #ffffff, #8a8a8a);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -106,9 +119,10 @@ a {
   width: 32px;
   height: 32px;
   border-radius: 10px;
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.9), rgba(59, 130, 246, 0.9) 50%, rgba(168, 85, 247, 0.9));
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  overflow: hidden;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.25);
 }
 .nav {
   gap: 4px;
@@ -135,7 +149,7 @@ a {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.18);
 }
 .nav a[aria-current='page'] svg {
-  color: #67e8f9;
+  color: #fff;
 }
 .conn-pill {
   height: 28px;
@@ -168,10 +182,7 @@ a {
 .page-head h1 {
   font-weight: 650;
   letter-spacing: -0.025em;
-  background: linear-gradient(90deg, #fff 30%, #a5f3fc 75%, #c4b5fd);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #fff;
 }
 
 /* ---------------------------------------------------------------- Buttons (Ein UI GlassButton) */
@@ -202,17 +213,15 @@ a {
   transform: scale(0.95);
 }
 .btn-primary {
-  border-color: rgba(255, 255, 255, 0.3);
-  background:
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.28), transparent 70%),
-    var(--accent-grad);
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.9);
+  background: var(--accent-grad);
+  color: #0a0a0a;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.14), inset 0 -1px 0 rgba(0, 0, 0, 0.12);
 }
 .btn-primary:hover:not(:disabled) {
-  background:
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.32), transparent 70%),
-    var(--accent-grad);
-  box-shadow: 0 4px 30px rgba(59, 130, 246, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  background: var(--accent-grad);
+  border-color: #fff;
+  box-shadow: 0 4px 28px rgba(255, 255, 255, 0.26), inset 0 -1px 0 rgba(0, 0, 0, 0.12);
 }
 .btn-ghost {
   background: transparent;
@@ -273,8 +282,8 @@ a {
   border-color: rgba(255, 255, 255, 0.42);
   background-color: rgba(255, 255, 255, 0.13);
   box-shadow:
-    0 0 0 3px rgba(34, 211, 238, 0.22),
-    0 0 22px rgba(59, 130, 246, 0.32);
+    0 0 0 3px rgba(255, 255, 255, 0.16),
+    0 0 22px rgba(255, 255, 255, 0.1);
 }
 /* Native selects keep the platform picker; only the closed control is glass, with Ein UI's chevron. */
 .select,
@@ -320,15 +329,15 @@ input[type='checkbox']::after {
   content: '';
   width: 10px;
   height: 10px;
-  background: #fff;
+  background: #0a0a0a;
   clip-path: polygon(14% 52%, 0 66%, 38% 100%, 100% 22%, 86% 8%, 38% 72%);
   transform: scale(0);
   transition: transform 0.15s var(--ease-out);
 }
 input[type='checkbox']:checked {
-  border-color: rgba(103, 232, 249, 0.6);
-  background: linear-gradient(135deg, #06b6d4, #3b82f6 60%, #8b5cf6);
-  box-shadow: 0 0 12px rgba(6, 182, 212, 0.45);
+  border-color: #fff;
+  background: #fff;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
 }
 input[type='checkbox']:checked::after {
   transform: scale(1);
@@ -374,13 +383,13 @@ input[type='checkbox']:disabled {
   }
 }
 select option {
-  background: #141a28;
+  background: #161616;
   color: #fff;
 }
 input[type='checkbox'],
 input[type='radio'],
 input[type='range'] {
-  accent-color: #22d3ee;
+  accent-color: #e5e5e5;
 }
 
 /* ---------------------------------------------------------------- Badges, chips, callouts */
@@ -405,7 +414,7 @@ input[type='range'] {
   border-color: rgba(248, 113, 113, 0.35);
 }
 .badge-info {
-  border-color: rgba(147, 180, 255, 0.32);
+  border-color: rgba(255, 255, 255, 0.22);
 }
 .badge-ai,
 .wsx-chip.is-ai {
@@ -422,7 +431,7 @@ input[type='range'] {
   --rp-pos-bg: rgba(239, 68, 68, 0.2);
   --rp-dbt: #ffbf5e;
   --rp-dbt-bg: rgba(245, 158, 11, 0.2);
-  --rp-neg: #c3ccd8;
+  --rp-neg: #c4c4c4;
   --rp-neg-bg: rgba(255, 255, 255, 0.1);
   --rp-ok: #4ade80;
   --rp-ok-bg: rgba(16, 185, 129, 0.2);
@@ -432,7 +441,7 @@ input[type='range'] {
   --cls-pos-bg: rgba(239, 68, 68, 0.2);
   --cls-dub-bg: rgba(245, 158, 11, 0.2);
   --cls-neg-bg: rgba(255, 255, 255, 0.1);
-  --ov-label-bg: rgba(10, 14, 24, 0.78);
+  --ov-label-bg: rgba(12, 12, 12, 0.78);
 }
 .rp-chip-ai {
   border-radius: 999px;
@@ -457,9 +466,9 @@ input[type='range'] {
   color: #e3d4ff;
 }
 .callout-info {
-  border-color: rgba(147, 180, 255, 0.35);
-  background: var(--glass-highlight), rgba(59, 130, 246, 0.14);
-  color: #d3e1ff;
+  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.06);
+  color: var(--text-2);
 }
 .fp-pending {
   border-radius: 14px;
@@ -515,9 +524,9 @@ input[type='range'] {
 }
 .dropzone:hover,
 .dropzone.active {
-  border-color: rgba(34, 211, 238, 0.7);
-  background: var(--glass-highlight), rgba(34, 211, 238, 0.1);
-  box-shadow: 0 0 32px rgba(34, 211, 238, 0.2);
+  border-color: rgba(255, 255, 255, 0.7);
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.09);
+  box-shadow: 0 0 32px rgba(255, 255, 255, 0.1);
 }
 
 /* ---------------------------------------------------------------- Workspace frame */
@@ -531,8 +540,8 @@ input[type='range'] {
   backdrop-filter: var(--glass-blur);
 }
 .wsx-progress > i {
-  background: linear-gradient(90deg, #22d3ee, #3b82f6, #a855f7);
-  box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
+  background: #fff;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
 }
 .wsx-series,
 .wsx-side {
@@ -561,7 +570,7 @@ input[type='range'] {
   inset: -4px;
   z-index: -1;
   border-radius: 18px;
-  background: var(--accent-glow);
+  background: rgba(255, 255, 255, 0.1);
   filter: blur(14px);
   opacity: 0.5;
   pointer-events: none;
@@ -588,11 +597,11 @@ input[type='range'] {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.15);
 }
 .wsx-tab[aria-selected='true'] .wsx-tab-ic {
-  color: #67e8f9;
+  color: #fff;
 }
 .wsx-tab-count {
   border-radius: 999px;
-  background: rgba(30, 38, 56, 0.9);
+  background: rgba(36, 36, 36, 0.92);
   border-color: rgba(255, 255, 255, 0.25);
 }
 .wsx-tab-count.is-pending {
@@ -618,8 +627,8 @@ input[type='range'] {
   border-color: rgba(255, 255, 255, 0.3);
 }
 .sp-card[aria-current='true'] {
-  border-color: rgba(34, 211, 238, 0.65);
-  box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.55), 0 0 24px rgba(34, 211, 238, 0.25);
+  border-color: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.12);
 }
 
 /* Viewer chrome: glass tool buttons around a black viewport */
@@ -634,12 +643,12 @@ input[type='range'] {
   background: rgba(255, 255, 255, 0.1);
 }
 .vt-btn[aria-pressed='true'] {
-  background: var(--glass-highlight), rgba(34, 211, 238, 0.16);
-  color: #67e8f9;
-  box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.35), 0 0 16px rgba(34, 211, 238, 0.2);
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.16);
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4), 0 0 16px rgba(255, 255, 255, 0.1);
 }
 .vt-btn[aria-pressed='true']::after {
-  background: linear-gradient(90deg, #22d3ee, #3b82f6);
+  background: #fff;
 }
 
 /* Floating layers over content: near-opaque glass with blur so the text underneath never shows through. */
@@ -678,12 +687,12 @@ input[type='range'] {
   border: 1px solid rgba(255, 255, 255, 0.16);
 }
 .vw-aichip {
-  background: rgba(10, 14, 24, 0.72);
+  background: rgba(12, 12, 12, 0.72);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), var(--glass-inset);
 }
 .cb-head {
-  background: linear-gradient(#67e8f9, #22d3ee);
-  box-shadow: 0 0 10px rgba(34, 211, 238, 0.7);
+  background: #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
 
 /* ---------------------------------------------------------------- Findings */
@@ -694,9 +703,9 @@ input[type='range'] {
   border-color: rgba(192, 132, 252, 0.38);
   background:
     linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent 55%),
-    linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(59, 130, 246, 0.1) 60%, rgba(6, 182, 212, 0.08)),
+    linear-gradient(135deg, rgba(168, 85, 247, 0.14), rgba(168, 85, 247, 0.03) 60%),
     rgba(255, 255, 255, 0.04);
-  box-shadow: 0 8px 32px rgba(88, 28, 135, 0.28), var(--glass-inset);
+  box-shadow: var(--glass-shadow), var(--glass-inset);
 }
 .fp-summary-title {
   color: #e3d4ff;
@@ -717,8 +726,8 @@ input[type='range'] {
   background: var(--glass-highlight), rgba(255, 255, 255, 0.09);
 }
 .fp-row.is-sel {
-  border-color: rgba(34, 211, 238, 0.65);
-  box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.55), 0 0 28px rgba(34, 211, 238, 0.18);
+  border-color: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6), 0 0 28px rgba(255, 255, 255, 0.1);
 }
 .fp-count,
 .tab .count {
@@ -727,7 +736,7 @@ input[type='range'] {
 }
 .fp-meter > i,
 .confidence .bar > i {
-  background: linear-gradient(90deg, #22d3ee, #3b82f6);
+  background: #fff;
 }
 
 /* Analysis steps → Ein UI GlassTimeline: status nodes joined by a connector (gradient once done). */
@@ -752,15 +761,15 @@ input[type='range'] {
   background: rgba(255, 255, 255, 0.05);
 }
 .pp-step.is-done > .pp-ic {
-  border-color: rgba(103, 232, 249, 0.5);
-  background: linear-gradient(135deg, #06b6d4, #3b82f6);
-  color: #fff;
+  border-color: rgba(255, 255, 255, 0.7);
+  background: #fff;
+  color: #0a0a0a;
 }
 .pp-step.is-running > .pp-ic {
-  border-color: rgba(103, 232, 249, 0.6);
+  border-color: rgba(255, 255, 255, 0.8);
   background: rgba(255, 255, 255, 0.2);
-  color: #67e8f9;
-  box-shadow: 0 0 16px rgba(6, 182, 212, 0.6);
+  color: #fff;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.45);
 }
 .pp-step.is-error > .pp-ic {
   border-color: rgba(248, 113, 113, 0.6);
@@ -777,7 +786,7 @@ input[type='range'] {
   background: rgba(255, 255, 255, 0.16);
 }
 .pp-step.is-done:not(:last-child)::before {
-  background: linear-gradient(#06b6d4, #3b82f6);
+  background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.35));
 }
 .pp-step .pp-num {
   line-height: 24px;
@@ -789,7 +798,7 @@ input[type='range'] {
 .pp-step.is-running {
   border-color: rgba(255, 255, 255, 0.28);
   background: var(--glass-highlight), rgba(255, 255, 255, 0.12);
-  box-shadow: 0 0 28px rgba(6, 182, 212, 0.22), var(--glass-inset);
+  box-shadow: 0 0 28px rgba(255, 255, 255, 0.1), var(--glass-inset);
 }
 .pp-step.is-error {
   border-color: rgba(248, 113, 113, 0.35);
@@ -805,8 +814,12 @@ input[type='range'] {
   background: var(--glass-highlight), rgba(255, 255, 255, 0.055);
 }
 .pp-summary {
-  border-color: rgba(74, 222, 128, 0.32);
-  background: var(--glass-highlight), rgba(16, 185, 129, 0.14);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.07);
+}
+/* «Análise concluída» is process status, not clinical validation: no green. */
+.pp-summary .pp-ic.is-done {
+  color: #fff;
 }
 
 /* ---------------------------------------------------------------- Report, evidence, settings */
@@ -825,8 +838,8 @@ input[type='range'] {
   background: rgba(255, 255, 255, 0.03);
 }
 .rp-sec-editing {
-  border-color: rgba(34, 211, 238, 0.65);
-  box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.5), 0 0 24px rgba(34, 211, 238, 0.18);
+  border-color: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.55), 0 0 24px rgba(255, 255, 255, 0.1);
 }
 .rp-radio {
   border-radius: 14px;
@@ -840,9 +853,9 @@ input[type='range'] {
   border-color: rgba(255, 255, 255, 0.3);
 }
 .rp-radio.on {
-  border-color: rgba(34, 211, 238, 0.6);
-  background: var(--glass-highlight), rgba(34, 211, 238, 0.12);
-  box-shadow: 0 0 24px rgba(34, 211, 238, 0.18), var(--glass-inset);
+  border-color: rgba(255, 255, 255, 0.7);
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.08), var(--glass-inset);
 }
 .prose code,
 .prose pre {
@@ -850,10 +863,10 @@ input[type='range'] {
   background: rgba(0, 0, 0, 0.28);
 }
 .avatar {
-  background: var(--accent-grad);
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.1);
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  box-shadow: var(--glass-shadow-sm), inset 0 1px 1px rgba(255, 255, 255, 0.25);
 }
 
 /* ---------------------------------------------------------------- Dialogs (Ein UI GlassDialog on <dialog>) */

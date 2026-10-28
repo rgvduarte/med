@@ -13,7 +13,7 @@ export interface TimelineItem {
 
 /**
  * Ein UI GlassTimeline (vertical): glowing node per step, gradient connector, glass card per item.
- * `accent` draws every connector and icon in the cyan→blue gradient (a process description, with no progress state).
+ * `accent` lights every connector and icon (a process description, with no progress state).
  */
 export function GlassTimeline({ items, className, accent = false }: { items: TimelineItem[]; className?: string; accent?: boolean }) {
   return (
@@ -25,7 +25,7 @@ export function GlassTimeline({ items, className, accent = false }: { items: Tim
             {index < items.length - 1 && (
               <div
                 aria-hidden
-                className={cn('mt-2 w-0.5 flex-1', accent || item.status === 'completed' ? 'bg-linear-to-b from-cyan-500/80 to-blue-500/40' : 'bg-white/20')}
+                className={cn('mt-2 w-0.5 flex-1', accent || item.status === 'completed' ? 'bg-linear-to-b from-white/70 to-white/20' : 'bg-white/20')}
               />
             )}
           </div>
@@ -42,24 +42,24 @@ function TimelineNode({ status, icon, accent }: { status?: TimelineItem['status'
   return (
     <div className="relative">
       {status === 'current' && (
-        <div aria-hidden className="absolute -inset-2 animate-pulse rounded-full bg-linear-to-r from-cyan-500/50 to-blue-500/50 blur-md motion-reduce:animate-none" />
+        <div aria-hidden className="absolute -inset-2 animate-pulse rounded-full bg-white/30 blur-md motion-reduce:animate-none" />
       )}
       <div
         className={cn(
           'relative flex h-10 w-10 items-center justify-center rounded-full border-2 transition-all duration-300',
-          status === 'completed' && 'border-cyan-400/50 bg-linear-to-br from-cyan-500 to-blue-500',
-          status === 'current' && 'border-cyan-400/50 bg-white/20 backdrop-blur-xl',
+          status === 'completed' && 'border-white/70 bg-white',
+          status === 'current' && 'border-white/70 bg-white/20 backdrop-blur-xl',
           status === 'upcoming' && 'border-white/20 bg-white/5 backdrop-blur-xl',
           !status && !accent && 'border-white/20 bg-white/10 backdrop-blur-xl',
-          !status && accent && 'border-cyan-400/40 bg-white/10 shadow-[0_0_16px_rgba(6,182,212,0.35)] backdrop-blur-xl',
+          !status && accent && 'border-white/40 bg-white/10 shadow-[0_0_16px_rgba(255,255,255,0.12)] backdrop-blur-xl',
         )}
       >
         {status === 'completed' ? (
-          <Check className="h-5 w-5 text-white" aria-hidden />
+          <Check className="h-5 w-5 text-neutral-950" aria-hidden />
         ) : icon ? (
-          <span className={cn('flex text-white/80 [&_svg]:size-[18px]', (status === 'current' || accent) && 'text-cyan-300')}>{icon}</span>
+          <span className={cn('flex text-white/80 [&_svg]:size-[18px]', (status === 'current' || accent) && 'text-white')}>{icon}</span>
         ) : (
-          <div className={cn('h-3 w-3 rounded-full', status === 'current' ? 'bg-cyan-400' : 'bg-white/40')} />
+          <div className={cn('h-3 w-3 rounded-full', status === 'current' ? 'bg-white' : 'bg-white/40')} />
         )}
       </div>
     </div>
@@ -70,7 +70,7 @@ function TimelineCard({ item }: { item: TimelineItem }) {
   const isCurrent = item.status === 'current'
   return (
     <div className="relative">
-      {isCurrent && <div aria-hidden className="absolute -inset-1 rounded-xl bg-linear-to-r from-cyan-500/30 to-blue-500/30 opacity-70 blur-lg" />}
+      {isCurrent && <div aria-hidden className="absolute -inset-1 rounded-xl bg-white/15 opacity-70 blur-lg" />}
       <div
         className={cn(
           'relative rounded-xl border p-4 backdrop-blur-xl transition-all duration-300',

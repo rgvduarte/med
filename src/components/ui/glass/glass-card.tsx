@@ -1,12 +1,12 @@
 import type { ComponentProps } from 'react'
 import { cn } from '../cn'
 
-/** Ein UI GlassCard: translucent white panel, top highlight, inner rim and an optional cyan→purple glow behind it. */
+/** Ein UI GlassCard: translucent white panel, top highlight, inner rim and an optional soft white glow behind it. */
 export function GlassCard({ className, glowEffect = true, children, ...props }: ComponentProps<'div'> & { glowEffect?: boolean }) {
   return (
     <div className="relative">
       {glowEffect && (
-        <div aria-hidden className="pointer-events-none absolute -inset-1 rounded-2xl bg-linear-to-r from-cyan-500/30 via-blue-500/30 to-purple-500/30 opacity-70 blur-xl" />
+        <div aria-hidden className="pointer-events-none absolute -inset-1 rounded-2xl bg-white/15 opacity-70 blur-xl" />
       )}
       <div
         className={cn(

@@ -8,7 +8,7 @@ const field = cn(
   'text-white placeholder:text-white/40',
   'shadow-[0_4px_16px_rgba(0,0,0,0.2)]',
   'transition-all duration-300',
-  'focus:border-white/40 focus:bg-white/15 focus:outline-none focus-visible:shadow-[0_4px_16px_rgba(0,0,0,0.2)]',
+  'focus:border-white/40 focus:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60',
   'disabled:cursor-not-allowed disabled:opacity-50',
 )
 
@@ -17,7 +17,7 @@ function FocusGlow() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none absolute -inset-0.5 rounded-xl bg-linear-to-r from-cyan-500/0 via-blue-500/0 to-purple-500/0 opacity-0 blur-md transition-all duration-300 group-focus-within:from-cyan-500/30 group-focus-within:via-blue-500/30 group-focus-within:to-purple-500/30 group-focus-within:opacity-70"
+      className="pointer-events-none absolute -inset-0.5 rounded-xl bg-white/0 opacity-0 blur-md transition-all duration-300 group-focus-within:bg-white/15 group-focus-within:opacity-70"
     />
   )
 }
@@ -39,7 +39,7 @@ export function GlassSelect({ className, wrapperClassName, ...props }: Component
   return (
     <div className={cn('group relative', wrapperClassName)}>
       <FocusGlow />
-      <select className={cn(field, 'flex h-10 cursor-pointer appearance-none pr-9 [&>option]:bg-[#141a28] [&>option]:text-white', className)} {...props} />
+      <select className={cn(field, 'flex h-10 cursor-pointer appearance-none pr-9 [&>option]:bg-[#161616] [&>option]:text-white', className)} {...props} />
       <ChevronDown aria-hidden className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-white/60" />
     </div>
   )

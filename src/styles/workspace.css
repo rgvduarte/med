@@ -4,13 +4,13 @@
   --ov-positive: #ff4d4f; /* solid boxes */
   --ov-doubtful: #ffc53d; /* dashed 6 4 */
   --ov-halo: rgba(0, 0, 0, 0.65);
-  --ov-label-bg: rgba(11, 15, 20, 0.85);
+  --ov-label-bg: rgba(12, 12, 12, 0.85);
   --cls-pos-fg: #ff8a85;
   --cls-pos-bg: #3a1614;
   --cls-dub-fg: #ffb547;
   --cls-dub-bg: #3a2a0e;
-  --cls-neg-fg: #a7b4c2;
-  --cls-neg-bg: #1e2733;
+  --cls-neg-fg: #bdbdbd;
+  --cls-neg-bg: #222222;
 }
 
 /* ---------------------------------------------------------------- Workspace frame */
@@ -111,7 +111,7 @@
 .wsx-chip.is-run {
   color: var(--accent);
   background: var(--accent-soft);
-  border-color: rgba(63, 184, 245, 0.4);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 .wsx-chip.is-err {
   color: var(--critical);
@@ -731,7 +731,7 @@
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6);
 }
 .vw-pill.is-hov {
-  background: rgba(28, 38, 50, 0.95);
+  background: rgba(28, 28, 28, 0.95);
 }
 .vw-pill-ai {
   flex: none;
@@ -757,7 +757,7 @@
 .vw-corner {
   position: absolute;
   z-index: 1;
-  color: #e6edf3;
+  color: #ededed;
   font: 500 12px/16px var(--font-sans);
   font-variant-numeric: tabular-nums;
   text-shadow: 0 0 2px #000, 0 1px 1px #000, 0 0 4px #000;
@@ -794,7 +794,7 @@
   transform: translateX(-50%);
   border: 1px solid rgba(177, 151, 252, 0.5);
   border-radius: 999px;
-  background: rgba(11, 15, 20, 0.84);
+  background: rgba(12, 12, 12, 0.84);
   color: var(--text);
   font-size: 12px;
   font-weight: 600;
@@ -1086,7 +1086,7 @@
 .cls-na {
   color: var(--cls-neg-fg);
   background: var(--cls-neg-bg);
-  border-color: rgba(147, 164, 184, 0.4);
+  border-color: rgba(255, 255, 255, 0.28);
 }
 .cls-glyph {
   flex: none;

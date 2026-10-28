@@ -1,15 +1,20 @@
-/* Design tokens — liquid glass (Ein UI, MIT) over a dark navy field, with a light print/report theme.
-   Surfaces are translucent white over the gradient background; the image viewer stays pure black. */
+/* Design tokens — monochrome liquid glass (after Ein UI, MIT): black field, white glass, greyscale text.
+   Colour is reserved for clinical meaning only:
+     red    = positive finding, critical, urgent, error
+     amber  = doubtful finding, warning, pending review
+     green  = validated by the clinician, accepted, verified reference
+     violet = AI provenance (AI result, AI draft)
+   plus the overlay colours drawn on the images. Everything else is black, white or grey. */
 
 :root {
   /* Surfaces: white glass at increasing opacity (Ein UI: bg-white/10, hover bg-white/20) */
-  --bg: #060912;
+  --bg: #050505;
   --surface-1: rgba(255, 255, 255, 0.055);
   --surface-2: rgba(255, 255, 255, 0.075);
   --surface-3: rgba(255, 255, 255, 0.11);
   --surface-hover: rgba(255, 255, 255, 0.16);
   /* Floating layers (menus, popovers, tooltips) sit over content and must hide it: near-opaque + blur. */
-  --surface-pop: rgba(16, 22, 36, 0.86);
+  --surface-pop: rgba(20, 20, 20, 0.88);
   --viewer-bg: #000000;
   --border: rgba(255, 255, 255, 0.12);
   --border-strong: rgba(255, 255, 255, 0.22);
@@ -22,20 +27,20 @@
   --glass-inset: inset 0 1px 1px rgba(255, 255, 255, 0.1);
 
   /* Text: white at decreasing opacity (Ein UI: text-white, text-white/70, text-white/60) */
-  --text: #f5f7fb;
-  --text-2: rgba(240, 244, 250, 0.74);
-  --text-3: rgba(232, 238, 248, 0.56);
-  --text-inverse: #060912;
+  --text: #f5f5f5;
+  --text-2: rgba(245, 245, 245, 0.74);
+  --text-3: rgba(245, 245, 245, 0.55);
+  --text-inverse: #0a0a0a;
 
-  /* Accent — Ein UI cyan → blue → purple */
-  --accent: #22d3ee;
-  --accent-strong: #06b6d4;
-  --accent-soft: rgba(34, 211, 238, 0.14);
-  --accent-grad: linear-gradient(90deg, rgba(6, 182, 212, 0.85), rgba(59, 130, 246, 0.85), rgba(168, 85, 247, 0.85));
-  --accent-glow: linear-gradient(90deg, rgba(6, 182, 212, 0.3), rgba(59, 130, 246, 0.3), rgba(168, 85, 247, 0.3));
-  --focus-ring: 0 0 0 2px rgba(6, 9, 18, 0.9), 0 0 0 4px rgba(34, 211, 238, 0.85);
+  /* Accent — white. Emphasis comes from luminance (white on black), not hue. */
+  --accent: #ffffff;
+  --accent-strong: #ffffff;
+  --accent-soft: rgba(255, 255, 255, 0.12);
+  --accent-grad: linear-gradient(to bottom, #ffffff, #dcdcdc);
+  --accent-glow: radial-gradient(closest-side, rgba(255, 255, 255, 0.16), transparent);
+  --focus-ring: 0 0 0 2px #050505, 0 0 0 4px rgba(255, 255, 255, 0.9);
 
-  /* Clinical status (AA on the glass surfaces) — semantics unchanged */
+  /* Clinical status (AA on the glass surfaces) — the only hues in the interface */
   --critical: #ff7a7a;
   --critical-soft: rgba(239, 68, 68, 0.2);
   --significant: #ffaf5f;
@@ -44,8 +49,8 @@
   --minor-soft: rgba(250, 204, 21, 0.15);
   --normal: #4ade80;
   --normal-soft: rgba(16, 185, 129, 0.18);
-  --info: #93b4ff;
-  --info-soft: rgba(96, 165, 250, 0.16);
+  --info: #d4d4d4;
+  --info-soft: rgba(255, 255, 255, 0.08);
   --ai: #c4a6ff;
   --ai-soft: rgba(168, 85, 247, 0.18);
 
@@ -90,20 +95,20 @@
 .theme-paper {
   --bg: #ffffff;
   --surface-1: #ffffff;
-  --surface-2: #f6f8fa;
-  --surface-3: #eef2f6;
-  --border: #d9e0e7;
-  --border-strong: #b8c4d0;
-  --text: #111827;
-  --text-2: #374151;
-  --text-3: #6b7280;
-  --accent: #0b6fb3;
-  --accent-soft: rgba(11, 111, 179, 0.1);
+  --surface-2: #f6f6f6;
+  --surface-3: #eeeeee;
+  --border: #dddddd;
+  --border-strong: #bdbdbd;
+  --text: #111111;
+  --text-2: #3a3a3a;
+  --text-3: #6b6b6b;
+  --accent: #111111;
+  --accent-soft: rgba(0, 0, 0, 0.06);
   --critical: #c92a2a;
   --significant: #c25e00;
   --minor: #8a6d00;
   --normal: #2b8a3e;
-  --info: #1f5fbf;
+  --info: #444444;
   --ai: #6741d9;
   color-scheme: light;
 }
@@ -111,11 +116,11 @@
 /* Users who ask the OS for less transparency get solid surfaces (same hierarchy, no see-through). */
 @media (prefers-reduced-transparency: reduce) {
   :root {
-    --surface-1: #0f1420;
-    --surface-2: #141a28;
-    --surface-3: #1b2333;
-    --surface-hover: #232d40;
-    --surface-pop: #141a28;
+    --surface-1: #121212;
+    --surface-2: #181818;
+    --surface-3: #202020;
+    --surface-hover: #2a2a2a;
+    --surface-pop: #181818;
     --glass-blur: none;
   }
 }

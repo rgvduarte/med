@@ -6,15 +6,15 @@
   --rp-pos-bg: #3a1614;
   --rp-dbt: #ffb547;
   --rp-dbt-bg: #3a2a0e;
-  --rp-neg: #a7b4c2;
-  --rp-neg-bg: #1e2733;
+  --rp-neg: #c4c4c4;
+  --rp-neg-bg: #222222;
   --rp-ok: #3dd68c;
   --rp-ok-bg: #0f2e20;
   --rp-ai: #c9b6ff;
   --rp-ai-bg: #2a2147;
   --rp-ai-subtle: rgba(183, 156, 255, 0.07);
-  --rp-info: #8fb3ff;
-  --rp-info-bg: rgba(143, 179, 255, 0.12);
+  --rp-info: #d4d4d4;
+  --rp-info-bg: rgba(255, 255, 255, 0.08);
 }
 
 /* ------------------------------------------------------------ Chips */
@@ -71,12 +71,12 @@
 .rp-res-not-assessable {
   color: var(--rp-neg);
   background: var(--rp-neg-bg);
-  border-color: rgba(147, 164, 184, 0.4);
+  border-color: rgba(255, 255, 255, 0.28);
 }
 .rp-res-analysing {
   color: var(--accent);
   background: var(--accent-soft);
-  border-color: rgba(63, 184, 245, 0.35);
+  border-color: rgba(255, 255, 255, 0.32);
   text-transform: none;
   letter-spacing: 0;
 }
@@ -689,7 +689,7 @@
 .rp-seg button[aria-pressed='true'] {
   background: var(--accent-soft);
   color: var(--accent);
-  box-shadow: inset 0 0 0 1px rgba(63, 184, 245, 0.35);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.32);
 }
 .rp-ev-legend {
   display: flex;
@@ -1535,7 +1535,7 @@
     @bottom-right {
       content: 'Página ' counter(page) ' de ' counter(pages);
       font-size: 8pt;
-      color: #5f6e80;
+      color: #606060;
     }
   }
   body:has(> .rp-print) > #root {
@@ -1550,7 +1550,7 @@
     left: auto;
     top: auto;
     width: auto;
-    color: #18212b;
+    color: #1a1a1a;
     background: #fff;
     font-family: var(--font-sans);
     font-size: 10.5pt;
@@ -1580,9 +1580,9 @@
   .rp-print-banner {
     padding-bottom: 4pt;
     margin-bottom: 8pt;
-    border-bottom: 1px solid #c9d2dc;
+    border-bottom: 1px solid #cfcfcf;
     font-size: 8.5pt;
-    color: #46566a;
+    color: #4a4a4a;
   }
   .rp-print h1 {
     margin: 0 0 6pt;
@@ -1595,7 +1595,7 @@
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #46566a;
+    color: #4a4a4a;
     break-after: avoid;
   }
   .rp-print p {
@@ -1616,11 +1616,11 @@
   .rp-print-meta td {
     text-align: left;
     padding: 2pt 6pt 2pt 0;
-    border-bottom: 1px solid #eef1f4;
+    border-bottom: 1px solid #efefef;
     vertical-align: top;
   }
   .rp-print-meta th {
-    color: #5f6e80;
+    color: #606060;
     font-weight: 600;
     white-space: nowrap;
     width: 1%;
@@ -1645,19 +1645,19 @@
     margin-bottom: 2pt;
   }
   .rp-print-src {
-    color: #5f6e80;
+    color: #606060;
     font-size: 8pt;
   }
   .rp-print-decl {
     font-size: 9pt;
-    color: #46566a;
+    color: #4a4a4a;
   }
   .rp-print-foot {
     margin-top: 14pt;
     padding-top: 4pt;
-    border-top: 1px solid #c9d2dc;
+    border-top: 1px solid #cfcfcf;
     font-size: 8pt;
-    color: #5f6e80;
+    color: #606060;
   }
   .rp-print .mono {
     font-size: 8.5pt;

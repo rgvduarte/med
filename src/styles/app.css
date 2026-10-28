@@ -128,7 +128,7 @@ textarea {
   width: 28px;
   height: 28px;
   border-radius: 7px;
-  background: linear-gradient(135deg, #1c9fe0, #6c5ce7);
+  background: #000;
   color: white;
 }
 .brand-sub {
@@ -440,9 +440,9 @@ textarea {
   color: #d0bfff;
 }
 .callout-info {
-  border-color: rgba(143, 179, 255, 0.35);
+  border-color: var(--border-strong);
   background: var(--info-soft);
-  color: #c5d8ff;
+  color: var(--text-2);
 }
 
 .empty {
@@ -702,7 +702,7 @@ textarea {
 .tool[aria-pressed='true'] {
   background: var(--accent-soft);
   color: var(--accent);
-  border-color: rgba(63, 184, 245, 0.35);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 .tool-sep {
   width: 1px;
@@ -1230,11 +1230,11 @@ textarea {
     border: none;
     background: #fff;
     color: #111;
-    --text: #111827;
-    --text-2: #374151;
-    --text-3: #6b7280;
-    --border: #d9e0e7;
-    --accent: #0b6fb3;
+    --text: #111111;
+    --text-2: #3a3a3a;
+    --text-3: #6b6b6b;
+    --border: #dddddd;
+    --accent: #111111;
   }
   .app,
   .main,

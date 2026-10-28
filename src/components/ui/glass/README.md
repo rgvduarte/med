@@ -21,4 +21,4 @@ Ported from [Ein UI](https://github.com/einui/einui) (`registry/liquid-glass`, `
 | `GlassDock` | innovative/glass-dock | Phone navigation |
 
 The rest of the app (buttons, cards, chips, tabs, menus, dialogs) gets the same recipe through its own classes in
-`styles/glass.css`: translucent white fill, thin white border, top highlight, inner rim, cyan→blue→purple accents.
+`styles/glass.css`: translucent white fill, thin white border, top highlight, inner rim, white accents; hue only where it carries clinical meaning.
