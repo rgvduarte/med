@@ -88,6 +88,16 @@ Para ver a interface com dados de exemplo em desenvolvimento, abra `http://local
 - Os estudos ficam apenas em memória e desaparecem ao recarregar a página.
 - As imagens só saem do navegador quando pede uma análise, e apenas para o fornecedor que configurou.
 
+## Segurança
+
+- **Política de segurança de conteúdo (CSP).** A página só pode ligar-se a:
+  - `api.anthropic.com`;
+  - `localhost` e `127.0.0.1` (Ollama, ponte NotebookLM);
+  - Hugging Face, para o modelo no navegador.
+
+  Para um servidor HTTPS próprio, por exemplo um túnel, compile com `CSP_CONNECT_EXTRA="https://o-seu-servidor" npm run build`.
+- **Origem partilhada.** No GitHub Pages, todos os sites de `rgvduarte.github.io` partilham a mesma origem e, por isso, o mesmo armazenamento local: chave da API (se a guardar), chave da ponte NotebookLM e autorizações CORS. Para uso continuado, prefira um domínio próprio ou uma conta/organização dedicada a esta app. Use sempre uma chave da API com limite de gastos.
+
 ## Licenças
 
 - **Código:** deste repositório.

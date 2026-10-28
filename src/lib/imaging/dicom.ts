@@ -291,8 +291,10 @@ export async function loadDicomFile(file: File, maxFrames = 32): Promise<DicomLo
     .map(([, name]) => name)
 
   const meta: Record<string, string> = {}
+  // Rows/Columns are US (binary) attributes: reading them as strings yields junk characters.
+  const US_TAGS = new Set(['x00280010', 'x00280011'])
   for (const [tag, name] of Object.entries(SAFE_TAGS)) {
-    const v = ds.string(tag)
+    const v = US_TAGS.has(tag) ? ds.uint16(tag)?.toString() : ds.string(tag)
     if (v) meta[name] = v
   }
   const description = cleanSeriesDescription(ds.string('x0008103e'))

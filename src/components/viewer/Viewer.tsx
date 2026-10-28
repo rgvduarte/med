@@ -440,7 +440,8 @@ export function Viewer(props: ViewerProps) {
       if (m.kind === 'length') {
         const [dx, dy] = scaleVec(m.pts[0], m.pts[1])
         const len = Math.hypot(dx, dy)
-        label = sp ? `${fmtNum(len, 1)} mm` : `${fmtNum(len, 0)} px`
+        // ImagerPixelSpacing without a magnification factor is measured at the detector, not the patient.
+        label = sp ? `${fmtNum(len, 1)} mm${frame.pixelSpacingSource === 'detector' ? ' (detetor)' : ''}` : `${fmtNum(len, 0)} px`
       } else if (m.pts.length === 3 && !(m.draft && draft?.phase === 1)) {
         const v1 = scaleVec(m.pts[1], m.pts[0])
         const v2 = scaleVec(m.pts[1], m.pts[2])
@@ -961,7 +962,7 @@ export function Viewer(props: ViewerProps) {
         br: [
           ...(multi ? [`Fotograma ${frameIndex + 1}/${n}`] : []),
           ...(t !== undefined ? [`${fmtClock(t)}${total ? ` / ${fmtClock(total)}` : ''}`] : []),
-          ...(sp ? [{ t: `${fmtNum(sp[1], 2)} mm/px`, minor: true }] : []),
+          ...(sp ? [{ t: `${fmtNum(sp[1], 2)} mm/px${frame?.pixelSpacingSource === 'detector' ? ' (detetor)' : ''}`, minor: true }] : []),
         ],
       }
     : null
