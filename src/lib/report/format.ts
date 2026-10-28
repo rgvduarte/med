@@ -6,7 +6,7 @@ import { shortHash } from './hash'
 
 const T = {
   'pt-PT': {
-    app: 'MSK·VLM — Protótipo de investigação e ensino · não é um dispositivo médico',
+    app: 'MSK.ai — Protótipo de investigação e ensino · não é um dispositivo médico',
     title: 'Relatório de imagiologia musculoesquelética',
     indication: 'Indicação clínica',
     technique: 'Técnica',
@@ -33,7 +33,7 @@ const T = {
       'Relatório elaborado com apoio de um modelo de visão-linguagem num protótipo de investigação. Não é um dispositivo médico. A responsabilidade pela interpretação é do médico que valida.',
   },
   en: {
-    app: 'MSK·VLM — Research and teaching prototype · not a medical device',
+    app: 'MSK.ai — Research and teaching prototype · not a medical device',
     title: 'Musculoskeletal imaging report',
     indication: 'Clinical information',
     technique: 'Technique',

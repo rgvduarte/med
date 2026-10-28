@@ -52,7 +52,9 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
         <header className="topbar">
           <a className="brand" href={href({ name: 'worklist' })}>
             <BrandMark />
-            <span>MSK·VLM</span>
+            <span className="brand-name">
+              MSK<span className="brand-tld">.ai</span>
+            </span>
             <span className="brand-sub">Imagiologia musculoesquelética assistida por IA</span>
           </a>
           <nav className="nav" aria-label="Navegação principal">

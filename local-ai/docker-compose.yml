@@ -1,4 +1,4 @@
-# MSK·VLM — IA local com Docker: Ollama + MedGemma + aplicação em http://localhost:8080
+# MSK.ai — IA local com Docker: Ollama + MedGemma + aplicação em http://localhost:8080
 #
 #   cd local-ai
 #   docker compose up -d                                                    # só CPU (qualquer SO)

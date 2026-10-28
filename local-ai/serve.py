@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Serve a aplicação MSK·VLM em http://localhost:8080, apenas neste computador (127.0.0.1).
+"""Serve a aplicação MSK.ai em http://localhost:8080, apenas neste computador (127.0.0.1).
 
 Uso:  python3 local-ai/serve.py [--port 8080] [--dir PASTA] [--download]
 
@@ -73,7 +73,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Serve a aplicação MSK·VLM localmente.")
+    ap = argparse.ArgumentParser(description="Serve a aplicação MSK.ai localmente.")
     ap.add_argument("--port", type=int, default=int(os.environ.get("APP_PORT", "8080")))
     ap.add_argument("--dir", help="pasta com index.html (por omissão: ../dist ou a versão publicada)")
     ap.add_argument("--download", action="store_true", help="voltar a transferir a versão publicada")

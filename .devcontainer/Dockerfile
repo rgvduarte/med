@@ -1,4 +1,4 @@
-# MSK·VLM dev container for GitHub Codespaces: Node 22 + Ollama (CPU only).
+# MSK.ai dev container for GitHub Codespaces: Node 22 + Ollama (CPU only).
 FROM mcr.microsoft.com/devcontainers/javascript-node:4-22-bookworm
 
 # Pinned Ollama release (installer honours OLLAMA_VERSION). Bump deliberately.

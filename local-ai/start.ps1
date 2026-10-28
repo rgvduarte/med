@@ -1,5 +1,5 @@
 <#
-  MSK-VLM - IA local (Ollama + MedGemma) para Windows 10 22H2+ / 11.
+  MSK.ai - IA local (Ollama + MedGemma) para Windows 10 22H2+ / 11.
   (Mensagens sem acentos de proposito: o Windows PowerShell 5.1 le ficheiros .ps1 sem BOM como ANSI.)
 
   Uso (PowerShell, na pasta do repositorio):

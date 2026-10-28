@@ -95,6 +95,12 @@ a {
 .brand {
   letter-spacing: -0.02em;
 }
+.brand-tld {
+  background: linear-gradient(90deg, #67e8f9, #93c5fd 45%, #c4b5fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 .brand-mark {
   position: relative;
   width: 32px;

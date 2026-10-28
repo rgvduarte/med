@@ -1,4 +1,4 @@
-# MSK·VLM — Imagiologia musculoesquelética assistida por IA
+# MSK.ai — Imagiologia musculoesquelética assistida por IA
 
 > **Protótipo de investigação e ensino. Não é um dispositivo médico.** As sugestões da IA exigem sempre validação por um médico e não devem ser usadas para decisões clínicas.
 

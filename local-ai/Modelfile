@@ -1,4 +1,4 @@
-# Modelo local para o MSK·VLM: MedGemma 1.5 4B (biblioteca oficial do Ollama) com contexto
+# Modelo local para o MSK.ai: MedGemma 1.5 4B (biblioteca oficial do Ollama) com contexto
 # alargado para pedidos com várias imagens e decodificação determinística.
 #   ollama pull medgemma1.5:4b
 #   ollama create medgemma -f local-ai/Modelfile     (o nome "medgemma" é o que a aplicação usa por omissão)

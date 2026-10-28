@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# MSK·VLM — IA local (Ollama + MedGemma) para macOS e Linux.
+# MSK.ai — IA local (Ollama + MedGemma) para macOS e Linux.
 #
 #   ./local-ai/start.sh             instala/verifica o Ollama, transfere o modelo, cria o modelo "medgemma" e configura o CORS
 #   ./local-ai/start.sh --serve     ... e serve a aplicação em http://localhost:8080 (qualquer navegador, incluindo Safari)

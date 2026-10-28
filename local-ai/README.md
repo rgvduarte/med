@@ -1,6 +1,6 @@
 # IA local: MedGemma no seu computador, sem a API da Anthropic
 
-Esta pasta permite usar o MSK·VLM **sem enviar imagens para a Internet**. O modelo de visão-linguagem
+Esta pasta permite usar o MSK.ai **sem enviar imagens para a Internet**. O modelo de visão-linguagem
 (Google **MedGemma**) corre no seu computador através do **Ollama**, e a aplicação comunica com ele em
 `http://localhost:11434`. Depois da primeira instalação tudo funciona **offline**.
 
