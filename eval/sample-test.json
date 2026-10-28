@@ -1,0 +1,502 @@
+[
+{
+"image_id": "IMG0000531.jpg",
+"fractured": 0,
+"part": "shoulder"
+},
+{
+"image_id": "IMG0004287.jpg",
+"fractured": 0,
+"part": "hand"
+},
+{
+"image_id": "IMG0000300.jpg",
+"fractured": 0,
+"part": "leg"
+},
+{
+"image_id": "IMG0003342.jpg",
+"fractured": 1,
+"part": "hip"
+},
+{
+"image_id": "IMG0002703.jpg",
+"fractured": 0,
+"part": "leg"
+},
+{
+"image_id": "IMG0002701.jpg",
+"fractured": 1,
+"part": "hip"
+},
+{
+"image_id": "IMG0001781.jpg",
+"fractured": 1,
+"part": "hand"
+},
+{
+"image_id": "IMG0001948.jpg",
+"fractured": 1,
+"part": "hand"
+},
+{
+"image_id": "IMG0002219.jpg",
+"fractured": 0,
+"part": "hand"
+},
+{
+"image_id": "IMG0002429.jpg",
+"fractured": 1,
+"part": "leg"
+},
+{
+"image_id": "IMG0002225.jpg",
+"fractured": 1,
+"part": "hand"
+},
+{
+"image_id": "IMG0001820.jpg",
+"fractured": 0,
+"part": "leg"
+},
+{
+"image_id": "IMG0000096.jpg",
+"fractured": 0,
+"part": "leg"
+},
+{
+"image_id": "IMG0002010.jpg",
+"fractured": 0,
+"part": "hand"
+},
+{
+"image_id": "IMG0003857.jpg",
+"fractured": 0,
+"part": "leg"
+},
+{
+"image_id": "IMG0001058.jpg",
+"fractured": 0,
+"part": "shoulder"
+},
+{
+"image_id": "IMG0002396.jpg",
+"fractured": 1,
+"part": "hand"
+},
+{
+"image_id": "IMG0002705.jpg",
+"fractured": 1,
+"part": "leg"
+},
+{
+"image_id": "IMG0001093.jpg",
+"fractured": 0,
+"part": "hip"
+},
+{
+"image_id": "IMG0003032.jpg",
+"fractured": 0,
+"part": "shoulder"
+},
+{
+"image_id": "IMG0002180.jpg",
+"fractured": 1,
+"part": "hip"
+},
+{
+"image_id": "IMG0000502.jpg",
+"fractured": 0,
+"part": "hip"
+},
+{
+"image_id": "IMG0002303.jpg",
+"fractured": 1,
+"part": "shoulder"
+},
+{
+"image_id": "IMG0001495.jpg",
+"fractured": 1,
+"part": "hand"
+},
+{
+"image_id": "IMG0002306.jpg",
+"fractured": 1,
+"part": "shoulder"
+},
+{
+"image_id": "IMG0001610.jpg",
+"fractured": 0,
+"part": "hand"
+},
+{
+"image_id": "IMG0000627.jpg",
+"fractured": 0,
+"part": "leg"
+},
+{
+"image_id": "IMG0003395.jpg",
+"fractured": 1,
+"part": "hand"
+},
+{
+"image_id": "IMG0001191.jpg",
+"fractured": 1,
+"part": "leg"
+},
+{
+"image_id": "IMG0003374.jpg",
+"fractured": 1,
+"part": "hand"
+},
+{
+"image_id": "IMG0002621.jpg",
+"fractured": 1,
+"part": "shoulder"
+},
+{
+"image_id": "IMG0002620.jpg",
+"fractured": 1,
+"part": "shoulder"
+},
+{
+"image_id": "IMG0002471.jpg",
+"fractured": 1,
+"part": "leg"
+},
+{
+"image_id": "IMG0001521.jpg",
+"fractured": 0,
+"part": "hand"
+},
+{
+"image_id": "IMG0001000.jpg",
+"fractured": 0,
+"part": "hand"
+},
+{
+"image_id": "IMG0001256.jpg",
+"fractured": 0,
+"part": "hand"
+},
+{
+"image_id": "IMG0003146.jpg",
+"fractured": 1,
+"part": "leg"
+},
+{
+"image_id": "IMG0003075.jpg",
+"fractured": 0,
+"part": "hand"
+},
+{
+"image_id": "IMG0000626.jpg",
+"fractured": 0,
+"part": "hand"
+},
+{
+"image_id": "IMG0000805.jpg",
+"fractured": 1,
+"part": "hand"
+},
+{
+"image_id": "IMG0001860.jpg",
+"fractured": 0,
+"part": "shoulder"
+},
+{
+"image_id": "IMG0001742.jpg",
+"fractured": 0,
+"part": "leg"
+},
+{
+"image_id": "IMG0001407.jpg",
+"fractured": 0,
+"part": "leg"
+},
+{
+"image_id": "IMG0001042.jpg",
+"fractured": 0,
+"part": "hand"
+},
+{
+"image_id": "IMG0000045.jpg",
+"fractured": 0,
+"part": "hand"
+},
+{
+"image_id": "IMG0003589.jpg",
+"fractured": 1,
+"part": "leg"
+},
+{
+"image_id": "IMG0004266.jpg",
+"fractured": 1,
+"part": "leg"
+},
+{
+"image_id": "IMG0003379.jpg",
+"fractured": 0,
+"part": "leg"
+},
+{
+"image_id": "IMG0001612.jpg",
+"fractured": 0,
+"part": "leg"
+},
+{
+"image_id": "IMG0002402.jpg",
+"fractured": 1,
+"part": "hand"
+},
+{
+"image_id": "IMG0002628.jpg",
+"fractured": 1,
+"part": "shoulder"
+},
+{
+"image_id": "IMG0000284.jpg",
+"fractured": 1,
+"part": "hand"
+},
+{
+"image_id": "IMG0001754.jpg",
+"fractured": 0,
+"part": "hip"
+},
+{
+"image_id": "IMG0001483.jpg",
+"fractured": 0,
+"part": "hip"
+},
+{
+"image_id": "IMG0001091.jpg",
+"fractured": 0,
+"part": "hand"
+},
+{
+"image_id": "IMG0000763.jpg",
+"fractured": 1,
+"part": "hand"
+},
+{
+"image_id": "IMG0000679.jpg",
+"fractured": 0,
+"part": "hip"
+},
+{
+"image_id": "IMG0002622.jpg",
+"fractured": 1,
+"part": "shoulder"
+},
+{
+"image_id": "IMG0002507.jpg",
+"fractured": 1,
+"part": "leg"
+},
+{
+"image_id": "IMG0000351.jpg",
+"fractured": 1,
+"part": "hand"
+},
+{
+"image_id": "IMG0002122.jpg",
+"fractured": 1,
+"part": "leg"
+},
+{
+"image_id": "IMG0002411.jpg",
+"fractured": 1,
+"part": "hand"
+},
+{
+"image_id": "IMG0000301.jpg",
+"fractured": 0,
+"part": "hand"
+},
+{
+"image_id": "IMG0002550.jpg",
+"fractured": 1,
+"part": "hip"
+},
+{
+"image_id": "IMG0002236.jpg",
+"fractured": 0,
+"part": "shoulder"
+},
+{
+"image_id": "IMG0000878.jpg",
+"fractured": 0,
+"part": "hand"
+},
+{
+"image_id": "IMG0003932.jpg",
+"fractured": 1,
+"part": "leg"
+},
+{
+"image_id": "IMG0002587.jpg",
+"fractured": 1,
+"part": "leg"
+},
+{
+"image_id": "IMG0000567.jpg",
+"fractured": 0,
+"part": "hand"
+},
+{
+"image_id": "IMG0002826.jpg",
+"fractured": 0,
+"part": "leg"
+},
+{
+"image_id": "IMG0002627.jpg",
+"fractured": 1,
+"part": "shoulder"
+},
+{
+"image_id": "IMG0002650.jpg",
+"fractured": 1,
+"part": "leg"
+},
+{
+"image_id": "IMG0002308.jpg",
+"fractured": 1,
+"part": "leg"
+},
+{
+"image_id": "IMG0002713.jpg",
+"fractured": 0,
+"part": "leg"
+},
+{
+"image_id": "IMG0004042.jpg",
+"fractured": 1,
+"part": "hand"
+},
+{
+"image_id": "IMG0002337.jpg",
+"fractured": 1,
+"part": "hip"
+},
+{
+"image_id": "IMG0001055.jpg",
+"fractured": 0,
+"part": "leg"
+},
+{
+"image_id": "IMG0002528.jpg",
+"fractured": 1,
+"part": "leg"
+},
+{
+"image_id": "IMG0001994.jpg",
+"fractured": 0,
+"part": "hip"
+},
+{
+"image_id": "IMG0003371.jpg",
+"fractured": 0,
+"part": "hand"
+},
+{
+"image_id": "IMG0001458.jpg",
+"fractured": 0,
+"part": "hip"
+},
+{
+"image_id": "IMG0004236.jpg",
+"fractured": 0,
+"part": "hand"
+},
+{
+"image_id": "IMG0002909.jpg",
+"fractured": 0,
+"part": "leg"
+},
+{
+"image_id": "IMG0002544.jpg",
+"fractured": 1,
+"part": "hip"
+},
+{
+"image_id": "IMG0000307.jpg",
+"fractured": 1,
+"part": "hand"
+},
+{
+"image_id": "IMG0000155.jpg",
+"fractured": 1,
+"part": "hand"
+},
+{
+"image_id": "IMG0004022.jpg",
+"fractured": 0,
+"part": "shoulder"
+},
+{
+"image_id": "IMG0002162.jpg",
+"fractured": 0,
+"part": "leg"
+},
+{
+"image_id": "IMG0003164.jpg",
+"fractured": 1,
+"part": "hand"
+},
+{
+"image_id": "IMG0003341.jpg",
+"fractured": 1,
+"part": "hip"
+},
+{
+"image_id": "IMG0004320.jpg",
+"fractured": 1,
+"part": "leg"
+},
+{
+"image_id": "IMG0004116.jpg",
+"fractured": 1,
+"part": "hand"
+},
+{
+"image_id": "IMG0002309.jpg",
+"fractured": 1,
+"part": "hand"
+},
+{
+"image_id": "IMG0001998.jpg",
+"fractured": 0,
+"part": "hand"
+},
+{
+"image_id": "IMG0003353.jpg",
+"fractured": 0,
+"part": "shoulder"
+},
+{
+"image_id": "IMG0002809.jpg",
+"fractured": 1,
+"part": "hand"
+},
+{
+"image_id": "IMG0003623.jpg",
+"fractured": 0,
+"part": "hand"
+},
+{
+"image_id": "IMG0000251.jpg",
+"fractured": 0,
+"part": "leg"
+},
+{
+"image_id": "IMG0002522.jpg",
+"fractured": 1,
+"part": "leg"
+},
+{
+"image_id": "IMG0000494.jpg",
+"fractured": 0,
+"part": "hand"
+}
+]
