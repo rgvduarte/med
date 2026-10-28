@@ -37,6 +37,8 @@ function aiProvenance(c: Case, r: Report, f?: Finding): Ext {
       { url: 'confidenceCalibrated', valueBoolean: false },
     )
   } else {
+    // Upload time into this browser session — not the date the study was acquired.
+    sub.push({ url: 'uploadedAt', valueDateTime: c.createdAt })
     sub.push({ url: 'clinicianValidated', valueBoolean: r.status === 'validated' })
     if (r.contentHash) sub.push({ url: 'contentSha256', valueString: r.contentHash })
   }
@@ -55,7 +57,8 @@ function observationFor(c: Case, r: Report, f: Finding, subject: unknown) {
     category: [{ coding: [{ system: 'http://terminology.hl7.org/CodeSystem/observation-category', code: 'imaging', display: 'Imaging' }] }],
     code: { text: f.label },
     subject,
-    effectiveDateTime: c.createdAt,
+    // No effective[x]: the study date is unknown (removed during de-identification).
+    issued: r.validatedAt ?? r.generatedAt,
     valueString: `${CERTAINTY_LABEL[lang][f.certainty]} ${f.label.charAt(0).toLowerCase()}${f.label.slice(1)}`,
     interpretation: [{ text: FINDING_CLASS_LABEL[f.cls] }],
     bodySite: site ? { text: site } : undefined,
@@ -86,7 +89,7 @@ export function toFhirDiagnosticReport(c: Case, r: Report, evidence: EvidenceIte
     category: [{ coding: [{ system: 'http://terminology.hl7.org/CodeSystem/v2-0074', code: 'RAD', display: 'Radiology' }] }],
     code: { coding: [LOINC_IMAGING], text: c.title },
     subject,
-    effectiveDateTime: c.createdAt,
+    // No effective[x]: the study date is unknown (removed during de-identification).
     issued: r.validatedAt ?? r.generatedAt,
     resultsInterpreter: r.validatedBy ? [{ display: `${r.validatedBy}${r.validatorLicence ? ` (cédula ${r.validatorLicence})` : ''}` }] : undefined,
     result: observations.map((o) => ({ reference: `#${o.id}`, display: o.code.text })),

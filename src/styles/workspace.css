@@ -118,6 +118,23 @@
   background: var(--critical-soft);
   border-color: rgba(255, 107, 107, 0.45);
 }
+.wsx-chip.is-warn {
+  color: var(--significant);
+  background: var(--significant-soft);
+  border-color: rgba(255, 169, 77, 0.45);
+}
+/* Burned-in annotation warning between the header and the workspace body. */
+.wsx.has-banner {
+  grid-template-rows: auto auto minmax(0, 1fr);
+}
+.wsx-banner {
+  margin: 0;
+  padding: 6px var(--sp-4);
+  border-width: 0 0 1px;
+  border-radius: 0;
+  font-size: var(--fs-sm);
+  align-items: center;
+}
 .wsx-progress {
   position: absolute;
   left: 0;
@@ -1087,6 +1104,20 @@
 .cls-chip .cls-glyph {
   color: currentColor;
 }
+/* Visible «IA» mark on study-level AI results (shape + text, at every width). */
+.cls-chip-ai {
+  display: inline-flex;
+  align-items: center;
+  margin-left: -3px;
+  padding: 0 4px;
+  border-radius: 3px;
+  background: var(--ai-soft);
+  color: var(--ai);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 14px;
+}
 
 /* ---------------------------------------------------------------- Findings panel */
 
@@ -1554,11 +1585,6 @@
   flex: 1 1 auto;
   min-width: 0;
 }
-.fp-check-conf {
-  flex: none;
-  font-size: 11px;
-  color: var(--text-3);
-}
 .fp-rej {
   justify-content: space-between;
   color: var(--text-2);
@@ -1838,8 +1864,24 @@
   .wsx-hide-sm {
     display: none;
   }
+  /* Icon-only on phones (amber shield); the text stays available to screen readers and in the title. */
+  .wsx-chip.is-warn {
+    padding: 0 5px;
+  }
+  .wsx-chip-long {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
   .wsx-head-chips {
     gap: 4px;
+  }
+  .wsx-banner {
+    padding: 5px var(--sp-3);
+    font-size: var(--fs-xs);
   }
 
   .wsx-body {

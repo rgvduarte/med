@@ -11,7 +11,7 @@ import { FindingsOverlay, type OverlayItem, type Rect } from './FindingsOverlay'
 import { CineBar, type CineSpan } from './CineBar'
 import { ShortcutsDialog } from './ShortcutsDialog'
 import { fmtClock, fmtNum } from './format'
-import { isDrawable, seriesDuration } from './findingModel'
+import { isDrawable, orderedRange, playableLoop, seriesDuration } from './findingModel'
 import '../../styles/workspace.css'
 
 type P2 = [number, number]
@@ -291,7 +291,8 @@ export function Viewer(props: ViewerProps) {
     (v: ViewState) => {
       const fit = fitScale(size, imgW, imgH, v.rotation % 180 !== 0)
       const s = fit * v.zoom
-      const lin = new DOMMatrix().rotate(v.rotation).scale(v.flipH ? -s : s, v.flipV ? -s : s)
+      // Flips act on the screen axes (applied after the rotation), so «Espelhar horizontal» always mirrors left↔right.
+      const lin = new DOMMatrix().scale(v.flipH ? -1 : 1, v.flipV ? -1 : 1).rotate(v.rotation).scale(s)
       const M = new DOMMatrix().translate(size.w / 2, size.h / 2).multiply(lin).translate(-v.cx, -v.cy)
       return { fit, s, lin, M }
     },
@@ -360,7 +361,7 @@ export function Viewer(props: ViewerProps) {
     appliedFocus.current = focus.nonce
     setPulse((p) => p + 1)
     const onThisSeries = f.locations.some((l) => l.seriesId === series.id)
-    setLoopRange(f.frameRange && series.frames.length > 1 && onThisSeries ? f.frameRange : undefined)
+    setLoopRange(f.frameRange && series.frames.length > 1 && onThisSeries ? orderedRange(f.frameRange) : undefined)
     if (!focus.zoom) return
     const loc =
       f.locations.find((l) => l.seriesId === series.id && l.bbox && l.frameIndex === frameIndex) ?? f.locations.find((l) => l.seriesId === series.id && l.bbox)
@@ -475,19 +476,18 @@ export function Viewer(props: ViewerProps) {
   }, [processed, geom, size, measurements, draft, frame, imgW, imgH, toScreen])
 
   // ------------------------------------------------------------ cine
-  const loopLabel = useMemo(() => {
-    if (!loopRange || !selectedId) return undefined
-    return codes.get(selectedId)
-  }, [loopRange, selectedId, codes])
+  // A single-frame finding range cannot loop: play the whole clip instead of freezing on one frame.
+  const loop = playableLoop(loopRange, n)
+  const loopLabel = loop && selectedId ? codes.get(selectedId) : undefined
 
   useEffect(() => {
     if (!playing || !series || series.frames.length < 2) return
     const last = series.frames.length - 1
-    const [lo, hi] = loopRange ? [clamp(loopRange[0], 0, last), clamp(loopRange[1], 0, last)] : [0, last]
+    const [lo, hi] = loop ?? [0, last]
     let next = frameIndex + 1
     let delay: number
     if (frameIndex < lo || frameIndex >= hi) {
-      if (frameIndex >= hi && !repeat && !loopRange) {
+      if (frameIndex >= hi && !repeat && !loop) {
         setPlaying(false)
         return
       }
@@ -500,7 +500,8 @@ export function Viewer(props: ViewerProps) {
     }
     const id = window.setTimeout(() => onFrameIndex(next), clamp(delay / speed, 30, 4000))
     return () => window.clearTimeout(id)
-  }, [playing, frameIndex, series, speed, repeat, loopRange, onFrameIndex])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [playing, frameIndex, series, speed, repeat, loop?.[0], loop?.[1], onFrameIndex])
 
   useEffect(() => {
     if (videoRef.current) videoRef.current.playbackRate = speed
@@ -509,9 +510,8 @@ export function Viewer(props: ViewerProps) {
   const togglePlay = () => {
     if (!series || n < 2) return
     if (!playing) {
-      const last = n - 1
-      const hi = loopRange ? Math.min(loopRange[1], last) : last
-      if (frameIndex >= hi && !repeat && !loopRange) onFrameIndex(0)
+      const hi = loop ? loop[1] : n - 1
+      if (frameIndex >= hi && !repeat && !loop) onFrameIndex(0)
     }
     setPlaying((p) => !p)
   }
@@ -521,13 +521,18 @@ export function Viewer(props: ViewerProps) {
     return findings
       .filter((f) => f.frameRange && isDrawable(f) && f.locations.some((l) => l.seriesId === series.id))
       .filter((f) => f.origin === 'clinician' || aiVisible || f.id === revealedId)
-      .map((f) => ({ id: f.id, code: codes.get(f.id) ?? '', label: f.label, cls: f.cls, range: f.frameRange! }))
+      .map((f) => ({ id: f.id, code: codes.get(f.id) ?? '', label: f.label, cls: f.cls, range: orderedRange(f.frameRange!) }))
   }, [findings, series, n, aiVisible, revealedId, codes])
 
   // ------------------------------------------------------------ view actions
   const fit = () => setView((v) => ({ ...v, zoom: 1, cx: imgW / 2, cy: imgH / 2 }))
   const resetView = () => setView(defaultView(frame))
-  const rotate = (dir: 1 | -1) => setView((v) => ({ ...v, rotation: ((v.rotation + (dir === 1 ? 90 : 270)) % 360) as ViewState['rotation'] }))
+  // With a single flip the picture is mirrored, so the image-space rotation runs the other way to keep «R» clockwise on screen.
+  const rotate = (dir: 1 | -1) =>
+    setView((v) => {
+      const d = v.flipH !== v.flipV ? -dir : dir
+      return { ...v, rotation: ((v.rotation + (d === 1 ? 90 : 270)) % 360) as ViewState['rotation'] }
+    })
   const zoomBy = (factor: number) => setView((v) => zoomAt(v, factor, size.w / 2, size.h / 2))
 
   const presets: (WlPreset & { apply: () => void })[] = useMemo(() => {
@@ -767,7 +772,9 @@ export function Viewer(props: ViewerProps) {
   keyRef.current = (e: KeyboardEvent) => {
     if (e.defaultPrevented || shortcutsOpen || e.altKey || e.metaKey) return
     const t = e.target as HTMLElement | null
-    if (t?.closest?.('input, textarea, select, [contenteditable="true"], [role="dialog"], [role="menu"]')) return
+    if (t?.closest?.('input, textarea, select, [contenteditable="true"], dialog, [role="dialog"], [role="alertdialog"], [role="menu"]')) return
+    // A modal (e.g. «Validar relatório») owns the keyboard, including Escape to close it.
+    if (document.querySelector('dialog[open]')) return
     const interactive = !!t?.closest?.('button, a, summary, [role="tab"], [role="slider"]')
     const k = e.key
     if (e.ctrlKey) {
@@ -899,8 +906,12 @@ export function Viewer(props: ViewerProps) {
         props.onFindingKey('edit')
         break
       case 'Escape':
+        // Only swallow Escape when it actually cancelled a measurement in progress.
         if (draftRef.current) setDraft(null)
-        else setTool('pan')
+        else {
+          setTool('pan')
+          return
+        }
         break
       default:
         return
@@ -936,7 +947,7 @@ export function Viewer(props: ViewerProps) {
   const measuring = tool === 'length' || tool === 'angle' || frameMeasurements.length > 0
   const corners = series
     ? {
-        tl: [c.pseudoId, `${sexText} · ${ageBand(c.ageYears)}`, { t: `Estudo ${formatDate(c.createdAt)}`, minor: true }, { t: region, minor: true }],
+        tl: [c.pseudoId, `${sexText} · ${ageBand(c.ageYears)}`, { t: `Carregado ${formatDate(c.createdAt)}`, minor: true }, { t: region, minor: true }],
         tr: [
           `${MODALITY_SHORT[series.modality]} · ${series.dicomMeta?.Modality ?? MODALITY_DICOM[series.modality]}`,
           `Série ${seriesNumber}${series.view || series.description ? ` · ${series.view ?? series.description}` : ''}`,
@@ -1128,7 +1139,7 @@ export function Viewer(props: ViewerProps) {
           spans={cineSpans}
           selectedId={selectedId}
           onSelectSpan={props.onSelectFinding}
-          loopRange={loopRange}
+          loopRange={loop}
           loopLabel={loopLabel}
           onClearLoop={() => setLoopRange(undefined)}
         />

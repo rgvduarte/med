@@ -10,12 +10,21 @@ export function ClassGlyph({ cls, size = 14 }: { cls: FindingClass; size?: numbe
   return <CircleQuestionMark size={size} strokeWidth={2} aria-hidden className="cls-glyph is-na" />
 }
 
-/** Status chip: shape + upper-case text + colour, never colour alone. */
-export function ClassChip({ cls, small, text }: { cls: FindingClass; small?: boolean; text?: string }) {
+/**
+ * Status chip: shape + upper-case text + colour, never colour alone.
+ * `ai` marks a study-level AI result with a visible «IA» tag (and «Resultado da IA:» for screen readers).
+ */
+export function ClassChip({ cls, small, text, ai }: { cls: FindingClass; small?: boolean; text?: string; ai?: boolean }) {
   const tone = cls === 'positive' ? 'pos' : cls === 'doubtful' ? 'dub' : cls === 'negative' ? 'neg' : 'na'
   return (
-    <span className={`cls-chip cls-${tone} ${small ? 'cls-chip-sm' : ''}`} title={CLASS_LABEL[cls]}>
+    <span className={`cls-chip cls-${tone} ${small ? 'cls-chip-sm' : ''}`} title={ai ? `Resultado da IA: ${CLASS_LABEL[cls]} — verificar` : CLASS_LABEL[cls]}>
+      {ai && (
+        <span className="cls-chip-ai" aria-hidden>
+          IA
+        </span>
+      )}
       <ClassGlyph cls={cls} size={small ? 11 : 12} />
+      {ai && <span className="sr-only">Resultado da IA: </span>}
       {text ?? CLASS_CHIP[cls]}
     </span>
   )

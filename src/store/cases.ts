@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import type { AuditEntry, Case, Finding, FindingStatus, Report } from '../types'
 import { nowIso } from '../lib/util'
+import { markReportStale } from '../lib/report/state'
 
 // Cases live in memory only: uploaded images never leave this browser tab except
 // when the user explicitly runs an analysis against the provider they configured.
@@ -58,6 +59,7 @@ export const useCases = create<CasesState>((set, get) => ({
         },
       }
     })
+    if (status === 'rejected' || status === 'edited') flagReportStale(get, caseId)
     const f = get().cases.find((c) => c.id === caseId)?.analysis?.findings.find((x) => x.id === findingId)
     get().audit(caseId, { actor: 'user', action: `Achado ${status === 'accepted' ? 'aceite' : status === 'rejected' ? 'rejeitado' : status}`, detail: f?.label })
   },
@@ -79,12 +81,14 @@ export const useCases = create<CasesState>((set, get) => ({
     const f = findFinding(get().cases, caseId, findingId)
     if (!f) return
     get().updateFinding(caseId, findingId, { status: 'rejected', rejectReason: reason })
+    flagReportStale(get, caseId)
     get().audit(caseId, { actor: 'user', action: 'Achado rejeitado', detail: `${f.label} — «${reason}»` })
   },
   restoreFinding: (caseId, findingId) => {
     const f = findFinding(get().cases, caseId, findingId)
     if (!f) return
     get().updateFinding(caseId, findingId, { status: 'pending', rejectReason: undefined })
+    flagReportStale(get, caseId)
     get().audit(caseId, { actor: 'user', action: 'Achado restaurado', detail: f.label })
   },
   resetFindingReview: (caseId, findingId) => {
@@ -98,6 +102,7 @@ export const useCases = create<CasesState>((set, get) => ({
     if (!f) return
     const changed = (Object.keys(patch) as (keyof typeof patch)[]).filter((k) => patch[k] !== undefined && patch[k] !== f[k])
     get().updateFinding(caseId, findingId, { ...patch, status: 'edited', rejectReason: undefined })
+    if (changed.length) flagReportStale(get, caseId)
     get().audit(caseId, {
       actor: 'user',
       action: 'Achado editado',
@@ -105,6 +110,11 @@ export const useCases = create<CasesState>((set, get) => ({
     })
   },
 }))
+
+/** The draft predates this decision: «Achados» and «Conclusão» must be reviewed again (no-op without a draft). */
+function flagReportStale(get: () => CasesState, caseId: string) {
+  get().updateCase(caseId, (c) => (c.report && c.report.status !== 'validated' ? { report: markReportStale(c.report) } : {}))
+}
 
 function findFinding(cases: Case[], caseId: string, findingId: string): Finding | undefined {
   return cases.find((c) => c.id === caseId)?.analysis?.findings.find((f) => f.id === findingId)

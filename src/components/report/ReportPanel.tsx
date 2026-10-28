@@ -4,7 +4,7 @@ import type { Case, Report } from '../../types'
 import { useCases } from '../../store/cases'
 import { aiDeclarationFor, citationNumbers, citedEvidence, reportStrings, studyLine } from '../../lib/report/format'
 import { shortHash } from '../../lib/report/hash'
-import { evidenceVerification, pendingFindings, reportState } from '../../lib/report/state'
+import { clearStaleIfReviewed, evidenceVerification, isVerified, pendingFindings, reportState } from '../../lib/report/state'
 import { DEFAULT_COMPARISON, REPORT_SECTIONS, type ReportSectionKey } from '../../lib/labels-report'
 import { formatDate, formatDateTime } from '../../lib/util'
 import { AiTag, ReportStateChip, ReviewedTag } from './StatusChips'
@@ -87,10 +87,10 @@ function SectionCard({
   aux?: ReactNode
 }) {
   return (
-    <section className={`rp-sec ${reviewed || locked ? 'rp-sec-reviewed' : 'rp-sec-ai'} ${editing ? 'rp-sec-editing' : ''}`} aria-labelledby={id}>
+    <section className={`rp-sec ${reviewed ? 'rp-sec-reviewed' : 'rp-sec-ai'} ${editing ? 'rp-sec-editing' : ''}`} aria-labelledby={id}>
       <header className="rp-sec-head">
         <h3 id={id}>{title}</h3>
-        {reviewed ? <ReviewedTag /> : <AiTag />}
+        {reviewed ? <ReviewedTag /> : locked ? <AiTag label="IA · validado sem edição" title="Texto da IA não revisto secção a secção; abrangido pela validação global do relatório" /> : <AiTag />}
         {aux}
         {!locked && !editing && (
           <span className="rp-sec-actions">
@@ -156,7 +156,7 @@ export function ReportPanel({ c }: { c: Case }) {
       if (!cc.report || cc.report.status === 'validated') return {}
       const set = new Set(cc.report.reviewedSections ?? [])
       set.add(k)
-      return { report: { ...cc.report, ...patch, editedByClinician: cc.report.editedByClinician || edited, reviewedSections: [...set] } }
+      return { report: clearStaleIfReviewed({ ...cc.report, ...patch, editedByClinician: cc.report.editedByClinician || edited, reviewedSections: [...set] }) }
     })
     audit(c.id, { actor: 'user', action: edited ? 'Relatório editado' : 'Secção do relatório aceite', detail: label })
   }
@@ -236,7 +236,7 @@ export function ReportPanel({ c }: { c: Case }) {
       key={k}
       id={`${SCOPE}-sec-${k}`}
       title={title(k)}
-      reviewed={reviewed.has(k) || locked}
+      reviewed={reviewed.has(k)}
       locked={locked}
       editing={editing === k}
       onEdit={() => startEdit(k)}
@@ -292,6 +292,15 @@ export function ReportPanel({ c }: { c: Case }) {
           </div>
         </div>
       ) : null}
+      {r.reportStale && !locked && (
+        <div className="callout callout-warn" role="status">
+          <TriangleAlert size={16} />
+          <div>
+            <strong>O relatório foi gerado antes de uma decisão sobre os achados.</strong> Reveja as secções «{title('findings')}» e «{title('impression')}»
+            e retire do texto os achados rejeitados ou alterados.
+          </div>
+        </div>
+      )}
       {issues.length > 0 && !locked && (
         <div className={`callout ${issues.some((i) => i.severity === 'error') ? 'callout-warn' : 'callout-info'}`}>
           <ShieldCheck size={16} />
@@ -324,7 +333,7 @@ export function ReportPanel({ c }: { c: Case }) {
           {sexAge && <span>{sexAge}</span>}
           <span>{studyLine(c, r.language)}</span>
           <span>
-            {t.studyDate}: {formatDate(c.createdAt)}
+            {t.uploadDate}: {formatDate(c.createdAt)}
           </span>
         </div>
       </header>
@@ -374,7 +383,7 @@ export function ReportPanel({ c }: { c: Case }) {
         <header className="rp-sec-head">
           <h3 id={`${SCOPE}-refs`}>{t.references}</h3>
           <span className="rp-auto-tag">
-            {refs.filter((e) => evidenceVerification(e).kind !== 'unverified').length}/{refs.length} verificadas
+            {refs.filter(isVerified).length}/{refs.length} verificadas
           </span>
         </header>
         <div className="rp-sec-body">
@@ -405,6 +414,11 @@ export function ReportPanel({ c }: { c: Case }) {
                         {v.kind === 'unverified' && (
                           <span className="rp-verify unverified">
                             <TriangleAlert size={11} aria-hidden /> Não verificada
+                          </span>
+                        )}
+                        {v.kind === 'notebook' && (
+                          <span className="rp-verify unverified" title="Resposta gerada por IA; tem de ser assumida ou removida antes de validar">
+                            <TriangleAlert size={11} aria-hidden /> Texto de IA
                           </span>
                         )}
                       </span>
@@ -454,7 +468,8 @@ export function ReportPanel({ c }: { c: Case }) {
             </>
           ) : (
             <p className="subtle">
-              Ainda não validado. A validação exige todos os achados revistos e a conclusão revista, e calcula um hash SHA-256 do conteúdo.
+              Ainda não validado. A validação exige todos os achados revistos, a conclusão revista e as referências não verificadas assumidas ou
+              removidas, e calcula um hash SHA-256 do conteúdo.
             </p>
           )}
         </div>

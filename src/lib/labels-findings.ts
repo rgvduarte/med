@@ -17,10 +17,13 @@ export const CLASS_LABEL: Record<FindingClass, string> = {
   'not-assessable': 'Não avaliável',
 }
 
-export const GROUP_LABEL: Record<FindingGroup | 'rejected', string> = {
+export const GROUP_LABEL: Record<FindingGroup | 'notAssessable' | 'rejected', string> = {
   priority: 'Prioritários',
   other: 'Outros',
+  /** Checklist items the AI assessed and did not detect. */
   checklist: 'Não detetados',
+  /** Checklist items the AI could not assess (indeterminate) — not the same as «não detetado». */
+  notAssessable: 'Não avaliáveis',
   rejected: 'Rejeitados',
 }
 

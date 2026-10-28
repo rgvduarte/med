@@ -61,6 +61,8 @@ export interface Series {
   dicomMeta?: Record<string, string>
   /** Tags removed during client-side de-identification (names only, never values). */
   removedTags?: string[]
+  /** DICOM BurnedInAnnotation (0028,0301); absent = unknown (always absent for PNG/JPEG/video). */
+  burnedInAnnotation?: 'YES' | 'NO'
 }
 
 export type CaseStatus = 'new' | 'analysing' | 'analysed' | 'validated' | 'error'
@@ -275,4 +277,6 @@ export interface Report {
   reviewedSections?: string[]
   /** Optional professional licence number («cédula profissional») of the validating clinician. */
   validatorLicence?: string
+  /** True when a finding was rejected, edited or restored after the draft was generated; cleared once «Achados» and «Conclusão» are reviewed again. */
+  reportStale?: boolean
 }

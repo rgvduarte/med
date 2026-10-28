@@ -4,6 +4,7 @@ import {
   Check,
   ChevronDown,
   ChevronRight,
+  FileWarning,
   Info,
   Lock,
   MapPinOff,
@@ -38,7 +39,7 @@ import {
 import { formatDateTime } from '../../lib/util'
 import { ClassChip, ClassGlyph } from '../viewer/ClassChip'
 import { fmtClockShort } from '../viewer/format'
-import { isLocked, reviewProgress, studyClass } from '../viewer/findingModel'
+import { isLocked, orderedRange, reviewProgress, studyClass } from '../viewer/findingModel'
 import { AnalyseButton, useAnalysisRun } from './PipelinePanel'
 import '../../styles/workspace.css'
 
@@ -56,7 +57,7 @@ interface Props {
   onSelect: (id: string) => void
   onHover: (id: string | undefined) => void
   actionRequest?: FindingActionRequest
-  onOpenTab: (tab: 'evidence' | 'analysis') => void
+  onOpenTab: (tab: 'evidence' | 'analysis' | 'report') => void
 }
 
 // ---------------------------------------------------------------------------
@@ -120,7 +121,7 @@ function locationText(c: Case, f: Finding): { where: string; approx: boolean; no
   const parts = [site]
   if (s) {
     if (s.kind === 'video' && f.frameRange) {
-      const [a, b] = f.frameRange
+      const [a, b] = orderedRange(f.frameRange)
       const ta = s.frames[a]?.timeSec
       const tb = s.frames[b]?.timeSec
       parts.push(`Série ${si + 1}`)
@@ -407,16 +408,14 @@ function FindingRow({
   )
 }
 
+/** Checklist items carry no model confidence (the checklist schema has none), so none is shown. */
 function ChecklistRow({ f }: { f: Finding }) {
   return (
     <li className="fp-check">
       <ClassGlyph cls={f.cls} size={13} />
       <span className="fp-check-label">
         {f.label}
-        {f.cls === 'not-assessable' && <span className="subtle"> · não avaliável</span>}
-      </span>
-      <span className="fp-check-conf" title={CONFIDENCE_HELP}>
-        confiança {CONFIDENCE_WORD[f.confidence].toLowerCase()}
+        <span className="sr-only"> · {CLASS_LABEL[f.cls].toLowerCase()}</span>
       </span>
     </li>
   )
@@ -508,13 +507,17 @@ export function FindingsPanel({ c, codes, selectedId, hoveredId, onSelect, onHov
   const priority = active.filter((f) => f.group === 'priority')
   const other = active.filter((f) => f.group === 'other')
   const checklist = active.filter((f) => f.group === 'checklist')
+  // «Indeterminate» checklist items were not assessed: never count or list them as «não detetados».
+  const notDetected = checklist.filter((f) => f.cls === 'negative')
+  const notAssessable = checklist.filter((f) => f.cls !== 'negative')
   const rejected = findings.filter((f) => f.status === 'rejected' && f.group !== 'checklist')
   const sc = studyClass(a)
   const { total, reviewed, pending } = reviewProgress(findings)
   const nPos = priority.filter((f) => f.cls === 'positive').length
   const nDub = priority.filter((f) => f.cls === 'doubtful').length
   const regionMismatch = a.triage && c.series[0] && a.triage.region !== 'other' && c.series[0].region !== 'other' && a.triage.region !== c.series[0].region
-  const assessed = checklist.map((f) => f.label.toLowerCase())
+  const assessed = notDetected.map((f) => f.label.toLowerCase())
+  const stale = !locked && !!c.report?.reportStale
 
   const row = (f: Finding) => (
     <FindingRow
@@ -541,13 +544,14 @@ export function FindingsPanel({ c, codes, selectedId, hoveredId, onSelect, onHov
           {running && <span className="fp-gen">A gerar…</span>}
         </h2>
         <div className="fp-summary-main">
-          {sc && <ClassChip cls={sc} />}
+          {sc && <ClassChip cls={sc} ai />}
           <span className="fp-summary-counts">
             {[
               nPos ? plural(nPos, 'positivo', 'positivos') : '',
               nDub ? plural(nDub, 'duvidoso', 'duvidosos') : '',
               other.length ? plural(other.length, 'outro', 'outros') : '',
-              checklist.length ? plural(checklist.length, 'não detetado', 'não detetados') : '',
+              notDetected.length ? plural(notDetected.length, 'não detetado', 'não detetados') : '',
+              notAssessable.length ? plural(notAssessable.length, 'não avaliável', 'não avaliáveis') : '',
             ]
               .filter(Boolean)
               .join(' · ') || 'sem achados'}
@@ -561,7 +565,8 @@ export function FindingsPanel({ c, codes, selectedId, hoveredId, onSelect, onHov
         {sc === 'negative' && (
           <p className="fp-negative">
             <strong>Sem achados prioritários.</strong>
-            {assessed.length ? ` A IA avaliou: ${assessed.join(', ')}.` : ''}
+            {assessed.length ? ` A IA avaliou e não detetou: ${assessed.join(', ')}.` : ''}
+            {notAssessable.length ? ` ${plural(notAssessable.length, 'item não avaliável', 'itens não avaliáveis')} — ver lista abaixo.` : ''}
           </p>
         )}
         {c.indication && (
@@ -620,6 +625,18 @@ export function FindingsPanel({ c, codes, selectedId, hoveredId, onSelect, onHov
         )
       )}
 
+      {stale && (
+        <div className="callout callout-warn fp-stale" role="status">
+          <FileWarning size={16} aria-hidden />
+          <div>
+            <strong>O relatório foi gerado antes desta decisão.</strong> Reveja «Achados» e «Conclusão» no relatório.{' '}
+            <button type="button" className="fp-link" onClick={() => onOpenTab('report')}>
+              Abrir relatório
+            </button>
+          </div>
+        </div>
+      )}
+
       <Group title={GROUP_LABEL.priority} count={priority.length}>
         {priority.length ? priority.map(row) : <p className="fp-none">Sem achados prioritários.</p>}
       </Group>
@@ -628,10 +645,19 @@ export function FindingsPanel({ c, codes, selectedId, hoveredId, onSelect, onHov
           {other.map(row)}
         </Group>
       )}
-      {checklist.length > 0 && (
-        <Group title={GROUP_LABEL.checklist} count={checklist.length} defaultOpen={false}>
+      {notAssessable.length > 0 && (
+        <Group title={GROUP_LABEL.notAssessable} count={notAssessable.length} defaultOpen={false}>
           <ul className="fp-checklist">
-            {checklist.map((f) => (
+            {notAssessable.map((f) => (
+              <ChecklistRow key={f.id} f={f} />
+            ))}
+          </ul>
+        </Group>
+      )}
+      {notDetected.length > 0 && (
+        <Group title={GROUP_LABEL.checklist} count={notDetected.length} defaultOpen={false}>
+          <ul className="fp-checklist">
+            {notDetected.map((f) => (
               <ChecklistRow key={f.id} f={f} />
             ))}
           </ul>
@@ -647,8 +673,8 @@ export function FindingsPanel({ c, codes, selectedId, hoveredId, onSelect, onHov
         </Group>
       )}
       <p className="fp-foot subtle">
-        <Info size={12} aria-hidden /> Localizações aproximadas e confiança declarada pelo modelo, não calibrada. Só os achados aceites, editados ou
-        adicionados pelo clínico entram no relatório.
+        <Info size={12} aria-hidden /> Localizações aproximadas e confiança declarada pelo modelo, não calibrada. O rascunho do relatório foi gerado
+        antes da sua revisão: confirme que o texto não inclui achados rejeitados.
       </p>
     </div>
   )

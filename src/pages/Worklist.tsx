@@ -7,7 +7,7 @@ import { ACCEPTED_FILES, ingestFiles } from '../lib/imaging/ingest'
 import { href, navigate } from '../lib/router'
 import { MODALITY_LABEL, REGION_LABEL } from '../lib/labels'
 import { CASE_RESULT_LABEL, CASE_RESULT_ORDER, MODALITY_ABBR, MODALITY_DICOM, REPORT_STATE_LABEL, type CaseResult, type ReportState } from '../lib/labels-report'
-import { caseResult, reportState } from '../lib/report/state'
+import { caseResult, compareWorklist, reportState, type WorklistSort } from '../lib/report/state'
 import { formatDate, formatDateTime, nowIso, uid } from '../lib/util'
 import { ReportStateChip, ResultChip } from '../components/report/StatusChips'
 import '../styles/report.css'
@@ -164,14 +164,15 @@ function NewCase() {
 }
 
 
-type SortKey = 'result' | 'date' | 'priority'
+type SortKey = WorklistSort
 type ReportFilter = 'all' | ReportState
 type ResultFilter = 'all' | CaseResult
 
+// Default order never depends on the AI: clinician-set urgency first, then upload date.
 const SORTS: { id: SortKey; label: string }[] = [
-  { id: 'result', label: 'Resultado IA' },
-  { id: 'date', label: 'Data (recentes primeiro)' },
   { id: 'priority', label: 'Prioridade clínica' },
+  { id: 'date', label: 'Carregamento (recentes primeiro)' },
+  { id: 'result', label: 'Resultado IA (urgentes primeiro)' },
 ]
 
 function unique<T>(xs: T[]): T[] {
@@ -225,7 +226,7 @@ export function Worklist() {
   const [region, setRegion] = useState<'all' | Region>('all')
   const [result, setResult] = useState<ResultFilter>('all')
   const [reportF, setReportF] = useState<ReportFilter>('all')
-  const [sort, setSort] = useState<SortKey>('result')
+  const [sort, setSort] = useState<SortKey>('priority')
   const [filtersOpen, setFiltersOpen] = useState(false)
   const tbodyRef = useRef<HTMLTableSectionElement>(null)
 
@@ -251,18 +252,13 @@ export function Worklist() {
 
   const shown = useMemo(() => {
     const s = q.trim().toLowerCase()
-    const byDate = (a: Case, b: Case) => (a.createdAt < b.createdAt ? 1 : a.createdAt > b.createdAt ? -1 : 0)
     return rows
       .filter((r) => modality === 'all' || r.modalities.includes(modality))
       .filter((r) => region === 'all' || r.regions.includes(region))
       .filter((r) => result === 'all' || r.result === result)
       .filter((r) => reportF === 'all' || r.report === reportF)
       .filter((r) => !s || [r.c.pseudoId, r.c.title, r.c.indication, ...r.regions.map((g) => REGION_LABEL[g])].some((v) => v.toLowerCase().includes(s)))
-      .sort((a, b) => {
-        if (sort === 'date') return byDate(a.c, b.c)
-        if (sort === 'priority' && a.c.priority !== b.c.priority) return a.c.priority === 'urgent' ? -1 : 1
-        return CASE_RESULT_ORDER[a.result] - CASE_RESULT_ORDER[b.result] || byDate(a.c, b.c)
-      })
+      .sort((a, b) => compareWorklist(sort, a, b))
   }, [rows, q, modality, region, result, reportF, sort])
 
   const selectFilters = [modality, region, result, reportF].filter((v) => v !== 'all').length
@@ -452,7 +448,7 @@ export function Worklist() {
                       <th scope="col">Indicação clínica</th>
                       <th scope="col">Imagens</th>
                       <th scope="col">Relatório</th>
-                      <th scope="col">Data</th>
+                      <th scope="col">Carregado</th>
                     </tr>
                   </thead>
                   <tbody ref={tbodyRef}>
@@ -492,7 +488,7 @@ export function Worklist() {
                         <td>
                           <ReportStateChip state={report} />
                         </td>
-                        <td className="mono subtle rp-nowrap" title={formatDateTime(c.createdAt)}>
+                        <td className="mono subtle rp-nowrap" title={`Carregado em ${formatDateTime(c.createdAt)}`}>
                           {relativeDate(c.createdAt)}
                         </td>
                       </tr>

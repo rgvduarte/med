@@ -23,8 +23,8 @@ Plataforma web para análise de radiografia, TC, RM, ecografia e fluoroscopia mu
   3. pesquisa sistemática com lista de verificação por região;
   4. recuperação de evidência;
   5. síntese do relatório;
-  6. verificação por um segundo leitor.
-- **Achados com certeza calibrada.** Usa o léxico de Panicek & Hricak. A confiança aparece em palavras, nunca em percentagem. As marcações aparecem ocultas por defeito, para o médico ler primeiro.
+  6. segunda passagem de verificação pelo mesmo modelo (não é um leitor independente; omitida em modo local).
+- **Achados com certeza expressa com o léxico de Panicek & Hricak** (auto-reportada pelo modelo, não calibrada). A confiança aparece em palavras, nunca em percentagem. As marcações aparecem ocultas por defeito, para o médico ler primeiro.
 - **Evidência:**
   - base curada de referências verificadas no PubMed/Crossref por dois agentes independentes;
   - opcionalmente, o caderno **NotebookLM** do utilizador, ligado por MCP.

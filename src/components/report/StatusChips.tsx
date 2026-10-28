@@ -14,12 +14,23 @@ const RESULT_ICON: Record<CaseResult, ReactNode> = {
   error: <CircleX size={13} aria-hidden />,
 }
 
-/** Status chip: shape + text + colour (never colour alone). */
+const AI_RESULTS: ReadonlySet<CaseResult> = new Set(['positive', 'doubtful', 'negative', 'not-assessable'])
+
+/** Status chip: shape + text + colour (never colour alone). AI classes carry a visible «IA» mark at every width. */
 export function ResultChip({ result, compact = false }: { result: CaseResult; compact?: boolean }) {
+  const ai = AI_RESULTS.has(result)
   return (
     <span className={`rp-chip rp-res-${result} ${compact ? 'rp-chip-compact' : ''}`} title={CASE_RESULT_HINT[result]}>
+      {ai && (
+        <span className="rp-chip-ai" aria-hidden>
+          IA
+        </span>
+      )}
       {RESULT_ICON[result]}
-      <span>{CASE_RESULT_LABEL[result]}</span>
+      <span>
+        {ai && <span className="sr-only">Resultado da IA: </span>}
+        {CASE_RESULT_LABEL[result]}
+      </span>
     </span>
   )
 }
@@ -48,9 +59,9 @@ export function ReportStateChip({ state }: { state: ReportState }) {
 }
 
 /** Violet «IA» tag required on every AI output (spec §7.4). */
-export function AiTag({ label = 'IA' }: { label?: string }) {
+export function AiTag({ label = 'IA', title = 'Sugestão da IA — verificar' }: { label?: string; title?: string }) {
   return (
-    <span className="rp-ai-tag" title="Sugestão da IA — verificar">
+    <span className="rp-ai-tag" title={title}>
       <Sparkles size={12} aria-hidden />
       {label}
     </span>
