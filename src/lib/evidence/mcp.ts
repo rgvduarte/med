@@ -686,7 +686,8 @@ export async function testNotebookConnection(input: NotebookCfgInput): Promise<C
 // ---------------------------------------------------------------------------
 // Bridge command generator (shown in Definições → NotebookLM)
 
-const NLM_TOOLS = ['server_info', 'notebook_list', 'notebook_get', 'notebook_query', 'notebook_query_start', 'notebook_query_status', 'usage_get']
+// Only the tools the app calls (setup_auth stays for the legacy server's first Google login).
+const NLM_TOOLS = ['server_info', 'notebook_get', 'notebook_query', 'notebook_query_start', 'notebook_query_status']
 const LEGACY_TOOLS = ['get_health', 'setup_auth', 'list_notebooks', 'ask_question']
 
 export function bridgePort(baseUrl: string): string {
@@ -698,12 +699,19 @@ export function bridgePort(baseUrl: string): string {
   }
 }
 
-/** supergateway 4.2.1 command: stateful Streamable HTTP, exact-origin CORS, bearer key, tool allowlist. */
-export function buildBridgeCommand(opts: { kind: McpServerKind; origin: string; apiKey: string; baseUrl: string }): string {
+/**
+ * supergateway 4.2.1 command: stateful Streamable HTTP, exact-origin CORS, bearer key, tool allowlist.
+ * The key is passed in the SUPERGATEWAY_API_KEY environment variable, not with --apiKey: other users of
+ * the computer can list process arguments (ps, /proc/<pid>/cmdline) but not another user's environment.
+ * `shell` picks the syntax: POSIX (macOS/Linux) `VAR="…" npx …`, or PowerShell `$env:VAR="…"; npx …`.
+ */
+export function buildBridgeCommand(opts: { kind: McpServerKind; origin: string; apiKey: string; baseUrl: string; shell?: 'posix' | 'powershell' }): string {
   const legacy = opts.kind === 'legacy'
   const tools = (legacy ? LEGACY_TOOLS : NLM_TOOLS).map((t) => `--tools ${t}`).join(' ')
+  const env: [string, string][] = [['SUPERGATEWAY_API_KEY', opts.apiKey]]
+  if (legacy) env.push(['NOTEBOOKLM_PROFILE', 'standard'], ['NOTEBOOKLM_AI_MARKER', 'false'])
   const parts = [
-    legacy ? 'NOTEBOOKLM_PROFILE=standard NOTEBOOKLM_AI_MARKER=false' : '',
+    opts.shell === 'powershell' ? env.map(([k, v]) => `$env:${k}="${v}";`).join(' ') : env.map(([k, v]) => `${k}="${v}"`).join(' '),
     'npx -y supergateway@4.2.1',
     legacy ? '--stdio "npx -y notebooklm-mcp@2.0.0"' : '--stdio "notebooklm-mcp"',
     '--outputTransport streamableHttp --stateful',
@@ -711,7 +719,6 @@ export function buildBridgeCommand(opts: { kind: McpServerKind; origin: string; 
     `--host 127.0.0.1 --port ${bridgePort(opts.baseUrl)} --streamableHttpPath /mcp`,
     `--cors "${opts.origin}"`,
     '--header "Access-Control-Allow-Private-Network: true"',
-    `--apiKey "${opts.apiKey}"`,
     tools,
     '--healthEndpoint /healthz',
   ]

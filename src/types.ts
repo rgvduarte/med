@@ -30,6 +30,12 @@ export interface Frame {
   height: number
   /** Millimetres per pixel [row, column] when known (DICOM PixelSpacing). */
   pixelSpacing?: [number, number]
+  /**
+   * Plane the spacing refers to: 'patient' (PixelSpacing, or ImagerPixelSpacing corrected by the
+   * estimated magnification factor) or 'detector' (uncorrected ImagerPixelSpacing — lengths are
+   * slightly overstated at the detector plane). Absent = patient plane.
+   */
+  pixelSpacingSource?: 'patient' | 'detector'
   /** Raw DICOM pixel data for true window/level in the viewer. Never serialised. */
   raw?: DicomPixels
 }
@@ -61,6 +67,11 @@ export interface Series {
   dicomMeta?: Record<string, string>
   /** Tags removed during client-side de-identification (names only, never values). */
   removedTags?: string[]
+  /**
+   * DICOM BurnedInAnnotation (0028,0301): 'YES' = identifying text may be burned into the pixels,
+   * 'NO' = the file declares none. Absent = unknown (tag missing, or PNG/JPEG/video).
+   */
+  burnedInAnnotation?: 'YES' | 'NO'
 }
 
 export type CaseStatus = 'new' | 'analysing' | 'analysed' | 'validated' | 'error'

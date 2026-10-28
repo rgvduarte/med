@@ -43,6 +43,35 @@ function once(el: HTMLMediaElement, event: string, timeoutMs = 8000): Promise<vo
   })
 }
 
+/**
+ * Clips recorded with MediaRecorder (WebM) carry no duration in their header, so the browser reports
+ * Infinity. Seeking far past the end makes it scan the file and report the real duration.
+ */
+async function resolveDuration(video: HTMLVideoElement): Promise<number> {
+  if (Number.isFinite(video.duration)) return Math.max(0, video.duration)
+  try {
+    const p = once(video, 'seeked')
+    video.currentTime = 1e9
+    await p
+  } catch {
+    // timed out or failed: checked below
+  }
+  if (!Number.isFinite(video.duration)) {
+    throw new Error('Duração do vídeo desconhecida (comum em gravações WebM do navegador) — reexporte o clip como MP4 (H.264) e volte a carregar.')
+  }
+  return Math.max(0, video.duration)
+}
+
+/** Drops candidate indices whose timestamps coincide (very short clips), keeping the first of each. */
+export function distinctTimes(indices: number[], times: number[]): number[] {
+  const seen: number[] = []
+  return indices.filter((i) => {
+    if (seen.some((t) => Math.abs(t - times[i]) < 1e-3)) return false
+    seen.push(times[i])
+    return true
+  })
+}
+
 async function seek(video: HTMLVideoElement, t: number) {
   if (Math.abs(video.currentTime - t) < 1e-3) return
   const p = once(video, 'seeked')
@@ -79,7 +108,7 @@ export async function extractKeyframes(src: string, opts: KeyframeOptions): Prom
   video.src = src
   await once(video, 'loadeddata', 15000)
 
-  const duration = Number.isFinite(video.duration) && video.duration > 0 ? video.duration : 0
+  const duration = await resolveDuration(video)
   const w = video.videoWidth
   const h = video.videoHeight
   if (!w || !h) throw new Error('Vídeo sem dimensões válidas.')
@@ -115,7 +144,7 @@ export async function extractKeyframes(src: string, opts: KeyframeOptions): Prom
     // keep chosen frames at least two candidates apart to avoid near-duplicates
     if ([...chosen].every((j) => Math.abs(j - i) >= 2)) chosen.add(i)
   }
-  const picked = [...chosen].sort((a, b) => a - b)
+  const picked = distinctTimes([...chosen].sort((a, b) => a - b), times)
 
   const maxEdge = opts.maxLongEdge ?? 1280
   const scale = Math.min(1, maxEdge / Math.max(w, h))

@@ -8,6 +8,8 @@ export interface EncodedImage {
   height: number
   /** Where the original picture sits inside the encoded image [x, y, w, h] in pixels (differs only when padded). */
   content: [number, number, number, number]
+  /** Sent pixels per original pixel (≤ 1): divide the original pixel spacing by it for mm per sent pixel. */
+  scale: number
 }
 
 /**
@@ -24,9 +26,9 @@ export async function encodeFrame(
   const img = await loadHtmlImage(frame.url)
   const w = img.naturalWidth
   const h = img.naturalHeight
-  const scale = Math.min(1, maxLongEdge / Math.max(w, h))
-  const cw = Math.max(1, Math.round(w * scale))
-  const ch = Math.max(1, Math.round(h * scale))
+  const fit = Math.min(1, maxLongEdge / Math.max(w, h))
+  const cw = Math.max(1, Math.round(w * fit))
+  const ch = Math.max(1, Math.round(h * fit))
   // Gemma-3-family encoders (MedGemma via llama.cpp/Ollama) letterbox to a square internally; padding here
   // makes that explicit so the boxes the model returns can be mapped back exactly.
   const W = padSquare ? Math.max(cw, ch) : cw
@@ -41,5 +43,8 @@ export async function encodeFrame(
   ctx.fillRect(0, 0, W, H)
   ctx.drawImage(img, ox, oy, cw, ch)
   const dataUrl = canvas.toDataURL(mediaType, 0.92)
-  return { mediaType, base64: dataUrl.slice(dataUrl.indexOf(',') + 1), width: W, height: H, content: [ox, oy, cw, ch] }
+  // Ratio actually applied (after rounding), against the frame's matrix width (DICOM Columns), which
+  // is what PixelSpacing refers to.
+  const scale = cw / (frame.width || w)
+  return { mediaType, base64: dataUrl.slice(dataUrl.indexOf(',') + 1), width: W, height: H, content: [ox, oy, cw, ch], scale }
 }

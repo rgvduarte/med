@@ -33,8 +33,8 @@ export interface Settings {
   /** Bridge origin; the MCP endpoint is <baseUrl>/mcp and the health check <baseUrl>/healthz. */
   mcpBaseUrl: string
   /**
-   * Random key shared with the local bridge (supergateway --apiKey). It only protects the
-   * loopback port from other local processes; it is not a credential to a paid service.
+   * Random key shared with the local bridge (supergateway, via SUPERGATEWAY_API_KEY). It only protects
+   * the loopback port from other local processes; it is not a credential to a paid service.
    */
   mcpApiKey: string
   notebookUrl: string
@@ -196,6 +196,10 @@ export const useSettings = create<SettingsState>((set, get) => ({
   },
 }))
 
+// Storage is per origin, not per path: on https://<user>.github.io/<repo>/ every Pages site of the same
+// account can read this key and the settings (bridge key included), and the --cors /
+// OLLAMA_ORIGINS grants cover them too. Serve the app from its own origin (custom domain, or a
+// dedicated account/organisation) when other Pages sites of that account are not equally trusted.
 function persistKey(key: string, remember: boolean) {
   if (remember) {
     safeSet(local, KEY_KEY, key || null)

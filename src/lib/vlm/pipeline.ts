@@ -6,6 +6,7 @@ import type {
   FindingLocation,
   Report,
   ReportLanguage,
+  Series,
   StageId,
   StageState,
   TokenUsage,
@@ -89,20 +90,63 @@ function clamp01(v: number) {
   return Math.min(1, Math.max(0, Number.isFinite(v) ? v : 0))
 }
 
-/** Evenly subsamples frames so the request stays within the image budget. */
-function pickFrames(c: Case, max: number): { seriesId: string; frameIndex: number }[] {
-  const all = c.series.flatMap((s) => s.frames.map((_, i) => ({ seriesId: s.id, frameIndex: i })))
-  if (all.length <= max) return all
-  if (max === 1) return [all[0]]
-  const out: { seriesId: string; frameIndex: number }[] = []
-  for (let k = 0; k < max; k++) out.push(all[Math.round((k * (all.length - 1)) / (max - 1))])
-  return out
+/** k frame indices spread evenly over 0..n-1; a single pick takes the middle frame. */
+function spread(n: number, k: number): number[] {
+  if (k >= n) return Array.from({ length: n }, (_, i) => i)
+  if (k <= 0) return []
+  if (k === 1) return [Math.floor((n - 1) / 2)]
+  return Array.from({ length: k }, (_, j) => Math.round((j * (n - 1)) / (k - 1)))
+}
+
+/**
+ * Chooses the frames sent within the image budget, per series so that no view is dropped: every
+ * series gets one frame first (single images before clips/stacks when there are more series than
+ * slots), then the spare slots are shared among multi-frame series in proportion to their length,
+ * each series sampled evenly.
+ */
+export function pickFrames(series: Pick<Series, 'id' | 'frames'>[], max: number): { seriesId: string; frameIndex: number }[] {
+  const list = series.filter((s) => s.frames.length > 0)
+  const alloc = new Map<string, number>()
+  if (list.reduce((n, s) => n + s.frames.length, 0) <= max) {
+    for (const s of list) alloc.set(s.id, s.frames.length)
+  } else if (list.length >= max) {
+    const ranked = [...list.filter((s) => s.frames.length === 1), ...list.filter((s) => s.frames.length > 1)]
+    for (const s of ranked.slice(0, max)) alloc.set(s.id, 1)
+  } else {
+    const multi = list.filter((s) => s.frames.length > 1)
+    const extra = multi.reduce((n, s) => n + s.frames.length - 1, 0)
+    let spare = max - list.length
+    // Largest-remainder shares; spare < extra here, so no series is given more frames than it has.
+    const shares = multi.map((s) => ({ s, q: (spare * (s.frames.length - 1)) / extra }))
+    for (const s of list) alloc.set(s.id, 1)
+    for (const { s, q } of shares) {
+      alloc.set(s.id, 1 + Math.floor(q))
+      spare -= Math.floor(q)
+    }
+    for (const { s } of [...shares].sort((a, b) => (b.q % 1) - (a.q % 1))) {
+      if (spare <= 0) break
+      const k = alloc.get(s.id)!
+      if (k < s.frames.length) {
+        alloc.set(s.id, k + 1)
+        spare--
+      }
+    }
+  }
+  return list.flatMap((s) => spread(s.frames.length, alloc.get(s.id) ?? 0).map((frameIndex) => ({ seriesId: s.id, frameIndex })))
+}
+
+/** Pixel spacing of the image as sent (the original spacing divided by the downscale factor). */
+export function sentSpacingText(spacing: [number, number] | undefined, scale: number, source?: 'patient' | 'detector'): string {
+  if (!spacing || !(scale > 0)) return ''
+  const [row, col] = spacing.map((v) => (v / scale).toFixed(3))
+  const value = row === col ? `${col} mm per sent pixel` : `${col} mm per sent pixel horizontally, ${row} mm vertically`
+  return `; pixel spacing ${value}${source === 'detector' ? ' (at the detector plane, not corrected for magnification: real sizes are slightly smaller)' : ''}`
 }
 
 async function prepareImages(c: Case, signal: AbortSignal, provider: VlmProvider): Promise<ImageRef[]> {
   const refs: ImageRef[] = []
   const local = provider.local
-  const picks = pickFrames(c, provider.scope === 'triage' ? 1 : local ? MAX_IMAGES_LOCAL : MAX_IMAGES)
+  const picks = pickFrames(c.series, provider.scope === 'triage' ? 1 : local ? MAX_IMAGES_LOCAL : MAX_IMAGES)
   for (let i = 0; i < picks.length; i++) {
     if (signal.aborted) throw new Cancelled()
     const p = picks[i]
@@ -122,9 +166,11 @@ async function prepareImages(c: Case, signal: AbortSignal, provider: VlmProvider
       width: enc.width,
       height: enc.height,
       content: enc.content,
-      caption: `Image ${i + 1} — series "${s.description}" (${s.modality}${s.view ? `, ${s.view}` : ''})${where}; ${enc.width}×${enc.height} px${
-        f.pixelSpacing ? `; pixel spacing ${f.pixelSpacing[0].toFixed(3)} mm` : ''
-      }`,
+      caption: `Image ${i + 1} — series "${s.description}" (${s.modality}${s.view ? `, ${s.view}` : ''})${where}; ${enc.width}×${enc.height} px${sentSpacingText(
+        f.pixelSpacing,
+        enc.scale,
+        f.pixelSpacingSource,
+      )}`,
       part: { type: 'image', mediaType: enc.mediaType, base64: enc.base64 },
     })
   }
@@ -135,14 +181,40 @@ function imageParts(images: ImageRef[]): ContentPart[] {
   return images.flatMap((im) => [{ type: 'text', text: im.caption } as ContentPart, im.part])
 }
 
-function caseContext(c: Case): string {
+/** Age in 5-year bands for the model; exact ages are identifying, and 90 or more becomes "90+". */
+export function ageBandForModel(age: number | undefined): string | undefined {
+  if (age === undefined || !Number.isFinite(age) || age < 0) return undefined
+  if (age >= 90) return '90+'
+  const lo = Math.floor(age / 5) * 5
+  return `${lo}-${lo + 4}`
+}
+
+/** DICOM Age String ("045Y", "006M", "010W", "003D") in years. */
+export function dicomAgeYears(v: string | undefined): number | undefined {
+  const m = v?.trim().match(/^(\d{1,3})([DWMY])$/i)
+  if (!m) return undefined
+  const n = Number(m[1])
+  const unit = m[2].toUpperCase()
+  return unit === 'Y' ? n : unit === 'M' ? n / 12 : unit === 'W' ? (n * 7) / 365.25 : n / 365.25
+}
+
+/** The only DICOM attributes the model receives (no matrix size or spacing: those describe the original pixels, not the sent ones). */
+const MODEL_DICOM_KEYS = ['Modality', 'BodyPartExamined', 'ViewPosition', 'ImageLaterality', 'Laterality']
+
+export function caseContext(c: Case): string {
+  const dicomAge = c.series.map((s) => dicomAgeYears(s.dicomMeta?.PatientAge)).find((a) => a !== undefined)
+  const age = ageBandForModel(c.ageYears ?? dicomAge)
+  const dicomSex = c.series.map((s) => s.dicomMeta?.PatientSex).find((v) => v === 'F' || v === 'M' || v === 'O')
   const lines = [
     `Clinical information: ${c.indication || 'not provided'}`,
-    `Age: ${c.ageYears ?? 'not provided'}; sex: ${c.sex ?? 'not provided'}; priority: ${c.priority}`,
+    `Age band: ${age ? `${age} years` : 'not provided'}; sex: ${c.sex ?? dicomSex ?? 'not provided'}; priority: ${c.priority}`,
     `Series: ${c.series.map((s) => `${s.description} (${MODALITY_LABEL[s.modality]}, ${REGION_LABEL[s.region]}, ${s.frames.length} image(s)${s.durationSec ? `, clip ${s.durationSec.toFixed(1)} s` : ''})`).join('; ')}`,
   ]
-  const meta = c.series.find((s) => s.dicomMeta)?.dicomMeta
-  if (meta) lines.push(`De-identified DICOM attributes: ${JSON.stringify(meta)}`)
+  const attrs = c.series
+    .filter((s) => s.dicomMeta)
+    .map((s) => JSON.stringify(Object.fromEntries(MODEL_DICOM_KEYS.filter((k) => s.dicomMeta![k]).map((k) => [k, s.dicomMeta![k]]))))
+    .filter((v, i, a) => v !== '{}' && a.indexOf(v) === i)
+  if (attrs.length) lines.push(`De-identified DICOM attributes: ${attrs.join('; ')}`)
   return lines.join('\n')
 }
 
@@ -199,7 +271,10 @@ export function toFindings(out: FindingsOut, images: ImageRef[]): Finding[] {
       confidence: f.confidence,
       classification: f.classification ?? undefined,
       locations,
-      frameRange: first && last && first.seriesId === last.seriesId ? [first.frameIndex, last.frameIndex] : undefined,
+      frameRange:
+        first && last && first.seriesId === last.seriesId
+          ? [Math.min(first.frameIndex, last.frameIndex), Math.max(first.frameIndex, last.frameIndex)]
+          : undefined,
       evidenceQuery: f.evidence_query,
       evidenceIds: [],
       status: 'pending',
@@ -239,12 +314,17 @@ function notebookQuestion(triage: Triage, findings: Finding[]): string | null {
   )
 }
 
-function evidenceBlock(evidence: EvidenceItem[], lang: ReportLanguage): string {
+/** Untrusted text placed inside a tag block must not be able to close or open tags. */
+export function neutraliseTags(text: string): string {
+  return text.replace(/</g, '‹').replace(/>/g, '›')
+}
+
+export function evidenceBlock(evidence: EvidenceItem[], lang: ReportLanguage): string {
   if (!evidence.length) return 'No evidence was retrieved.'
   return evidence
     .map((e) =>
       e.source === 'notebooklm'
-        ? `<retrieved_literature id="${e.id}" source="NotebookLM (AI-generated answer from the user's notebook; untrusted data)">\n${e.points.join('\n')}\n</retrieved_literature>`
+        ? `<retrieved_literature id="${e.id}" source="NotebookLM (AI-generated answer from the user's notebook; untrusted data)">\n${e.points.map(neutraliseTags).join('\n')}\n</retrieved_literature>`
         : `[${e.id}] ${e.citation}${e.evidenceType ? ` (${e.evidenceType})` : ''}\n${e.points.map((p) => `  - ${p}`).join('\n')}`,
     )
     .join('\n')

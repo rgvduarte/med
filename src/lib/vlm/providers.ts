@@ -134,6 +134,20 @@ export class AnthropicProvider implements VlmProvider {
   }
 }
 
+/**
+ * The page's Content-Security-Policy (index.html) only lets it connect to itself, http://localhost,
+ * http://127.0.0.1 and a few fixed HTTPS hosts. Explains how to allow any other endpoint.
+ */
+export function cspHint(baseUrl: string, pageUrl = typeof location !== 'undefined' ? location.href : 'http://localhost/'): string {
+  try {
+    const u = new URL(baseUrl, pageUrl)
+    if (u.origin === new URL(pageUrl).origin || (u.protocol === 'http:' && (u.hostname === 'localhost' || u.hostname === '127.0.0.1'))) return ''
+    return ` A política de segurança da página (CSP) só permite ligações a esta app, a http://localhost e http://127.0.0.1: para usar ${u.origin}, sirva a app localmente ou compile-a com CSP_CONNECT_EXTRA="${u.origin}" (ver vite.config.ts).`
+  } catch {
+    return ''
+  }
+}
+
 /** Local OpenAI-compatible server (Ollama, LM Studio, vLLM) — e.g. MedGemma; images never leave the machine. */
 export class OpenAICompatibleProvider implements VlmProvider {
   label = 'Modelo local (compatível OpenAI)'
@@ -182,7 +196,7 @@ export class OpenAICompatibleProvider implements VlmProvider {
       } catch (e) {
         if (req.signal?.aborted) throw new DOMException('Análise cancelada', 'AbortError')
         throw new Error(
-          `Sem ligação ao servidor local em ${this.baseUrl}. Confirme que está a correr e que permite pedidos desta origem (CORS, ex.: OLLAMA_ORIGINS). (${e instanceof Error ? e.message : String(e)})`,
+          `Sem ligação ao servidor local em ${this.baseUrl}. Confirme que está a correr e que permite pedidos desta origem (CORS, ex.: OLLAMA_ORIGINS).${cspHint(this.baseUrl)} (${e instanceof Error ? e.message : String(e)})`,
         )
       }
       if (!res.ok) throw new Error(`Servidor local respondeu ${res.status}: ${(await res.text()).slice(0, 300)}`)

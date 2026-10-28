@@ -67,11 +67,25 @@ describe('bridge command and config', () => {
   it('embeds the exact origin, key, port and tool allowlist', () => {
     const cmd = buildBridgeCommand({ kind: 'nlm-cli', origin: 'https://user.github.io', apiKey: 'abc', baseUrl: 'http://127.0.0.1:8765' })
     expect(cmd).toContain('--cors "https://user.github.io"')
-    expect(cmd).toContain('--apiKey "abc"')
+    expect(cmd.startsWith('SUPERGATEWAY_API_KEY="abc" npx -y supergateway@4.2.1 ')).toBe(true)
     expect(cmd).toContain('--port 8765')
     expect(cmd).toContain('--stateful')
     expect(cmd).toContain('--tools notebook_query')
     expect(cmd).not.toContain('ask_question')
+  })
+  it('keeps the key out of argv and allowlists only the tools the app calls', () => {
+    const cmd = buildBridgeCommand({ kind: 'nlm-cli', origin: 'https://user.github.io', apiKey: 'abc', baseUrl: 'http://127.0.0.1:8765' })
+    expect(cmd).not.toContain('--apiKey')
+    expect(cmd.split('npx -y supergateway')[1]).not.toContain('abc')
+    expect(cmd).not.toContain('notebook_list')
+    expect(cmd).not.toContain('usage_get')
+  })
+  it('generates a PowerShell variant with the same environment', () => {
+    const ps = buildBridgeCommand({ kind: 'legacy', origin: 'https://user.github.io', apiKey: 'abc', baseUrl: 'http://127.0.0.1:8765', shell: 'powershell' })
+    expect(ps.startsWith('$env:SUPERGATEWAY_API_KEY="abc"; $env:NOTEBOOKLM_PROFILE="standard"; $env:NOTEBOOKLM_AI_MARKER="false"; npx -y supergateway@4.2.1 ')).toBe(true)
+    expect(ps).toContain('--tools setup_auth')
+    const posix = buildBridgeCommand({ kind: 'legacy', origin: 'https://user.github.io', apiKey: 'abc', baseUrl: 'http://127.0.0.1:8765' })
+    expect(posix.startsWith('SUPERGATEWAY_API_KEY="abc" NOTEBOOKLM_PROFILE="standard" NOTEBOOKLM_AI_MARKER="false" npx ')).toBe(true)
   })
   it('maps the settings store shape', () => {
     const cfg = toNotebookCfg({ mcpServerKind: 'nlm-cli', mcpBaseUrl: 'http://127.0.0.1:8765', mcpApiKey: 'k', notebookId: 'id-1', notebookUrl: '' })

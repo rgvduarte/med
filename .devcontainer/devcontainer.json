@@ -1,6 +1,8 @@
 // MSK·VLM in GitHub Codespaces: the app (vite preview) + Ollama serving MedGemma 4B on CPU.
-// The browser only talks to the app's own forwarded URL; /ollama/* is proxied to 127.0.0.1:11434
-// inside the codespace (see vite.config.ts), so port 11434 is never exposed.
+// The browser only talks to the app's own forwarded URL: vite preview proxies just
+// POST /ollama/v1/chat/completions and GET /ollama/v1/models to 127.0.0.1:11434 inside the codespace
+// (see vite.config.ts; everything else under /ollama gets 404). Port 11434 itself is not forwarded.
+// Keep port 4173 private (the default): whoever can open it can use the model.
 {
   "name": "MSK·VLM + Ollama (MedGemma 4B, CPU)",
   "build": {

@@ -17,6 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Keep the write token out of .git/config while dependency scripts, tests and the build run;
+          # the push step below passes it explicitly.
+          persist-credentials: false
 
       - uses: actions/setup-node@v4
         with:

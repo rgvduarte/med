@@ -5,7 +5,7 @@ import { buildBridgeCommand, isSafariBrowser, resetMcpSession } from '../../lib/
 import { McpConnectionTest } from './McpConnectionTest'
 import '../../styles/report.css'
 
-function CopyButton({ text, label, compact = false }: { text: string; label: string; compact?: boolean }) {
+function CopyButton({ text, label, compact = false, caption = 'Copiar' }: { text: string; label: string; compact?: boolean; caption?: string }) {
   const [done, setDone] = useState(false)
   return (
     <button
@@ -24,7 +24,7 @@ function CopyButton({ text, label, compact = false }: { text: string; label: str
       aria-label={label}
     >
       {done ? <Check size={14} /> : <Copy size={14} />}
-      {compact ? <span className="sr-only">{done ? 'Copiado' : 'Copiar'}</span> : done ? 'Copiado' : 'Copiar'}
+      {compact ? <span className="sr-only">{done ? 'Copiado' : 'Copiar'}</span> : done ? 'Copiado' : caption}
     </button>
   )
 }
@@ -44,6 +44,7 @@ export function NotebookLmCard() {
   const safari = useMemo(() => isSafariBrowser(), [])
   const origin = typeof location !== 'undefined' ? location.origin : 'https://rgvduarte.github.io'
   const command = buildBridgeCommand({ kind: s.mcpServerKind, origin, apiKey: s.mcpApiKey, baseUrl: s.mcpBaseUrl })
+  const commandPs = buildBridgeCommand({ kind: s.mcpServerKind, origin, apiKey: s.mcpApiKey, baseUrl: s.mcpBaseUrl, shell: 'powershell' })
   const configured = isNotebookConfigured(s)
   const notebookInvalid = s.notebookUrl.trim().length > 0 && !s.notebookId
   const check = s.mcpLastCheck
@@ -240,17 +241,18 @@ export function NotebookLmCard() {
               <span>
                 Comando gerado para <span className="mono">{origin}</span>
               </span>
-              <CopyButton text={command} label="Copiar comando da ponte" />
+              <span style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                <CopyButton text={command} label="Copiar comando da ponte para macOS/Linux" caption="Copiar · macOS/Linux" />
+                <CopyButton text={commandPs} label="Copiar comando da ponte para Windows (PowerShell)" caption="Copiar · PowerShell" />
+              </span>
             </div>
             <pre>
               <code>{command}</code>
             </pre>
-            {s.mcpServerKind === 'legacy' && (
-              <small className="subtle">
-                Windows (PowerShell): defina antes <span className="mono">$env:NOTEBOOKLM_PROFILE="standard"; $env:NOTEBOOKLM_AI_MARKER="false"</span> e
-                retire o prefixo de variáveis do comando.
-              </small>
-            )}
+            <small className="subtle">
+              Acima, a versão para macOS/Linux. A chave segue numa variável de ambiente (<span className="mono">SUPERGATEWAY_API_KEY</span>) e não nos
+              argumentos do processo, que outros utilizadores do computador podem ver.
+            </small>
           </div>
         </li>
         <li>
