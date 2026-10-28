@@ -10,6 +10,7 @@ import {
   MapPinOff,
   Pencil,
   RotateCcw,
+  ScanSearch,
   Sparkles,
   TriangleAlert,
   UserRound,
@@ -40,7 +41,8 @@ import { formatDateTime } from '../../lib/util'
 import { ClassChip, ClassGlyph } from '../viewer/ClassChip'
 import { fmtClockShort } from '../viewer/format'
 import { isLocked, orderedRange, reviewProgress, studyClass } from '../viewer/findingModel'
-import { findingsStageDone } from '../../lib/report/state'
+import { findingsStageDone, isTriageOnly } from '../../lib/report/state'
+import { MODALITY_LABEL } from '../../lib/labels'
 import { AnalyseButton, useAnalysisRun } from './PipelinePanel'
 import { GlassProgress } from '../ui/glass'
 
@@ -468,6 +470,23 @@ export function FindingsPanel({ c, codes, selectedId, hoveredId, onSelect, onHov
   // A failed run is not a result: never present it as «sem achados» or «não avaliável».
   const failed = c.status === 'error'
   const failMessage = error ?? a?.stages.find((s) => s.status === 'error')?.message
+
+  if (a && !running && isTriageOnly(a) && a.triage) {
+    const t = a.triage
+    return (
+      <div className="fp-empty">
+        <ScanSearch size={26} aria-hidden className="fp-empty-ic" />
+        <p>
+          <strong>Só triagem.</strong> O modelo no navegador identificou: {MODALITY_LABEL[t.modality]} · {REGION_LABEL[t.region]}
+          {t.view ? ` · ${t.view}` : ''} · qualidade {t.imageQuality === 'adequate' ? 'adequada' : t.imageQuality === 'limited' ? 'limitada' : 'não diagnóstica'}.
+        </p>
+        <p className="subtle fp-empty-hint">
+          Este modelo é pequeno e não procura achados nem escreve relatório. Leia as imagens; para uma análise completa use Claude ou o MedGemma em{' '}
+          <a href={href({ name: 'settings' })}>Definições → Modelo</a>.
+        </p>
+      </div>
+    )
+  }
 
   if (!a || (a.findings.length === 0 && (running || failed))) {
     return (

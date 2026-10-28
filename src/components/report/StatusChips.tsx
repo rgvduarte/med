@@ -1,4 +1,4 @@
-import { BadgeCheck, CircleCheckBig, CircleDashed, CircleMinus, CircleQuestionMark, CircleX, LoaderCircle, Lock, PencilLine, Sparkles, Square, SquareDashed } from 'lucide-react'
+import { BadgeCheck, CircleCheckBig, CircleDashed, CircleMinus, CircleQuestionMark, CircleX, LoaderCircle, Lock, PencilLine, ScanSearch, Sparkles, Square, SquareDashed } from 'lucide-react'
 import type { ReactNode } from 'react'
 import type { FindingClass } from '../../types'
 import { CASE_RESULT_HINT, CASE_RESULT_LABEL, FINDING_CLASS_LABEL, REPORT_STATE_HINT, REPORT_STATE_LABEL, type CaseResult, type ReportState } from '../../lib/labels-report'
@@ -8,12 +8,13 @@ const RESULT_ICON: Record<CaseResult, ReactNode> = {
   doubtful: <SquareDashed size={13} strokeWidth={2.2} aria-hidden />,
   negative: <CircleMinus size={13} strokeWidth={2.2} aria-hidden />,
   'not-assessable': <CircleQuestionMark size={13} strokeWidth={2.2} aria-hidden />,
+  triage: <ScanSearch size={13} strokeWidth={2.2} aria-hidden />,
   analysing: <LoaderCircle size={13} className="spin" aria-hidden />,
   new: <CircleDashed size={13} aria-hidden />,
   error: <CircleX size={13} aria-hidden />,
 }
 
-const AI_RESULTS: ReadonlySet<CaseResult> = new Set(['positive', 'doubtful', 'negative', 'not-assessable'])
+const AI_RESULTS: ReadonlySet<CaseResult> = new Set(['positive', 'doubtful', 'negative', 'not-assessable', 'triage'])
 
 /** Status chip: shape + text + colour (never colour alone). AI classes carry a visible «IA» mark at every width. */
 export function ResultChip({ result, compact = false }: { result: CaseResult; compact?: boolean }) {

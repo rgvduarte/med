@@ -10,6 +10,7 @@ import {
   needsPixelConfirmation,
   pixelPrivacy,
   studyClass,
+  isTriageOnly,
 } from './state'
 
 let n = 0
@@ -106,6 +107,16 @@ describe('studyClass / caseResult (one rule for worklist and case)', () => {
   it('never negative when the systematic search did not complete', () => {
     expect(same(analysis([], { stages: [{ id: 'findings', status: 'error' }] }))).toBe('not-assessable')
     expect(studyClass(analysis([], { stages: [{ id: 'findings', status: 'running' }], finishedAt: undefined }))).toBeUndefined()
+  })
+
+  it('a triage-only run (in-browser model) has no study class and shows «Só triagem»', () => {
+    const a = analysis([], { stages: [{ id: 'triage', status: 'done' }, { id: 'findings', status: 'skipped' }] })
+    expect(isTriageOnly(a)).toBe(true)
+    expect(studyClass(a)).toBeUndefined()
+    expect(caseResult(kase(a))).toBe('triage')
+    // Out-of-scope / non-diagnostic runs also skip the search but carry a «não avaliável» finding.
+    const oos = analysis([finding({ cls: 'not-assessable', group: 'priority' })], { stages: [{ id: 'triage', status: 'done' }, { id: 'findings', status: 'skipped' }] })
+    expect(isTriageOnly(oos)).toBe(false)
   })
 
   it('pipeline states come first in the worklist', () => {

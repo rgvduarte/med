@@ -23,7 +23,7 @@ import { href } from '../lib/router'
 import { LATERALITY_LABEL, MODALITY_LABEL, REGION_LABEL } from '../lib/labels'
 import { LATERALITY_SHORT, MODALITY_SHORT, ageBand, plural } from '../lib/labels-findings'
 import { CASE_RESULT_LABEL } from '../lib/labels-report'
-import { pixelPrivacy } from '../lib/report/state'
+import { isTriageOnly, pixelPrivacy } from '../lib/report/state'
 import { formatDate, formatDateTime, formatTime } from '../lib/util'
 import { Viewer, type FocusRequest } from '../components/viewer/Viewer'
 import { SeriesPanel } from '../components/viewer/SeriesPanel'
@@ -419,10 +419,13 @@ function Workspace({ id }: { id: string }) {
   }
   const reviewable = findings.filter((f) => f.group !== 'checklist').length
   const failed = c.status === 'error'
+  const triageOnly = isTriageOnly(c.analysis)
   const handleText = running
     ? 'Análise em curso'
     : failed
       ? 'A análise da IA falhou'
+      : triageOnly
+        ? 'Só triagem (o modelo no navegador não procura achados)'
       : !c.analysis
       ? 'Sem análise de IA'
       : pending.length
@@ -501,6 +504,8 @@ function Workspace({ id }: { id: string }) {
                     <span className="wsx-chip is-err">
                       <CircleX size={12} aria-hidden /> Erro
                     </span>
+                  ) : triageOnly ? (
+                    <span className="badge badge-neutral">Só triagem</span>
                   ) : sc ? (
                     <ClassChip cls={sc} small ai />
                   ) : (

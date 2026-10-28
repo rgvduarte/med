@@ -2,13 +2,14 @@
 import type { FindingClass, Modality, VerbalConfidence } from '../types'
 
 /** Study-level AI result shown in the worklist (BoneView-style class + pipeline states). */
-export type CaseResult = FindingClass | 'analysing' | 'new' | 'error'
+export type CaseResult = FindingClass | 'triage' | 'analysing' | 'new' | 'error'
 
 export const CASE_RESULT_LABEL: Record<CaseResult, string> = {
   positive: 'Positivo',
   doubtful: 'Duvidoso',
   negative: 'Negativo',
   'not-assessable': 'Não avaliável',
+  triage: 'Só triagem',
   analysing: 'A analisar…',
   new: 'Por analisar',
   error: 'Erro',
@@ -19,6 +20,7 @@ export const CASE_RESULT_HINT: Record<CaseResult, string> = {
   doubtful: 'Sem achados positivos; pelo menos um achado duvidoso — verificar',
   negative: 'A IA não detetou achados — verificar',
   'not-assessable': 'Estudo não avaliável pela IA (qualidade, âmbito ou recusa do modelo)',
+  triage: 'O modelo no navegador identificou modalidade, região e qualidade; não procurou achados',
   analysing: 'Análise em curso',
   new: 'Ainda não analisado',
   error: 'A análise falhou',
@@ -30,9 +32,10 @@ export const CASE_RESULT_ORDER: Record<CaseResult, number> = {
   doubtful: 1,
   'not-assessable': 2,
   error: 3,
-  analysing: 4,
-  new: 5,
-  negative: 6,
+  triage: 4,
+  analysing: 5,
+  new: 6,
+  negative: 7,
 }
 
 export const FINDING_CLASS_LABEL: Record<FindingClass, string> = {

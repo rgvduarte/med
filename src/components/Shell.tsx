@@ -14,7 +14,15 @@ function BrandMark() {
 export function Shell({ route, children }: { route: Route; children: ReactNode }) {
   const s = useSettings()
   const vlmOk = isVlmConfigured(s)
-  const vlmLabel = vlmOk ? (s.provider === 'anthropic' ? 'Claude' : s.provider === 'browser' ? 'IA no navegador' : 'MedGemma local') : 'VLM não configurado'
+  const vlmLabel = vlmOk
+    ? s.provider === 'anthropic'
+      ? 'Claude'
+      : s.provider === 'browser'
+        ? 'IA no navegador'
+        : 'MedGemma local'
+    : s.provider === 'browser'
+      ? 'Sem WebGPU neste navegador'
+      : 'VLM não configurado'
   const nlm = !s.mcpEnabled
     ? { dot: '', label: 'NotebookLM inativo' }
     : !isNotebookConfigured(s)

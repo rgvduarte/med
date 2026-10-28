@@ -20,6 +20,8 @@ export interface McpCheck {
 
 export interface Settings {
   provider: Provider
+  /** True once the user picks a provider in Settings; until then the build default applies. */
+  providerChosen: boolean
   anthropicModel: string
   effort: Effort
   /** OpenAI-compatible local endpoint (e.g. Ollama / LM Studio serving MedGemma). */
@@ -56,7 +58,9 @@ export const DEFAULT_MCP_BASE_URL = 'http://127.0.0.1:8765'
 const env = import.meta.env
 
 export const DEFAULT_SETTINGS: Settings = {
-  provider: env.VITE_DEFAULT_PROVIDER === 'openai-compatible' ? 'openai-compatible' : 'anthropic',
+  // Built-in model by default (no key, no server); Codespaces/local builds set openai-compatible.
+  provider: env.VITE_DEFAULT_PROVIDER === 'openai-compatible' || env.VITE_DEFAULT_PROVIDER === 'anthropic' ? env.VITE_DEFAULT_PROVIDER : 'browser',
+  providerChosen: false,
   anthropicModel: 'claude-opus-5-5',
   effort: 'high',
   localBaseUrl: env.VITE_LOCAL_BASE_URL || 'http://localhost:11434/v1',
@@ -131,6 +135,13 @@ function migrate(stored: StoredSettings): Partial<Settings> {
   }
   if (!out.mcpServerKind && mcpToolName && mcpToolName !== 'ask_question') out.mcpServerKind = 'nlm-cli'
   if (out.notebookUrl && !out.notebookId) out.notebookId = parseNotebookId(out.notebookUrl)
+  // Settings saved before providerChosen existed held the old default (Claude) or a localhost server that
+  // can never work on a phone: move them once to the built-in default. A remembered Claude key is a choice.
+  if (out.providerChosen === undefined) {
+    const keptClaude = out.provider === 'anthropic' && !!safeGet(local, KEY_KEY)
+    out.providerChosen = keptClaude
+    if (!keptClaude) out.provider = DEFAULT_SETTINGS.provider
+  }
   return out
 }
 
@@ -143,7 +154,9 @@ function loadSettings(): Settings {
   let loaded: Settings = DEFAULT_SETTINGS
   if (raw) {
     try {
-      loaded = { ...DEFAULT_SETTINGS, ...migrate(JSON.parse(raw) as StoredSettings) }
+      const stored = JSON.parse(raw) as StoredSettings
+      loaded = { ...DEFAULT_SETTINGS, ...migrate(stored) }
+      if (stored.providerChosen === undefined) persistSettings(loaded)
     } catch {
       loaded = DEFAULT_SETTINGS
     }

@@ -12,6 +12,7 @@ import { CineBar, type CineSpan } from './CineBar'
 import { ShortcutsDialog } from './ShortcutsDialog'
 import { fmtClock, fmtNum } from './format'
 import { isDrawable, orderedRange, playableLoop, seriesDuration, studyClass } from './findingModel'
+import { isTriageOnly } from '../../lib/report/state'
 
 type P2 = [number, number]
 
@@ -1104,7 +1105,9 @@ export function Viewer(props: ViewerProps) {
                     ? 'IA · a analisar…'
                     : c.status === 'error'
                       ? 'IA · análise falhou'
-                      : studyClass(c.analysis) === 'negative'
+                      : isTriageOnly(c.analysis)
+                        ? 'IA · só triagem'
+                        : studyClass(c.analysis) === 'negative'
                         ? 'IA · sem achados'
                         : studyClass(c.analysis) === 'not-assessable'
                           ? 'IA · não avaliável'

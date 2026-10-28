@@ -478,7 +478,7 @@ async function run(caseId: string, ctrl: AbortController) {
     finish('triage', `${MODALITY_LABEL[triage.modality]} · ${REGION_LABEL[triage.region]} · ${triage.view}`, tri.usage)
 
     if (provider.scope === 'triage') {
-      const why = 'Modelo no navegador (experimental): apenas triagem — achados e relatório exigem Claude ou MedGemma (local/Codespaces).'
+      const why = 'Modelo no navegador: só triagem. Achados e relatório exigem Claude ou o MedGemma (local ou Codespaces).'
       for (const id of ['findings', 'evidence', 'report', 'verify'] as StageId[]) setStage(caseId, id, { status: 'skipped', message: why })
       patchAnalysis(caseId, () => ({ finishedAt: nowIso() }))
       store().updateCase(caseId, { status: 'analysed' })

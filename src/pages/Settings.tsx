@@ -63,12 +63,12 @@ export function Settings() {
         <div className="row rp-provider" role="radiogroup" aria-label="Fornecedor" style={{ marginBottom: 'var(--sp-4)' }}>
           {(
             [
+              ['browser', 'No navegador (por defeito)'],
               ['anthropic', 'Claude (API Anthropic)'],
               ['openai-compatible', 'MedGemma local / Codespaces'],
-              ['browser', 'No navegador (experimental)'],
             ] as [Provider, string][]
           ).map(([id, label]) => (
-            <button key={id} role="radio" aria-checked={s.provider === id} className={`btn ${s.provider === id ? 'btn-primary' : ''}`} onClick={() => s.update({ provider: id })}>
+            <button key={id} role="radio" aria-checked={s.provider === id} className={`btn ${s.provider === id ? 'btn-primary' : ''}`} onClick={() => s.update({ provider: id, providerChosen: true })}>
               {label}
             </button>
           ))}

@@ -22,8 +22,15 @@ export function findingCode(c: Case, findingId: string): string {
  * highest class among the AI's non-rejected, non-checklist findings (priority and other groups).
  * Undefined while a run has not produced a result yet.
  */
+/** Triage ran and the systematic search was skipped on purpose (in-browser model): there is no study class. */
+export function isTriageOnly(a: AnalysisResult | undefined): boolean {
+  if (!a || a.findings.length) return false
+  const status = (id: string) => a.stages.find((s) => s.id === id)?.status
+  return status('triage') === 'done' && status('findings') === 'skipped'
+}
+
 export function studyClass(a: AnalysisResult | undefined): FindingClass | undefined {
-  if (!a) return undefined
+  if (!a || isTriageOnly(a)) return undefined
   const active = a.findings.filter((f) => f.origin === 'ai' && f.status !== 'rejected' && f.group !== 'checklist')
   if (active.some((f) => f.cls === 'positive')) return 'positive'
   if (active.some((f) => f.cls === 'doubtful')) return 'doubtful'
@@ -39,6 +46,7 @@ export function caseResult(c: Case): CaseResult {
   if (c.status === 'analysing') return 'analysing'
   if (c.status === 'error') return 'error'
   if (!c.analysis || c.status === 'new') return 'new'
+  if (isTriageOnly(c.analysis)) return 'triage'
   return studyClass(c.analysis) ?? 'not-assessable'
 }
 
