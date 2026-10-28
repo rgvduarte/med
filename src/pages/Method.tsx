@@ -119,8 +119,8 @@ export function Method() {
             do modelo (lado maior ≤ 1568 px).
           </li>
           <li>
-            <strong>Triagem.</strong> O modelo identifica a modalidade, a região anatómica, a incidência, a lateralidade e a qualidade técnica. Se a
-            imagem não for diagnóstica, diz isso explicitamente em vez de inventar achados.
+            <strong>Triagem.</strong> O modelo identifica a modalidade, a região anatómica, a incidência, a lateralidade e a qualidade técnica. É
+            instruído a indicar quando a imagem não é diagnóstica, em vez de inventar achados — o que não garante que o faça sempre.
           </li>
           <li>
             <strong>Pesquisa sistemática.</strong> Uma lista de verificação específica da região e da modalidade (ex.: alinhamento, osso, cartilagem e
@@ -137,8 +137,9 @@ export function Method() {
             recomendações, limitações) só pode citar a evidência recuperada, com marcadores <code>[id]</code> verificáveis.
           </li>
           <li>
-            <strong>Verificação.</strong> Uma passagem independente compara o relatório com os achados e com a evidência, e assinala afirmações sem
-            suporte, lateralidade inconsistente ou certezas exageradas.
+            <strong>Verificação.</strong> Uma segunda passagem pelo mesmo modelo, com instruções diferentes (não é um leitor independente; omitida
+            em modo local), compara o relatório com os achados e com a evidência, e assinala afirmações sem suporte, lateralidade inconsistente ou
+            certezas exageradas.
           </li>
         </ol>
 

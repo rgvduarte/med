@@ -200,8 +200,11 @@ textarea {
 }
 
 .main {
+  /* Containing block for absolutely positioned descendants (e.g. .sr-only), so they cannot grow the document. */
+  position: relative;
   min-height: 0;
   overflow: auto;
+  overscroll-behavior: contain;
 }
 
 .footer {
@@ -1222,6 +1225,9 @@ textarea {
   .footer {
     justify-content: center;
     padding: 4px var(--sp-3);
+  }
+  .footer-case {
+    display: none;
   }
   .page-head h1 {
     font-size: var(--fs-xl);

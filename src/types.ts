@@ -286,4 +286,6 @@ export interface Report {
   reviewedSections?: string[]
   /** Optional professional licence number («cédula profissional») of the validating clinician. */
   validatorLicence?: string
+  /** True when a finding was rejected, edited or restored after the draft was generated; cleared once «Achados» and «Conclusão» are reviewed again. */
+  reportStale?: boolean
 }

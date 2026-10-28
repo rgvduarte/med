@@ -3,7 +3,7 @@ import { BadgeCheck, ExternalLink, Info, Library, Notebook, TriangleAlert } from
 import type { Case, EvidenceItem, Finding, NotebookLmAnswer, Report } from '../../types'
 import { useSettings } from '../../store/settings'
 import { citationNumbers } from '../../lib/report/format'
-import { evidenceVerification, findingCode, findingsUsingEvidence } from '../../lib/report/state'
+import { evidenceVerification, findingCode, findingsUsingEvidence, isVerified } from '../../lib/report/state'
 import { evidenceTypeLabel } from '../../lib/labels-report'
 import { AiTag, FindingClassChip } from '../report/StatusChips'
 import '../../styles/report.css'
@@ -80,7 +80,8 @@ function VerifyBadge({ e }: { e: EvidenceItem }) {
 
 function EvidenceCard({ c, e, n, onSelectFinding }: { c: Case; e: EvidenceItem; n?: number; onSelectFinding?: (id: string) => void }) {
   const type = evidenceTypeLabel(e.evidenceType)
-  const unverified = evidenceVerification(e).kind === 'unverified'
+  const unverified = !isVerified(e)
+  const cited = n !== undefined
   return (
     <article className={`rp-ev ${unverified ? 'rp-ev-unverified' : ''}`}>
       <header className="rp-ev-head">
@@ -104,7 +105,17 @@ function EvidenceCard({ c, e, n, onSelectFinding }: { c: Case; e: EvidenceItem; 
           ))}
         </ul>
       )}
-      {unverified && <p className="rp-ev-note">Referência não verificada — excluída do relatório por omissão.</p>}
+      {unverified && (
+        <p className="rp-ev-note">
+          {cited
+            ? c.report?.status === 'validated'
+              ? 'Citada no relatório validado; assumida pelo médico que validou.'
+              : 'Citada no relatório; tem de ser assumida ou removida antes de validar.'
+            : e.source === 'notebooklm'
+              ? 'Texto de IA, não verificável — se o citar, terá de o assumir antes de validar.'
+              : 'Sem DOI/PMID verificado — se a citar, terá de a assumir antes de validar.'}
+        </p>
+      )}
       <UsedIn c={c} findings={findingsUsingEvidence(c, e)} places={reportPlaces(c.report, e.id)} onSelectFinding={onSelectFinding} />
       <footer className="rp-ev-foot">
         <span className={`rp-src-badge ${e.source === 'notebooklm' ? 'nlm' : 'kb'}`}>

@@ -10,18 +10,22 @@ import {
   LoaderCircle,
   Minus,
   RotateCcw,
+  ShieldAlert,
   Sparkles,
   TriangleAlert,
+  X,
 } from 'lucide-react'
 import type { Case, StageId, StageState } from '../../types'
 import { useCases } from '../../store/cases'
 import { isVlmConfigured, useSettings } from '../../store/settings'
 import { runAnalysis } from '../../lib/vlm/run'
+import { PIXEL_CONFIRM_ACTION, needsPixelConfirmation, pixelPrivacy } from '../../lib/report/state'
 import { href } from '../../lib/router'
 import { LATERALITY_LABEL, MODALITY_LABEL, REGION_LABEL } from '../../lib/labels'
 import { PIPELINE_ORDER, PIPELINE_STEP, PROVIDER_LABEL, STAGE_STATUS_LABEL, plural } from '../../lib/labels-findings'
 import { errorMessage, formatDateTime, formatDuration, nowIso } from '../../lib/util'
 import '../../styles/workspace.css'
+import '../../styles/report.css'
 
 // ---------------------------------------------------------------------------
 // Run controller: one handle per case, kept outside React so a run survives tab
@@ -67,8 +71,16 @@ function settle(caseId: string, failed: boolean) {
   }))
 }
 
+// Case waiting for the «no identifying text in the pixels» confirmation before images go to a non-local provider.
+const usePixelGate = create<{ caseId?: string }>(() => ({}))
+
 export function startAnalysis(caseId: string) {
   if (useRuns.getState().handles[caseId]) return
+  const c = useCases.getState().cases.find((x) => x.id === caseId)
+  if (c && needsPixelConfirmation(c, useSettings.getState().provider)) {
+    usePixelGate.setState({ caseId })
+    return
+  }
   useCases.getState().audit(caseId, { actor: 'user', action: 'Análise pedida' })
   patchRuns(caseId, { error: null, cancelled: false })
   let h: RunHandle
@@ -100,6 +112,88 @@ export function cancelAnalysis(caseId: string) {
   useCases.getState().audit(caseId, { actor: 'user', action: 'Análise cancelada' })
   if (h) h.cancel()
   else settle(caseId, false)
+}
+
+const PIXEL_CONFIRM_TEXT = 'Confirmo que as imagens não contêm dados identificativos (nomes, datas, números) gravados nos píxeis.'
+
+/**
+ * Asked once per case (recorded in the audit trail) before images are sent to an external provider,
+ * unless every series is DICOM declaring BurnedInAnnotation = NO. Mount once in the case workspace.
+ */
+export function PixelConfirmDialog({ c }: { c: Case }) {
+  const open = usePixelGate((s) => s.caseId === c.id)
+  const ref = useRef<HTMLDialogElement>(null)
+  const [checked, setChecked] = useState(false)
+  const burnedIn = pixelPrivacy(c).burnedIn
+
+  useEffect(() => {
+    const d = ref.current
+    if (!d) return
+    if (open && !d.open) d.showModal()
+    else if (!open && d.open) d.close()
+  }, [open])
+
+  const close = () => {
+    setChecked(false)
+    usePixelGate.setState({ caseId: undefined })
+  }
+  const confirm = () => {
+    if (!checked) return
+    const kinds = [...new Set(c.series.map((s) => (s.kind === 'dicom' ? `DICOM (BurnedInAnnotation ${s.burnedInAnnotation ?? 'não declarado'})` : s.kind === 'video' ? 'vídeo' : 'imagem')))]
+    useCases.getState().audit(c.id, {
+      actor: 'user',
+      action: PIXEL_CONFIRM_ACTION,
+      detail: `«${PIXEL_CONFIRM_TEXT}» Antes do envio para ${PROVIDER_LABEL.anthropic}; ${plural(c.series.length, 'série', 'séries')}: ${kinds.join(', ')}.`,
+    })
+    close()
+    startAnalysis(c.id)
+  }
+
+  return (
+    <dialog ref={ref} className="rp-dialog pp-pixel" aria-labelledby="pp-pixel-title" onClose={close} onCancel={close}>
+      <form
+        method="dialog"
+        onSubmit={(e) => {
+          e.preventDefault()
+          confirm()
+        }}
+      >
+        <header className="rp-dialog-head">
+          <h2 id="pp-pixel-title">
+            <ShieldAlert size={18} aria-hidden /> Antes de enviar as imagens
+          </h2>
+          <button type="button" className="btn btn-ghost btn-icon" aria-label="Fechar" onClick={close}>
+            <X size={18} />
+          </button>
+        </header>
+        <div className="rp-dialog-body">
+          <p className="rp-dialog-note">
+            A análise envia as imagens ao fornecedor externo configurado ({PROVIDER_LABEL.anthropic}). A anonimização remove as etiquetas DICOM, mas
+            não apaga texto gravado nos próprios píxeis — e as imagens PNG/JPEG e os vídeos não têm metadados que o excluam.
+          </p>
+          {burnedIn && (
+            <div className="callout callout-warn" role="alert">
+              <TriangleAlert size={16} aria-hidden />
+              <div>Pelo menos uma série DICOM declara anotações gravadas na imagem (BurnedInAnnotation = YES).</div>
+            </div>
+          )}
+          <label className="rp-checkbox rp-checkbox-strong">
+            <input type="checkbox" checked={checked} onChange={(e) => setChecked(e.target.checked)} />
+            <span>{PIXEL_CONFIRM_TEXT}</span>
+          </label>
+          <p className="rp-dialog-note">A confirmação fica no registo do caso e só é pedida uma vez.</p>
+        </div>
+        <footer className="rp-dialog-foot">
+          <button type="button" className="btn btn-ghost" onClick={close}>
+            Cancelar
+          </button>
+          <button type="submit" className="btn btn-primary" disabled={!checked}>
+            <Sparkles size={15} aria-hidden /> Enviar para análise
+          </button>
+        </footer>
+      </form>
+    </dialog>
+  )
 }
 
 export function useAnalysisRun(c: Case | undefined) {

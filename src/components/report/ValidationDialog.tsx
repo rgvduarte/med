@@ -52,8 +52,11 @@ export function ValidationDialog({ c, r, open, onClose, onDone }: { c: Case; r: 
   const pending = pendingFindings(c).length
   const conclusionReviewed = (r.reviewedSections ?? []).includes('impression')
   const unverified = citedEvidence(r, c.analysis?.evidence ?? []).filter((e) => !isVerified(e))
+  const nNotebook = unverified.filter((e) => e.source === 'notebooklm').length
+  const nNoId = unverified.length - nNotebook
   const refsOk = unverified.length === 0 || assumeRefs
-  const canValidate = pending === 0 && conclusionReviewed && refsOk && ack && name.trim().length >= 3 && !busy
+  const fresh = !r.reportStale
+  const canValidate = pending === 0 && conclusionReviewed && fresh && refsOk && ack && name.trim().length >= 3 && !busy
 
   const submit = async () => {
     if (!canValidate) return
@@ -104,14 +107,31 @@ export function ValidationDialog({ c, r, open, onClose, onDone }: { c: Case; r: 
             <Check ok={conclusionReviewed} detail={conclusionReviewed ? undefined : 'Aceite ou edite a secção «Conclusão» antes de validar.'}>
               Conclusão revista
             </Check>
-            <Check ok={refsOk} detail={unverified.length ? `${unverified.length} referência(s) citada(s) sem DOI/PMID verificado.` : undefined}>
+            <Check ok={fresh} detail={fresh ? undefined : 'Um achado foi rejeitado ou alterado depois de o rascunho ser gerado. Reveja «Achados» e «Conclusão».'}>
+              Relatório revisto após as decisões sobre os achados
+            </Check>
+            <Check
+              ok={refsOk}
+              detail={
+                unverified.length
+                  ? [
+                      nNoId ? `${nNoId} referência(s) citada(s) sem DOI/PMID verificado` : '',
+                      nNotebook ? `${nNotebook} resposta(s) NotebookLM citada(s) (texto de IA, não verificável)` : '',
+                    ]
+                      .filter(Boolean)
+                      .join(' · ') + '.'
+                  : undefined
+              }
+            >
               Referências não verificadas removidas ou assumidas
             </Check>
           </ul>
           {unverified.length > 0 && (
             <label className="rp-checkbox">
               <input type="checkbox" checked={assumeRefs} onChange={(e) => setAssumeRefs(e.target.checked)} />
-              <span>Assumo a responsabilidade pelas referências não verificadas citadas no texto.</span>
+              <span>
+                Assumo a responsabilidade pelas referências não verificadas{nNotebook ? ' e pelas respostas NotebookLM' : ''} citadas no texto.
+              </span>
             </label>
           )}
 

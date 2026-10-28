@@ -14,6 +14,7 @@ import {
   Minimize2,
   ScanSearch,
   ScrollText,
+  ShieldAlert,
   ShieldCheck,
 } from 'lucide-react'
 import type { Case } from '../types'
@@ -21,13 +22,15 @@ import { useCase, useCases } from '../store/cases'
 import { href } from '../lib/router'
 import { LATERALITY_LABEL, MODALITY_LABEL, REGION_LABEL } from '../lib/labels'
 import { LATERALITY_SHORT, MODALITY_SHORT, ageBand, plural } from '../lib/labels-findings'
+import { CASE_RESULT_LABEL } from '../lib/labels-report'
+import { pixelPrivacy } from '../lib/report/state'
 import { formatDate, formatDateTime, formatTime } from '../lib/util'
 import { Viewer, type FocusRequest } from '../components/viewer/Viewer'
 import { SeriesPanel } from '../components/viewer/SeriesPanel'
 import { ClassChip } from '../components/viewer/ClassChip'
-import { findingCodes, isLocked, navigableFindings, primaryLocation, reviewProgress, studyClass } from '../components/viewer/findingModel'
+import { findingCodes, isLocked, navigableFindings, orderedRange, primaryLocation, reviewProgress, studyClass } from '../components/viewer/findingModel'
 import { FindingsPanel, type FindingActionRequest } from '../components/analysis/FindingsPanel'
-import { AnalyseButton, PipelinePanel, pipelineProgress, useAnalysisRun } from '../components/analysis/PipelinePanel'
+import { AnalyseButton, PipelinePanel, PixelConfirmDialog, pipelineProgress, useAnalysisRun } from '../components/analysis/PipelinePanel'
 import { EvidencePanel } from '../components/analysis/EvidencePanel'
 import { ReportPanel } from '../components/report/ReportPanel'
 import '../styles/workspace.css'
@@ -79,7 +82,7 @@ function CaseInfo({ c }: { c: Case }) {
           <dd>{c.priority === 'urgent' ? 'Urgente' : 'Normal'}</dd>
         </div>
         <div>
-          <dt>Criado</dt>
+          <dt>Carregado (não é a data do estudo)</dt>
           <dd>{formatDateTime(c.createdAt)}</dd>
         </div>
         <div>
@@ -103,6 +106,15 @@ function CaseInfo({ c }: { c: Case }) {
               Anonimização: {plural(s.removedTags.length, 'etiqueta identificativa removida', 'etiquetas identificativas removidas')}.
             </div>
           )}
+          <div className="subtle" style={{ marginTop: 4 }}>
+            {s.kind !== 'dicom'
+              ? 'Texto gravado na imagem: não verificável (sem metadados DICOM).'
+              : s.burnedInAnnotation === 'NO'
+                ? 'Texto gravado na imagem: declarado ausente (BurnedInAnnotation = NO).'
+                : s.burnedInAnnotation === 'YES'
+                  ? 'Texto gravado na imagem: declarado presente (BurnedInAnnotation = YES).'
+                  : 'Texto gravado na imagem: não declarado no DICOM.'}
+          </div>
         </div>
       ))}
       {c.teachingPoint && (
@@ -158,8 +170,10 @@ function CaseHeader({ c }: { c: Case }) {
   const s0 = c.series[0]
   const modalities = [...new Set(c.series.map((s) => MODALITY_SHORT[s.modality]))].join(' + ')
   const region = s0 ? `${REGION_LABEL[s0.region]}${s0.laterality ? ` ${LATERALITY_SHORT[s0.laterality]}` : ''}`.trim() : ''
-  const meta = [`${c.sex ?? '—'} · ${ageBand(c.ageYears)}`, region, modalities, formatDate(c.createdAt)].filter(Boolean).join(' · ')
+  const meta = [`${c.sex ?? '—'} · ${ageBand(c.ageYears)}`, region, modalities, `carregado ${formatDate(c.createdAt)}`].filter(Boolean).join(' · ')
   const removed = c.series.reduce((n, s) => n + (s.removedTags?.length ?? 0), 0)
+  // «Anonimizado» only when DICOM metadata vouches for the pixels too; tag removal alone does not cover burned-in text.
+  const privacy = pixelPrivacy(c)
   const stages = c.analysis?.stages ?? []
   const done = stages.filter((s) => s.status === 'done' || s.status === 'skipped').length
   const progress = pipelineProgress(c)
@@ -186,12 +200,22 @@ function CaseHeader({ c }: { c: Case }) {
       <div className="wsx-head-chips">
         {c.priority === 'urgent' && <span className="badge badge-critical">Urgente</span>}
         {c.isDemo && <span className="badge badge-info wsx-hide-sm">Demonstração</span>}
-        <span
-          className="wsx-chip is-ok wsx-hide-sm"
-          title={`Identificador pseudonimizado${removed ? `; ${plural(removed, 'etiqueta DICOM identificativa removida', 'etiquetas DICOM identificativas removidas')}` : ''}. Confirme que a imagem não tem texto identificativo gravado.`}
-        >
-          <ShieldCheck size={13} aria-hidden /> Anonimizado
-        </span>
+        {privacy.clear ? (
+          <span
+            className="wsx-chip is-ok wsx-hide-sm"
+            title={`Identificador pseudonimizado; ${plural(removed, 'etiqueta DICOM identificativa removida', 'etiquetas DICOM identificativas removidas')}; todas as séries DICOM declaram não ter texto gravado na imagem (BurnedInAnnotation = NO).`}
+          >
+            <ShieldCheck size={13} aria-hidden /> Anonimizado
+          </span>
+        ) : (
+          <span
+            className="wsx-chip is-warn"
+            title={`Identificador pseudonimizado${removed ? `; ${plural(removed, 'etiqueta DICOM identificativa removida', 'etiquetas DICOM identificativas removidas')}` : ''}. Os píxeis não foram verificados: imagens PNG/JPEG, vídeo ou DICOM sem BurnedInAnnotation = NO podem ter nomes, datas ou números gravados.`}
+          >
+            <ShieldAlert size={13} aria-hidden />
+            <span className="wsx-chip-long">Verifique texto gravado na imagem</span>
+          </span>
+        )}
         {c.report?.status === 'validated' ? (
           <span className="wsx-chip is-ok">
             <Lock size={12} aria-hidden /> Validado
@@ -280,7 +304,7 @@ function Workspace({ id }: { id: string }) {
       const loc = primaryLocation(f, c.series)
       if (source !== 'viewer' && loc) {
         setSeriesId(loc.seriesId)
-        setFrameIndex(loc.bbox ? loc.frameIndex : (f.frameRange?.[0] ?? loc.frameIndex))
+        setFrameIndex(loc.bbox ? loc.frameIndex : f.frameRange ? orderedRange(f.frameRange)[0] : loc.frameIndex)
       }
       nonce.current += 1
       setFocus({ id: fid, nonce: nonce.current, zoom: source !== 'viewer' })
@@ -379,6 +403,7 @@ function Workspace({ id }: { id: string }) {
   }
 
   const sc = studyClass(c.analysis)
+  const burnedIn = pixelPrivacy(c).burnedIn
   const { pending } = reviewProgress(findings)
   const nEvidence = (c.analysis?.evidence.length ?? 0) + (c.analysis?.notebookLm.length ?? 0)
   const tabIcon: Record<Tab, ReactNode> = {
@@ -405,8 +430,18 @@ function Workspace({ id }: { id: string }) {
           : 'Sem achados para rever'
 
   return (
-    <div className={`wsx ${mobile ? 'is-mobile' : ''} sheet-${sheet} ${c.series.length > 1 ? 'has-many' : 'has-one'}`}>
+    <div className={`wsx ${mobile ? 'is-mobile' : ''} sheet-${sheet} ${c.series.length > 1 ? 'has-many' : 'has-one'} ${burnedIn ? 'has-banner' : ''}`}>
       <CaseHeader c={c} />
+      {burnedIn && (
+        <div className="callout callout-warn wsx-banner" role="note">
+          <ShieldAlert size={16} aria-hidden />
+          <div>
+            <strong>Texto gravado na imagem.</strong> Pelo menos uma série DICOM declara anotações gravadas nos píxeis (BurnedInAnnotation = YES), que
+            podem incluir nomes, datas ou números. A anonimização das etiquetas não as apaga.
+          </div>
+        </div>
+      )}
+      <PixelConfirmDialog c={c} />
       <div className="wsx-body">
         <aside className="wsx-series">
           <SeriesPanel
@@ -454,14 +489,14 @@ function Workspace({ id }: { id: string }) {
                   aria-expanded={sheet !== 'min'}
                   aria-controls="wsx-sheet"
                   onClick={onHandleClick}
-                  aria-label={`${sheet === 'min' ? 'Abrir' : 'Recolher'} painel: ${TAB_LABEL[tab]}. ${handleText}`}
+                  aria-label={`${sheet === 'min' ? 'Abrir' : 'Recolher'} painel: ${TAB_LABEL[tab]}. ${sc && !running ? `Resultado da IA: ${CASE_RESULT_LABEL[sc]}. ` : ''}${handleText}`}
                 >
                   {running ? (
                     <span className="wsx-chip is-run">
                       <LoaderCircle size={12} className="spin" aria-hidden /> IA
                     </span>
                   ) : sc ? (
-                    <ClassChip cls={sc} small />
+                    <ClassChip cls={sc} small ai />
                   ) : (
                     <span className="badge badge-neutral">Sem IA</span>
                   )}

@@ -21,7 +21,7 @@ Esta pasta permite usar o MSK·VLM **sem enviar imagens para a Internet**. O mod
 | **Linux** | `./local-ai/start.sh` (ou Docker Compose, abaixo) |
 | **Docker** (Linux/Windows, GPU NVIDIA) | `cd local-ai && docker compose -f docker-compose.yml -f docker-compose.nvidia.yml up -d` → http://localhost:8080 |
 
-Depois, na aplicação: **Definições → Servidor local compatível OpenAI**. Os valores por omissão (URL base
+Depois, na aplicação: **Definições → MedGemma local / Codespaces**. Os valores por omissão (URL base
 `http://localhost:11434/v1`, modelo `medgemma`) já estão certos. Ver a [secção 5](#5-definições-da-aplicação).
 
 ---
@@ -168,7 +168,7 @@ Para programadores com Node.js 22: `npm ci && npm run build && npx vite preview 
 
 | Campo | Valor |
 |---|---|
-| Fornecedor | **Servidor local compatível OpenAI (ex.: MedGemma)** |
+| Fornecedor | **MedGemma local / Codespaces** |
 | URL base (compatível OpenAI) | `http://localhost:11434/v1` |
 | Modelo | `medgemma` |
 

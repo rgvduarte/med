@@ -1,7 +1,7 @@
 import { createPortal } from 'react-dom'
 import type { Case, Report } from '../../types'
-import { aiDeclarationFor, citationNumbers, citedEvidence, numberCitations, reportStrings, studyLine } from '../../lib/report/format'
-import { evidenceVerification, reportState } from '../../lib/report/state'
+import { aiDeclarationFor, citationNumbers, citedEvidence, numberCitations, reportStrings, studyLine, verificationNote } from '../../lib/report/format'
+import { reportState } from '../../lib/report/state'
 import { REPORT_STATE_LABEL } from '../../lib/labels-report'
 import { formatDate, formatDateTime } from '../../lib/util'
 
@@ -41,7 +41,7 @@ export function ReportPrint({ c, r }: { c: Case; r: Report }) {
           <tr>
             <th>Estudo</th>
             <td>{studyLine(c, r.language)}</td>
-            <th>{t.studyDate}</th>
+            <th>{t.uploadDate}</th>
             <td>{formatDate(c.createdAt)}</td>
           </tr>
           <tr>
@@ -93,13 +93,13 @@ export function ReportPrint({ c, r }: { c: Case; r: Report }) {
           <h2>{t.references}</h2>
           <ol className="rp-print-refs">
             {refs.map((e) => {
-              const v = evidenceVerification(e)
+              const note = verificationNote(e, r)
               return (
                 <li key={e.id}>
                   {e.citation}
                   {e.doi ? ` doi:${e.doi}` : ''}
                   {e.pmid ? ` PMID ${e.pmid}` : ''} <span className="rp-print-src">[{e.source === 'notebooklm' ? 'NotebookLM' : 'Base curada'}]</span>
-                  {v.kind === 'unverified' && <span className="rp-print-src"> ({t.unverified})</span>}
+                  {note && <span className="rp-print-src"> ({note})</span>}
                 </li>
               )
             })}

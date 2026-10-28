@@ -18,6 +18,7 @@ function BrandMark() {
 export function Shell({ route, children }: { route: Route; children: ReactNode }) {
   const s = useSettings()
   const vlmOk = isVlmConfigured(s)
+  const vlmLabel = vlmOk ? (s.provider === 'anthropic' ? 'Claude' : s.provider === 'browser' ? 'IA no navegador' : 'MedGemma local') : 'VLM não configurado'
   const nlm = !s.mcpEnabled
     ? { dot: '', label: 'NotebookLM inativo' }
     : !isNotebookConfigured(s)
@@ -61,9 +62,9 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
           ))}
         </nav>
         <div className="topbar-right">
-          <a className="conn-pill" href={href({ name: 'settings' })} title="Estado do modelo de visão-linguagem">
+          <a className="conn-pill" href={href({ name: 'settings' })} title="Estado do modelo de visão-linguagem" aria-label={`Modelo: ${vlmLabel}`}>
             <span className={`dot ${vlmOk ? 'ok' : 'warn'}`} />
-            <span className="label">{vlmOk ? (s.provider === 'anthropic' ? 'Claude' : s.provider === 'browser' ? 'IA no navegador' : 'MedGemma local') : 'VLM não configurado'}</span>
+            <span className="label">{vlmLabel}</span>
           </a>
           <a className="conn-pill" href={href({ name: 'settings' })} title={s.mcpLastCheck ? `NotebookLM: ${s.mcpLastCheck.summary}` : 'Ligação ao NotebookLM via MCP'} aria-label={nlm.label}>
             <span className={`dot ${nlm.dot}`} />
@@ -85,11 +86,14 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
         ))}
       </nav>
 
-      <footer className="footer">
-        <span>
-          Responsável clínico: <strong style={{ color: 'var(--text-2)' }}>{RESPONSIBLE.name}</strong>
-          <span className="footer-long"> — {RESPONSIBLE.specialty}</span>
-        </span>
+      {/* On a case the named credit would sit right under the AI result: show only the privacy note there (hidden on phones). */}
+      <footer className={`footer ${route.name === 'case' ? 'footer-case' : ''}`}>
+        {route.name !== 'case' && (
+          <span>
+            Responsável clínico da plataforma (não revê casos): <strong style={{ color: 'var(--text-2)' }}>{RESPONSIBLE.name}</strong>
+            <span className="footer-long"> — {RESPONSIBLE.specialty}</span>
+          </span>
+        )}
         <span className="footer-long">As imagens são processadas no seu navegador. Só são enviadas ao fornecedor de IA que configurar, quando pedir uma análise.</span>
       </footer>
     </div>

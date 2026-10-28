@@ -1,5 +1,5 @@
 // Pure helpers shared by the viewer, the findings panel and the workspace.
-import type { AnalysisResult, Case, Finding, FindingClass, FindingLocation, Series } from '../../types'
+import type { Case, Finding, FindingLocation, Series } from '../../types'
 
 /** Stable display codes: F1…Fn over priority then other findings (checklist items get none). */
 export function findingCodes(findings: Finding[]): Map<string, string> {
@@ -29,18 +29,8 @@ export function primaryLocation(f: Finding, series: Series[]): FindingLocation |
   return valid.find((l) => l.bbox) ?? valid[0]
 }
 
-/** Study-level AI result, taken from the priority group only (Annalise-style «Sem achados prioritários»). */
-export function studyClass(a: AnalysisResult | undefined): FindingClass | undefined {
-  if (!a) return undefined
-  const ai = a.findings.filter((f) => f.origin === 'ai' && f.group === 'priority')
-  if (ai.some((f) => f.cls === 'positive')) return 'positive'
-  if (ai.some((f) => f.cls === 'doubtful')) return 'doubtful'
-  if (a.triage?.imageQuality === 'non-diagnostic' || ai.some((f) => f.cls === 'not-assessable')) return 'not-assessable'
-  if (!a.finishedAt && a.findings.length === 0) return undefined
-  // Never call a study negative unless the systematic search stage completed.
-  if (!a.stages.some((s) => s.id === 'findings' && s.status === 'done')) return a.finishedAt ? 'not-assessable' : undefined
-  return 'negative'
-}
+/** Study-level AI result: one shared rule with the worklist (see lib/report/state). */
+export { studyClass } from '../../lib/report/state'
 
 export function reviewProgress(findings: Finding[]) {
   const reviewable = findings.filter((f) => f.group !== 'checklist')
@@ -62,6 +52,19 @@ export function seriesAiStatus(c: Case, seriesId: string): { kind: 'positive' | 
   const dub = here.filter((f) => f.cls === 'doubtful').length
   if (dub) return { kind: 'doubtful', count: dub }
   return { kind: 'negative', count: 0 }
+}
+
+/** A finding's frame range in ascending order (the model may emit [last, first]). */
+export function orderedRange(r: [number, number]): [number, number] {
+  return r[0] <= r[1] ? r : [r[1], r[0]]
+}
+
+/** Range the cine player can loop over: a single-frame (or empty) range is not a loop. */
+export function playableLoop(r: [number, number] | undefined, frameCount: number): [number, number] | undefined {
+  if (!r || frameCount < 2) return undefined
+  const last = frameCount - 1
+  const [lo, hi] = orderedRange(r).map((i) => Math.min(last, Math.max(0, i))) as [number, number]
+  return lo < hi ? [lo, hi] : undefined
 }
 
 /** Normalised position (0..1) of a frame on the cine timeline. */
