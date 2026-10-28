@@ -4,7 +4,7 @@ import { useSettings, type Effort, type Provider } from '../store/settings'
 import { NotebookLmCard } from '../components/settings/NotebookLmCard'
 import { UserCard } from '../components/settings/UserCard'
 import { BrowserModelInfo } from '../components/settings/BrowserModelInfo'
-import '../styles/report.css'
+import { GlassSwitch } from '../components/ui/glass'
 
 const SECTIONS = [
   { id: 'modelo', label: 'Modelo', icon: <Cpu size={14} aria-hidden /> },
@@ -99,8 +99,8 @@ export function Settings() {
                 nesta sessão do separador.
               </small>
             </label>
-            <label className="rp-checkbox" style={{ marginBottom: 'var(--sp-4)' }}>
-              <input type="checkbox" checked={s.rememberKey} onChange={(e) => s.update({ rememberKey: e.target.checked })} />
+            <label className="rp-switch rp-switch-soft">
+              <GlassSwitch checked={s.rememberKey} onCheckedChange={(v) => s.update({ rememberKey: v })} />
               <span>Lembrar a chave neste dispositivo (localStorage). Use apenas em computadores pessoais.</span>
             </label>
             <div className="grid-2">

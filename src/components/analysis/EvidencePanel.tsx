@@ -6,7 +6,6 @@ import { citationNumbers } from '../../lib/report/format'
 import { evidenceVerification, findingCode, findingsUsingEvidence, isVerified } from '../../lib/report/state'
 import { evidenceTypeLabel } from '../../lib/labels-report'
 import { AiTag, FindingClassChip } from '../report/StatusChips'
-import '../../styles/report.css'
 
 type Mode = 'all' | 'by-finding'
 const MODE_KEY = 'mskvlm.evidence.mode'

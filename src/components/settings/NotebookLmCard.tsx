@@ -3,7 +3,7 @@ import { Check, Copy, Eye, EyeOff, KeyRound, LockKeyhole, Notebook, Plug, Refres
 import { generateBridgeKey, isNotebookConfigured, parseNotebookId, useSettings, type McpServerKind } from '../../store/settings'
 import { buildBridgeCommand, isSafariBrowser, resetMcpSession } from '../../lib/evidence/mcp'
 import { McpConnectionTest } from './McpConnectionTest'
-import '../../styles/report.css'
+import { GlassSwitch } from '../ui/glass'
 
 function CopyButton({ text, label, compact = false, caption = 'Copiar' }: { text: string; label: string; compact?: boolean; caption?: string }) {
   const [done, setDone] = useState(false)
@@ -103,7 +103,7 @@ export function NotebookLmCard() {
       )}
 
       <label className="rp-switch">
-        <input type="checkbox" checked={s.mcpEnabled} onChange={(e) => change({ mcpEnabled: e.target.checked })} />
+        <GlassSwitch checked={s.mcpEnabled} onCheckedChange={(v) => change({ mcpEnabled: v })} />
         <span>Usar NotebookLM durante a análise</span>
       </label>
 

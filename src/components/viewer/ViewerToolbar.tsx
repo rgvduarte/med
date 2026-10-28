@@ -23,6 +23,7 @@ import {
   ZoomIn,
 } from 'lucide-react'
 import { Popover } from './Popover'
+import { GlassTooltip, GlassTooltipContent, GlassTooltipTrigger } from '../ui/glass'
 
 export type Tool = 'pan' | 'zoom' | 'wl' | 'length' | 'angle'
 
@@ -76,17 +77,17 @@ function ToolBtn({
   className?: string
 }) {
   return (
-    <button
-      type="button"
-      className={`vt-btn ${className}`}
-      aria-pressed={pressed}
-      aria-label={label}
-      aria-keyshortcuts={k}
-      title={k ? `${label} (${k})` : label}
-      onClick={onClick}
-    >
-      {icon}
-    </button>
+    <GlassTooltip>
+      <GlassTooltipTrigger asChild>
+        <button type="button" className={`vt-btn ${className}`} aria-pressed={pressed} aria-label={label} aria-keyshortcuts={k} onClick={onClick}>
+          {icon}
+        </button>
+      </GlassTooltipTrigger>
+      <GlassTooltipContent side="bottom">
+        {label}
+        {k && <kbd className="kbd ml-2">{k}</kbd>}
+      </GlassTooltipContent>
+    </GlassTooltip>
   )
 }
 

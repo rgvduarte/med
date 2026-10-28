@@ -2,7 +2,6 @@ import { BadgeCheck, CircleCheckBig, CircleDashed, CircleMinus, CircleQuestionMa
 import type { ReactNode } from 'react'
 import type { FindingClass } from '../../types'
 import { CASE_RESULT_HINT, CASE_RESULT_LABEL, FINDING_CLASS_LABEL, REPORT_STATE_HINT, REPORT_STATE_LABEL, type CaseResult, type ReportState } from '../../lib/labels-report'
-import '../../styles/report.css'
 
 const RESULT_ICON: Record<CaseResult, ReactNode> = {
   positive: <Square size={12} fill="currentColor" strokeWidth={2} aria-hidden />,

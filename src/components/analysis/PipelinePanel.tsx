@@ -24,8 +24,6 @@ import { href } from '../../lib/router'
 import { LATERALITY_LABEL, MODALITY_LABEL, REGION_LABEL } from '../../lib/labels'
 import { PIPELINE_ORDER, PIPELINE_STEP, PROVIDER_LABEL, STAGE_STATUS_LABEL, plural } from '../../lib/labels-findings'
 import { errorMessage, formatDateTime, formatDuration, nowIso } from '../../lib/util'
-import '../../styles/workspace.css'
-import '../../styles/report.css'
 
 // ---------------------------------------------------------------------------
 // Run controller: one handle per case, kept outside React so a run survives tab

@@ -1,44 +1,53 @@
-/* Design tokens — dark clinical theme (PACS conventions) with a light print/report theme. */
-@import '@fontsource-variable/inter';
-@import '@fontsource/ibm-plex-mono/400.css';
-@import '@fontsource/ibm-plex-mono/500.css';
+/* Design tokens — liquid glass (Ein UI, MIT) over a dark navy field, with a light print/report theme.
+   Surfaces are translucent white over the gradient background; the image viewer stays pure black. */
 
 :root {
-  /* Surfaces */
-  --bg: #0a0e13;
-  --surface-1: #10161e;
-  --surface-2: #151d27;
-  --surface-3: #1c2632;
-  --surface-hover: #223040;
+  /* Surfaces: white glass at increasing opacity (Ein UI: bg-white/10, hover bg-white/20) */
+  --bg: #060912;
+  --surface-1: rgba(255, 255, 255, 0.055);
+  --surface-2: rgba(255, 255, 255, 0.075);
+  --surface-3: rgba(255, 255, 255, 0.11);
+  --surface-hover: rgba(255, 255, 255, 0.16);
+  /* Floating layers (menus, popovers, tooltips) sit over content and must hide it: near-opaque + blur. */
+  --surface-pop: rgba(16, 22, 36, 0.86);
   --viewer-bg: #000000;
-  --border: #243140;
-  --border-strong: #33455a;
+  --border: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.22);
 
-  /* Text */
-  --text: #e7edf4;
-  --text-2: #aab7c5;
-  --text-3: #7d8b9b;
-  --text-inverse: #0a0e13;
+  /* Glass recipe */
+  --glass-blur: blur(24px) saturate(140%);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+  --glass-shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.2);
+  --glass-highlight: linear-gradient(to bottom, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0) 60%);
+  --glass-inset: inset 0 1px 1px rgba(255, 255, 255, 0.1);
 
-  /* Accent */
-  --accent: #3fb8f5;
-  --accent-strong: #1c9fe0;
-  --accent-soft: rgba(63, 184, 245, 0.14);
-  --focus-ring: 0 0 0 2px #0a0e13, 0 0 0 4px #3fb8f5;
+  /* Text: white at decreasing opacity (Ein UI: text-white, text-white/70, text-white/60) */
+  --text: #f5f7fb;
+  --text-2: rgba(240, 244, 250, 0.74);
+  --text-3: rgba(232, 238, 248, 0.56);
+  --text-inverse: #060912;
 
-  /* Clinical status (AA on --surface-1) */
-  --critical: #ff6b6b;
-  --critical-soft: rgba(255, 107, 107, 0.14);
-  --significant: #ffa94d;
-  --significant-soft: rgba(255, 169, 77, 0.14);
-  --minor: #ffd43b;
-  --minor-soft: rgba(255, 212, 59, 0.12);
-  --normal: #51cf66;
-  --normal-soft: rgba(81, 207, 102, 0.12);
-  --info: #8fb3ff;
-  --info-soft: rgba(143, 179, 255, 0.12);
-  --ai: #b197fc;
-  --ai-soft: rgba(177, 151, 252, 0.14);
+  /* Accent — Ein UI cyan → blue → purple */
+  --accent: #22d3ee;
+  --accent-strong: #06b6d4;
+  --accent-soft: rgba(34, 211, 238, 0.14);
+  --accent-grad: linear-gradient(90deg, rgba(6, 182, 212, 0.85), rgba(59, 130, 246, 0.85), rgba(168, 85, 247, 0.85));
+  --accent-glow: linear-gradient(90deg, rgba(6, 182, 212, 0.3), rgba(59, 130, 246, 0.3), rgba(168, 85, 247, 0.3));
+  --focus-ring: 0 0 0 2px rgba(6, 9, 18, 0.9), 0 0 0 4px rgba(34, 211, 238, 0.85);
+
+  /* Clinical status (AA on the glass surfaces) — semantics unchanged */
+  --critical: #ff7a7a;
+  --critical-soft: rgba(239, 68, 68, 0.2);
+  --significant: #ffaf5f;
+  --significant-soft: rgba(245, 158, 11, 0.18);
+  --minor: #ffd84d;
+  --minor-soft: rgba(250, 204, 21, 0.15);
+  --normal: #4ade80;
+  --normal-soft: rgba(16, 185, 129, 0.18);
+  --info: #93b4ff;
+  --info-soft: rgba(96, 165, 250, 0.16);
+  --ai: #c4a6ff;
+  --ai-soft: rgba(168, 85, 247, 0.18);
 
   /* Overlay colours on images (high contrast on greyscale) */
   --overlay-critical: #ff4d4f;
@@ -48,30 +57,31 @@
   --overlay-measure: #40e0ff;
   --overlay-text: #ffe58f;
 
-  /* Typography */
-  --font-sans: 'Inter Variable', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  /* Typography — Geist (Ein UI) */
+  --font-sans: 'Geist Variable', Geist, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Geist Mono Variable', 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
   --fs-xs: 11px;
   --fs-sm: 12.5px;
   --fs-md: 14px;
   --fs-lg: 16px;
   --fs-xl: 20px;
-  --fs-2xl: 26px;
+  --fs-2xl: 28px;
 
-  /* Spacing / shape */
+  /* Spacing / shape — Ein UI radii: controls rounded-xl, cards rounded-2xl */
   --sp-1: 4px;
   --sp-2: 8px;
   --sp-3: 12px;
   --sp-4: 16px;
   --sp-5: 24px;
   --sp-6: 32px;
-  --radius-sm: 4px;
-  --radius: 6px;
-  --radius-lg: 10px;
-  --shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
 
-  --topbar-h: 52px;
-  --banner-h: 28px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --topbar-h: 56px;
+  --banner-h: 30px;
 
   color-scheme: dark;
 }
@@ -96,4 +106,16 @@
   --info: #1f5fbf;
   --ai: #6741d9;
   color-scheme: light;
+}
+
+/* Users who ask the OS for less transparency get solid surfaces (same hierarchy, no see-through). */
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --surface-1: #0f1420;
+    --surface-2: #141a28;
+    --surface-3: #1b2333;
+    --surface-hover: #232d40;
+    --surface-pop: #141a28;
+    --glass-blur: none;
+  }
 }

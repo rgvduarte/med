@@ -41,7 +41,7 @@ import { ClassChip, ClassGlyph } from '../viewer/ClassChip'
 import { fmtClockShort } from '../viewer/format'
 import { isLocked, orderedRange, reviewProgress, studyClass } from '../viewer/findingModel'
 import { AnalyseButton, useAnalysisRun } from './PipelinePanel'
-import '../../styles/workspace.css'
+import { GlassProgress } from '../ui/glass'
 
 export interface FindingActionRequest {
   id: string
@@ -579,9 +579,7 @@ export function FindingsPanel({ c, codes, selectedId, hoveredId, onSelect, onHov
             <span>
               Revistos {reviewed}/{total}
             </span>
-            <span className="fp-progress-bar" role="progressbar" aria-label="Achados revistos" aria-valuemin={0} aria-valuemax={total} aria-valuenow={reviewed}>
-              <i style={{ width: `${(reviewed / total) * 100}%` }} />
-            </span>
+            <GlassProgress wrapperClassName="flex-1" className="h-2" value={reviewed} max={total} aria-label="Achados revistos" getValueLabel={(v, m) => `${v} de ${m}`} />
           </div>
         )}
         <p className="fp-summary-meta">

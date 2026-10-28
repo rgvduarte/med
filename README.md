@@ -101,5 +101,6 @@ Para ver a interface com dados de exemplo em desenvolvimento, abra `http://local
 ## Licenças
 
 - **Código:** deste repositório.
+- **Interface:** componentes de vidro adaptados do [Ein UI](https://github.com/einui/einui) (MIT) — ver [`src/components/ui/glass/`](src/components/ui/glass/).
 - **Imagens de demonstração:** licenças abertas, com atribuição na própria app.
 - **Modelos:** cada um tem a sua licença — MedGemma (HAI-DEF), Qwen3.5 (Apache-2.0).

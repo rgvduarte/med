@@ -922,14 +922,6 @@
   text-transform: uppercase;
   color: var(--text-3);
 }
-.rp-filter .select {
-  min-height: 32px;
-  padding: 4px 8px;
-}
-.rp-filter.active .select {
-  border-color: var(--accent);
-  background: var(--accent-soft);
-}
 .rp-sort {
   margin-left: auto;
 }

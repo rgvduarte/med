@@ -1,8 +1,8 @@
-import { BookOpen, Brain, CircleCheckBig, CircleX, ExternalLink, Film, Gauge, Library, LockKeyhole, ScanLine, ShieldAlert, Stethoscope, Target } from 'lucide-react'
+import { BookOpen, Brain, CircleCheckBig, CircleX, ExternalLink, FileText, Film, Gauge, HardDrive, Library, ListChecks, LockKeyhole, ScanLine, ShieldAlert, ShieldCheck, Stethoscope, Target } from 'lucide-react'
 import { RESPONSIBLE } from '../data/responsible'
 import { KB } from '../lib/evidence/kb'
 import { EvidenceIndex } from '../components/EvidenceIndex'
-import '../styles/report.css'
+import { GlassTimeline } from '../components/ui/glass'
 
 const TOC = [
   { id: 'm-uso', label: 'Utilização prevista' },
@@ -112,36 +112,81 @@ export function Method() {
         <h2 id="m-pipeline" className="row" style={{ gap: 8 }}>
           <ScanLine size={20} /> Pipeline de análise
         </h2>
-        <ol className="steps">
-          <li>
-            <strong>Pré-processamento local.</strong> Os ficheiros são abertos no navegador. Os DICOM são lidos e anonimizados: só atributos não
-            identificáveis (modalidade, região, incidência, espaçamento de píxeis) são mantidos. As imagens são redimensionadas para o tamanho ótimo
-            do modelo (lado maior ≤ 1568 px).
-          </li>
-          <li>
-            <strong>Triagem.</strong> O modelo identifica a modalidade, a região anatómica, a incidência, a lateralidade e a qualidade técnica. É
-            instruído a indicar quando a imagem não é diagnóstica, em vez de inventar achados — o que não garante que o faça sempre.
-          </li>
-          <li>
-            <strong>Pesquisa sistemática.</strong> Uma lista de verificação específica da região e da modalidade (ex.: alinhamento, osso, cartilagem e
-            articulação, partes moles; ou ecotextura tendinosa, derrame e achados dinâmicos na ecografia) obriga a uma leitura completa. Cada achado
-            sai em formato estruturado, com localização aproximada na imagem, grau de certeza e classificação quando aplicável (ex.: Garden,
-            Kellgren-Lawrence, Weber).
-          </li>
-          <li>
-            <strong>Recuperação de evidência.</strong> Para cada achado, a plataforma procura na base de evidência curada (artigos verificados no
-            PubMed) e, se ligado, pergunta ao seu caderno <strong>NotebookLM</strong> através de MCP.
-          </li>
-          <li>
-            <strong>Síntese do relatório.</strong> O relatório estruturado (informação clínica, técnica, achados por região, conclusão,
-            recomendações, limitações) só pode citar a evidência recuperada, com marcadores <code>[id]</code> verificáveis.
-          </li>
-          <li>
-            <strong>Verificação.</strong> Uma segunda passagem pelo mesmo modelo, com instruções diferentes (não é um leitor independente; omitida
-            em modo local), compara o relatório com os achados e com a evidência, e assinala afirmações sem suporte, lateralidade inconsistente ou
-            certezas exageradas.
-          </li>
-        </ol>
+        <GlassTimeline
+          className="my-4"
+          accent
+          items={[
+            {
+              id: 'preprocess',
+              icon: <HardDrive aria-hidden />,
+              title: 'Pré-processamento local',
+              description: (
+                <>
+                  Os ficheiros são abertos no navegador. Os DICOM são lidos e anonimizados: só atributos não identificáveis (modalidade, região,
+                  incidência, espaçamento de píxeis) são mantidos. As imagens são redimensionadas para o tamanho ótimo do modelo (lado maior ≤ 1568
+                  px).
+                </>
+              ),
+            },
+            {
+              id: 'triage',
+              icon: <Gauge aria-hidden />,
+              title: 'Triagem',
+              description: (
+                <>
+                  O modelo identifica a modalidade, a região anatómica, a incidência, a lateralidade e a qualidade técnica. É instruído a indicar
+                  quando a imagem não é diagnóstica, em vez de inventar achados — o que não garante que o faça sempre.
+                </>
+              ),
+            },
+            {
+              id: 'findings',
+              icon: <ListChecks aria-hidden />,
+              title: 'Pesquisa sistemática',
+              description: (
+                <>
+                  Uma lista de verificação específica da região e da modalidade (ex.: alinhamento, osso, cartilagem e articulação, partes moles; ou
+                  ecotextura tendinosa, derrame e achados dinâmicos na ecografia) obriga a uma leitura completa. Cada achado sai em formato
+                  estruturado, com localização aproximada na imagem, grau de certeza e classificação quando aplicável (ex.: Garden,
+                  Kellgren-Lawrence, Weber).
+                </>
+              ),
+            },
+            {
+              id: 'evidence',
+              icon: <Library aria-hidden />,
+              title: 'Recuperação de evidência',
+              description: (
+                <>
+                  Para cada achado, a plataforma procura na base de evidência curada (artigos verificados no PubMed) e, se ligado, pergunta ao seu
+                  caderno <strong>NotebookLM</strong> através de MCP.
+                </>
+              ),
+            },
+            {
+              id: 'report',
+              icon: <FileText aria-hidden />,
+              title: 'Síntese do relatório',
+              description: (
+                <>
+                  O relatório estruturado (informação clínica, técnica, achados por região, conclusão, recomendações, limitações) só pode citar a
+                  evidência recuperada, com marcadores <code>[id]</code> verificáveis.
+                </>
+              ),
+            },
+            {
+              id: 'verify',
+              icon: <ShieldCheck aria-hidden />,
+              title: 'Verificação',
+              description: (
+                <>
+                  Uma segunda passagem pelo mesmo modelo, com instruções diferentes (não é um leitor independente; omitida em modo local), compara o
+                  relatório com os achados e com a evidência, e assinala afirmações sem suporte, lateralidade inconsistente ou certezas exageradas.
+                </>
+              ),
+            },
+          ]}
+        />
 
         <h2 id="m-video" className="row" style={{ gap: 8 }}>
           <Film size={20} /> Vídeo (ecografia e fluoroscopia)

@@ -549,12 +549,6 @@ textarea {
   gap: var(--sp-3);
   margin-bottom: var(--sp-4);
 }
-.stat {
-  padding: var(--sp-3) var(--sp-4);
-  border-radius: var(--radius-lg);
-  background: var(--surface-1);
-  border: 1px solid var(--border);
-}
 .stat-value {
   font-size: var(--fs-xl);
   font-weight: 650;
@@ -1018,40 +1012,6 @@ textarea {
   color: var(--text);
 }
 
-.steps {
-  display: grid;
-  gap: var(--sp-3);
-  counter-reset: step;
-  padding: 0;
-  list-style: none;
-}
-.steps li {
-  position: relative;
-  padding: var(--sp-3) var(--sp-4) var(--sp-3) 52px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--surface-1);
-}
-.steps li::before {
-  counter-increment: step;
-  content: counter(step);
-  position: absolute;
-  left: 14px;
-  top: 12px;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: var(--accent-soft);
-  color: var(--accent);
-  font-weight: 700;
-  font-size: var(--fs-sm);
-}
-.steps li strong {
-  color: var(--text);
-}
-
 .person {
   display: flex;
   gap: var(--sp-4);
@@ -1133,7 +1093,6 @@ textarea {
 
 /* ---------------------------------------------------------------- Mobile */
 
-.bottom-nav,
 .wl-cards,
 .banner-short {
   display: none;
@@ -1174,9 +1133,6 @@ textarea {
   :root {
     --topbar-h: 50px;
   }
-  .app {
-    grid-template-rows: auto var(--topbar-h) 1fr auto auto;
-  }
   .banner-long,
   .footer-long,
   .topbar .nav,
@@ -1199,29 +1155,6 @@ textarea {
   .conn-pill {
     padding: 4px 8px;
   }
-  .bottom-nav {
-    order: 5;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid var(--border);
-    background: var(--surface-1);
-    padding-bottom: env(safe-area-inset-bottom);
-  }
-  .bottom-nav a {
-    display: grid;
-    justify-items: center;
-    gap: 2px;
-    padding: 8px 4px 6px;
-    color: var(--text-3);
-    font-size: 11px;
-    font-weight: 600;
-  }
-  .bottom-nav a:hover {
-    text-decoration: none;
-  }
-  .bottom-nav a[aria-current='page'] {
-    color: var(--accent);
-  }
   .footer {
     justify-content: center;
     padding: 4px var(--sp-3);
@@ -1235,9 +1168,6 @@ textarea {
   .stats {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--sp-2);
-  }
-  .stat {
-    padding: var(--sp-2) var(--sp-3);
   }
   .card-pad {
     padding: var(--sp-3) var(--sp-4);
@@ -1276,9 +1206,6 @@ textarea {
   }
   .report-doc {
     padding: var(--sp-4);
-  }
-  .steps li {
-    padding-left: 46px;
   }
   .person {
     align-items: flex-start;

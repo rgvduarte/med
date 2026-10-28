@@ -12,7 +12,6 @@ import { CineBar, type CineSpan } from './CineBar'
 import { ShortcutsDialog } from './ShortcutsDialog'
 import { fmtClock, fmtNum } from './format'
 import { isDrawable, orderedRange, playableLoop, seriesDuration } from './findingModel'
-import '../../styles/workspace.css'
 
 type P2 = [number, number]
 

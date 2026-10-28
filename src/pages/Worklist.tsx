@@ -10,7 +10,8 @@ import { CASE_RESULT_LABEL, CASE_RESULT_ORDER, MODALITY_ABBR, MODALITY_DICOM, RE
 import { caseResult, compareWorklist, reportState, type WorklistSort } from '../lib/report/state'
 import { formatDate, formatDateTime, nowIso, uid } from '../lib/util'
 import { ReportStateChip, ResultChip } from '../components/report/StatusChips'
-import '../styles/report.css'
+import { GlassButton, GlassCard, GlassInput, GlassSelect } from '../components/ui/glass'
+import { cn } from '../components/ui/cn'
 
 function pseudoId(): string {
   const n = crypto.getRandomValues(new Uint16Array(1))[0] % 10000
@@ -204,17 +205,28 @@ function relativeDate(iso: string): string {
   return formatDate(iso)
 }
 
+function Stat({ value, label, color, glow = false }: { value: number; label: string; color?: string; glow?: boolean }) {
+  return (
+    <GlassCard glowEffect={glow} className="overflow-hidden px-4 pt-4 pb-3">
+      <div className="stat-value" style={color ? { color } : undefined}>
+        {value}
+      </div>
+      <div className="stat-label">{label}</div>
+    </GlassCard>
+  )
+}
+
 function FilterSelect<T extends string>({ label, value, options, onChange }: { label: string; value: T; options: [T, string][]; onChange: (v: T) => void }) {
   return (
-    <label className={`rp-filter ${value !== 'all' ? 'active' : ''}`}>
+    <label className="rp-filter">
       <span>{label}</span>
-      <select className="select" value={value} onChange={(e) => onChange(e.target.value as T)}>
+      <GlassSelect className={cn('h-9 px-3', value !== 'all' && 'border-cyan-400/60 bg-cyan-400/10')} value={value} onChange={(e) => onChange(e.target.value as T)}>
         {options.map(([v, l]) => (
           <option key={v} value={v}>
             {l}
           </option>
         ))}
-      </select>
+      </GlassSelect>
     </label>
   )
 }
@@ -299,32 +311,17 @@ export function Worklist() {
           <h1>Lista de trabalho</h1>
           <p>Estudos de imagiologia musculoesquelética carregados nesta sessão do navegador.</p>
         </div>
-        <button type="button" className="btn btn-primary" onClick={() => document.getElementById('novo-caso')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
-          <ImagePlus size={16} /> Novo estudo
-        </button>
+        <GlassButton variant="primary" glowEffect onClick={() => document.getElementById('novo-caso')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
+          <ImagePlus /> Novo estudo
+        </GlassButton>
       </div>
 
       <div className="stats">
-        <div className="stat">
-          <div className="stat-value">{stats.total}</div>
-          <div className="stat-label">Estudos</div>
-        </div>
-        <div className="stat">
-          <div className="stat-value">{stats.pending}</div>
-          <div className="stat-label">Por analisar</div>
-        </div>
-        <div className="stat">
-          <div className="stat-value" style={{ color: 'var(--ai)' }}>
-            {stats.toValidate}
-          </div>
-          <div className="stat-label">Relatórios por validar</div>
-        </div>
-        <div className="stat">
-          <div className="stat-value" style={{ color: 'var(--normal)' }}>
-            {stats.validated}
-          </div>
-          <div className="stat-label">Validados pelo médico</div>
-        </div>
+        <Stat value={stats.total} label="Estudos" />
+        <Stat value={stats.pending} label="Por analisar" />
+        {/* The glow marks the one figure that asks for the clinician's action. */}
+        <Stat value={stats.toValidate} label="Relatórios por validar" color="var(--ai)" glow={stats.toValidate > 0} />
+        <Stat value={stats.validated} label="Validados pelo médico" color="var(--normal)" />
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: 'var(--sp-4)' }}>
@@ -332,7 +329,15 @@ export function Worklist() {
           <div className="rp-wl-toolbar">
             <div className="rp-wl-search">
               <Search size={16} className="subtle" aria-hidden />
-              <input className="input" type="search" placeholder="Pesquisar ID, região, indicação…" value={q} onChange={(e) => setQ(e.target.value)} aria-label="Pesquisar estudos" />
+              <GlassInput
+                wrapperClassName="min-w-0 flex-1"
+                className="h-9"
+                type="search"
+                placeholder="Pesquisar ID, região, indicação…"
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+                aria-label="Pesquisar estudos"
+              />
               <button
                 type="button"
                 className={`btn rp-wl-filter-toggle ${filtersOpen ? 'on' : ''}`}
@@ -378,13 +383,13 @@ export function Worklist() {
                 <span>
                   <ArrowUpDown size={11} aria-hidden /> Ordenar por
                 </span>
-                <select className="select" value={sort} onChange={(e) => setSort(e.target.value as SortKey)}>
+                <GlassSelect className="h-9 px-3" value={sort} onChange={(e) => setSort(e.target.value as SortKey)}>
                   {SORTS.map((s) => (
                     <option key={s.id} value={s.id}>
                       {s.label}
                     </option>
                   ))}
-                </select>
+                </GlassSelect>
               </label>
             </div>
             {activeFilters > 0 && (

@@ -4,6 +4,7 @@ import type { Route } from '../lib/router'
 import { href } from '../lib/router'
 import { isNotebookConfigured, isVlmConfigured, useSettings } from '../store/settings'
 import { RESPONSIBLE } from '../data/responsible'
+import { GlassDock, GlassTooltip, GlassTooltipContent, GlassTooltipProvider, GlassTooltipTrigger } from './ui/glass'
 
 function BrandMark() {
   return (
@@ -35,67 +36,78 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
   ]
 
   return (
-    <div className="app">
-      <div className="banner" role="note">
-        <ShieldAlert size={14} aria-hidden />
-        <span className="banner-long">
-          <strong>Protótipo de investigação e ensino.</strong> Não é um dispositivo médico. As sugestões da IA exigem sempre validação por um
-          médico — não utilizar para decisões clínicas.
-        </span>
-        <span className="banner-short">
-          <strong>Protótipo de investigação</strong> — não é dispositivo médico
-        </span>
-      </div>
-
-      <header className="topbar">
-        <a className="brand" href={href({ name: 'worklist' })}>
-          <BrandMark />
-          <span>MSK·VLM</span>
-          <span className="brand-sub">Imagiologia musculoesquelética assistida por IA</span>
-        </a>
-        <nav className="nav" aria-label="Navegação principal">
-          {nav.map((n) => (
-            <a key={n.label} href={href(n.r)} aria-current={n.match.includes(route.name) ? 'page' : undefined}>
-              {n.icon}
-              {n.label}
-            </a>
-          ))}
-        </nav>
-        <div className="topbar-right">
-          <a className="conn-pill" href={href({ name: 'settings' })} title="Estado do modelo de visão-linguagem" aria-label={`Modelo: ${vlmLabel}`}>
-            <span className={`dot ${vlmOk ? 'ok' : 'warn'}`} />
-            <span className="label">{vlmLabel}</span>
-          </a>
-          <a className="conn-pill" href={href({ name: 'settings' })} title={s.mcpLastCheck ? `NotebookLM: ${s.mcpLastCheck.summary}` : 'Ligação ao NotebookLM via MCP'} aria-label={nlm.label}>
-            <span className={`dot ${nlm.dot}`} />
-            <span className="label">{nlm.label}</span>
-          </a>
-        </div>
-      </header>
-
-      <main className="main" id="conteudo">
-        {children}
-      </main>
-
-      <nav className="bottom-nav" aria-label="Navegação">
-        {nav.map((n) => (
-          <a key={n.label} href={href(n.r)} aria-current={n.match.includes(route.name) ? 'page' : undefined}>
-            {n.icon}
-            <span>{n.short}</span>
-          </a>
-        ))}
-      </nav>
-
-      {/* On a case the named credit would sit right under the AI result: show only the privacy note there (hidden on phones). */}
-      <footer className={`footer ${route.name === 'case' ? 'footer-case' : ''}`}>
-        {route.name !== 'case' && (
-          <span>
-            Responsável clínico da plataforma (não revê casos): <strong style={{ color: 'var(--text-2)' }}>{RESPONSIBLE.name}</strong>
-            <span className="footer-long"> — {RESPONSIBLE.specialty}</span>
+    <GlassTooltipProvider delayDuration={350}>
+      <div className="app">
+        <div className="banner" role="note">
+          <ShieldAlert size={14} aria-hidden />
+          <span className="banner-long">
+            <strong>Protótipo de investigação e ensino.</strong> Não é um dispositivo médico. As sugestões da IA exigem sempre validação por um
+            médico — não utilizar para decisões clínicas.
           </span>
-        )}
-        <span className="footer-long">As imagens são processadas no seu navegador. Só são enviadas ao fornecedor de IA que configurar, quando pedir uma análise.</span>
-      </footer>
-    </div>
+          <span className="banner-short">
+            <strong>Protótipo de investigação</strong> — não é dispositivo médico
+          </span>
+        </div>
+
+        <header className="topbar">
+          <a className="brand" href={href({ name: 'worklist' })}>
+            <BrandMark />
+            <span>MSK·VLM</span>
+            <span className="brand-sub">Imagiologia musculoesquelética assistida por IA</span>
+          </a>
+          <nav className="nav" aria-label="Navegação principal">
+            {nav.map((n) => (
+              <a key={n.label} href={href(n.r)} aria-current={n.match.includes(route.name) ? 'page' : undefined}>
+                {n.icon}
+                {n.label}
+              </a>
+            ))}
+          </nav>
+          <div className="topbar-right">
+            <GlassTooltip>
+              <GlassTooltipTrigger asChild>
+                <a className="conn-pill" href={href({ name: 'settings' })} aria-label={`Modelo: ${vlmLabel}`}>
+                  <span className={`dot ${vlmOk ? 'ok' : 'warn'}`} />
+                  <span className="label">{vlmLabel}</span>
+                </a>
+              </GlassTooltipTrigger>
+              <GlassTooltipContent side="bottom">Estado do modelo de visão-linguagem — abrir Definições</GlassTooltipContent>
+            </GlassTooltip>
+            <GlassTooltip>
+              <GlassTooltipTrigger asChild>
+                <a className="conn-pill" href={href({ name: 'settings' })} aria-label={nlm.label}>
+                  <span className={`dot ${nlm.dot}`} />
+                  <span className="label">{nlm.label}</span>
+                </a>
+              </GlassTooltipTrigger>
+              <GlassTooltipContent side="bottom" align="end">
+                {s.mcpLastCheck ? `NotebookLM: ${s.mcpLastCheck.summary}` : 'Ligação ao NotebookLM via MCP'}
+              </GlassTooltipContent>
+            </GlassTooltip>
+          </div>
+        </header>
+
+        <main className="main" id="conteudo">
+          {children}
+        </main>
+
+        <GlassDock
+          className="fixed inset-x-3 bottom-[calc(10px+env(safe-area-inset-bottom))] z-30 min-[861px]:hidden"
+          label="Navegação"
+          items={nav.map((n) => ({ id: n.r.name, icon: n.icon, label: n.short, href: href(n.r), active: n.match.includes(route.name) }))}
+        />
+
+        {/* On a case the named credit would sit right under the AI result: show only the privacy note there (hidden on phones). */}
+        <footer className={`footer ${route.name === 'case' ? 'footer-case' : ''}`}>
+          {route.name !== 'case' && (
+            <span>
+              Responsável clínico da plataforma (não revê casos): <strong className="text-white/80">{RESPONSIBLE.name}</strong>
+              <span className="footer-long"> — {RESPONSIBLE.specialty}</span>
+            </span>
+          )}
+          <span className="footer-long">As imagens são processadas no seu navegador. Só são enviadas ao fornecedor de IA que configurar, quando pedir uma análise.</span>
+        </footer>
+      </div>
+    </GlassTooltipProvider>
   )
 }

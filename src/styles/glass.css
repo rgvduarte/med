@@ -1,0 +1,948 @@
+/* Liquid glass (Ein UI, MIT) applied to the app's own classes. Loaded last in the `legacy` layer, so it
+   refines app.css / workspace.css / report.css; the Ein UI React components in components/ui/glass carry
+   their own Tailwind utilities. Clinical content keeps its contrast; the image viewer stays pure black. */
+
+/* ---------------------------------------------------------------- Field */
+
+html {
+  background: var(--bg);
+}
+body {
+  background: transparent;
+  font-feature-settings: normal;
+  scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
+}
+/* Fixed gradient field behind every glass surface (cyan · blue · purple, Ein UI palette). */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60rem 42rem at 8% -12%, rgba(6, 182, 212, 0.24), transparent 62%),
+    radial-gradient(52rem 40rem at 100% 8%, rgba(59, 130, 246, 0.2), transparent 60%),
+    radial-gradient(64rem 46rem at 55% 118%, rgba(168, 85, 247, 0.2), transparent 62%),
+    radial-gradient(30rem 24rem at 30% 55%, rgba(14, 165, 233, 0.06), transparent 70%),
+    var(--bg);
+}
+::selection {
+  background: rgba(34, 211, 238, 0.32);
+  color: #fff;
+}
+* {
+  scrollbar-width: thin;
+}
+a {
+  color: #67e8f9;
+}
+:focus-visible {
+  box-shadow: var(--focus-ring);
+}
+
+/* Shared glass recipes */
+.card,
+.rp-sec,
+.fp-row,
+.fp-summary,
+.sp-card,
+.wsx-audit li,
+.rp-radio,
+.evidence,
+.report-doc,
+.dropzone {
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: var(--glass-shadow-sm), var(--glass-inset);
+}
+.card,
+.report-doc {
+  position: relative;
+  border-radius: var(--radius-lg);
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.06);
+  box-shadow: var(--glass-shadow), var(--glass-inset);
+}
+
+/* ---------------------------------------------------------------- Shell */
+
+.app {
+  isolation: isolate;
+}
+.banner {
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.2), rgba(234, 179, 8, 0.14));
+  border-bottom: 1px solid rgba(251, 191, 36, 0.3);
+  color: #fde68a;
+  backdrop-filter: var(--glass-blur);
+}
+.topbar {
+  position: relative;
+  z-index: 5;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+/* Hairline highlight along the bottom edge of the bar */
+.topbar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.45), rgba(168, 85, 247, 0.4), transparent);
+}
+.brand {
+  letter-spacing: -0.02em;
+}
+.brand-mark {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.9), rgba(59, 130, 246, 0.9) 50%, rgba(168, 85, 247, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+}
+.nav {
+  gap: 4px;
+  padding: 4px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: var(--glass-shadow-sm);
+}
+.nav a {
+  position: relative;
+  padding: 6px 14px;
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.62);
+  transition: color 0.2s, background 0.2s;
+}
+.nav a:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.85);
+}
+.nav a[aria-current='page'] {
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.18);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.18);
+}
+.nav a[aria-current='page'] svg {
+  color: #67e8f9;
+}
+.conn-pill {
+  height: 28px;
+  padding: 0 12px;
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.78);
+  backdrop-filter: var(--glass-blur);
+  transition: background 0.2s, border-color 0.2s;
+}
+.conn-pill:hover {
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.dot.ok {
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
+}
+.dot.warn {
+  box-shadow: 0 0 8px rgba(255, 175, 95, 0.75);
+}
+.dot.err {
+  box-shadow: 0 0 8px rgba(255, 122, 122, 0.8);
+}
+.footer {
+  background: rgba(255, 255, 255, 0.03);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: var(--glass-blur);
+}
+.page-head h1 {
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  background: linear-gradient(90deg, #fff 30%, #a5f3fc 75%, #c4b5fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------------------------------------------------------------- Buttons (Ein UI GlassButton) */
+
+.btn {
+  position: relative;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-weight: 550;
+  box-shadow: var(--glass-shadow-sm), var(--glass-inset);
+  transition:
+    transform 0.3s var(--ease-out),
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+.btn:hover:not(:disabled) {
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.38);
+  transform: scale(1.05);
+  text-decoration: none;
+}
+.btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+.btn-primary {
+  border-color: rgba(255, 255, 255, 0.3);
+  background:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.28), transparent 70%),
+    var(--accent-grad);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+.btn-primary:hover:not(:disabled) {
+  background:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.32), transparent 70%),
+    var(--accent-grad);
+  box-shadow: 0 4px 30px rgba(59, 130, 246, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+}
+.btn-ghost {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  color: rgba(255, 255, 255, 0.72);
+}
+.btn-ghost:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: transparent;
+  color: #fff;
+}
+.btn-danger {
+  border-color: rgba(248, 113, 113, 0.42);
+  background: var(--glass-highlight), rgba(239, 68, 68, 0.22);
+  color: #fecaca;
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.22);
+}
+.btn-danger:hover:not(:disabled) {
+  background: var(--glass-highlight), rgba(239, 68, 68, 0.34);
+  border-color: rgba(248, 113, 113, 0.6);
+}
+.btn-sm {
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 10px;
+}
+.btn-icon {
+  width: 36px;
+  padding: 0;
+}
+.btn-sm.btn-icon {
+  width: 30px;
+}
+
+/* ---------------------------------------------------------------- Fields (Ein UI GlassInput) */
+
+.input,
+.select,
+.textarea {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  box-shadow: var(--glass-shadow-sm);
+  transition:
+    border-color 0.3s,
+    background-color 0.3s,
+    box-shadow 0.3s;
+}
+.input::placeholder,
+.textarea::placeholder {
+  color: rgba(255, 255, 255, 0.42);
+}
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: rgba(255, 255, 255, 0.42);
+  background-color: rgba(255, 255, 255, 0.13);
+  box-shadow:
+    0 0 0 3px rgba(34, 211, 238, 0.22),
+    0 0 22px rgba(59, 130, 246, 0.32);
+}
+/* Native selects keep the platform picker; only the closed control is glass, with Ein UI's chevron. */
+.select,
+.cb-speed {
+  appearance: none;
+  padding-right: 34px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.6)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 11px center;
+  cursor: pointer;
+}
+.cb-speed {
+  padding-right: 24px;
+  background-position: right 5px center;
+  background-size: 13px;
+}
+.field {
+  align-content: start;
+}
+/* Glass checkbox: rounded white-glass box, gradient fill and white tick when checked. */
+input[type='checkbox'] {
+  appearance: none;
+  flex: none;
+  display: inline-grid;
+  place-content: center;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+input[type='checkbox']:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+input[type='checkbox']::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  clip-path: polygon(14% 52%, 0 66%, 38% 100%, 100% 22%, 86% 8%, 38% 72%);
+  transform: scale(0);
+  transition: transform 0.15s var(--ease-out);
+}
+input[type='checkbox']:checked {
+  border-color: rgba(103, 232, 249, 0.6);
+  background: linear-gradient(135deg, #06b6d4, #3b82f6 60%, #8b5cf6);
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.45);
+}
+input[type='checkbox']:checked::after {
+  transform: scale(1);
+}
+input[type='checkbox']:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.rp-checkbox input[type='checkbox'] {
+  margin-top: 1px;
+}
+.rp-switch-soft {
+  font-weight: 500;
+  font-size: var(--fs-sm);
+  color: var(--text-2);
+}
+.rp-section-nav {
+  display: inline-flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  margin: 0 0 var(--sp-4);
+  gap: 4px;
+  padding: 4px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: var(--glass-shadow-sm);
+}
+.rp-toc {
+  margin: var(--sp-4) 0 0;
+}
+@media (max-width: 860px) {
+  /* Phones: one scrollable row of glass pills, as before */
+  .rp-section-nav {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: 0 0 var(--sp-3);
+    scrollbar-width: none;
+  }
+  .rp-toc {
+    margin: var(--sp-3) 0 0;
+  }
+}
+select option {
+  background: #141a28;
+  color: #fff;
+}
+input[type='checkbox'],
+input[type='radio'],
+input[type='range'] {
+  accent-color: #22d3ee;
+}
+
+/* ---------------------------------------------------------------- Badges, chips, callouts */
+
+.badge,
+.wsx-chip,
+.rp-chip {
+  border-radius: 999px;
+  backdrop-filter: var(--glass-blur);
+}
+.rp-chip {
+  padding: 1px 10px;
+}
+.badge-neutral,
+.rp-res-new {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.24);
+  color: rgba(255, 255, 255, 0.85);
+}
+.badge-critical,
+.wsx-chip.is-err {
+  border-color: rgba(248, 113, 113, 0.35);
+}
+.badge-info {
+  border-color: rgba(147, 180, 255, 0.32);
+}
+.badge-ai,
+.wsx-chip.is-ai {
+  border-color: rgba(192, 132, 252, 0.35);
+}
+.badge-normal {
+  border-color: rgba(74, 222, 128, 0.32);
+}
+.badge-significant {
+  border-color: rgba(251, 191, 36, 0.35);
+}
+:root {
+  --rp-pos: #ff8f8a;
+  --rp-pos-bg: rgba(239, 68, 68, 0.2);
+  --rp-dbt: #ffbf5e;
+  --rp-dbt-bg: rgba(245, 158, 11, 0.2);
+  --rp-neg: #c3ccd8;
+  --rp-neg-bg: rgba(255, 255, 255, 0.1);
+  --rp-ok: #4ade80;
+  --rp-ok-bg: rgba(16, 185, 129, 0.2);
+  --rp-ai: #d8c4ff;
+  --rp-ai-bg: rgba(168, 85, 247, 0.22);
+  --rp-ai-subtle: rgba(168, 85, 247, 0.08);
+  --cls-pos-bg: rgba(239, 68, 68, 0.2);
+  --cls-dub-bg: rgba(245, 158, 11, 0.2);
+  --cls-neg-bg: rgba(255, 255, 255, 0.1);
+  --ov-label-bg: rgba(10, 14, 24, 0.78);
+}
+.rp-chip-ai {
+  border-radius: 999px;
+  padding: 0 5px;
+}
+
+.callout {
+  border-radius: 14px;
+  border-color: rgba(255, 255, 255, 0.16);
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.06);
+  box-shadow: var(--glass-shadow-sm), var(--glass-inset);
+}
+.callout-warn,
+.fp-pending {
+  border-color: rgba(251, 191, 36, 0.38);
+  background: var(--glass-highlight), rgba(245, 158, 11, 0.16);
+  color: #fde3b5;
+}
+.callout-ai {
+  border-color: rgba(192, 132, 252, 0.38);
+  background: var(--glass-highlight), rgba(168, 85, 247, 0.16);
+  color: #e3d4ff;
+}
+.callout-info {
+  border-color: rgba(147, 180, 255, 0.35);
+  background: var(--glass-highlight), rgba(59, 130, 246, 0.14);
+  color: #d3e1ff;
+}
+.fp-pending {
+  border-radius: 14px;
+}
+.kbd {
+  border-radius: 6px;
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* ---------------------------------------------------------------- Worklist */
+
+.stat-value {
+  font-size: 30px;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.stat-label {
+  color: rgba(255, 255, 255, 0.6);
+}
+.table th {
+  color: rgba(255, 255, 255, 0.55);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+.table td {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+.table tbody tr {
+  transition: background-color 0.2s;
+}
+.table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+.thumb {
+  border-radius: 10px;
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+.worklist-toolbar,
+.rp-wl-toolbar {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+.wl-card:hover,
+.rp-wl-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+.dropzone {
+  border: 1.5px dashed rgba(255, 255, 255, 0.28);
+  border-radius: var(--radius-lg);
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.05);
+}
+.dropzone:hover,
+.dropzone.active {
+  border-color: rgba(34, 211, 238, 0.7);
+  background: var(--glass-highlight), rgba(34, 211, 238, 0.1);
+  box-shadow: 0 0 32px rgba(34, 211, 238, 0.2);
+}
+
+/* ---------------------------------------------------------------- Workspace frame */
+
+.wsx {
+  background: transparent;
+}
+.wsx-head {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.035));
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: var(--glass-blur);
+}
+.wsx-progress > i {
+  background: linear-gradient(90deg, #22d3ee, #3b82f6, #a855f7);
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
+}
+.wsx-series,
+.wsx-side {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.wsx-center {
+  background: var(--viewer-bg);
+}
+
+/* Section tabs → Ein UI GlassTabs: glass list with a breathing glow, raised active pill. */
+.wsx-tabs {
+  position: relative;
+  isolation: isolate;
+  gap: 2px;
+  margin: 10px 10px 4px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: var(--glass-shadow-sm);
+}
+.wsx-tabs::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  border-radius: 18px;
+  background: var(--accent-glow);
+  filter: blur(14px);
+  opacity: 0.5;
+  pointer-events: none;
+  animation: glass-breathe 3s ease-in-out infinite;
+}
+.wsx-tab {
+  position: relative;
+  margin: 0;
+  padding: 6px 2px 5px;
+  border: 0;
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+}
+.wsx-tab:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.85);
+}
+.wsx-tab[aria-selected='true'] {
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.18);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+.wsx-tab[aria-selected='true'] .wsx-tab-ic {
+  color: #67e8f9;
+}
+.wsx-tab-count {
+  border-radius: 999px;
+  background: rgba(30, 38, 56, 0.9);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+.wsx-tab-count.is-pending {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #1d1300;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.6);
+}
+.wsx-panel {
+  animation: glass-in 0.32s var(--ease-out);
+}
+
+/* Series panel */
+.sp-card {
+  border-radius: 14px;
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.06);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.3s var(--ease-out);
+}
+.sp-card:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.sp-card[aria-current='true'] {
+  border-color: rgba(34, 211, 238, 0.65);
+  box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.55), 0 0 24px rgba(34, 211, 238, 0.25);
+}
+
+/* Viewer chrome: glass tool buttons around a black viewport */
+.vt-btn {
+  border-radius: 10px;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    transform 0.3s var(--ease-out);
+}
+.vt-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+}
+.vt-btn[aria-pressed='true'] {
+  background: var(--glass-highlight), rgba(34, 211, 238, 0.16);
+  color: #67e8f9;
+  box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.35), 0 0 16px rgba(34, 211, 238, 0.2);
+}
+.vt-btn[aria-pressed='true']::after {
+  background: linear-gradient(90deg, #22d3ee, #3b82f6);
+}
+
+/* Floating layers over content: near-opaque glass with blur so the text underneath never shows through. */
+.vt-pop,
+.rp-menu,
+.fp-tip,
+.fp-pop {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  background: var(--glass-highlight), var(--surface-pop);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), var(--glass-inset);
+  animation: glass-pop 0.18s var(--ease-out);
+}
+/* Export menu: anchor to the right edge of the action row so it never runs past the panel's left edge. */
+.rp-report-actions {
+  position: relative;
+}
+.rp-report-actions .rp-menu-root {
+  position: static;
+}
+.rp-menu-item {
+  border-radius: 10px;
+}
+.rp-menu-item:hover:not([aria-disabled='true']),
+.rp-menu-item:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Labels over the image: dark glass so they stay legible on bright bone */
+.vw-aichip,
+.vw-pill,
+.vw-hint,
+.sp-badge {
+  backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+.vw-aichip {
+  background: rgba(10, 14, 24, 0.72);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), var(--glass-inset);
+}
+.cb-head {
+  background: linear-gradient(#67e8f9, #22d3ee);
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.7);
+}
+
+/* ---------------------------------------------------------------- Findings */
+
+.fp-summary {
+  position: relative;
+  border-radius: var(--radius-lg);
+  border-color: rgba(192, 132, 252, 0.38);
+  background:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent 55%),
+    linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(59, 130, 246, 0.1) 60%, rgba(6, 182, 212, 0.08)),
+    rgba(255, 255, 255, 0.04);
+  box-shadow: 0 8px 32px rgba(88, 28, 135, 0.28), var(--glass-inset);
+}
+.fp-summary-title {
+  color: #e3d4ff;
+}
+.fp-row {
+  border-radius: 14px;
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.055);
+  transition:
+    border-color 0.2s,
+    background-color 0.2s,
+    box-shadow 0.2s;
+}
+.fp-row::before {
+  border-radius: 14px 0 0 14px;
+}
+.fp-row.is-hov {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.09);
+}
+.fp-row.is-sel {
+  border-color: rgba(34, 211, 238, 0.65);
+  box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.55), 0 0 28px rgba(34, 211, 238, 0.18);
+}
+.fp-count,
+.tab .count {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.fp-meter > i,
+.confidence .bar > i {
+  background: linear-gradient(90deg, #22d3ee, #3b82f6);
+}
+
+/* Analysis steps → Ein UI GlassTimeline: status nodes joined by a connector (gradient once done). */
+.pp-steps {
+  gap: 4px;
+}
+.pp-step {
+  position: relative;
+  grid-template-columns: 30px 14px minmax(0, 1fr) auto;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+}
+.pp-step > .pp-ic {
+  box-sizing: content-box;
+  width: 16px;
+  height: 16px;
+  padding: 5px;
+  margin: -2px 0 0 -2px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+}
+.pp-step.is-done > .pp-ic {
+  border-color: rgba(103, 232, 249, 0.5);
+  background: linear-gradient(135deg, #06b6d4, #3b82f6);
+  color: #fff;
+}
+.pp-step.is-running > .pp-ic {
+  border-color: rgba(103, 232, 249, 0.6);
+  background: rgba(255, 255, 255, 0.2);
+  color: #67e8f9;
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.6);
+}
+.pp-step.is-error > .pp-ic {
+  border-color: rgba(248, 113, 113, 0.6);
+  background: rgba(239, 68, 68, 0.25);
+}
+.pp-step:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 23px;
+  top: 40px;
+  bottom: -10px;
+  width: 2px;
+  border-radius: 1px;
+  background: rgba(255, 255, 255, 0.16);
+}
+.pp-step.is-done:not(:last-child)::before {
+  background: linear-gradient(#06b6d4, #3b82f6);
+}
+.pp-step .pp-num {
+  line-height: 24px;
+}
+.pp-step .pp-label,
+.pp-step .pp-time {
+  line-height: 24px;
+}
+.pp-step.is-running {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 28px rgba(6, 182, 212, 0.22), var(--glass-inset);
+}
+.pp-step.is-error {
+  border-color: rgba(248, 113, 113, 0.35);
+  background: var(--glass-highlight), rgba(239, 68, 68, 0.14);
+}
+.pp-card,
+.pp-summary {
+  border-radius: 14px;
+  box-shadow: var(--glass-shadow-sm), var(--glass-inset);
+}
+.pp-card {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.055);
+}
+.pp-summary {
+  border-color: rgba(74, 222, 128, 0.32);
+  background: var(--glass-highlight), rgba(16, 185, 129, 0.14);
+}
+
+/* ---------------------------------------------------------------- Report, evidence, settings */
+
+.rp-sec {
+  border-radius: 14px;
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.05);
+}
+.rp-sec-ai {
+  background:
+    var(--glass-highlight),
+    linear-gradient(var(--rp-ai-subtle), var(--rp-ai-subtle)),
+    rgba(255, 255, 255, 0.04);
+}
+.rp-sec-auto {
+  background: rgba(255, 255, 255, 0.03);
+}
+.rp-sec-editing {
+  border-color: rgba(34, 211, 238, 0.65);
+  box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.5), 0 0 24px rgba(34, 211, 238, 0.18);
+}
+.rp-radio {
+  border-radius: 14px;
+  background: var(--glass-highlight), rgba(255, 255, 255, 0.05);
+  transition:
+    border-color 0.2s,
+    background-color 0.2s,
+    box-shadow 0.2s;
+}
+.rp-radio:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.rp-radio.on {
+  border-color: rgba(34, 211, 238, 0.6);
+  background: var(--glass-highlight), rgba(34, 211, 238, 0.12);
+  box-shadow: 0 0 24px rgba(34, 211, 238, 0.18), var(--glass-inset);
+}
+.prose code,
+.prose pre {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.28);
+}
+.avatar {
+  background: var(--accent-grad);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+/* ---------------------------------------------------------------- Dialogs (Ein UI GlassDialog on <dialog>) */
+
+.rp-dialog,
+.vw-modal {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent 40%), var(--surface-pop);
+  backdrop-filter: blur(40px) saturate(150%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55), var(--glass-inset);
+}
+.rp-dialog[open] {
+  animation: glass-dialog-in 0.24s var(--ease-out);
+}
+.rp-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+.vw-modal-scrim {
+  backdrop-filter: blur(4px);
+}
+.rp-dialog-head,
+.rp-dialog-foot {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ---------------------------------------------------------------- Phone dock */
+
+@media (max-width: 860px) {
+  .app {
+    grid-template-rows: auto var(--topbar-h) 1fr auto;
+  }
+  .app {
+    /* Room for the floating dock, which overlays this strip */
+    padding-bottom: calc(84px + env(safe-area-inset-bottom));
+  }
+  .wsx-tabs {
+    margin: 8px 8px 4px;
+  }
+}
+
+/* ---------------------------------------------------------------- Motion */
+
+@keyframes glass-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+@keyframes glass-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+@keyframes glass-dialog-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(6px);
+  }
+}
+@keyframes glass-breathe {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .sp-card,
+  .vt-btn {
+    transition: none;
+  }
+  .btn:hover:not(:disabled),
+  .btn:active:not(:disabled) {
+    transform: none;
+  }
+  .wsx-panel,
+  .wsx-tabs::before,
+  .vt-pop,
+  .rp-menu,
+  .fp-tip,
+  .fp-pop,
+  .rp-dialog[open] {
+    animation: none;
+  }
+}
+
+@media print {
+  body::before {
+    display: none;
+  }
+}

@@ -1,0 +1,29 @@
+/* Stylesheet entry. Cascade layers, lowest priority first:
+   Tailwind theme → base → the app's own stylesheets (legacy) → components → Tailwind utilities,
+   so the Ein UI utility classes always win over the app's element/class rules.
+   Tailwind's preflight is left out on purpose: app.css carries the reset the existing screens rely on. */
+@layer theme, base, legacy, components, utilities;
+
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities) source(none);
+@import 'tw-animate-css';
+
+@source '../';
+
+@import './tokens.css' layer(legacy);
+@import './app.css' layer(legacy);
+@import './workspace.css' layer(legacy);
+@import './report.css' layer(legacy);
+@import './glass.css' layer(legacy);
+
+/* Ein UI theme scale. `inline` writes the values into the utilities, so these names do not clash with the
+   app's own --radius-* / --font-* custom properties in tokens.css. */
+@theme inline {
+  --font-sans: 'Geist Variable', Geist, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', 'Geist Mono', ui-monospace, monospace;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+}

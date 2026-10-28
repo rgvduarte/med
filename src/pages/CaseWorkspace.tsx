@@ -33,7 +33,6 @@ import { FindingsPanel, type FindingActionRequest } from '../components/analysis
 import { AnalyseButton, PipelinePanel, PixelConfirmDialog, pipelineProgress, useAnalysisRun } from '../components/analysis/PipelinePanel'
 import { EvidencePanel } from '../components/analysis/EvidencePanel'
 import { ReportPanel } from '../components/report/ReportPanel'
-import '../styles/workspace.css'
 
 type Tab = 'findings' | 'evidence' | 'report' | 'analysis' | 'info' | 'audit'
 type Sheet = 'min' | 'half' | 'full'

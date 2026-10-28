@@ -1,4 +1,5 @@
 /// <reference types="vitest/config" />
+import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import { defineConfig, type Plugin, type ProxyOptions } from 'vite'
 
@@ -73,7 +74,7 @@ function contentSecurityPolicy(): Plugin {
 // Relative base so the build works both at https://<user>.github.io/<repo>/ and locally.
 export default defineConfig({
   base: './',
-  plugins: [react(), contentSecurityPolicy()],
+  plugins: [react(), tailwindcss(), contentSecurityPolicy()],
   // The in-browser VLM runs in a module worker (Transformers.js + ONNX Runtime WebGPU).
   worker: { format: 'es' },
   server: { proxy: ollamaProxy, allowedHosts },

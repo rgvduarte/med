@@ -12,7 +12,6 @@ import { Cited } from './Cited'
 import { ExportMenu } from './ExportMenu'
 import { ValidationDialog } from './ValidationDialog'
 import { ReportPrint } from './ReportPrint'
-import '../../styles/report.css'
 
 const SCOPE = 'rpt'
 
