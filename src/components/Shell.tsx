@@ -6,14 +6,9 @@ import { isNotebookConfigured, isVlmConfigured, useSettings } from '../store/set
 import { RESPONSIBLE } from '../data/responsible'
 import { GlassDock, GlassTooltip, GlassTooltipContent, GlassTooltipProvider, GlassTooltipTrigger } from './ui/glass'
 
+/** The favicon is the brand mark: one file for the browser tab and the top bar. */
 function BrandMark() {
-  return (
-    <span className="brand-mark" aria-hidden>
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 10c.7-.7 1.69 0 2.5 0a2.5 2.5 0 1 0 0-5 .5.5 0 0 1-.5-.5 2.5 2.5 0 1 0-5 0c0 .81.7 1.8 0 2.5l-7 7c-.7.7-1.69 0-2.5 0a2.5 2.5 0 0 0 0 5c.28 0 .5.22.5.5a2.5 2.5 0 1 0 5 0c0-.81-.7-1.8 0-2.5Z" />
-      </svg>
-    </span>
-  )
+  return <img className="brand-mark" src={`${import.meta.env.BASE_URL}favicon.svg`} alt="" width={32} height={32} />
 }
 
 export function Shell({ route, children }: { route: Route; children: ReactNode }) {
